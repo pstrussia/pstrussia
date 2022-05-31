@@ -422,6 +422,10 @@ if (strlen($pictureInHeadIsset)) {
                             <h1>
                                 <? $APPLICATION->ShowTitle(false); ?>
                             </h1>
+
+                            <?if ($ar_result['ID'] == 206) {?>
+                               <div class="message-desc">Вернем до 20% стомости за Вашу старую рейку</div>
+                            <?}?>
                         </div>
 
                         <? if (strlen($ar_result["~UF_PHX_CTLG_PRTXT"]) > 0 && $ar_result["UF_VIEW_SUBSECTIONS_ENUM"]["XML_ID"] == "in_head") : ?>
