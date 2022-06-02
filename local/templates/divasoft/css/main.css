@@ -16127,9 +16127,10 @@ div.catalog-list.FLAT div.item div.wrapper-article-available div.detail-availabl
 }
 
 div.catalog-list.FLAT div.item div.wrapper-article-available div.detail-available.empty-quantity {
-    padding-left: 13px;
-    background: url('../images/svg/cross_red.svg') left center no-repeat;
-    background-size: 8px;
+    padding-left: 10px;
+    /* background: url('../images/svg/cross_red.svg') left center no-repeat; */
+    background: url('../images/svg/clarification.svg') left center no-repeat;
+    background-size: 5px;
 }
 
 div.catalog-list.FLAT div.item div.wrapper-article-available div.detail-available.without-quantity span.text {
@@ -16137,7 +16138,7 @@ div.catalog-list.FLAT div.item div.wrapper-article-available div.detail-availabl
 }
 
 div.catalog-list.FLAT div.item div.wrapper-article-available div.detail-available.empty-quantity span.text {
-    color: red;
+    color: #E59A05;
 }
 
 div.catalog-list.FLAT div.item div.wrapper-article-available div.detail-available.with-quantity span.text {
