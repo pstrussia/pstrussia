@@ -16128,7 +16128,6 @@ div.catalog-list.FLAT div.item div.wrapper-article-available div.detail-availabl
 
 div.catalog-list.FLAT div.item div.wrapper-article-available div.detail-available.empty-quantity {
     padding-left: 10px;
-    /* background: url('../images/svg/cross_red.svg') left center no-repeat; */
     background: url('../images/svg/clarification.svg') left center no-repeat;
     background-size: 5px;
 }
