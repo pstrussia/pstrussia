@@ -27398,3 +27398,24 @@ span.icon-answer:hover{
     background: url(../images/svg/back.svg) 0 6px no-repeat;
     display: inline-block;
 }
+
+.requisites {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 15px;
+}
+.requisites__item {
+    background-color: #f6f5f5;
+    padding: 15px;
+    border-radius: 5px;
+}
+.requisites__title {
+    font-family: 'LatoBold',Arial,sans-serif,'PT Sans Caption';
+}
+.requisites__text {
+}
+@media (max-width: 480px) {
+    .requisites {
+        grid-template-columns: 1fr;
+    }
+}
