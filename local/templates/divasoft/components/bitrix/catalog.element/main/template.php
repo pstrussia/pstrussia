@@ -505,7 +505,7 @@ if( strlen($previewTextPos)<=0 )
                                 <meta itemprop="name" content="<?=$PHOENIX_TEMPLATE_ARRAY["MESS"]["ARTICLE_SHORT"]?>">
                                 <meta itemprop="value" content="<?=addslashes($arResult["FIRST_ITEM"]["ARTICLE"])?>">
                             </div>
-                        <!--<div class="product-available-js hidden-js"><?//=$arResult["FIRST_ITEM"]["QUANTITY"]["HTML"]?></div>-->
+                        <div class="product-available-js hidden-js"><?=$arResult["FIRST_ITEM"]["QUANTITY"]["HTML"]?></div>
                             <?if($arResult['FIRST_ITEM']['QUANTITY']['QUANTITY_VALUE'] > 0){?>
                                <div class="detail-available without-quantity few"><span class="text"> В наличии
                             <?}else{?>
