@@ -57,8 +57,13 @@
            
         <div class="wrapper-article-available row no-gutters d-none d-lg-flex" id="<?=$itemIds['ARTICLE_AVAILABLE']?>">
 
-            <div class="product-available-js hidden-js"><?=$arItem["FIRST_ITEM"]["QUANTITY"]["HTML"]?></div>
-
+            <!--<div class="product-available-js hidden-js"><?//=$arItem["FIRST_ITEM"]["QUANTITY"]["HTML"]?></div>-->
+            <?if($arItem['FIRST_ITEM']['QUANTITY']['QUANTITY_VALUE'] > 0){?>
+                               <div class="detail-available without-quantity few"><span class="text"> В наличии
+                            <?}else{?>
+                              <div class="detail-available empty-quantity"><span class="text">  Наличие уточняйте
+                            <?}?>
+                                </span></div>
             <div class="detail-article italic col" title="<?=(strlen($arItem["FIRST_ITEM"]["ARTICLE"])>0)?$PHOENIX_TEMPLATE_ARRAY["MESS"]["ARTICLE_SHORT"].$arItem["FIRST_ITEM"]["ARTICLE"]:""?>"><?=(strlen($arItem["FIRST_ITEM"]["ARTICLE"])>0)?$PHOENIX_TEMPLATE_ARRAY["MESS"]["ARTICLE_SHORT"].$arItem["FIRST_ITEM"]["ARTICLE"]:""?></div>
         </div>
 

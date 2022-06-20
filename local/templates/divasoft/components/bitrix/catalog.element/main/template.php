@@ -505,9 +505,14 @@ if( strlen($previewTextPos)<=0 )
                                 <meta itemprop="name" content="<?=$PHOENIX_TEMPLATE_ARRAY["MESS"]["ARTICLE_SHORT"]?>">
                                 <meta itemprop="value" content="<?=addslashes($arResult["FIRST_ITEM"]["ARTICLE"])?>">
                             </div>
-                            
                         <div class="product-available-js hidden-js"><?=$arResult["FIRST_ITEM"]["QUANTITY"]["HTML"]?></div>
-                    </div>
+                            <?if($arResult['FIRST_ITEM']['QUANTITY']['QUANTITY_VALUE'] > 0){?>
+                               <div class="detail-available without-quantity few"><span class="text"> В наличии
+                            <?}else{?>
+                              <div class="detail-available empty-quantity"><span class="text">  Наличие уточняйте
+                            <?}?>
+                                </span></div>
+                        </div>
 
 
 
@@ -595,7 +600,7 @@ if( strlen($previewTextPos)<=0 )
                             <?if($PHOENIX_TEMPLATE_ARRAY["ITEMS"]["FORMS"]["ITEMS"]['BETTER_PRICE']["VALUE"] != "N"):?>
                                <span class="cheaper">
                                     <a id="<?=$itemIds['CALL_FORM_BETTER_PRICE']?>">
-                                        <span class="bord-bot"><?=$PHOENIX_TEMPLATE_ARRAY["MESS"]["FOUND_CHEAPER"]?></span>
+                                        <span class="bord-bot">Уточнить наличие<?//=$PHOENIX_TEMPLATE_ARRAY["MESS"]["FOUND_CHEAPER"]?></span>
                                     </a>
                                 </span>
                             <?endif;?>

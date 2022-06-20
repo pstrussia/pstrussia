@@ -3,7 +3,7 @@ div.news div.slider-news .slick-prev,
 div.news div.slider-news .slick-next,
 .universal-head-arrows .slick-prev,
 .universal-head-arrows .slick-next {
-  background-color: #e59a05;
+  background-color: #ec6e00;
   transition: background-color .3s;
   -webkit-transition: background-color .3s;
   -moz-transition: background-color .3s;
@@ -27,7 +27,7 @@ div.descriptive div.descriptive-tabs-wrap ul.tabs li.active,
 div.opinion.slider-small div.slider-mini .slick-prev,
 div.opinion.slider-small div.slider-mini .slick-next,
 div.wrapper-delay-compare-icons div.icon.active {
-  background-color: #e59a05;
+  background-color: #ec6e00;
   transition: background-color .3s;
   -webkit-transition: background-color .3s;
   -moz-transition: background-color .3s;
@@ -37,27 +37,27 @@ nav.main-menu > li.selected > a > span.wrap-name div.bord,
 div.cart-info-block div.wrapper-sku-props ul.sku-props li.detail-text.active,
 div.catalog-list div.item div.wrapper-sku-props ul.sku-props li.detail-text.active,
 div.switch-toogle.active div.btn-toogle {
-  background-color: #e59a05;
+  background-color: #ec6e00;
 }
 .bx-pagination .bx-pagination-container ul li.bx-active span {
-  background: #e59a05;
+  background: #ec6e00;
 }
 @media (max-width: 767px) {
   .open-cart-mob.no-empty,
   header.top.on.fixed .open-cart-mob.no-empty div.bg-color {
-    background-color: #e59a05;
+    background-color: #ec6e00;
   }
 }
 div.switcher ul.switcher-tab li.active,
 div.slider-advantages .slick-dots li.slick-active {
-  background: #e59a05;
+  background: #ec6e00;
 }
 div.info-num div.info-num-element.dark div.title,
 div.info-num div.info-num-element div.title,
 .bx-filter .bx-filter-parameters-box-title i.hint-filter,
 div.cart-info-block div.wrapper-sku-props div.wrapper-title div.desc-title i.hint-sku,
 div.cart-char table.cart-char-table td.left i.hint-prop {
-  color: #e59a05;
+  color: #ec6e00;
 }
 div.slider-gallery .slick-dots li.slick-active,
 div.opinion.slider-small div.slider-mini .slick-dots li.slick-active,
@@ -78,38 +78,38 @@ div.basket-style div.tab_item.active table div.round,
 div.slider_catalog_big_items .slick-prev,
 div.slider_catalog_big_items .slick-next,
 .mobile-menu .count-basket-items-parent.active span.count-basket {
-  background-color: #e59a05;
+  background-color: #ec6e00;
 }
 div.menu-navigation ul.nav>li a.active {
-  border-left-color: #e59a05;
+  border-left-color: #ec6e00;
 }
 div.cart-info-block div.tabs-pic div.mini-pic.active table td div.pic-border,
 form.fix-header.focus div.wrapper-border,
 div.search-body div.sections-main div.section-box-wrap.found table.section-box td.pic {
-  border-color: #e59a05;
+  border-color: #ec6e00;
 }
 .wrapper-cart div.open-cart.no-empty .before_pulse,
 .wrapper-cart div.open-cart.no-empty .after_pulse {
-  border: 1px solid #e59a05;
+  border: 1px solid #ec6e00;
 }
 a.callphone {
-  background-color: #c77c00;
+  background-color: #d06000;
 }
 div.catalog-filter ul.side-tabs > li.active {
-  border-bottom-color: #e59a05;
+  border-bottom-color: #ec6e00;
 }
 div.cart-info-block div.wrapper-controls div.small-picture.active,
 div.cart-info-block div.wrapper-controls div.small-picture:hover,
 div.popup-slider div.controls-pictures div.small-picture.active,
 div.popup-slider div.controls-pictures div.small-picture:hover {
-  border-color: #e59a05;
+  border-color: #ec6e00;
 }
 div.catalog-labels ul.side-tabs > li.active {
-  border-bottom: 2px solid #e59a05;
+  border-bottom: 2px solid #ec6e00;
 }
 @media (min-width: 1200px) {
   .secondary:hover {
-    background-color: #e59a05;
+    background-color: #ec6e00;
   }
   a.main-color:hover,
   button.main-color:hover,
@@ -129,15 +129,15 @@ div.catalog-labels ul.side-tabs > li.active {
   div.basket-quantity-info-icon.active:hover span.count,
   div.slider_catalog_big_items .slick-prev:not(.slick-disabled):hover,
   div.slider_catalog_big_items .slick-next:not(.slick-disabled):hover {
-    background-color: #c77c00;
+    background-color: #d06000;
   }
   div.gallery-block div.gallery-img:hover div.corner-line,
   .button-second:hover {
-    border-color: #e59a05;
+    border-color: #ec6e00;
   }
   nav.main-menu > li:hover > a > span.wrap-name div.bord,
   .wrapper-cart div.cart-inner div.body div.left-p div.buttons td.left a.secondary:hover {
-    background-color: #e59a05;
+    background-color: #ec6e00;
   }
   nav.main-menu > li.parent:hover > a > span.wrap-name div.bord {
     background-color: transparent;
@@ -149,7 +149,7 @@ div.catalog-labels ul.side-tabs > li.active {
   header.tone-dark div.wrap-main-menu nav.main-menu > li.parent:hover > a,
   .button-second:hover,
   div.catalog-list-wrap div.section-with-hidden-items div.btn-click.noactive {
-    background-color: #e59a05;
+    background-color: #ec6e00;
     -webkit-transition: background-color .3s;
     -moz-transition: background-color .3s;
     -o-transition: background-color .3s;
@@ -163,7 +163,7 @@ div.catalog-labels ul.side-tabs > li.active {
     transition: background-color .3s;
   }
   .open-cart-menu.no-empty:hover div.count {
-    background-color: #c77c00;
+    background-color: #d06000;
     -webkit-transition: background-color .3s;
     -moz-transition: background-color .3s;
     -o-transition: background-color .3s;
@@ -172,18 +172,18 @@ div.catalog-labels ul.side-tabs > li.active {
 }
 @media (min-width: 992px) and (max-width: 1199px) {
   div.catalog-list-wrap div.section-with-hidden-items div.btn-click.noactive {
-    background-color: #e59a05;
+    background-color: #ec6e00;
     transition: background-color .3s;
     -webkit-transition: background-color .3s;
     -moz-transition: background-color .3s;
     -o-transition: background-color .3s;
   }
   div.wrapper-head-top div.wrapper-item div.wrapper-cabinet a:not(.show-phx-modal-dialog) table.cabinet td.picture div.def-picture {
-    border-color: #e59a05;
+    border-color: #ec6e00;
   }
 }
 @media (min-width: 768px) and (max-width: 991px) {
   div.wrapper-head-top div.wrapper-item div.wrapper-cabinet a:not(.show-phx-modal-dialog) table.cabinet td.picture div.def-picture {
-    border-color: #e59a05;
+    border-color: #ec6e00;
   }
 }

@@ -1,5 +1,6 @@
 <?if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)die();?>
 
+
 <?
 	use \Bitrix\Main\Localization\Loc as Loc;
 	use \Bitrix\Main\Page\Asset as Asset; 
@@ -36,6 +37,14 @@
 	        BX.Currency.setCurrencies(<?=CUtil::PhpToJSObject($PHOENIX_TEMPLATE_ARRAY["CURRENCIES"], false, true, true)?>);
 	    </script>
 	<?endif;?>
+
+
+
+	
+	<?Asset::getInstance()->addCss(SITE_TEMPLATE_PATH . "/css/swiper-bundle.min.css");?>
+
+	<?Asset::getInstance()->addJs(SITE_TEMPLATE_PATH . "/js/tabs.js")?>
+	<?Asset::getInstance()->addJs(SITE_TEMPLATE_PATH . "/js/swiper-bundle.min.js")?>
 
 
 	<?
