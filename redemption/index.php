@@ -7,221 +7,157 @@ require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/header.php");
 
     <div class="redemption-head">
         <div class="container">
-            <h1 class="redemption-head__title title">Есть старая рулевая рейка?<br>Продай ее!</h1>
+            <?
+            $APPLICATION->IncludeFile(SITE_TEMPLATE_PATH . "/include/redemption/h1.php", Array(), Array("MODE" => "html", "NAME" => "h1", "TEMPLATE" => "h1.php"));
+            ?>
+
             <a class="redemption-head__btn button-def main-color elips" href="">Узнать стоимость</a>
         </div>
     </div>
+    <?
+    $APPLICATION->IncludeComponent(
+            "bitrix:news.list",
+            "redemption-price-calc",
+            array(
+                "DISPLAY_DATE" => "Y",
+                "DISPLAY_NAME" => "Y",
+                "DISPLAY_PICTURE" => "Y",
+                "DISPLAY_PREVIEW_TEXT" => "Y",
+                "AJAX_MODE" => "Y",
+                "IBLOCK_TYPE" => "concept_phoenix_s1",
+                "IBLOCK_ID" => "19",
+                "NEWS_COUNT" => "20",
+                "SORT_BY1" => "ACTIVE_FROM",
+                "SORT_ORDER1" => "DESC",
+                "SORT_BY2" => "SORT",
+                "SORT_ORDER2" => "ASC",
+                "FILTER_NAME" => "",
+                "FIELD_CODE" => array(
+                    0 => "ID",
+                    1 => "",
+                ),
+                "PROPERTY_CODE" => array(
+                    0 => "",
+                    1 => "DESCRIPTION",
+                    2 => "",
+                ),
+                "CHECK_DATES" => "Y",
+                "DETAIL_URL" => "",
+                "PREVIEW_TRUNCATE_LEN" => "",
+                "ACTIVE_DATE_FORMAT" => "d.m.Y",
+                "SET_TITLE" => "N",
+                "SET_BROWSER_TITLE" => "N",
+                "SET_META_KEYWORDS" => "N",
+                "SET_META_DESCRIPTION" => "N",
+                "SET_LAST_MODIFIED" => "N",
+                "INCLUDE_IBLOCK_INTO_CHAIN" => "N",
+                "ADD_SECTIONS_CHAIN" => "N",
+                "HIDE_LINK_WHEN_NO_DETAIL" => "Y",
+                "PARENT_SECTION" => "",
+                "PARENT_SECTION_CODE" => "",
+                "INCLUDE_SUBSECTIONS" => "Y",
+                "CACHE_TYPE" => "A",
+                "CACHE_TIME" => "3600",
+                "CACHE_FILTER" => "Y",
+                "CACHE_GROUPS" => "Y",
+                "DISPLAY_TOP_PAGER" => "N",
+                "DISPLAY_BOTTOM_PAGER" => "N",
+                "PAGER_TITLE" => "Рейки",
+                "PAGER_SHOW_ALWAYS" => "Y",
+                "PAGER_TEMPLATE" => "",
+                "PAGER_DESC_NUMBERING" => "N",
+                "PAGER_DESC_NUMBERING_CACHE_TIME" => "36000",
+                "PAGER_SHOW_ALL" => "Y",
+                "PAGER_BASE_LINK_ENABLE" => "Y",
+                "SET_STATUS_404" => "Y",
+                "SHOW_404" => "Y",
+                "MESSAGE_404" => "",
+                "PAGER_BASE_LINK" => "",
+                "PAGER_PARAMS_NAME" => "arrPager",
+                "AJAX_OPTION_JUMP" => "N",
+                "AJAX_OPTION_STYLE" => "N",
+                "AJAX_OPTION_HISTORY" => "N",
+                "AJAX_OPTION_ADDITIONAL" => "",
+                "COMPONENT_TEMPLATE" => ".default",
+                "STRICT_SECTION_CHECK" => "N",
+                "FILE_404" => ""
+            ),
+            false
+    );
+    ?>
 
-    <div class="redemption-price">
-        <div class="container">
-            <h2 class="redemption-price__title title">Расчет цены</h2>
-            <div class="redemption-tabs">
-                <div class="redemption-tabs__label">Выберите год выпуска:</div>
-                <div class="tabs">
-                    <ul class="tabs__btns">
-                        <li class="active">2000-2005</li>
-                        <li>2006-2010</li>
-                        <li>2010-2016</li>
-                        <li>с 2017</li>
-                    </ul>
-                    <ul class="tabs__content">
-                        <li class="active">
-                            <div class="rails">
-                                <div class="rails__item">
-                                    <div class="rails__img">
-                                        <img src="/local/templates/divasoft/images/rails/rail1.png" alt="Рейка без ГУ">
-                                    </div>
-                                    <div class="rails__title">Рейка без ГУ</div>
-                                    <div class="rails__price">до 2950 руб</div>
-                                </div>
-                                <div class="rails__item">
-                                    <div class="rails__img">
-                                        <img src="/local/templates/divasoft/images/rails/rail2.png" alt="Рейка с ГУ">
-                                    </div>
-                                    <div class="rails__title">Рейка с ГУ</div>
-                                    <div class="rails__price">до 4900 руб</div>
-                                </div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="rails">
-                                <div class="rails__item">
-                                    <div class="rails__img">
-                                        <img src="/local/templates/divasoft/images/rails/rail1.png" alt="Рейка без ГУ">
-                                    </div>
-                                    <div class="rails__title">Рейка без ГУ</div>
-                                    <div class="rails__price">до 2950 руб</div>
-                                </div>
-                                <div class="rails__item">
-                                    <div class="rails__img">
-                                        <img src="/local/templates/divasoft/images/rails/rail2.png" alt="Рейка с ГУ">
-                                    </div>
-                                    <div class="rails__title">Рейка с ГУ</div>
-                                    <div class="rails__price">до 4900 руб</div>
-                                </div>
-                                <div class="rails__item">
-                                    <div class="rails__img">
-                                        <img src="/local/templates/divasoft/images/rails/rail3.png" alt="Рейка с EPS">
-                                    </div>
-                                    <div class="rails__title">Рейка с EPS</div>
-                                    <div class="rails__price">до 9900 руб</div>
-                                </div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="rails">
-                                <div class="rails__item">
-                                    <div class="rails__img">
-                                        <img src="/local/templates/divasoft/images/rails/rail1.png" alt="Рейка без ГУ">
-                                    </div>
-                                    <div class="rails__title">Рейка без ГУ</div>
-                                    <div class="rails__price">до 2950 руб</div>
-                                </div>
-                                <div class="rails__item">
-                                    <div class="rails__img">
-                                        <img src="/local/templates/divasoft/images/rails/rail2.png" alt="Рейка с ГУ">
-                                    </div>
-                                    <div class="rails__title">Рейка с ГУ</div>
-                                    <div class="rails__price">до 4900 руб</div>
-                                </div>
-                                <div class="rails__item">
-                                    <div class="rails__img">
-                                        <img src="/local/templates/divasoft/images/rails/rail3.png" alt="Рейка с EPS">
-                                    </div>
-                                    <div class="rails__title">Рейка с EPS</div>
-                                    <div class="rails__price">до 9900 руб</div>
-                                </div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="rails">
-                                <div class="rails__item">
-                                    <div class="rails__img">
-                                        <img src="/local/templates/divasoft/images/rails/rail1.png" alt="Рейка без ГУ">
-                                    </div>
-                                    <div class="rails__title">Рейка без ГУ</div>
-                                    <div class="rails__price">до 2950 руб</div>
-                                </div>
-                                <div class="rails__item">
-                                    <div class="rails__img">
-                                        <img src="/local/templates/divasoft/images/rails/rail2.png" alt="Рейка с ГУ">
-                                    </div>
-                                    <div class="rails__title">Рейка с ГУ</div>
-                                    <div class="rails__price">до 4900 руб</div>
-                                </div>
-                                <div class="rails__item">
-                                    <div class="rails__img">
-                                        <img src="/local/templates/divasoft/images/rails/rail3.png" alt="Рейка с EPS">
-                                    </div>
-                                    <div class="rails__title">Рейка с EPS</div>
-                                    <div class="rails__price">до 9900 руб</div>
-                                </div>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-                <div class="redemption-tabs__info">Окончательная стоимость вашей рейки зависит от состояния агрегата.</div>
-            </div>
-        </div>
-    </div>
+    <?
+    $APPLICATION->IncludeComponent(
+	"bitrix:news.list", 
+	"redemption-rating", 
+	array(
+		"DISPLAY_DATE" => "Y",
+		"DISPLAY_NAME" => "Y",
+		"DISPLAY_PICTURE" => "Y",
+		"DISPLAY_PREVIEW_TEXT" => "Y",
+		"AJAX_MODE" => "Y",
+		"IBLOCK_TYPE" => "concept_phoenix_s1",
+		"IBLOCK_ID" => "19",
+		"NEWS_COUNT" => "20",
+		"SORT_BY1" => "ACTIVE_FROM",
+		"SORT_ORDER1" => "DESC",
+		"SORT_BY2" => "SORT",
+		"SORT_ORDER2" => "ASC",
+		"FILTER_NAME" => "",
+		"FIELD_CODE" => array(
+			0 => "ID",
+			1 => "",
+		),
+		"PROPERTY_CODE" => array(
+			0 => "",
+			1 => "DESCRIPTION",
+			2 => "",
+		),
+		"CHECK_DATES" => "Y",
+		"DETAIL_URL" => "",
+		"PREVIEW_TRUNCATE_LEN" => "",
+		"ACTIVE_DATE_FORMAT" => "d.m.Y",
+		"SET_TITLE" => "N",
+		"SET_BROWSER_TITLE" => "N",
+		"SET_META_KEYWORDS" => "N",
+		"SET_META_DESCRIPTION" => "N",
+		"SET_LAST_MODIFIED" => "N",
+		"INCLUDE_IBLOCK_INTO_CHAIN" => "N",
+		"ADD_SECTIONS_CHAIN" => "N",
+		"HIDE_LINK_WHEN_NO_DETAIL" => "Y",
+		"PARENT_SECTION" => "",
+		"PARENT_SECTION_CODE" => "",
+		"INCLUDE_SUBSECTIONS" => "Y",
+		"CACHE_TYPE" => "A",
+		"CACHE_TIME" => "3600",
+		"CACHE_FILTER" => "Y",
+		"CACHE_GROUPS" => "Y",
+		"DISPLAY_TOP_PAGER" => "N",
+		"DISPLAY_BOTTOM_PAGER" => "N",
+		"PAGER_TITLE" => "Рейки",
+		"PAGER_SHOW_ALWAYS" => "Y",
+		"PAGER_TEMPLATE" => "",
+		"PAGER_DESC_NUMBERING" => "N",
+		"PAGER_DESC_NUMBERING_CACHE_TIME" => "36000",
+		"PAGER_SHOW_ALL" => "Y",
+		"PAGER_BASE_LINK_ENABLE" => "Y",
+		"SET_STATUS_404" => "Y",
+		"SHOW_404" => "Y",
+		"MESSAGE_404" => "",
+		"PAGER_BASE_LINK" => "",
+		"PAGER_PARAMS_NAME" => "arrPager",
+		"AJAX_OPTION_JUMP" => "N",
+		"AJAX_OPTION_STYLE" => "N",
+		"AJAX_OPTION_HISTORY" => "N",
+		"AJAX_OPTION_ADDITIONAL" => "",
+		"COMPONENT_TEMPLATE" => "redemption-rating",
+		"STRICT_SECTION_CHECK" => "N",
+		"FILE_404" => ""
+	),
+	false
+);
+    ?>
 
-    <div class="estimate">
-        <div class="container">
-            <h2 class="estimate__title title">Оценка состояния</h2>
-            <div class="estimate__subtitle">Мы <span>не</span> принимаем агрегаты с такими повреждениями или принимаем по цене до 500 руб/шт</div>
-        </div>
-        <div class="estimate__slider">
-            <div class="swiper">
-                <div class="swiper-wrapper">
-                    <div class="swiper-slide">
-                        <div class="estimate__img">
-                            <img src="/local/templates/divasoft/images/rails/defect/1.jpg" alt="Коррозия штока">
-                        </div>
-                        <div class="estimate__info">Коррозия штока</div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="estimate__img">
-                            <img src="/local/templates/divasoft/images/rails/defect/2.jpg" alt="Коррозия">
-                        </div>
-                        <div class="estimate__info">Коррозия</div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="estimate__img">
-                            <img src="/local/templates/divasoft/images/rails/defect/3.jpg" alt="Трещины на корпусе">
-                        </div>
-                        <div class="estimate__info">Трещины на корпусе</div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="estimate__img">
-                            <img src="/local/templates/divasoft/images/rails/defect/4.jpg" alt="Нет части корпуса">
-                        </div>
-                        <div class="estimate__info">Нет части корпуса</div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="estimate__img">
-                            <img src="/local/templates/divasoft/images/rails/defect/5.jpg" alt="Нарушена целостность разъёмов и контактных фишек">
-                        </div>
-                        <div class="estimate__info">Нарушена целостность разъёмов и контактных фишек</div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="estimate__img">
-                            <img src="/local/templates/divasoft/images/rails/defect/6.jpg" alt="Искривленный вал">
-                        </div>
-                        <div class="estimate__info">Искривленный вал</div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="estimate__img">
-                            <img src="/local/templates/divasoft/images/rails/defect/7.jpg" alt="Нет части разъёма">
-                        </div>
-                        <div class="estimate__info">Нет части разъёма</div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="estimate__img">
-                            <img src="/local/templates/divasoft/images/rails/defect/8.jpg" alt="Дефекты на трубках высокого давления">
-                        </div>
-                        <div class="estimate__info">Дефекты на трубках высокого давления</div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="estimate__img">
-                            <img src="/local/templates/divasoft/images/rails/defect/9.jpg" alt="Вмятины на корпусе">
-                        </div>
-                        <div class="estimate__info">Вмятины на корпусе</div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="estimate__img">
-                            <img src="/local/templates/divasoft/images/rails/defect/10.jpg" alt="Повреждения резьбовых соединений">
-                        </div>
-                        <div class="estimate__info">Повреждения резьбовых соединений</div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="estimate__img">
-                            <img src="/local/templates/divasoft/images/rails/defect/11.jpg" alt="Сколы на корпусе">
-                        </div>
-                        <div class="estimate__info">Сколы на корпусе</div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="estimate__img">
-                            <img src="/local/templates/divasoft/images/rails/defect/12.jpg" alt="Нарушена целостность">
-                        </div>
-                        <div class="estimate__info">Нарушена целостность</div>
-                    </div>
-                </div>
-                <div class="swiper-group-btn">
-                    <div class="swiper-btn-prev">
-                        <svg width="27" height="14" viewBox="0 0 27 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M6.70313 0.804686L0.902345 6.60547C0.609376 6.83984 0.609376 7.30859 0.902345 7.60156L6.70313 13.4023C7.17188 13.8125 7.875 13.5195 7.875 12.875L7.875 8.71484L25.9219 8.71484C26.332 8.71484 26.625 8.42187 26.625 8.01172L26.625 6.13672C26.625 5.72656 26.332 5.43359 25.9219 5.43359L7.875 5.43359L7.875 1.27344C7.875 0.628905 7.17188 0.335936 6.70313 0.804686Z" fill="#181818" />
-                        </svg>
-                    </div>
-                    <div class="swiper-btn-next">
-                        <svg width="27" height="14" viewBox="0 0 27 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M20.2969 13.1953L26.0977 7.39453C26.3906 7.16016 26.3906 6.69141 26.0977 6.39844L20.2969 0.597656C19.8281 0.1875 19.125 0.480469 19.125 1.125V5.28516H1.07812C0.667969 5.28516 0.375 5.57812 0.375 5.98828V7.86328C0.375 8.27344 0.667969 8.56641 1.07812 8.56641H19.125V12.7266C19.125 13.3711 19.8281 13.6641 20.2969 13.1953Z" fill="#181818" />
-                        </svg>
-                    </div>
-                </div>
-                <div class="swiper-pagination"></div>
-            </div>
-        </div>
-    </div>
 
     <div class="redemption-sell">
         <div class="container">
@@ -269,122 +205,88 @@ require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/header.php");
                 </div>
                 <div class="redemption-form__item">
                     <input class="redemption-form__input" type="text" placeholder="Имя">
-                    <input class="redemption-form__input" type="text" placeholder="Город">
-                </div>
-                <div class="redemption-form__item">
-                    <input class="redemption-form__input" type="text" placeholder="Телефон">
-                    <input class="redemption-form__input" type="text" placeholder="Электронная почта">
-                </div>
-                <div class="redemption-form__footer">
-                    <div class="file">
-                        <div class="file__btn">
-                            <input class="file__input" name="file" type="file" id="input-file">
-                            <label class="file__label" for="input-file">
-                                <svg width="15" height="19" viewBox="0 0 15 19" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M0.937256 0.75C0.390381 0.75 -0.000244141 1.17969 -0.000244141 1.6875V2.625C-0.000244141 3.17188 0.390381 3.5625 0.937256 3.5625H14.0623C14.5701 3.5625 14.9998 3.17188 14.9998 2.625V1.6875C14.9998 1.17969 14.5701 0.75 14.0623 0.75H0.937256ZM9.99976 17.3125V12H13.3982C14.1013 12 14.4529 11.1797 13.9451 10.6719L8.00757 4.73438C7.73413 4.46094 7.22632 4.46094 6.95288 4.73438L1.01538 10.6719C0.507568 11.1797 0.859131 12 1.56226 12H4.99976V17.3125C4.99976 17.8594 5.39038 18.25 5.93726 18.25H9.06226C9.57007 18.25 9.99976 17.8594 9.99976 17.3125Z" fill="#181818" />
-                                </svg>
-                            </label>
-                            <div class="file__wrap">
-                                <div class="file__text">Загрузить фото</div>
-                                <div class="file__info">макс. 5 Mb</div>
+                        <input class="redemption-form__input" type="text" placeholder="Город">
                             </div>
-                        </div>
-                    </div>
-                    <button class="redemption-form__btn button-def main-color elips" type="submit">Узнать стоимость</button>
-                </div>
-            </form>
-        </div>
-    </div>
+                            <div class="redemption-form__item">
+                                <input class="redemption-form__input" type="text" placeholder="Телефон">
+                                    <input class="redemption-form__input" type="text" placeholder="Электронная почта">
+                                        </div>
+                                        <div class="redemption-form__footer">
+                                            <div class="file">
+                                                <div class="file__btn">
+                                                    <input class="file__input" name="file" type="file" id="input-file">
+                                                        <label class="file__label" for="input-file">
+                                                            <svg width="15" height="19" viewBox="0 0 15 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                <path d="M0.937256 0.75C0.390381 0.75 -0.000244141 1.17969 -0.000244141 1.6875V2.625C-0.000244141 3.17188 0.390381 3.5625 0.937256 3.5625H14.0623C14.5701 3.5625 14.9998 3.17188 14.9998 2.625V1.6875C14.9998 1.17969 14.5701 0.75 14.0623 0.75H0.937256ZM9.99976 17.3125V12H13.3982C14.1013 12 14.4529 11.1797 13.9451 10.6719L8.00757 4.73438C7.73413 4.46094 7.22632 4.46094 6.95288 4.73438L1.01538 10.6719C0.507568 11.1797 0.859131 12 1.56226 12H4.99976V17.3125C4.99976 17.8594 5.39038 18.25 5.93726 18.25H9.06226C9.57007 18.25 9.99976 17.8594 9.99976 17.3125Z" fill="#181818" />
+                                                            </svg>
+                                                        </label>
+                                                        <div class="file__wrap">
+                                                            <div class="file__text">Загрузить фото</div>
+                                                            <div class="file__info">макс. 5 Mb</div>
+                                                        </div>
+                                                </div>
+                                            </div>
+                                            <button class="redemption-form__btn button-def main-color elips" type="submit">Узнать стоимость</button>
+                                        </div>
+                                        </form>
+                                        </div>
+                                        </div>
 
-    <div class="redemption-info">
-        <div class="container">
-            <p>У вас есть старая рулевая рейка, и вы не знаете, куда ее деть? Мы предлагаем оптимальное решение: выкуп рулевых реек б/у! Если рейка вышла из строя – не выбрасывайте ее, а лучше продайте нам! Тогда ваша рейка принесет пользу не только вам, но и другому автовладельцу. А кроме того, вы лишитесь головной боли с утилизацией агрегата, да еще с выгодой для вас.</p>
-            <div class="redemption-info__wrap">
-                <div class="redemption-info__item">
-                    <h2 class="redemption-info__title title">Какие агрегаты мы принимаем</h2>
-                    <div class="redemption-info__block">
-                        <div class="redemption-info__subtitle">Мы покупаем рулевые рейки 2000 – 2017 года выпуска:</div>
-                        <ul class="redemption-info__list">
-                            <li>— без гидроусилителя</li>
-                            <li>— с гидроусилителем руля (ГУР)</li>
-                            <li>— с электроусилителем (EPS)</li>
-                        </ul>
-                    </div>
-                    <div class="redemption-info__block">
-                        <div class="redemption-info__subtitle">Какую выгоду вы получите:</div>
-                        <ul class="redemption-info__list">
-                            <li>За рейку без гидроусилителя до 2950 руб</li>
-                            <li>За рейку c гидроусилителем руля до 4900 руб</li>
-                            <li>За рейку с электроусилителем до 9900 руб</li>
-                        </ul>
-                    </div>
-                    <p>Обратите внимание, что конечная цена зависит от состояния рейки и может быть меньше заявленной.</p>
-                </div>
-                <div class="redemption-info__item">
-                    <h2 class="redemption-info__title title">Проверка рейки</h2>
-                    <div class="redemption-info__block">
-                        <div class="redemption-info__subtitle">Проверку состояния рейки проводит мастер при получении. Обратите внимание, что мы не покупаем агрегаты со следующими неисправностями:</div>
-                        <ul class="redemption-info__list">
-                            <li>— Коррозия/ржавчина на штоке</li>
-                            <li>— Трещины, вмятины, сколы на корпусе</li>
-                            <li>— Отсутствует какая-либо часть корпуса</li>
-                            <li>— Целостность разъемов и контактных фишек нарушена</li>
-                            <li>— Искривление вала</li>
-                            <li>— Нет разъемов</li>
-                            <li>— Повреждения трубок высокого давления</li>
-                            <li>— Неисправности резьбовых соединений</li>
-                            <li>— Целостность корпуса блока управления(ЭБУ) была нарушена</li>
-                        </ul>
-                    </div>
-                    <p>Если вы сомневаетесь, подходит ли ваша рейка – свяжитесь с нами, чтобы уточнить у менеджера.</p>
-                </div>
-            </div>
-        </div>
-    </div>
+                                        <div class="redemption-info">
+                                            <div class="container">
+                                                <? $APPLICATION->IncludeFile(SITE_TEMPLATE_PATH . "/include/redemption/down-text.php", Array(), Array("MODE" => "html", "NAME" => "текст нижний", "TEMPLATE" => "down-text.php")); ?>
+                                                <div class="redemption-info__wrap">
+                                                    <? $APPLICATION->IncludeFile(SITE_TEMPLATE_PATH . "/include/redemption/down-left-text.php", Array(), Array("MODE" => "html", "NAME" => "текст нижний левый", "TEMPLATE" => "down-left-text.php")); ?>
 
-</div>
+                                                    <? $APPLICATION->IncludeFile(SITE_TEMPLATE_PATH . "/include/redemption/down-right-text.php", Array(), Array("MODE" => "html", "NAME" => "текст нижний правый", "TEMPLATE" => "down-right-text.php")); ?>
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        </div>
 
 
-<script>
-    $(function() {
+                                        <script>
+                                            $(function () {
 
-        var swiper = new Swiper(".estimate__slider .swiper", {
-            slidesPerView: "auto",
-            centeredSlides: true,
-            spaceBetween: 100,
-            loop: true,
-            navigation: {
-                nextEl: ".swiper-btn-next",
-                prevEl: ".swiper-btn-prev",
-            },
-            pagination: {
-                el: ".swiper-pagination",
-                clickable: true,
-            },
-        });
+                                                var swiper = new Swiper(".estimate__slider .swiper", {
+                                                    slidesPerView: "auto",
+                                                    centeredSlides: true,
+                                                    spaceBetween: 100,
+                                                    loop: true,
+                                                    navigation: {
+                                                        nextEl: ".swiper-btn-next",
+                                                        prevEl: ".swiper-btn-prev",
+                                                    },
+                                                    pagination: {
+                                                        el: ".swiper-pagination",
+                                                        clickable: true,
+                                                    },
+                                                });
 
-        var filesExt = ['jpg', 'jpeg', 'pdf', 'png']
-        $(document).on('change', '#input-file', function() {
-            var parts = $(this).val().split('.')
-            var uploadText = $(this).parents('.file').find('.file__info')
-            if (filesExt.join().search(parts[parts.length - 1]) != -1) {
-                var fileSize = $(this)[0].files[0].size
-                if (fileSize > 5097152) {
-                    uploadText.html('Размер файла не более 5Mb')
-                    uploadText.css('color', '#FF6767')
-                } else {
-                    uploadText.html($(this).val().replace(/.*\\/, ""))
-                    uploadText.css('color', '#a3a3a3')
-                }
-            } else {
-                uploadText.html('Недопустимый формат. Только jpg, jpeg, pdf, png')
-                uploadText.css('color', '#FF6767')
-            }
-        })
-    })
-</script>
+                                                var filesExt = ['jpg', 'jpeg', 'pdf', 'png']
+                                                $(document).on('change', '#input-file', function () {
+                                                    var parts = $(this).val().split('.')
+                                                    var uploadText = $(this).parents('.file').find('.file__info')
+                                                    if (filesExt.join().search(parts[parts.length - 1]) != -1) {
+                                                        var fileSize = $(this)[0].files[0].size
+                                                        if (fileSize > 5097152) {
+                                                            uploadText.html('Размер файла не более 5Mb')
+                                                            uploadText.css('color', '#FF6767')
+                                                        } else {
+                                                            uploadText.html($(this).val().replace(/.*\\/, ""))
+                                                            uploadText.css('color', '#a3a3a3')
+                                                        }
+                                                    } else {
+                                                        uploadText.html('Недопустимый формат. Только jpg, jpeg, pdf, png')
+                                                        uploadText.css('color', '#FF6767')
+                                                    }
+                                                })
+                                            })
+                                        </script>
 
 
-<?php
-require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/footer.php");
-?>
+                                        <?php
+                                        require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/footer.php");
+                                        ?>
