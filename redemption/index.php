@@ -8,153 +8,153 @@ require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/header.php");
     <div class="redemption-head">
         <div class="container">
             <?
-            $APPLICATION->IncludeFile(SITE_TEMPLATE_PATH . "/include/redemption/h1.php", Array(), Array("MODE" => "html", "NAME" => "h1", "TEMPLATE" => "h1.php"));
+            $APPLICATION->IncludeFile(SITE_TEMPLATE_PATH . "/include/redemption/h1.php", array(), array("MODE" => "html", "NAME" => "h1", "TEMPLATE" => "h1.php"));
             ?>
 
-            <a class="redemption-head__btn button-def main-color elips" href="">Узнать стоимость</a>
+            <a class="redemption-head__btn button-def main-color elips anchor" href="#redemption-form">Узнать стоимость</a>
         </div>
     </div>
     <?
     $APPLICATION->IncludeComponent(
-            "bitrix:news.list",
-            "redemption-price-calc",
-            array(
-                "DISPLAY_DATE" => "Y",
-                "DISPLAY_NAME" => "Y",
-                "DISPLAY_PICTURE" => "Y",
-                "DISPLAY_PREVIEW_TEXT" => "Y",
-                "AJAX_MODE" => "Y",
-                "IBLOCK_TYPE" => "concept_phoenix_s1",
-                "IBLOCK_ID" => "19",
-                "NEWS_COUNT" => "20",
-                "SORT_BY1" => "ACTIVE_FROM",
-                "SORT_ORDER1" => "DESC",
-                "SORT_BY2" => "SORT",
-                "SORT_ORDER2" => "ASC",
-                "FILTER_NAME" => "",
-                "FIELD_CODE" => array(
-                    0 => "ID",
-                    1 => "",
-                ),
-                "PROPERTY_CODE" => array(
-                    0 => "",
-                    1 => "DESCRIPTION",
-                    2 => "",
-                ),
-                "CHECK_DATES" => "Y",
-                "DETAIL_URL" => "",
-                "PREVIEW_TRUNCATE_LEN" => "",
-                "ACTIVE_DATE_FORMAT" => "d.m.Y",
-                "SET_TITLE" => "N",
-                "SET_BROWSER_TITLE" => "N",
-                "SET_META_KEYWORDS" => "N",
-                "SET_META_DESCRIPTION" => "N",
-                "SET_LAST_MODIFIED" => "N",
-                "INCLUDE_IBLOCK_INTO_CHAIN" => "N",
-                "ADD_SECTIONS_CHAIN" => "N",
-                "HIDE_LINK_WHEN_NO_DETAIL" => "Y",
-                "PARENT_SECTION" => "",
-                "PARENT_SECTION_CODE" => "",
-                "INCLUDE_SUBSECTIONS" => "Y",
-                "CACHE_TYPE" => "A",
-                "CACHE_TIME" => "3600",
-                "CACHE_FILTER" => "Y",
-                "CACHE_GROUPS" => "Y",
-                "DISPLAY_TOP_PAGER" => "N",
-                "DISPLAY_BOTTOM_PAGER" => "N",
-                "PAGER_TITLE" => "Рейки",
-                "PAGER_SHOW_ALWAYS" => "Y",
-                "PAGER_TEMPLATE" => "",
-                "PAGER_DESC_NUMBERING" => "N",
-                "PAGER_DESC_NUMBERING_CACHE_TIME" => "36000",
-                "PAGER_SHOW_ALL" => "Y",
-                "PAGER_BASE_LINK_ENABLE" => "Y",
-                "SET_STATUS_404" => "Y",
-                "SHOW_404" => "Y",
-                "MESSAGE_404" => "",
-                "PAGER_BASE_LINK" => "",
-                "PAGER_PARAMS_NAME" => "arrPager",
-                "AJAX_OPTION_JUMP" => "N",
-                "AJAX_OPTION_STYLE" => "N",
-                "AJAX_OPTION_HISTORY" => "N",
-                "AJAX_OPTION_ADDITIONAL" => "",
-                "COMPONENT_TEMPLATE" => ".default",
-                "STRICT_SECTION_CHECK" => "N",
-                "FILE_404" => ""
+        "bitrix:news.list",
+        "redemption-price-calc",
+        array(
+            "DISPLAY_DATE" => "Y",
+            "DISPLAY_NAME" => "Y",
+            "DISPLAY_PICTURE" => "Y",
+            "DISPLAY_PREVIEW_TEXT" => "Y",
+            "AJAX_MODE" => "Y",
+            "IBLOCK_TYPE" => "concept_phoenix_s1",
+            "IBLOCK_ID" => "19",
+            "NEWS_COUNT" => "20",
+            "SORT_BY1" => "ACTIVE_FROM",
+            "SORT_ORDER1" => "DESC",
+            "SORT_BY2" => "SORT",
+            "SORT_ORDER2" => "ASC",
+            "FILTER_NAME" => "",
+            "FIELD_CODE" => array(
+                0 => "ID",
+                1 => "",
             ),
-            false
+            "PROPERTY_CODE" => array(
+                0 => "",
+                1 => "DESCRIPTION",
+                2 => "",
+            ),
+            "CHECK_DATES" => "Y",
+            "DETAIL_URL" => "",
+            "PREVIEW_TRUNCATE_LEN" => "",
+            "ACTIVE_DATE_FORMAT" => "d.m.Y",
+            "SET_TITLE" => "N",
+            "SET_BROWSER_TITLE" => "N",
+            "SET_META_KEYWORDS" => "N",
+            "SET_META_DESCRIPTION" => "N",
+            "SET_LAST_MODIFIED" => "N",
+            "INCLUDE_IBLOCK_INTO_CHAIN" => "N",
+            "ADD_SECTIONS_CHAIN" => "N",
+            "HIDE_LINK_WHEN_NO_DETAIL" => "Y",
+            "PARENT_SECTION" => "",
+            "PARENT_SECTION_CODE" => "",
+            "INCLUDE_SUBSECTIONS" => "Y",
+            "CACHE_TYPE" => "A",
+            "CACHE_TIME" => "3600",
+            "CACHE_FILTER" => "Y",
+            "CACHE_GROUPS" => "Y",
+            "DISPLAY_TOP_PAGER" => "N",
+            "DISPLAY_BOTTOM_PAGER" => "N",
+            "PAGER_TITLE" => "Рейки",
+            "PAGER_SHOW_ALWAYS" => "Y",
+            "PAGER_TEMPLATE" => "",
+            "PAGER_DESC_NUMBERING" => "N",
+            "PAGER_DESC_NUMBERING_CACHE_TIME" => "36000",
+            "PAGER_SHOW_ALL" => "Y",
+            "PAGER_BASE_LINK_ENABLE" => "Y",
+            "SET_STATUS_404" => "Y",
+            "SHOW_404" => "Y",
+            "MESSAGE_404" => "",
+            "PAGER_BASE_LINK" => "",
+            "PAGER_PARAMS_NAME" => "arrPager",
+            "AJAX_OPTION_JUMP" => "N",
+            "AJAX_OPTION_STYLE" => "N",
+            "AJAX_OPTION_HISTORY" => "N",
+            "AJAX_OPTION_ADDITIONAL" => "",
+            "COMPONENT_TEMPLATE" => ".default",
+            "STRICT_SECTION_CHECK" => "N",
+            "FILE_404" => ""
+        ),
+        false
     );
     ?>
 
     <?
     $APPLICATION->IncludeComponent(
-            "bitrix:news.list",
-            "redemption-rating",
-            array(
-                "DISPLAY_DATE" => "Y",
-                "DISPLAY_NAME" => "Y",
-                "DISPLAY_PICTURE" => "Y",
-                "DISPLAY_PREVIEW_TEXT" => "Y",
-                "AJAX_MODE" => "Y",
-                "IBLOCK_TYPE" => "concept_phoenix_s1",
-                "IBLOCK_ID" => "19",
-                "NEWS_COUNT" => "20",
-                "SORT_BY1" => "ACTIVE_FROM",
-                "SORT_ORDER1" => "DESC",
-                "SORT_BY2" => "SORT",
-                "SORT_ORDER2" => "ASC",
-                "FILTER_NAME" => "",
-                "FIELD_CODE" => array(
-                    0 => "ID",
-                    1 => "",
-                ),
-                "PROPERTY_CODE" => array(
-                    0 => "",
-                    1 => "DESCRIPTION",
-                    2 => "",
-                ),
-                "CHECK_DATES" => "Y",
-                "DETAIL_URL" => "",
-                "PREVIEW_TRUNCATE_LEN" => "",
-                "ACTIVE_DATE_FORMAT" => "d.m.Y",
-                "SET_TITLE" => "N",
-                "SET_BROWSER_TITLE" => "N",
-                "SET_META_KEYWORDS" => "N",
-                "SET_META_DESCRIPTION" => "N",
-                "SET_LAST_MODIFIED" => "N",
-                "INCLUDE_IBLOCK_INTO_CHAIN" => "N",
-                "ADD_SECTIONS_CHAIN" => "N",
-                "HIDE_LINK_WHEN_NO_DETAIL" => "Y",
-                "PARENT_SECTION" => "",
-                "PARENT_SECTION_CODE" => "",
-                "INCLUDE_SUBSECTIONS" => "Y",
-                "CACHE_TYPE" => "A",
-                "CACHE_TIME" => "3600",
-                "CACHE_FILTER" => "Y",
-                "CACHE_GROUPS" => "Y",
-                "DISPLAY_TOP_PAGER" => "N",
-                "DISPLAY_BOTTOM_PAGER" => "N",
-                "PAGER_TITLE" => "Рейки",
-                "PAGER_SHOW_ALWAYS" => "Y",
-                "PAGER_TEMPLATE" => "",
-                "PAGER_DESC_NUMBERING" => "N",
-                "PAGER_DESC_NUMBERING_CACHE_TIME" => "36000",
-                "PAGER_SHOW_ALL" => "Y",
-                "PAGER_BASE_LINK_ENABLE" => "Y",
-                "SET_STATUS_404" => "Y",
-                "SHOW_404" => "Y",
-                "MESSAGE_404" => "",
-                "PAGER_BASE_LINK" => "",
-                "PAGER_PARAMS_NAME" => "arrPager",
-                "AJAX_OPTION_JUMP" => "N",
-                "AJAX_OPTION_STYLE" => "N",
-                "AJAX_OPTION_HISTORY" => "N",
-                "AJAX_OPTION_ADDITIONAL" => "",
-                "COMPONENT_TEMPLATE" => "redemption-rating",
-                "STRICT_SECTION_CHECK" => "N",
-                "FILE_404" => ""
+        "bitrix:news.list",
+        "redemption-rating",
+        array(
+            "DISPLAY_DATE" => "Y",
+            "DISPLAY_NAME" => "Y",
+            "DISPLAY_PICTURE" => "Y",
+            "DISPLAY_PREVIEW_TEXT" => "Y",
+            "AJAX_MODE" => "Y",
+            "IBLOCK_TYPE" => "concept_phoenix_s1",
+            "IBLOCK_ID" => "19",
+            "NEWS_COUNT" => "20",
+            "SORT_BY1" => "ACTIVE_FROM",
+            "SORT_ORDER1" => "DESC",
+            "SORT_BY2" => "SORT",
+            "SORT_ORDER2" => "ASC",
+            "FILTER_NAME" => "",
+            "FIELD_CODE" => array(
+                0 => "ID",
+                1 => "",
             ),
-            false
+            "PROPERTY_CODE" => array(
+                0 => "",
+                1 => "DESCRIPTION",
+                2 => "",
+            ),
+            "CHECK_DATES" => "Y",
+            "DETAIL_URL" => "",
+            "PREVIEW_TRUNCATE_LEN" => "",
+            "ACTIVE_DATE_FORMAT" => "d.m.Y",
+            "SET_TITLE" => "N",
+            "SET_BROWSER_TITLE" => "N",
+            "SET_META_KEYWORDS" => "N",
+            "SET_META_DESCRIPTION" => "N",
+            "SET_LAST_MODIFIED" => "N",
+            "INCLUDE_IBLOCK_INTO_CHAIN" => "N",
+            "ADD_SECTIONS_CHAIN" => "N",
+            "HIDE_LINK_WHEN_NO_DETAIL" => "Y",
+            "PARENT_SECTION" => "",
+            "PARENT_SECTION_CODE" => "",
+            "INCLUDE_SUBSECTIONS" => "Y",
+            "CACHE_TYPE" => "A",
+            "CACHE_TIME" => "3600",
+            "CACHE_FILTER" => "Y",
+            "CACHE_GROUPS" => "Y",
+            "DISPLAY_TOP_PAGER" => "N",
+            "DISPLAY_BOTTOM_PAGER" => "N",
+            "PAGER_TITLE" => "Рейки",
+            "PAGER_SHOW_ALWAYS" => "Y",
+            "PAGER_TEMPLATE" => "",
+            "PAGER_DESC_NUMBERING" => "N",
+            "PAGER_DESC_NUMBERING_CACHE_TIME" => "36000",
+            "PAGER_SHOW_ALL" => "Y",
+            "PAGER_BASE_LINK_ENABLE" => "Y",
+            "SET_STATUS_404" => "Y",
+            "SHOW_404" => "Y",
+            "MESSAGE_404" => "",
+            "PAGER_BASE_LINK" => "",
+            "PAGER_PARAMS_NAME" => "arrPager",
+            "AJAX_OPTION_JUMP" => "N",
+            "AJAX_OPTION_STYLE" => "N",
+            "AJAX_OPTION_HISTORY" => "N",
+            "AJAX_OPTION_ADDITIONAL" => "",
+            "COMPONENT_TEMPLATE" => "redemption-rating",
+            "STRICT_SECTION_CHECK" => "N",
+            "FILE_404" => ""
+        ),
+        false
     );
     ?>
 
@@ -196,9 +196,10 @@ require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/header.php");
                     <div class="redemption-steps__text">Оплата за рейку вам на карту</div>
                 </div>
             </div>
-            <!--форма-->
-            <?
-            $APPLICATION->IncludeComponent(
+            <div id="redemption-form">
+                <!--форма-->
+                <?
+                $APPLICATION->IncludeComponent(
                     "diva:fb",
                     "redemption_feedback",
                     array(
@@ -219,18 +220,19 @@ require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/header.php");
                         "COMPONENT_TEMPLATE" => "redemption_feedback"
                     ),
                     false
-            );
-            ?>
+                );
+                ?>
+            </div>
         </div>
     </div>
 
     <div class="redemption-info">
         <div class="container">
-            <? $APPLICATION->IncludeFile(SITE_TEMPLATE_PATH . "/include/redemption/down-text.php", Array(), Array("MODE" => "html", "NAME" => "текст нижний", "TEMPLATE" => "down-text.php")); ?>
+            <? $APPLICATION->IncludeFile(SITE_TEMPLATE_PATH . "/include/redemption/down-text.php", array(), array("MODE" => "html", "NAME" => "текст нижний", "TEMPLATE" => "down-text.php")); ?>
             <div class="redemption-info__wrap">
-                <? $APPLICATION->IncludeFile(SITE_TEMPLATE_PATH . "/include/redemption/down-left-text.php", Array(), Array("MODE" => "html", "NAME" => "текст нижний левый", "TEMPLATE" => "down-left-text.php")); ?>
+                <? $APPLICATION->IncludeFile(SITE_TEMPLATE_PATH . "/include/redemption/down-left-text.php", array(), array("MODE" => "html", "NAME" => "текст нижний левый", "TEMPLATE" => "down-left-text.php")); ?>
 
-                <? $APPLICATION->IncludeFile(SITE_TEMPLATE_PATH . "/include/redemption/down-right-text.php", Array(), Array("MODE" => "html", "NAME" => "текст нижний правый", "TEMPLATE" => "down-right-text.php")); ?>
+                <? $APPLICATION->IncludeFile(SITE_TEMPLATE_PATH . "/include/redemption/down-right-text.php", array(), array("MODE" => "html", "NAME" => "текст нижний правый", "TEMPLATE" => "down-right-text.php")); ?>
 
             </div>
         </div>
@@ -240,7 +242,7 @@ require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/header.php");
 
 
 <script>
-    $(function () {
+    $(function() {
 
         var swiper = new Swiper(".estimate__slider .swiper", {
             slidesPerView: "auto",
@@ -258,7 +260,7 @@ require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/header.php");
         });
 
         var filesExt = ['jpg', 'jpeg', 'pdf', 'png']
-        $(document).on('change', '#input-file', function () {
+        $(document).on('change', '#input-file', function() {
             var parts = $(this).val().split('.')
             var uploadText = $(this).parents('.file').find('.file__info')
             if (filesExt.join().search(parts[parts.length - 1]) != -1) {
@@ -275,6 +277,17 @@ require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/header.php");
                 uploadText.css('color', '#FF6767')
             }
         })
+
+        $(".anchor").on('click', function() {
+            var offsetHeight = 150
+            var elementClick = $(this).attr("href")
+            var destination = $(elementClick).offset().top - offsetHeight + 1
+            $('html,body').animate({
+                scrollTop: destination
+            }, 1100)
+            return false
+        })
+
     })
 </script>
 
