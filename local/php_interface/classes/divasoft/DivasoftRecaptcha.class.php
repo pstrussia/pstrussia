@@ -1,15 +1,16 @@
 <?php
 
-define("RC_KEY", "16794070-2b52-4234-b16f-76da63d75785");
-define("RC_SECRET", "0x342b3762b6a922F77065248cbFE9324EabEB0f0E");
+//define("RC_KEY", "6LebEsAaAAAAANWD28Yty8F7CqT3QbDNy0W0mXnw");
+//define("RC_SECRET", "6LebEsAaAAAAAAcCI899wSNieagiKTlVcoL1O9i8");
 
 if (!defined("DVS_RECAPTCHA") && !defined("ADMIN_SECTION")) {
     \Bitrix\Main\Page\Asset::getInstance()->addString('<script src="https://hcaptcha.com/1/api.js?onload=divaCaptchaRender&render=explicit" async defer></script>', true, \Bitrix\Main\Page\AssetLocation::AFTER_JS);
     \Bitrix\Main\Page\Asset::getInstance()->addString("<script>window.rc = {}; var divaCaptchaRender = function () {
-        $('.h-captcha-response').each(function() {
-          window.rc[$(this).attr('id')] = grecaptcha.render( this, { 'sitekey': '" . COption::GetOptionString( "askaron.settings", "UF_RC_KEY" ) . "', 'callback': $(this).data('callback'), 'size':'invisible' } );
+         $('.h-captcha-response').each(function() {
+          window.rc[$(this).attr('id')] = grecaptcha.render( this, { 'sitekey': '" .COption::GetOptionString( "askaron.settings", "UF_RC_KEY" ). "', 'callback': $(this).data('callback'), 'size':'invisible' } );
         });
     };</script>", true, \Bitrix\Main\Page\AssetLocation::AFTER_JS);
+    
     define("DVS_RECAPTCHA", true);
 }
 
@@ -30,20 +31,21 @@ class DivasoftRecaptcha extends Bitrix\Main\Engine\ActionFilter\Base {
     }
 
     static function check($checkWord) {
-        $data = [
+        $data = http_build_query([
             'secret' => COption::GetOptionString( "askaron.settings", "UF_RC_SECRET" ),
             'response' => $checkWord
-        ];
-        $options = [
-            'http' => [
-                'method' => 'POST',
-                'content' => http_build_query($data)
-            ]
-        ];
-        $context = stream_context_create($options);
-        $verify = file_get_contents(self::URL, false, $context);
-        $captcha_success = json_decode($verify);
-        return ($captcha_success->success == true);
+        ]);      
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, self::URL);
+        $headers[] = "Content-type: application/x-www-form-urlencoded";
+        $headers[] = "Content-Length: " . strlen($data);
+        curl_setopt($ch, CURLOPT_POST, true);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        $response = json_decode(curl_exec($ch));
+        curl_close($ch);
+        return ($response->success == true);
     }
 
     public function onBeforeAction(\Bitrix\Main\Event $event) {
@@ -62,7 +64,5 @@ class DivasoftRecaptcha extends Bitrix\Main\Engine\ActionFilter\Base {
 
         return null;
     }
-
-
 
 }

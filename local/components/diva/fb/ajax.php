@@ -19,7 +19,7 @@ class DivasoftFeedbackAjax extends Bitrix\Main\Engine\Controller {
                     array(Bitrix\Main\Engine\ActionFilter\HttpMethod::METHOD_POST)
             ),
             new Bitrix\Main\Engine\ActionFilter\Csrf(),
-                new DivasoftRecaptcha(), // /local/php_interface/classes/divasoft/DivasoftRecaptcha.class.php
+                //new DivasoftRecaptcha(), // /local/php_interface/classes/divasoft/DivasoftRecaptcha.class.php
         ];
     }
 
@@ -48,7 +48,6 @@ class DivasoftFeedbackAjax extends Bitrix\Main\Engine\Controller {
         // TODO: b24
         if ($uid && isset($_SESSION["rc_" . $uid])) {
             $this->arParams = json_decode($_SESSION["rc_" . $uid], true);
-//            a2l($this->arParams);
             // Проверка и формирование полей
             $arEventFields = [];
             foreach ($this->arParams['FIELDS'] as $formFieldName) {
@@ -80,10 +79,7 @@ class DivasoftFeedbackAjax extends Bitrix\Main\Engine\Controller {
                 if ($arEventFields[self::IS_IBLOCK_FIELDS[0]] == "") {
                     $arEventFields[self::IS_IBLOCK_FIELDS[0]] = "Элемент";
                 }
-//                a2l($arEventFields);
                 foreach ($arEventFields as $code => $value) {
-//                    a2l($value);
-                    
                     if (in_array($code, self::IS_IBLOCK_FIELDS)) {
                         if ($code == "MORE_PICTURE") {
                             if (!empty($_FILES["f"])) {
@@ -91,7 +87,12 @@ class DivasoftFeedbackAjax extends Bitrix\Main\Engine\Controller {
                                     move_uploaded_file($_FILES["f"]['tmp_name']["MORE_PICTURE"][$key], $_SERVER["DOCUMENT_ROOT"] . '/upload/' . $_FILES["f"]['name']["MORE_PICTURE"][$key]);
 
                                     $arFile = CFile::MakeFileArray($_SERVER["DOCUMENT_ROOT"] . "/upload/" . $_FILES["f"]['name']["MORE_PICTURE"][$key]);
-
+                                    $fileSave = CFile::SaveFile(
+                                                    $arFile,
+                                                    '/',
+                                                    false,
+                                                    false
+                                    );
                                     $arLoadProductArray["PROPERTY_VALUES"]["MORE_PICTURE"][] = $arFile;
                                 }
                             } else {
@@ -105,7 +106,12 @@ class DivasoftFeedbackAjax extends Bitrix\Main\Engine\Controller {
                                     $imgId = file_put_contents($_SERVER["DOCUMENT_ROOT"] . '/upload/imgbs64' . $key . '.jpeg', $data);
 
                                     $arFile = CFile::MakeFileArray($_SERVER["DOCUMENT_ROOT"] . "/upload/imgbs64" . $key . ".jpeg");
-
+                                    $fileSave = CFile::SaveFile(
+                                                    $arFile,
+                                                    '/',
+                                                    false,
+                                                    false
+                                    );
                                     $arLoadProductArray["PROPERTY_VALUES"]["MORE_PICTURE"][] = $arFile;
                                 }
                             }
@@ -120,7 +126,6 @@ class DivasoftFeedbackAjax extends Bitrix\Main\Engine\Controller {
                         }
                     }
                 }
-
                 if ($ELEMENT_ID = $el->Add($arLoadProductArray)) {
                     $arEventFields["HREF"] = "<br/>Ссылка на управление: <a href=\"http://{$_SERVER['SERVER_NAME']}/bitrix/admin/iblock_element_edit.php?IBLOCK_ID={$this->arParams['IBLOCK_ID']}&type={$this->arParams['IBLOCK_TYPE']}&ID=$ELEMENT_ID&lang=ru&find_section_section=-1&WF=Y\" target=\"_blank\">Открыть</a>";
                 } else {
@@ -132,7 +137,7 @@ class DivasoftFeedbackAjax extends Bitrix\Main\Engine\Controller {
             // Уведомление администратору
             if ($this->arParams['EMAIL_TO'] && $this->arParams['EVENT_MESSAGE_ID']) {
                 $arEventFields["EMAIL_TO"] = $this->arParams['EMAIL_TO'];
-                
+                $arEventFields['DOC'] = CFile::GetPath($fileSave);
                 if (CEvent::Send($this->arParams['EVENT_MESSAGE_ID'], SITE_ID, $arEventFields)) {
                     return $this->msg(getMessage('SUCCESS_SEND'));
                 } else {
@@ -155,5 +160,3 @@ class DivasoftFeedbackAjax extends Bitrix\Main\Engine\Controller {
     }
 
 }
-
-//json_encode($arEventFields);

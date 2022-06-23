@@ -12,11 +12,11 @@ class DivasoftFeedback extends CBitrixComponent {
             "EMAIL_TO" => $arParams["EMAIL_TO"],
             "PRODUCT_ID" => $arParams["PRODUCT_ID"],
             "FIELDS" => $arParams["FIELDS"],
+            "IBLOCK_ID" => intval($arParams["IBLOCK_ID"]),
             "UID" => $uid,
             "UID_FORM" => "f_" . $uid,
             "UID_RC" => "rc_" . $uid,
-            "UID_CB" => "cb_" . $uid,
-            "URL" => $arParams['URL'],
+            "UID_CB" => "cb_" . $uid
         );
         return $result;
     }
