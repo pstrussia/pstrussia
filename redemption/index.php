@@ -88,74 +88,74 @@ require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/header.php");
 
     <?
     $APPLICATION->IncludeComponent(
-	"bitrix:news.list", 
-	"redemption-rating", 
-	array(
-		"DISPLAY_DATE" => "Y",
-		"DISPLAY_NAME" => "Y",
-		"DISPLAY_PICTURE" => "Y",
-		"DISPLAY_PREVIEW_TEXT" => "Y",
-		"AJAX_MODE" => "Y",
-		"IBLOCK_TYPE" => "concept_phoenix_s1",
-		"IBLOCK_ID" => "19",
-		"NEWS_COUNT" => "20",
-		"SORT_BY1" => "ACTIVE_FROM",
-		"SORT_ORDER1" => "DESC",
-		"SORT_BY2" => "SORT",
-		"SORT_ORDER2" => "ASC",
-		"FILTER_NAME" => "",
-		"FIELD_CODE" => array(
-			0 => "ID",
-			1 => "",
-		),
-		"PROPERTY_CODE" => array(
-			0 => "",
-			1 => "DESCRIPTION",
-			2 => "",
-		),
-		"CHECK_DATES" => "Y",
-		"DETAIL_URL" => "",
-		"PREVIEW_TRUNCATE_LEN" => "",
-		"ACTIVE_DATE_FORMAT" => "d.m.Y",
-		"SET_TITLE" => "N",
-		"SET_BROWSER_TITLE" => "N",
-		"SET_META_KEYWORDS" => "N",
-		"SET_META_DESCRIPTION" => "N",
-		"SET_LAST_MODIFIED" => "N",
-		"INCLUDE_IBLOCK_INTO_CHAIN" => "N",
-		"ADD_SECTIONS_CHAIN" => "N",
-		"HIDE_LINK_WHEN_NO_DETAIL" => "Y",
-		"PARENT_SECTION" => "",
-		"PARENT_SECTION_CODE" => "",
-		"INCLUDE_SUBSECTIONS" => "Y",
-		"CACHE_TYPE" => "A",
-		"CACHE_TIME" => "3600",
-		"CACHE_FILTER" => "Y",
-		"CACHE_GROUPS" => "Y",
-		"DISPLAY_TOP_PAGER" => "N",
-		"DISPLAY_BOTTOM_PAGER" => "N",
-		"PAGER_TITLE" => "Рейки",
-		"PAGER_SHOW_ALWAYS" => "Y",
-		"PAGER_TEMPLATE" => "",
-		"PAGER_DESC_NUMBERING" => "N",
-		"PAGER_DESC_NUMBERING_CACHE_TIME" => "36000",
-		"PAGER_SHOW_ALL" => "Y",
-		"PAGER_BASE_LINK_ENABLE" => "Y",
-		"SET_STATUS_404" => "Y",
-		"SHOW_404" => "Y",
-		"MESSAGE_404" => "",
-		"PAGER_BASE_LINK" => "",
-		"PAGER_PARAMS_NAME" => "arrPager",
-		"AJAX_OPTION_JUMP" => "N",
-		"AJAX_OPTION_STYLE" => "N",
-		"AJAX_OPTION_HISTORY" => "N",
-		"AJAX_OPTION_ADDITIONAL" => "",
-		"COMPONENT_TEMPLATE" => "redemption-rating",
-		"STRICT_SECTION_CHECK" => "N",
-		"FILE_404" => ""
-	),
-	false
-);
+            "bitrix:news.list",
+            "redemption-rating",
+            array(
+                "DISPLAY_DATE" => "Y",
+                "DISPLAY_NAME" => "Y",
+                "DISPLAY_PICTURE" => "Y",
+                "DISPLAY_PREVIEW_TEXT" => "Y",
+                "AJAX_MODE" => "Y",
+                "IBLOCK_TYPE" => "concept_phoenix_s1",
+                "IBLOCK_ID" => "19",
+                "NEWS_COUNT" => "20",
+                "SORT_BY1" => "ACTIVE_FROM",
+                "SORT_ORDER1" => "DESC",
+                "SORT_BY2" => "SORT",
+                "SORT_ORDER2" => "ASC",
+                "FILTER_NAME" => "",
+                "FIELD_CODE" => array(
+                    0 => "ID",
+                    1 => "",
+                ),
+                "PROPERTY_CODE" => array(
+                    0 => "",
+                    1 => "DESCRIPTION",
+                    2 => "",
+                ),
+                "CHECK_DATES" => "Y",
+                "DETAIL_URL" => "",
+                "PREVIEW_TRUNCATE_LEN" => "",
+                "ACTIVE_DATE_FORMAT" => "d.m.Y",
+                "SET_TITLE" => "N",
+                "SET_BROWSER_TITLE" => "N",
+                "SET_META_KEYWORDS" => "N",
+                "SET_META_DESCRIPTION" => "N",
+                "SET_LAST_MODIFIED" => "N",
+                "INCLUDE_IBLOCK_INTO_CHAIN" => "N",
+                "ADD_SECTIONS_CHAIN" => "N",
+                "HIDE_LINK_WHEN_NO_DETAIL" => "Y",
+                "PARENT_SECTION" => "",
+                "PARENT_SECTION_CODE" => "",
+                "INCLUDE_SUBSECTIONS" => "Y",
+                "CACHE_TYPE" => "A",
+                "CACHE_TIME" => "3600",
+                "CACHE_FILTER" => "Y",
+                "CACHE_GROUPS" => "Y",
+                "DISPLAY_TOP_PAGER" => "N",
+                "DISPLAY_BOTTOM_PAGER" => "N",
+                "PAGER_TITLE" => "Рейки",
+                "PAGER_SHOW_ALWAYS" => "Y",
+                "PAGER_TEMPLATE" => "",
+                "PAGER_DESC_NUMBERING" => "N",
+                "PAGER_DESC_NUMBERING_CACHE_TIME" => "36000",
+                "PAGER_SHOW_ALL" => "Y",
+                "PAGER_BASE_LINK_ENABLE" => "Y",
+                "SET_STATUS_404" => "Y",
+                "SHOW_404" => "Y",
+                "MESSAGE_404" => "",
+                "PAGER_BASE_LINK" => "",
+                "PAGER_PARAMS_NAME" => "arrPager",
+                "AJAX_OPTION_JUMP" => "N",
+                "AJAX_OPTION_STYLE" => "N",
+                "AJAX_OPTION_HISTORY" => "N",
+                "AJAX_OPTION_ADDITIONAL" => "",
+                "COMPONENT_TEMPLATE" => "redemption-rating",
+                "STRICT_SECTION_CHECK" => "N",
+                "FILE_404" => ""
+            ),
+            false
+    );
     ?>
 
 
@@ -196,97 +196,89 @@ require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/header.php");
                     <div class="redemption-steps__text">Оплата за рейку вам на карту</div>
                 </div>
             </div>
-            <form class="redemption-form">
-                <div class="redemption-form__item">
-                    <input class="redemption-form__input" type="text" placeholder="Марка, модель, год">
-                </div>
-                <div class="redemption-form__item">
-                    <textarea class="redemption-form__input" placeholder="Описание неисправности (какие проблемы с рейкой)"></textarea>
-                </div>
-                <div class="redemption-form__item">
-                    <input class="redemption-form__input" type="text" placeholder="Имя">
-                        <input class="redemption-form__input" type="text" placeholder="Город">
-                            </div>
-                            <div class="redemption-form__item">
-                                <input class="redemption-form__input" type="text" placeholder="Телефон">
-                                    <input class="redemption-form__input" type="text" placeholder="Электронная почта">
-                                        </div>
-                                        <div class="redemption-form__footer">
-                                            <div class="file">
-                                                <div class="file__btn">
-                                                    <input class="file__input" name="file" type="file" id="input-file">
-                                                        <label class="file__label" for="input-file">
-                                                            <svg width="15" height="19" viewBox="0 0 15 19" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                                <path d="M0.937256 0.75C0.390381 0.75 -0.000244141 1.17969 -0.000244141 1.6875V2.625C-0.000244141 3.17188 0.390381 3.5625 0.937256 3.5625H14.0623C14.5701 3.5625 14.9998 3.17188 14.9998 2.625V1.6875C14.9998 1.17969 14.5701 0.75 14.0623 0.75H0.937256ZM9.99976 17.3125V12H13.3982C14.1013 12 14.4529 11.1797 13.9451 10.6719L8.00757 4.73438C7.73413 4.46094 7.22632 4.46094 6.95288 4.73438L1.01538 10.6719C0.507568 11.1797 0.859131 12 1.56226 12H4.99976V17.3125C4.99976 17.8594 5.39038 18.25 5.93726 18.25H9.06226C9.57007 18.25 9.99976 17.8594 9.99976 17.3125Z" fill="#181818" />
-                                                            </svg>
-                                                        </label>
-                                                        <div class="file__wrap">
-                                                            <div class="file__text">Загрузить фото</div>
-                                                            <div class="file__info">макс. 5 Mb</div>
-                                                        </div>
-                                                </div>
-                                            </div>
-                                            <button class="redemption-form__btn button-def main-color elips" type="submit">Узнать стоимость</button>
-                                        </div>
-                                        </form>
-                                        </div>
-                                        </div>
+            <!--форма-->
+            <?
+            $APPLICATION->IncludeComponent(
+                    "diva:fb",
+                    "redemption_feedback",
+                    array(
+                        "IBLOCK_TYPE" => "standart",
+                        "IBLOCK_ID" => "21",
+                        "UID" => "5c6f422028ad83aba5faa97bb72888ba",
+                        "FIELDS" => array(
+                            0 => "NAME",
+                            1 => "CODE",
+                            2 => "MAIL",
+                            3 => "TELEPHONE",
+                            4 => "MORE_PICTURE",
+                            5 => "CITY",
+                            6 => "DESCRIPTION"
+                        ),
+                        "EVENT_MESSAGE_ID" => "FEEDBACK_FORM",
+                        "EMAIL_TO" => "",
+                        "COMPONENT_TEMPLATE" => "redemption_feedback"
+                    ),
+                    false
+            );
+            ?>
+        </div>
+    </div>
 
-                                        <div class="redemption-info">
-                                            <div class="container">
-                                                <? $APPLICATION->IncludeFile(SITE_TEMPLATE_PATH . "/include/redemption/down-text.php", Array(), Array("MODE" => "html", "NAME" => "текст нижний", "TEMPLATE" => "down-text.php")); ?>
-                                                <div class="redemption-info__wrap">
-                                                    <? $APPLICATION->IncludeFile(SITE_TEMPLATE_PATH . "/include/redemption/down-left-text.php", Array(), Array("MODE" => "html", "NAME" => "текст нижний левый", "TEMPLATE" => "down-left-text.php")); ?>
+    <div class="redemption-info">
+        <div class="container">
+            <? $APPLICATION->IncludeFile(SITE_TEMPLATE_PATH . "/include/redemption/down-text.php", Array(), Array("MODE" => "html", "NAME" => "текст нижний", "TEMPLATE" => "down-text.php")); ?>
+            <div class="redemption-info__wrap">
+                <? $APPLICATION->IncludeFile(SITE_TEMPLATE_PATH . "/include/redemption/down-left-text.php", Array(), Array("MODE" => "html", "NAME" => "текст нижний левый", "TEMPLATE" => "down-left-text.php")); ?>
 
-                                                    <? $APPLICATION->IncludeFile(SITE_TEMPLATE_PATH . "/include/redemption/down-right-text.php", Array(), Array("MODE" => "html", "NAME" => "текст нижний правый", "TEMPLATE" => "down-right-text.php")); ?>
+                <? $APPLICATION->IncludeFile(SITE_TEMPLATE_PATH . "/include/redemption/down-right-text.php", Array(), Array("MODE" => "html", "NAME" => "текст нижний правый", "TEMPLATE" => "down-right-text.php")); ?>
 
-                                                </div>
-                                            </div>
-                                        </div>
+            </div>
+        </div>
+    </div>
 
-                                        </div>
+</div>
 
 
-                                        <script>
-                                            $(function () {
+<script>
+    $(function () {
 
-                                                var swiper = new Swiper(".estimate__slider .swiper", {
-                                                    slidesPerView: "auto",
-                                                    centeredSlides: true,
-                                                    spaceBetween: 100,
-                                                    loop: true,
-                                                    navigation: {
-                                                        nextEl: ".swiper-btn-next",
-                                                        prevEl: ".swiper-btn-prev",
-                                                    },
-                                                    pagination: {
-                                                        el: ".swiper-pagination",
-                                                        clickable: true,
-                                                    },
-                                                });
+        var swiper = new Swiper(".estimate__slider .swiper", {
+            slidesPerView: "auto",
+            centeredSlides: true,
+            spaceBetween: 100,
+            loop: true,
+            navigation: {
+                nextEl: ".swiper-btn-next",
+                prevEl: ".swiper-btn-prev",
+            },
+            pagination: {
+                el: ".swiper-pagination",
+                clickable: true,
+            },
+        });
 
-                                                var filesExt = ['jpg', 'jpeg', 'pdf', 'png']
-                                                $(document).on('change', '#input-file', function () {
-                                                    var parts = $(this).val().split('.')
-                                                    var uploadText = $(this).parents('.file').find('.file__info')
-                                                    if (filesExt.join().search(parts[parts.length - 1]) != -1) {
-                                                        var fileSize = $(this)[0].files[0].size
-                                                        if (fileSize > 5097152) {
-                                                            uploadText.html('Размер файла не более 5Mb')
-                                                            uploadText.css('color', '#FF6767')
-                                                        } else {
-                                                            uploadText.html($(this).val().replace(/.*\\/, ""))
-                                                            uploadText.css('color', '#a3a3a3')
-                                                        }
-                                                    } else {
-                                                        uploadText.html('Недопустимый формат. Только jpg, jpeg, pdf, png')
-                                                        uploadText.css('color', '#FF6767')
-                                                    }
-                                                })
-                                            })
-                                        </script>
+        var filesExt = ['jpg', 'jpeg', 'pdf', 'png']
+        $(document).on('change', '#input-file', function () {
+            var parts = $(this).val().split('.')
+            var uploadText = $(this).parents('.file').find('.file__info')
+            if (filesExt.join().search(parts[parts.length - 1]) != -1) {
+                var fileSize = $(this)[0].files[0].size
+                if (fileSize > 5097152) {
+                    uploadText.html('Размер файла не более 5Mb')
+                    uploadText.css('color', '#FF6767')
+                } else {
+                    uploadText.html($(this).val().replace(/.*\\/, ""))
+                    uploadText.css('color', '#a3a3a3')
+                }
+            } else {
+                uploadText.html('Недопустимый формат. Только jpg, jpeg, pdf, png')
+                uploadText.css('color', '#FF6767')
+            }
+        })
+    })
+</script>
 
 
-                                        <?php
-                                        require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/footer.php");
-                                        ?>
+<?php
+require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/footer.php");
+?>
