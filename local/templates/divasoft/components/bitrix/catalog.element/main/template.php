@@ -4,11 +4,7 @@
 <?global $PHOENIX_TEMPLATE_ARRAY;?>
 <?
 
-
 $block_name = htmlspecialcharsEx($arResult['~NAME']);
-
-
-
 
 if( strlen($arResult["PRODUCT"]["PREVIEW_TEXT_POSITION"]) )
     $previewTextPos = $arResult["PRODUCT"]["PREVIEW_TEXT_POSITION"];
@@ -30,36 +26,34 @@ if( strlen($previewTextPos)<=0 )
     <?$desc = 1;?>
 <?endif;?>
 
-
 <?$this->SetViewTarget('catalog-left-menu');?>
 
-    
     <div class="row">
         <ul class='nav'>
             <?if( !empty($arResult["SIDE_MENU"]) ):?>
-            
+
                 <?foreach($arResult["SIDE_MENU"] as $key=>$value):?>
-                
+
                     <?if(strlen($value["NAME"]) > 0):?>
                         <li class="col-12">
                             <a href="#<?=$key?>" class='scroll nav-link <?if($key == "main"):?>review<?endif;?>'><span class="text"><?=$value["NAME"]?></span></a>
                         </li>
                     <?endif;?>
-                    
+
                 <?endforeach;?>
             <?endif;?>
-            
+
             <li class="col-12 back">
                 <a href="<?=$arResult["SECTION"]["SECTION_PAGE_URL"]?>"><span class="text"><?=$PHOENIX_TEMPLATE_ARRAY["MESS"]["CATALOG_CARD_LEVEL_UP"]?></span></a>
             </li>
-            
+
         </ul>
     </div>
-                            
+
 <?$this->EndViewTarget();?>
 
 <?$this->SetViewTarget('empl-banner');?>
-    
+
     <?if(!empty($arParams["EMPL_BANNER"])):?>
 
         <?$APPLICATION->IncludeComponent(
@@ -81,7 +75,7 @@ if( strlen($previewTextPos)<=0 )
 <?$this->EndViewTarget();?>
 
 <?
-    
+
     $colsHeadLeftPart = "col-md-10 col-12";
     $colsHeadRightPart = "col-md-2 col-12";
 
@@ -151,14 +145,14 @@ if( strlen($previewTextPos)<=0 )
 
                             <?endif;?>
 
-                            
+
                             <div class="footer">
                                 <a class="ic-info" href="<?=$arResult["BRAND"]["DETAIL_PAGE_URL"]?>#about_brand"><span class="bord-bot"><?=$PHOENIX_TEMPLATE_ARRAY["MESS"]["CATALOG_DETAIL_BRAND_DETAIL_LINK"];?></span></a>
                             </div>
-                            
+
                         </div>
                     </div>
-                   
+
                 </div>
 
             <?endif;?>
@@ -224,7 +218,7 @@ if( strlen($previewTextPos)<=0 )
                             </div>
                         </div>
                     </div>
-               
+
                 </div>
             <?endif;?>
 
@@ -246,12 +240,12 @@ if( strlen($previewTextPos)<=0 )
         <?if( isset($arResult["BRAND"]) ):?>
             <div class="col-4 wr-brand order-2">
                 <img class="img-fluid lazyload brand" data-src="<?=$arResult["BRAND"]["PREVIEW_PICTURE_SRC_XS"]?>">
-                
+
             </div>
         <?endif;?>
 
         <div class="board-shadow-tone gray"></div>
-        
+
         <a href="<?=$arResult["BRAND"]["DETAIL_PAGE_URL"]?>" class="brand-link"></a>
 
         <div class="col-8 board-links order-1">
@@ -281,7 +275,7 @@ if( strlen($previewTextPos)<=0 )
                         $colLeft = "d-none";
                         $colRight = "col-12";
 
-                        
+
                         if( $arResult["FIRST_ITEM"]['MORE_PHOTOS_COUNT'] > 1 || strlen($arResult["PRODUCT"]['VIDEO_POPUP']))
                         {
                             $colLeft = "col-2";
@@ -306,7 +300,7 @@ if( strlen($previewTextPos)<=0 )
                                             $morePhotos= true;
                                             break;
                                         }
-                                        $quantityPhoto++; 
+                                        $quantityPhoto++;
                                     ?>
 
                                     <div class="small-picture <?=($key == 0 ? 'active' : '')?>" data-value="<?=$photo['ID']?>">
@@ -353,7 +347,7 @@ if( strlen($previewTextPos)<=0 )
 
                                     <div class="big-picture <?=($key == 0 ? 'active' : '')?>"  data-id="<?=$photo['ID']?>">
 
-                                        <a 
+                                        <a
                                             class="cursor-loop open-popup-gallery d-block <?=$arResult['ZOOM_ON']?>"
                                             data-popup-gallery="<?=$arResult["FIRST_ITEM"]["ID"]?>_<?=$obName?>"
 
@@ -376,7 +370,7 @@ if( strlen($previewTextPos)<=0 )
 
                                 <div class="big-picture active">
                                     <img data-src="<?=$arResult["PICTURE_DEF"]?>" class="d-block mx-auto img-fluid lazyload" alt="">
-                                    <link itemprop="image" href="<?=$arResult["PICTURE_DEF"]?>">  
+                                    <link itemprop="image" href="<?=$arResult["PICTURE_DEF"]?>">
                                 </div>
 
                             <?endif;?>
@@ -384,15 +378,15 @@ if( strlen($previewTextPos)<=0 )
                         </div>
 
                         <?if(!empty($arResult["PRODUCT"]["LABELS"]["XML_ID"])):?>
-                                                    
+
                             <div class="wrapper-board-label">
-                                
+
                                 <?foreach($arResult["PRODUCT"]["LABELS"]["XML_ID"] as $k=>$xml_id):?>
                                     <div class="mini-board <?=$xml_id?>" title="<?=$arResult["PRODUCT"]["LABELS"]["VALUE"][$k]?>"><?=$arResult["PRODUCT"]["LABELS"]["VALUE"][$k]?></div><br/>
                                 <?endforeach;?>
 
                             </div>
-                        
+
                         <?endif;?>
 
                     </div>
@@ -404,7 +398,7 @@ if( strlen($previewTextPos)<=0 )
                     $showBtnScroll2Chars = false;
 
                     if(
-                        $PHOENIX_TEMPLATE_ARRAY["ITEMS"]["CATALOG"]["ITEMS"]['USE_BTN_SCROLL2CHARS']["VALUE"]["ACTIVE"] == "Y" 
+                        $PHOENIX_TEMPLATE_ARRAY["ITEMS"]["CATALOG"]["ITEMS"]['USE_BTN_SCROLL2CHARS']["VALUE"]["ACTIVE"] == "Y"
                         && (!empty($arResult['PRODUCT']["CHARS_SORT"]) || !empty($arResult["PRODUCT"]["FILES"]))
                         && $arResult["PRODUCT"]["SCROLL_TO_CHARS_OFF"] != "Y"
 
@@ -421,6 +415,10 @@ if( strlen($previewTextPos)<=0 )
 
                             <div class="col-12 detail-description" <?if($desc == 0):?>itemprop="description"<?endif;?>><?=$arResult["FIRST_ITEM"]["PREVIEW_TEXT_HTML"]?></div>
 
+                            <? if ($arResult['PRODUCT']['CATEGORY'] == 'Рулевые рейки' || $arResult['PRODUCT']['IBLOCK_SECTION_ID'] === 206): ?>
+                                <div class="detail-discount"><?// echo $arResult['PROPERTIES']['INFO_DETAIL_DISCOUNT']['DEFAULT_VALUE']; //echo '<pre>'; print_r($arResult)?></div>
+                            <? endif; ?>
+
                             <?if($showBtnScroll2Chars || $PHOENIX_TEMPLATE_ARRAY["ITEMS"]["RATING"]["ITEMS"]["USE_VOTE"]["VALUE"]["ACTIVE"] == "Y"):?>
 
                                 <div class="col-12">
@@ -434,7 +432,7 @@ if( strlen($previewTextPos)<=0 )
                                                     <span class="bord-bot">
 
                                                     <?=$arResult["PRODUCT"]["SKROLL_TO_CHARS_TITLE"]?>
-                                                        
+
                                                     </span>
                                                 </a>
                                             </div>
@@ -445,7 +443,7 @@ if( strlen($previewTextPos)<=0 )
                                             <div class="col-sm-6 col-12">
 
                                                 <?if($arResult["RATING_VIEW"] == "simple"):?>
-                                                    
+
                                                     <?=CPhoenix::GetRatingVoteHTML(array("ID"=>$arResult['ID'], "CLASS"=>"simple-rating hover"));?>
 
 
@@ -471,7 +469,7 @@ if( strlen($previewTextPos)<=0 )
 
                 <?endif;?>
 
-                <?if( $arResult['PRODUCT']['CONFIG']['SHOW_DELAY'] == "Y" 
+                <?if( $arResult['PRODUCT']['CONFIG']['SHOW_DELAY'] == "Y"
                       || $arResult['PRODUCT']['CONFIG']['SHOW_COMPARE'] == "Y" ):?>
 
                     <div class="wrapper-delay-compare-icons">
@@ -484,7 +482,7 @@ if( strlen($previewTextPos)<=0 )
                         <?if($arResult['PRODUCT']['CONFIG']['SHOW_COMPARE'] == "Y"):?>
                             <div title="<?=$PHOENIX_TEMPLATE_ARRAY["MESS"]["CATALOG_COMPARE_TITLE"]?>" class="icon compare add2compare" id = "<?=$itemIds["COMPARE"]?>" data-item="<?=$arResult["ID"]?>"></div>
                         <?endif;?>
-                    
+
                     </div>
 
                 <?endif;?>
@@ -492,12 +490,12 @@ if( strlen($previewTextPos)<=0 )
             </div>
 
 
-            <div class="col-xl-5 col-sm-6 col-12 info-right-side <?=($arResult['PRODUCT']['CONFIG']['SHOW_PRICE_SIDE'])?'':'d-none';?>">  
+            <div class="col-xl-5 col-sm-6 col-12 info-right-side <?=($arResult['PRODUCT']['CONFIG']['SHOW_PRICE_SIDE'])?'':'d-none';?>">
 
                 <div class="info-right-side-inner">
-                    
+
                     <div class="wrapper-article-available row no-gutters justify-content-between" id="<?=$itemIds['ARTICLE_AVAILABLE']?>">
-                            
+
 
                             <div class="detail-article italic <?if(strlen($arResult["FIRST_ITEM"]["ARTICLE"])<=0):?>d-none<?endif;?>"><?=$PHOENIX_TEMPLATE_ARRAY["MESS"]["ARTICLE_SHORT"].$arResult["FIRST_ITEM"]["ARTICLE"]?></div>
 
@@ -505,11 +503,10 @@ if( strlen($previewTextPos)<=0 )
                                 <meta itemprop="name" content="<?=$PHOENIX_TEMPLATE_ARRAY["MESS"]["ARTICLE_SHORT"]?>">
                                 <meta itemprop="value" content="<?=addslashes($arResult["FIRST_ITEM"]["ARTICLE"])?>">
                             </div>
-                        <!--<div class="product-available-js hidden-js"><?//=$arResult["FIRST_ITEM"]["QUANTITY"]["HTML"]?></div>-->
-                            <?if($arResult['FIRST_ITEM']['QUANTITY']['QUANTITY_VALUE'] > 0){?>
-                               <div class="detail-available without-quantity few"><span class="text"> В наличии
-                            <?}else{?>
-                              <div class="detail-available empty-quantity"><span class="text">  Наличие уточняйте
+                        <div class="product-available-js hidden-js"><?=$arResult["FIRST_ITEM"]["QUANTITY"]["HTML"]?></div>
+                        <? // cl_print_r($arResult['FIRST_ITEM'])?>
+                            <?if($arResult['FIRST_ITEM']['QUANTITY']['QUANTITY_VALUE'] <= 0){?>
+                               <div class="detail-available empty-quantity"><span class="text">  Наличие уточняйте                    
                             <?}?>
                                 </span></div>
                         </div>
@@ -522,14 +519,14 @@ if( strlen($previewTextPos)<=0 )
 
                             <div class="detail-description" <?if($desc == 0):?>itemprop="description"<?endif;?>><?=$arResult["FIRST_ITEM"]["PREVIEW_TEXT_HTML"]?></div>
 
-                        
-    
+
+
                             <?if( $showBtnScroll2Chars ):?>
                                 <a href = "#chars" class="chars-link scroll info-style">
                                     <span class="bord-bot">
 
                                         <?=$arResult["PRODUCT"]["SKROLL_TO_CHARS_TITLE"]?>
-                                        
+
                                     </span>
                                 </a>
                             <?endif;?>
@@ -539,7 +536,7 @@ if( strlen($previewTextPos)<=0 )
 
                                 <div class="board-rating-reviews row no-gutters align-items-center">
                                     <?if($arResult["RATING_VIEW"] == "simple"):?>
-            
+
                                         <?=CPhoenix::GetRatingVoteHTML(array("ID"=>$arResult['ID'], "CLASS"=>"simple-rating hover"));?>
 
                                     <?elseif($arResult["RATING_VIEW"] == "full"):?>
@@ -565,7 +562,7 @@ if( strlen($previewTextPos)<=0 )
                                 <div class="desc-title"><?=$arResult['PRODUCT']["DESC_FOR_ACTUAL_PRICE"]?></div>
                             <?endif;?>
 
-                           
+
                             <div class="name-type-price d-none">
                                 <?=$arResult['FIRST_ITEM']['PRICE']['NAME']?>
                             </div>
@@ -587,15 +584,15 @@ if( strlen($previewTextPos)<=0 )
                                 <div id="<?=$itemIds['DISCOUNT_PRICE']?>"  class="wrapper-discount <?=($arResult["FIRST_ITEM"]["SHOW_DISCOUNT"] ? '' : 'd-none')?>">
 
                                     <span class="item-style desc-discount"><?=$PHOENIX_TEMPLATE_ARRAY["MESS"]["ECONOMY"]?></span><span class="item-style actual-econom bold product-price-discount-js"><?=$arResult["FIRST_ITEM"]['PRICE']['PRINT_DISCOUNT']?></span>
-                                    
+
                                     <span id="<?=$itemIds['DISCOUNT_PERCENT']?>" class="item-style actual-discount product-percent-discount-js <?=( ($arResult["PRODUCT"]['CONFIG']["SHOW_DISCOUNT_PERCENT"] === 'Y' && $arResult["FIRST_ITEM"]['PRICE']['PERCENT']>0) ? '' : 'd-none')?>">
                                         <?=-$arResult["FIRST_ITEM"]['PRICE']['PERCENT']?>%
-                                        
+
                                     </span>
                                 </div>
-                                
+
                             </div>
-                            
+
 
                             <?if($PHOENIX_TEMPLATE_ARRAY["ITEMS"]["FORMS"]["ITEMS"]['BETTER_PRICE']["VALUE"] != "N"):?>
                                <span class="cheaper">
@@ -606,7 +603,7 @@ if( strlen($previewTextPos)<=0 )
                             <?endif;?>
 
                             <?//if($PHOENIX_TEMPLATE_ARRAY["ITEMS"]["CATALOG"]["ITEMS"]['USE_PRICE_COUNT']['VALUE']["ACTIVE"] == 'Y'):?>
-                            
+
                                 <div class="wrapper-matrix-block" id= "<?=$itemIds["PRICE_MATRIX"]?>"><?=$arResult["FIRST_ITEM"]["PRICE_MATRIX_RESULT"]["HTML"]?></div>
 
                             <?//endif;?>
@@ -624,7 +621,7 @@ if( strlen($previewTextPos)<=0 )
 
 
                                     <?foreach ($arResult['PRODUCT']['SKU_PROPS'] as $skuProperty):?>
-                                        
+
                                         <?
 
                                             $propertyId = $skuProperty['ID'];
@@ -638,13 +635,13 @@ if( strlen($previewTextPos)<=0 )
                                         <div class="wrapper-sku-props <?if( strlen($descTitle) ):?>with-desc<?endif;?> clearfix" >
 
                                             <div class="wrapper-title row no-gutters">
-                                                <div class="desc-title"><?=htmlspecialcharsEx($skuProperty['NAME'])?><span class="prop-name"></span> 
+                                                <div class="desc-title"><?=htmlspecialcharsEx($skuProperty['NAME'])?><span class="prop-name"></span>
 
                                                     <?if(strlen($skuProperty["HINT"])):?>
                                                         <i class="hint-sku fa fa-question-circle hidden-sm hidden-xs" data-toggle="sku-tooltip" data-placement="bottom" title="" data-original-title='<?=str_replace("'", "\"", $skuProperty["HINT"])?>'></i>
                                                     <?endif;?>
                                                 </div>
-                                                
+
                                             </div>
 
                                             <?if ($PHOENIX_TEMPLATE_ARRAY["ITEMS"]["CATALOG"]["ITEMS"]['OFFER_FIELDS']["VALUES"][$skuProperty["ID"]]["VALUE_2"] == 'pic' || $PHOENIX_TEMPLATE_ARRAY["ITEMS"]["CATALOG"]["ITEMS"]['OFFER_FIELDS']["VALUES"][$skuProperty["ID"]]["VALUE_2"] == 'pic_with_info'):?>
@@ -692,7 +689,7 @@ if( strlen($previewTextPos)<=0 )
 
                                                                         data-treevalue="<?=$propertyId?>_<?=$value['ID']?>"
                                                                         data-onevalue="<?=$value['ID']?>"
-                                                                        
+
 
                                                                     >
 
@@ -738,7 +735,7 @@ if( strlen($previewTextPos)<=0 )
                                                             <?endforeach;?>
 
                                                         <?endif;?>
-                                                       
+
                                                     </ul>
 
                                                     <div class="ar-down"></div>
@@ -766,11 +763,11 @@ if( strlen($previewTextPos)<=0 )
 
 
                                             <?endif;?>
-                                  
-                                            
+
+
                                         </div>
 
-                                    <?endforeach;?> 
+                                    <?endforeach;?>
 
                                 <?endif;?>
 
@@ -812,7 +809,7 @@ if( strlen($previewTextPos)<=0 )
 
                                 <?endif;?>
                             </div>
-                            
+
                         <?endif;?>
 
 
@@ -832,10 +829,10 @@ if( strlen($previewTextPos)<=0 )
                                     </div>
                                 <?endif;?>
 
-                                
+
                             </div>
 
-                         
+
                             <div class="wrapper-quantity-total row no-gutters align-items-center">
 
                                 <div class="col-6">
@@ -864,16 +861,16 @@ if( strlen($previewTextPos)<=0 )
                         <div class="wrapper-btns row no-gutters justify-content-between hidden-js" id="<?=$itemIds["BASKET_ACTIONS"]?>">
 
                             <div class="col-6 left-btn wr-btn-basket d-none">
-                                <a 
+                                <a
                                 id = "<?=$itemIds['ADD2BASKET']?>"
-                                href="javascript:void(0);" 
-                                title = "<?=$PHOENIX_TEMPLATE_ARRAY["ITEMS"]["SHOP"]["ITEMS"]["CART_BTN_ADD_NAME"]["~VALUE"]?>" 
+                                href="javascript:void(0);"
+                                title = "<?=$PHOENIX_TEMPLATE_ARRAY["ITEMS"]["SHOP"]["ITEMS"]["CART_BTN_ADD_NAME"]["~VALUE"]?>"
                                 data-item="<?=$arResult['ID']?>"
                                 class="main-color bold add-to-cart-style add2basket" ><?=$PHOENIX_TEMPLATE_ARRAY["ITEMS"]["SHOP"]["ITEMS"]["CART_BTN_ADD_NAME"]["~VALUE"]?></a>
 
-                                <a 
+                                <a
                                 id = "<?=$itemIds['MOVE2BASKET']?>"
-                                href="<?=$PHOENIX_TEMPLATE_ARRAY["ITEMS"]["SHOP"]["ITEMS"]["BASKET_URL"]["VALUE"]?>" 
+                                href="<?=$PHOENIX_TEMPLATE_ARRAY["ITEMS"]["SHOP"]["ITEMS"]["BASKET_URL"]["VALUE"]?>"
                                 title = "<?=$PHOENIX_TEMPLATE_ARRAY["ITEMS"]["SHOP"]["ITEMS"]["CART_BTN_ADDED_NAME"]["~VALUE"]?>"
                                 data-item = "<?=$arResult["ID"]?>"
 
@@ -883,14 +880,14 @@ if( strlen($previewTextPos)<=0 )
                             </div>
 
                             <div class="col-6 right-btn wr-btn-fast-order d-none">
-                                <a 
+                                <a
                                     id="<?=$itemIds['FAST_ORDER']?>"
-                                    title = "<?=$PHOENIX_TEMPLATE_ARRAY["ITEMS"]["SHOP"]["ITEMS"]["CART_BTN_FAST_ORDER_NAME_IN_CATALOG_DETAIL"]["VALUE"]?>" 
+                                    title = "<?=$PHOENIX_TEMPLATE_ARRAY["ITEMS"]["SHOP"]["ITEMS"]["CART_BTN_FAST_ORDER_NAME_IN_CATALOG_DETAIL"]["VALUE"]?>"
                                     href="javascript:void(0);"
                                     class="fast-order second-btn-style"
                                 >
                                 <?=$PHOENIX_TEMPLATE_ARRAY["ITEMS"]["SHOP"]["ITEMS"]["CART_BTN_FAST_ORDER_NAME_IN_CATALOG_DETAIL"]["~VALUE"]?>
-                                    
+
                                 </a>
                             </div>
 
@@ -911,7 +908,7 @@ if( strlen($previewTextPos)<=0 )
                         <?endif;?>
 
                         <div id="<?=$itemIds['SUBSCRIBE']?>">
-                            <?
+                            <?/* подписка
                                 $APPLICATION->IncludeComponent(
                                     'bitrix:catalog.product.subscribe',
                                     'main',
@@ -926,7 +923,7 @@ if( strlen($previewTextPos)<=0 )
                                     $component,
                                     array('HIDE_ICONS' => 'Y')
                                 );
-                            ?>
+                            */?>
                         </div>
 
                         <?CPhoenix::createBtnHtml($arResult["BTN"])?>
@@ -963,17 +960,17 @@ if( strlen($previewTextPos)<=0 )
 
 
 
-<?if($arResult['PRODUCT']['CONFIG']["SHOW_OFFERS"]):?> 
-                    
+<?if($arResult['PRODUCT']['CONFIG']["SHOW_OFFERS"]):?>
+
     <div itemprop="offers" itemscope itemtype="http://schema.org/AggregateOffer" style="display:none;">
 
         <?$prices = array();?>
-        
+
         <?foreach($arResult['PRODUCT']['OFFERS'] as $key=>$arOffer):?>
-           
+
 
             <?$currency = $arOffer["PRICE"]["CURRENCY"];?>
-        
+
             <?if($arOffer["PRICE"]["PRICE"] > 0):?>
                 <?$prices[] = $arOffer["PRICE"]["PRICE"];?>
             <?endif;?>
@@ -1088,9 +1085,9 @@ if( strlen($previewTextPos)<=0 )
 
             <div class="ajax_store_area">
 
-                
+
                 <?/*if(!empty($arResult["FIRST_ITEM"]["STORE"])):?>
-                
+
                     <?$APPLICATION->IncludeComponent(
                         "bitrix:catalog.store.amount",
                         "main",
@@ -1122,7 +1119,7 @@ if( strlen($previewTextPos)<=0 )
                 <?endif;*/?>
 
             </div>
-            
+
         </div>
 
     <?if($PHOENIX_TEMPLATE_ARRAY["ITEMS"]["CATALOG"]["ITEMS"]["STORE_BLOCK_VIEW"]["VALUE"] == "popup"):?>
@@ -1141,7 +1138,7 @@ if( strlen($previewTextPos)<=0 )
 
 
         <?if($main_key == "set_product_constructor" && $arResult["PROPERTIES"]['SHOW_BLOCK_SET_PRODUCT_CONSTRUCTOR']["VALUE"] == "Y" && $arResult['PRODUCT']['CONFIG']['OFFER_GROUP']):?>
-        
+
             <div id="set_product_constructor"></div>
 
 
@@ -1165,21 +1162,21 @@ if( strlen($previewTextPos)<=0 )
             <?if($arResult["PROPERTIES"]["HIDELINE_BLOCK_SET_PRODUCT_CONSTRUCTOR"]["VALUE"] != "Y"):?>
 
                 <div class="cart-title <?if(strlen($arResult["PROPERTIES"]["TITLE_BLOCK_SET_PRODUCT_CONSTRUCTOR"]["VALUE"]) <= 0):?>empty-title<?endif;?> ">
-                    
+
                     <?if(strlen($arResult["PROPERTIES"]["TITLE_BLOCK_SET_PRODUCT_CONSTRUCTOR"]["VALUE"]) > 0):?>
                         <div class="title"><?=$arResult["PROPERTIES"]["TITLE_BLOCK_SET_PRODUCT_CONSTRUCTOR"]["~VALUE"]?></div>
                     <?endif;?>
-                    
+
                     <div class="line"></div>
-                    
+
                 </div>
-            
+
             <?endif;?>
 
             <?
                 if ($arResult['PRODUCT']['CONFIG']["SHOW_OFFERS"])
                 {
-                    
+
                     foreach ($arResult['PRODUCT']['CONFIG']['OFFER_GROUP_VALUES'] as $offerId)
                     {?>
                         <span id="<?=$itemIds['OFFER_GROUP'].$offerId?>" style="display: none;">
@@ -1201,11 +1198,11 @@ if( strlen($previewTextPos)<=0 )
 
                     <?
                     }
-                   
+
                 }
                 else
                 {
-                    
+
                     $params["IBLOCK_ID"]=$PHOENIX_TEMPLATE_ARRAY["ITEMS"]['CATALOG']["IBLOCK_ID"];
                     $params["ELEMENT_ID"]=$arResult['ID'];
                     $APPLICATION->IncludeComponent('bitrix:catalog.set.constructor', 'main',$params,
@@ -1222,19 +1219,19 @@ if( strlen($previewTextPos)<=0 )
         <?if($main_key == "set_product" && $arResult["SHOW_SET_PRODUCT"]):?>
 
             <div class="cart-block " id="set_product">
-                
+
                 <?if($arResult["PROPERTIES"]["HIDELINE_BLOCK_SET_PRODUCT"]["VALUE"] != "Y"):?>
-                
+
                     <div class="cart-title <?if(strlen($arResult["PROPERTIES"]["TITLE_BLOCK_SET_PRODUCT"]["VALUE"]) <= 0):?>empty-title<?endif;?> ">
-                        
+
                         <?if(strlen($arResult["PROPERTIES"]["TITLE_BLOCK_SET_PRODUCT"]["VALUE"]) > 0):?>
                             <div class="title"><?=$arResult["PROPERTIES"]["TITLE_BLOCK_SET_PRODUCT"]["~VALUE"]?></div>
                         <?endif;?>
-                        
+
                         <div class="line"></div>
-                        
+
                     </div>
-                
+
                 <?endif;?>
 
 
@@ -1253,7 +1250,7 @@ if( strlen($previewTextPos)<=0 )
                                 <?if(strlen($arSet["NAME_OFFERS"])>0):?>
                                     <div class="sku"><?=$arSet["NAME_OFFERS"]?></div>
                                 <?endif;?>
-                                
+
                                 <div class="measure-label"><?=$arSet["MEASURE"]?></div>
                                 <?
 
@@ -1287,30 +1284,30 @@ if( strlen($previewTextPos)<=0 )
                     <?endforeach;?>
 
                 </div>
-                
-            </div>
-        
-        <?endif;?>   
 
-        
+            </div>
+
+        <?endif;?>
+
+
         <?if($main_key == "advantages" && isset($arResult["ADVANTAGES"]) && !empty($arResult["ADVANTAGES"])):?>
 
             <div class="cart-block " id="advantages">
-                
+
                 <?if($arResult["PROPERTIES"]["HIDELINE_BLOCK2"]["VALUE"] != "Y"):?>
-                
+
                     <div class="cart-title <?if(strlen($arResult["PROPERTIES"]["TITLE_BLOCK2"]["VALUE"]) <= 0):?>empty-title<?endif;?> ">
-                        
+
                         <?if(strlen($arResult["PROPERTIES"]["TITLE_BLOCK2"]["VALUE"]) > 0):?>
                             <div class="title"><?=$arResult["PROPERTIES"]["TITLE_BLOCK2"]["~VALUE"]?></div>
                         <?endif;?>
-                        
+
                         <div class="line"></div>
-                        
+
                     </div>
-                
+
                 <?endif;?>
-                
+
                 <div class="cart-advantage">
                     <div class="row">
 
@@ -1318,47 +1315,47 @@ if( strlen($previewTextPos)<=0 )
                             $total_count = count($arResult["ADVANTAGES"]);
 
                             $class = "col-lg-3 col-sm-4 col-12";
-                            
+
                             if($total_count%3 == 0)
                                 $class = "col-sm-4 col-12";
-                            
-                            
+
+
                             if($total_count == 2)
                                 $class = "col-sm-6 col-12";
-                            
-                            
+
+
                             if($total_count == 1)
                                 $class = "col-12";
-                            
+
                         ?>
 
                         <?foreach($arResult["ADVANTAGES"] as $key=>$arAdv):?>
 
-                        
+
 
                             <div class="<?=$class?>">
                                 <table class="size-<?=$arAdv["PROPERTIES"]["SIZE"]["VALUE_XML_ID"]?>">
                                     <tr>
-                                    
+
                                         <td class="img">
-                                        
+
                                             <?if($arAdv["PREVIEW_PICTURE_SRC"]):?>
                                                 <img data-src="<?=$arAdv["PREVIEW_PICTURE_SRC"]?>" class="d-block mx-auto img-fluid lazyload"  alt=""/>
 
                                             <?elseif(strlen($arAdv["PROPERTIES"]["ICON"]["VALUE"]) && $arAdv["PREVIEW_PICTURE"] <= 0):?>
-                     
+
                                                 <div class="icon">
                                                     <i class="<?=$arAdv["PROPERTIES"]["ICON"]["VALUE"]?>" <?if(strlen($arAdv["PROPERTIES"]["ICON"]["DESCRIPTION"]) > 0):?>style="color: <?=$arAdv["PROPERTIES"]["ICON"]["DESCRIPTION"]?>;"<?endif;?>></i>
                                                 </div>
-                                                
+
                                             <?else:?>
                                                 <div class="icon default"></div>
                                             <?endif;?>
-                                            
+
                                         </td>
-                                        
+
                                         <td class='text'><?=$arAdv["PROPERTIES"]["SIGN"]["~VALUE"]?></td>
-                                        
+
                                     </tr>
                                 </table>
 
@@ -1366,33 +1363,33 @@ if( strlen($previewTextPos)<=0 )
                             </div>
 
                         <?endforeach;?>
-                        
-        
+
+
                     </div>
                 </div>
-                
+
             </div>
-        
-        <?endif;?>   
-        
-        
-        
+
+        <?endif;?>
+
+
+
         <?if(  $main_key == "chars" && (!empty($arResult['PRODUCT']["CHARS_SORT"]) || !empty($arResult["PROPERTIES"]["FILES"]["VALUE"]))):?>
 
-         
+
             <div class="cart-block " id='chars'>
-                
+
                 <?if($arResult["PROPERTIES"]["HIDELINE_BLOCK3"]["VALUE"] != "Y"):?>
-                
+
                     <div class="cart-title <?if(strlen($arResult["PROPERTIES"]["TITLE_BLOCK3"]["VALUE"]) <= 0):?>empty-title<?endif;?> ">
-                        
+
                         <?if(strlen($arResult["PROPERTIES"]["TITLE_BLOCK3"]["VALUE"]) > 0):?>
                             <div class="title"><?=$arResult["PROPERTIES"]["TITLE_BLOCK3"]["~VALUE"]?></div>
                         <?endif;?>
-                        
+
                         <div class="line"></div>
                     </div>
-                    
+
                 <?endif;?>
 
                 <div class="cart-char <?=$arResult["UF_CHARS_VIEW_ENUM"]["XML_ID"]?>">
@@ -1405,7 +1402,7 @@ if( strlen($previewTextPos)<=0 )
 
                             if($arResult["UF_CHARS_VIEW_ENUM"]["XML_ID"] == "col-one")
                             {
-                           
+
                                 if( (!empty($arResult['PRODUCT']["CHARS_SORT"]) || ($arResult['PRODUCT']['CONFIG']["SHOW_OFFERS"] && $arResult['PRODUCT']['HAVEOFFERS'])) && !empty($arResult["PROPERTIES"]["FILES"]["VALUE"]))
                                 {
                                     $charsColLeft = "col-sm-8 col-12";
@@ -1418,11 +1415,11 @@ if( strlen($previewTextPos)<=0 )
                             $countBreak = intval($PHOENIX_TEMPLATE_ARRAY["ITEMS"]["CATALOG"]["ITEMS"]['CHARS_SHOW_COUNT']['VALUE']);
 
                         ?>
-                    
+
                         <div class="<?=$charsColLeft?> cart-char-col-left">
-    
+
                             <div class="cart-char-table-wrap show-hidden-parent">
-                                
+
 
                                 <?foreach ($arResult['PRODUCT']["CHARS_SORT"] as $keyChar => $valueChar):?>
                                     <?if($keyChar == "sku_chars"):?>
@@ -1451,7 +1448,7 @@ if( strlen($previewTextPos)<=0 )
                                         <?endif;?>
 
                                         <?if(!empty($arResult['PRODUCT']['PROPS_CHARS'])):?>
-                    
+
                                             <?foreach($arResult['PRODUCT']['PROPS_CHARS'] as $key=>$value):?>
 
 
@@ -1468,11 +1465,11 @@ if( strlen($previewTextPos)<=0 )
                                                                 <?endif;?>
 
                                                             </td>
-                                                            
+
                                                             <td class="dotted">
                                                                 <div class="dotted"></div>
                                                             </td>
-                                                            
+
                                                             <td class="right bold" itemprop="value"><?=$value["VALUE"]?></td>
                                                         </tr>
                                                     </tbody>
@@ -1485,7 +1482,7 @@ if( strlen($previewTextPos)<=0 )
 
 
                                                 <?$countChars++?>
-                                    
+
                                             <?endforeach;?>
 
                                         <?endif;?>
@@ -1504,7 +1501,7 @@ if( strlen($previewTextPos)<=0 )
 
 
                                         <?if(!empty($arResult['PRODUCT']['PROP_CHARS'])):?>
-                    
+
                                             <?foreach($arResult['PRODUCT']['PROP_CHARS'] as $key=>$value):?>
 
 
@@ -1516,18 +1513,18 @@ if( strlen($previewTextPos)<=0 )
                                                     <tbody>
                                                         <tr>
                                                             <td class="left"><?=$value["NAME"]?>
-                                                                
+
 
                                                                 <?if(strlen($value["HINT"])):?>
                                                                     <i class="hint-prop fa fa-question-circle hidden-sm hidden-xs" data-toggle="prop-tooltip" data-placement="bottom" title="" data-original-title='<?=str_replace("'", "\"", $value["HINT"])?>'></i>
                                                                 <?endif;?>
 
                                                             </td>
-                                                            
+
                                                             <td class="dotted">
                                                                 <div class="dotted"></div>
                                                             </td>
-                                                            
+
                                                             <td class="right bold">
                                                                 <?=$value["VALUE"]?></td>
                                                         </tr>
@@ -1541,7 +1538,7 @@ if( strlen($previewTextPos)<=0 )
 
 
                                                 <?$countChars++?>
-                                    
+
                                             <?endforeach;?>
 
                                         <?endif;?>
@@ -1558,40 +1555,40 @@ if( strlen($previewTextPos)<=0 )
 
                                 <?endforeach;?>
 
-                            
 
-    
+
+
                                 <?if($countChars > $countBreak):?>
-                                    
+
                                     <div class="show-hidden-wrap">
                                         <a class="style-scroll-ar-down show-hidden"><span><?=$PHOENIX_TEMPLATE_ARRAY["MESS"]["SHOW_ALL"]?></span></a>
                                     </div>
-                                
+
                                 <?endif;?>
-                                
-    
-                            </div> 
+
+
+                            </div>
                         </div>
-                        
-                      
-                        
+
+
+
                         <?if(!empty($arResult["PROPERTIES"]["FILES"]["VALUE"])):?>
 
                             <?
                                 $countFiles = 0;
                                 $countBreak = intval($PHOENIX_TEMPLATE_ARRAY["ITEMS"]["CATALOG"]["ITEMS"]['FILES_SHOW_COUNT']['VALUE']);
                             ?>
-                        
+
                             <div class="<?=$charsColRight?> cart-char-col-right show-hidden-parent">
 
                                 <div class="files-list">
-                            
+
                                     <?foreach($arResult["PROPERTIES"]["FILES"]["VALUE"] as $k=>$file):?>
 
                                         <div class="item show-hidden-child <?if($countFiles >= $countBreak):?>hidden<?endif;?>">
-                                            
+
                                             <a target="_blank" href="<?=CFile::GetPath($file)?>">
-               
+
                                                 <div class="row">
 
                                                     <div class="col-auto align-self-start wr-icon">
@@ -1612,133 +1609,133 @@ if( strlen($previewTextPos)<=0 )
                                                                 </div>
 
                                                             <?endif;?>
-                                                            
+
                                                         </div>
                                                     <?endif;?>
                                                 </div>
-                                            
+
                                             </a>
                                         </div>
 
                                         <?$countFiles++;?>
-                                    
+
                                     <?endforeach;?>
-                                    
+
                                 </div>
 
                                 <?if($countFiles > $countBreak):?>
-                                    
+
                                     <div class="show-hidden-wrap">
                                         <a class="style-scroll-ar-down show-hidden"><span><?=$PHOENIX_TEMPLATE_ARRAY["MESS"]["SHOW_ALL"]?></span></a>
                                     </div>
-                                
+
                                 <?endif;?>
-                                
+
                             </div>
-                        
+
                         <?endif;?>
-                        
+
                     </div>
                 </div>
-                
+
             </div>
-        
+
         <?endif;?>
-        
-        <?if($main_key == "video" && !empty($arResult["PROPERTIES"]["VIDEO"]["VALUE"])):?>          
+
+        <?if($main_key == "video" && !empty($arResult["PROPERTIES"]["VIDEO"]["VALUE"])):?>
 
             <div class="cart-block clerfix" id='video'>
-            
+
                 <?if($arResult["PROPERTIES"]["HIDELINE_BLOCK4"]["VALUE"] != "Y"):?>
-            
+
                     <div class="cart-title <?if(strlen($arResult["PROPERTIES"]["TITLE_BLOCK4"]["VALUE"]) <= 0):?>empty-title<?endif;?> ">
-                    
+
                         <?if(strlen($arResult["PROPERTIES"]["TITLE_BLOCK4"]["VALUE"]) > 0):?>
                             <div class="title"><?=$arResult["PROPERTIES"]["TITLE_BLOCK4"]["~VALUE"]?></div>
                         <?endif;?>
-                        
+
                         <div class="line"></div>
-                    
+
                     </div>
-                    
+
                 <?endif;?>
-        
+
                 <div class="cart-video">
 
-                    
+
                     <?foreach($arResult["PROPERTIES"]["VIDEO"]["VALUE"] as $key=>$video):?>
 
                         <div class="cart-video-item row video-start-parent">
 
                             <img class="lazyload img-for-lazyload video-start-js" data-src="<?=SITE_TEMPLATE_PATH?>/images/one_px.png">
-        
+
                             <div class="<?if(strlen($arResult["PROPERTIES"]["VIDEO_DESC"]["VALUE"][$key]) > 0 || strlen($arResult["PROPERTIES"]["VIDEO_DESC"]["DESCRIPTION"][$key]) > 0):?>col-lg-8 col-12<?else:?>col-12<?endif;?>">
-                            
+
                                 <div class="videoframe-wrap <?if(strlen($arResult["PROPERTIES"]["VIDEO_DESC"]["VALUE"][$key]) > 0 || strlen($arResult["PROPERTIES"]["VIDEO_DESC"]["DESCRIPTION"][$key]) > 0):?>right-col<?endif;?>">
 
                                     <?$iframe = CPhoenix::createVideo($video);?>
 
                                     <div class="iframe-video-area" data-src="<?=htmlspecialcharsbx($iframe["HTML"])?>"></div>
-        
+
                                     <?/*<iframe width="100%" height="500" src="https://www.youtube.com/embed/<?=$iframe["ID"]?>" frameborder="0" allow="autoplay" allowfullscreen></iframe>*/?>
                                 </div>
-                                
+
                             </div>
-                            
-                            
+
+
                             <?if(strlen($arResult["PROPERTIES"]["VIDEO_DESC"]["VALUE"][$key]) > 0 || strlen($arResult["PROPERTIES"]["VIDEO_DESC"]["DESCRIPTION"][$key]) > 0):?>
-                            
+
                                 <div class="col-lg-4 col-12">
-            
+
                                     <div class="video-text text-content">
-                                        
+
                                         <?if(strlen(trim($arResult["PROPERTIES"]["VIDEO_DESC"]["VALUE"][$key])) > 0):?>
                                             <h4><?=$arResult["PROPERTIES"]["VIDEO_DESC"]["VALUE"][$key]?></h4>
                                         <?endif;?>
-            
+
                                         <?if(strlen($arResult["PROPERTIES"]["VIDEO_DESC"]["DESCRIPTION"][$key]) > 0):?>
                                             <p><?=$arResult["PROPERTIES"]["VIDEO_DESC"]["DESCRIPTION"][$key]?></p>
                                         <?endif;?>
-                                        
+
                                     </div>
-                                    
+
                                 </div>
-                            
+
                             <?endif;?>
-        
+
                         </div>
-                    
+
                     <?endforeach;?>
-        
+
                 </div>
-                
+
             </div>
-            
+
         <?endif;?>
-        
-        
+
+
         <?if($main_key == "similar" && isset($arResult["SIMILAR"]) && !empty($arResult["SIMILAR"]) ):?>
-            
+
             <div class="cart-block universal-parent-slider universal-mobile-arrows" id='similar'>
-                
+
                 <?if($arResult["PROPERTIES"]["HIDELINE_BLOCK5"]["VALUE"] != "Y"):?>
-                
+
                     <div class="cart-title <?if(strlen($arResult["PROPERTIES"]["TITLE_BLOCK5"]["VALUE"]) <= 0):?>empty-title<?endif;?> ">
-                    
+
                         <?if(strlen($arResult["PROPERTIES"]["TITLE_BLOCK5"]["VALUE"]) > 0):?>
                             <div class="title"><?=$arResult["PROPERTIES"]["TITLE_BLOCK5"]["~VALUE"]?></div>
                         <?endif;?>
-                        
+
                         <div class="line"></div>
 
-                        
+
                         <div class="universal-arrows-mini wr-arrows-slick d-none">
                             <div class="arrow-next"></div>
                             <div class="arrow-prev"></div>
                         </div>
-                        
+
                     </div>
-                
+
                 <?endif;?>
 
                 <div class="cart-catalog-list-wrap">
@@ -1782,7 +1779,7 @@ if( strlen($previewTextPos)<=0 )
 
                                 "SECTION_URL" => $arResult["FOLDER"].$arResult["URL_TEMPLATES"]["section"],
                                 "DETAIL_URL" => $arResult["FOLDER"].$arResult["URL_TEMPLATES"]["element"],
-                                
+
                                 "OFFERS_SORT_FIELD" => "sort",
                                 "OFFERS_SORT_ORDER" => "id",
                                 "OFFERS_SORT_FIELD2" => "asc",
@@ -1813,7 +1810,7 @@ if( strlen($previewTextPos)<=0 )
                                 "ADD_PROPERTIES_TO_BASKET" => "Y",
                                 "PARTIAL_PRODUCT_PROPERTIES" => "N",
                                 "PAGER_SHOW_ALWAYS" => "N",
-                                
+
                                 "PAGER_DESC_NUMBERING" => "N",
                                 "PAGER_BASE_LINK_ENABLE" => "N",
                                 "LAZY_LOAD" => "N",
@@ -1836,7 +1833,7 @@ if( strlen($previewTextPos)<=0 )
                                 "META_KEYWORDS" => "-",
                                 "META_DESCRIPTION" => "-",
                                 "BROWSER_TITLE" => "-",
-                                
+
                                 'USE_ENHANCED_ECOMMERCE' => '',
                                 'ADD_TO_BASKET_ACTION' => "",
                                 'SHOW_CLOSE_POPUP' => "",
@@ -1859,43 +1856,43 @@ if( strlen($previewTextPos)<=0 )
                                 "PROPERTY_CODE" => array(),
                                 "PROPERTY_CODE_MOBILE" => array(),
                                 'LABEL_PROP' => array(),
-                                
+
                             ),
                             $component
                         );
-                      
+
                     ?>
 
                 </div>
-                
+
             </div>
-        
+
         <?endif;?>
 
         <?if($main_key == "accessory" && !empty($arResult["ACCESSORY"]) ):?>
-            
+
             <div class="cart-block universal-parent-slider universal-mobile-arrows" id='accessory'>
-                
+
                 <?if($arResult["PROPERTIES"]["HIDELINE_BLOCK13"]["VALUE"] != "Y"):?>
 
-                
+
                     <div class="cart-title <?if(strlen($arResult["PROPERTIES"]["TITLE_BLOCK13"]["VALUE"]) <= 0):?>empty-title<?endif;?> ">
-                    
+
                         <?if(strlen($arResult["PROPERTIES"]["TITLE_BLOCK13"]["VALUE"]) > 0):?>
                             <div class="title"><?=$arResult["PROPERTIES"]["TITLE_BLOCK13"]["~VALUE"]?></div>
                         <?endif;?>
-                        
+
                         <div class="line"></div>
 
-                      
+
                         <div class="universal-arrows-mini wr-arrows-slick d-none">
                             <div class="arrow-next"></div>
                             <div class="arrow-prev"></div>
                         </div>
-                    
+
 
                     </div>
-                
+
                 <?endif;?>
 
                 <div class="cart-catalog-list-wrap">
@@ -1936,7 +1933,7 @@ if( strlen($previewTextPos)<=0 )
 
                                 "SECTION_URL" => $arResult["FOLDER"].$arResult["URL_TEMPLATES"]["section"],
                                 "DETAIL_URL" => $arResult["FOLDER"].$arResult["URL_TEMPLATES"]["element"],
-                                
+
                                 "OFFERS_SORT_FIELD" => "sort",
                                 "OFFERS_SORT_ORDER" => "id",
                                 "OFFERS_SORT_FIELD2" => "asc",
@@ -1965,7 +1962,7 @@ if( strlen($previewTextPos)<=0 )
                                 "ADD_PROPERTIES_TO_BASKET" => "Y",
                                 "PARTIAL_PRODUCT_PROPERTIES" => "N",
                                 "PAGER_SHOW_ALWAYS" => "N",
-                                
+
                                 "PAGER_DESC_NUMBERING" => "N",
                                 "PAGER_BASE_LINK_ENABLE" => "N",
                                 "LAZY_LOAD" => "N",
@@ -1989,7 +1986,7 @@ if( strlen($previewTextPos)<=0 )
                                 "META_KEYWORDS" => "-",
                                 "META_DESCRIPTION" => "-",
                                 "BROWSER_TITLE" => "-",
-                                
+
                                 'USE_ENHANCED_ECOMMERCE' => '',
                                 'ADD_TO_BASKET_ACTION' => "",
                                 'SHOW_CLOSE_POPUP' => "",
@@ -2012,33 +2009,33 @@ if( strlen($previewTextPos)<=0 )
                                 "PROPERTY_CODE" => array(),
                                 "PROPERTY_CODE_MOBILE" => array(),
                                 'LABEL_PROP' => array(),
-                                
+
                             ),
                             $component
                         );
-                      
+
                     ?>
 
                 </div>
-                
+
             </div>
-        
+
         <?endif;?>
 
         <?if($main_key == "similar_category" && !empty($arResult["SIMILAR_CATEGORY"])):?>
             <div class="cart-block " id='similar_category'>
 
                 <?if($arResult["PROPERTIES"]["HIDELINE_BLOCK11"]["VALUE"] != "Y"):?>
-                
+
                     <div class="cart-title <?if(strlen($arResult["PROPERTIES"]["TITLE_BLOCK11"]["VALUE"]) <= 0):?>empty-title<?endif;?> ">
-                    
+
                         <?if(strlen($arResult["PROPERTIES"]["TITLE_BLOCK11"]["VALUE"]) > 0):?>
                             <div class="title"><?=$arResult["PROPERTIES"]["TITLE_BLOCK11"]["~VALUE"]?></div>
                         <?endif;?>
-                        
+
                         <div class="line"></div>
                     </div>
-                
+
                 <?endif;?>
 
 
@@ -2082,24 +2079,24 @@ if( strlen($previewTextPos)<=0 )
                                 <div class="section-items-slider parent-slider-item-js">
 
                                     <?foreach($arResult["SIMILAR_CATEGORY"] as $keySimilarCategory => $itemSimilarCategory):?>
-                                    
+
                                         <div class="<?=($keySimilarCategory != 0) ? 'noactive-slide-lazyload' : ''?>">
                                             <div class="item">
                                                 <a href="<?=$itemSimilarCategory["SECTION_PAGE_URL"]?>" class="d-block">
-                                                        
+
                                                     <img src="<?=$itemSimilarCategory["PICTURE_SRC"]?>" class="img-fluid mx-auto d-block" alt="">
 
                                                     <div class="desc row align-items-center">
                                                         <div class="col-12">
                                                             <?=$itemSimilarCategory["~NAME"]?>
-                                                        </div> 
+                                                        </div>
                                                     </div>
                                                 </a>
                                             </div>
                                         </div>
 
                                     <?endforeach;?>
-                                  
+
                                 </div>
 
                                 <?if(intval($arResult["SIMILAR_CATEGORY_CNT"])>3):?>
@@ -2121,18 +2118,18 @@ if( strlen($previewTextPos)<=0 )
         <?if($main_key == "stuff" && strlen($arResult["PROPERTIES"]["STUFF"]["VALUE"])):?>
 
             <div class="cart-block " id='stuff'>
-                
+
                 <?if($arResult["PROPERTIES"]["HIDELINE_BLOCK6"]["VALUE"] != "Y"):?>
-                    
+
                     <div class="cart-title <?if(strlen($arResult["PROPERTIES"]["TITLE_BLOCK6"]["VALUE"]) <= 0):?>empty-title<?endif;?> ">
-                    
+
                         <?if(strlen($arResult["PROPERTIES"]["TITLE_BLOCK6"]["VALUE"]) > 0):?>
                             <div class="title"><?=$arResult["PROPERTIES"]["TITLE_BLOCK6"]["~VALUE"]?></div>
                         <?endif;?>
-                        
+
                         <div class="line"></div>
                     </div>
-                
+
                 <?endif;?>
 
                 <?
@@ -2157,34 +2154,34 @@ if( strlen($previewTextPos)<=0 )
                 );?>
 
             </div>
-           
+
 
         <?endif;?>
-        
-        
+
+
         <?if($main_key == "news_list" && !empty($arResult["PROPERTIES"]["NEWS_LIST"]["VALUE"])):?>
-            
+
             <div class="cart-block universal-parent-slider universal-mobile-arrows" id='news_list'>
-                
+
                 <?if($arResult["PROPERTIES"]["HIDELINE_BLOCK7"]["VALUE"] != "Y"):?>
-                    
-                
+
+
                     <div class="cart-title <?if(strlen($arResult["PROPERTIES"]["TITLE_BLOCK7"]["VALUE"]) <= 0):?>empty-title<?endif;?> ">
-                    
+
                         <?if(strlen($arResult["PROPERTIES"]["TITLE_BLOCK7"]["VALUE"]) > 0):?>
                             <div class="title"><?=$arResult["PROPERTIES"]["TITLE_BLOCK7"]["~VALUE"]?></div>
                         <?endif;?>
-                        
+
                         <div class="line"></div>
 
-                       
+
                         <div class="universal-arrows-mini wr-arrows-slick d-none">
                             <div class="arrow-next"></div>
                             <div class="arrow-prev"></div>
                         </div>
-                       
+
                     </div>
-                
+
                 <?endif;?>
 
                 <?
@@ -2207,12 +2204,12 @@ if( strlen($previewTextPos)<=0 )
                         )
                     );
                 ?>
-                
-            </div>  
-                
+
+            </div>
+
         <?endif;?>
-        
-        
+
+
         <?if($main_key == "faq" && !empty($arResult["PROPERTIES"]["FAQ"]["VALUE"])):?>
 
             <?
@@ -2227,27 +2224,27 @@ if( strlen($previewTextPos)<=0 )
                     $class2="col-xl-6 col-sm-5 col-12 with-photo";
                 }
             ?>
-            
+
             <div class="cart-block " id="faq">
-                
+
                 <?if($arResult["PROPERTIES"]["HIDELINE_BLOCK8"]["VALUE"] != "Y"):?>
-                
+
                     <div class="cart-title <?if(strlen($arResult["PROPERTIES"]["TITLE_BLOCK8"]["VALUE"]) <= 0):?>empty-title<?endif;?> ">
-                    
+
                         <?if(strlen($arResult["PROPERTIES"]["TITLE_BLOCK8"]["VALUE"]) > 0):?>
                             <div class="title"><?=$arResult["PROPERTIES"]["TITLE_BLOCK8"]["~VALUE"]?></div>
                         <?endif;?>
-                        
+
                         <div class="line"></div>
-                        
+
                     </div>
-                
+
                 <?endif;?>
 
                 <div class="faq-block cart-faq-block">
 
                     <?if(  strlen($arResult["PROPERTIES"]["FAQ_PICTURE"]["VALUE"])>0 || strlen($arResult["PROPERTIES"]["FAQ_NAME"]["VALUE"])>0|| strlen($arResult["PROPERTIES"]["FAQ_POST"]["VALUE"])>0 || strlen($arResult["PROPERTIES"]["FAQ_BUTTON_NAME"]["VALUE"])>0  ):?>
-                
+
                         <div class="faq-table row align-items-center no-margin">
 
                             <?if(strlen($arResult["PROPERTIES"]["FAQ_PICTURE"]["VALUE"])>0):?>
@@ -2263,14 +2260,14 @@ if( strlen($previewTextPos)<=0 )
                                         </tr>
                                     </table>
 
-                                    
-                                </div>   
+
+                                </div>
 
                             <?endif;?>
 
 
                             <?if(strlen($arResult["PROPERTIES"]["FAQ_NAME"]["VALUE"])>0|| strlen($arResult["PROPERTIES"]["FAQ_PROF"]["VALUE"])>0):?>
-                        
+
                                 <div class="faq-cell <?=$class2?> center">
                                     <div class="wrap-faqtext">
 
@@ -2283,14 +2280,14 @@ if( strlen($previewTextPos)<=0 )
                                         <?endif;?>
 
                                     </div>
-                                    
+
                                 </div>
 
                             <?endif;?>
 
 
                             <?if(strlen($arResult["PROPERTIES"]["FAQ_BUTTON_NAME"]["VALUE"])>0):?>
-                         
+
 
 
                                 <div class="faq-cell <?=$class3?> right">
@@ -2299,11 +2296,11 @@ if( strlen($previewTextPos)<=0 )
                                         <a class="big button-def <?=$PHOENIX_TEMPLATE_ARRAY["ITEMS"]["DESIGN"]["ITEMS"]["BTN_VIEW"]['VALUE']?> call-modal callform main-color" data-header = "<?=$block_name?>" data-call-modal="form<?=$arResult["PROPERTIES"]["FAQ_FORM"]["VALUE"]?>" title="<?=$arResult["PROPERTIES"]["FAQ_BUTTON_NAME"]["VALUE"]?>"><?=$arResult["PROPERTIES"]["FAQ_BUTTON_NAME"]["VALUE"]?></a>
 
                                     </div>
-                                    
+
                                 </div>
 
                             <?endif;?>
-                            
+
                         </div>
 
                     <?endif;?>
@@ -2313,7 +2310,7 @@ if( strlen($previewTextPos)<=0 )
 
                             <?foreach($arResult["PROPERTIES"]["FAQ"]["VALUE"] as $k=>$arFaq):?>
                                 <div class="faq-element quest-parent <?if($k == 0 && $arResult["PROPERTIES"]["FAQ_HIDE_FIRST_ITEM"]["VALUE_XML_ID"] != "Y"):?> active <?endif;?> toogle-animate-parent">
-                                    
+
                                     <?CPhoenix::admin_setting($arFaq, false)?>
 
                                     <div class="question toogle-animate-click">
@@ -2329,239 +2326,239 @@ if( strlen($previewTextPos)<=0 )
                         </div>
                     </div>
 
-              
-                    
+
+
                 </div>
-                
+
             </div>
-        
+
         <?endif;?>
-        
-        
+
+
         <?if($main_key == "text" && strlen($arResult["DETAIL_TEXT"]) > 0):?>
-        
+
             <div class="cart-block " id="text">
-                
+
                 <?if($arResult["PROPERTIES"]["HIDELINE_BLOCK9"]["VALUE"] != "Y"):?>
-                
+
                     <div class="cart-title <?if(strlen($arResult["PROPERTIES"]["TITLE_BLOCK9"]["VALUE"]) <= 0):?>empty-title<?endif;?> ">
-                    
+
                         <?if(strlen($arResult["PROPERTIES"]["TITLE_BLOCK9"]["VALUE"]) > 0):?>
                             <div class="title"><?=$arResult["PROPERTIES"]["TITLE_BLOCK9"]["~VALUE"]?></div>
                         <?endif;?>
-                        
+
                         <div class="line"></div>
                     </div>
-                
+
                 <?endif;?>
-        
+
                 <div class="cart-simple-text text-content" <?if($desc == 1):?>itemprop="description"<?endif;?>><?=$arResult["~DETAIL_TEXT"]?></div>
-                
+
             </div>
-        
-        
+
+
         <?endif;?>
 
         <?if($main_key == "text2" && is_array($arResult["PROPERTIES"]["DETAIL_TEXT_BLOCK12"]["VALUE"])):?>
 
-        
+
             <div class="cart-block " id="text2">
-                
+
                 <?if($arResult["PROPERTIES"]["HIDELINE_BLOCK12"]["VALUE"] != "Y"):?>
-                
+
                     <div class="cart-title <?if(strlen($arResult["PROPERTIES"]["TITLE_BLOCK12"]["VALUE"]) <= 0):?>empty-title<?endif;?> ">
-                    
+
                         <?if(strlen($arResult["PROPERTIES"]["TITLE_BLOCK12"]["VALUE"]) > 0):?>
                             <div class="title"><?=$arResult["PROPERTIES"]["TITLE_BLOCK12"]["~VALUE"]?></div>
                         <?endif;?>
-                        
+
                         <div class="line"></div>
                     </div>
-                
+
                 <?endif;?>
 
                 <?if(isset($arResult["PROPERTIES"]["DETAIL_TEXT_BLOCK12"]["~VALUE"]["TEXT"])):?>
-        
+
                     <div class="cart-simple-text text-content"><?=$arResult["PROPERTIES"]["DETAIL_TEXT_BLOCK12"]["~VALUE"]["TEXT"]?></div>
 
                 <?endif;?>
-                
+
             </div>
-        
-        
+
+
         <?endif;?>
 
 
         <?if($main_key == "text3" && is_array($arResult["PROPERTIES"]["DETAIL_TEXT_BLOCK15"]["VALUE"])):?>
 
-        
+
             <div class="cart-block " id="text3">
-                
+
                 <?if($arResult["PROPERTIES"]["HIDELINE_BLOCK15"]["VALUE"] != "Y"):?>
-                
+
                     <div class="cart-title <?if(strlen($arResult["PROPERTIES"]["TITLE_BLOCK15"]["VALUE"]) <= 0):?>empty-title<?endif;?> ">
-                    
+
                         <?if(strlen($arResult["PROPERTIES"]["TITLE_BLOCK15"]["VALUE"]) > 0):?>
                             <div class="title"><?=$arResult["PROPERTIES"]["TITLE_BLOCK15"]["~VALUE"]?></div>
                         <?endif;?>
-                        
+
                         <div class="line"></div>
                     </div>
-                
+
                 <?endif;?>
 
                 <?if(isset($arResult["PROPERTIES"]["DETAIL_TEXT_BLOCK15"]["~VALUE"]["TEXT"])):?>
-        
+
                     <div class="cart-simple-text text-content"><?=$arResult["PROPERTIES"]["DETAIL_TEXT_BLOCK15"]["~VALUE"]["TEXT"]?></div>
 
                 <?endif;?>
-                
+
             </div>
-        
-        
+
+
         <?endif;?>
-        
-        
+
+
         <?if($main_key == "gallery" && !empty($arResult["PROPERTIES"]["GALLERY"]["VALUE"])):?>
-        
+
             <div class="cart-block " id="gallery">
-                
+
                 <?if($arResult["PROPERTIES"]["HIDELINE_BLOCK10"]["VALUE"] != "Y"):?>
-                
+
                     <div class="cart-title <?if(strlen($arResult["PROPERTIES"]["TITLE_BLOCK10"]["VALUE"]) <= 0):?>empty-title<?endif;?> ">
-                    
+
                         <?if(strlen($arResult["PROPERTIES"]["TITLE_BLOCK10"]["VALUE"]) > 0):?>
                             <div class="title"><?=$arResult["PROPERTIES"]["TITLE_BLOCK10"]["~VALUE"]?></div>
                         <?endif;?>
-                        
+
                         <div class="line"></div>
                     </div>
-                
+
                 <?endif;?>
-        
-                <div class="cart-simple-gallery">         
-                  
+
+                <div class="cart-simple-gallery">
+
                     <?if($arResult["PROPERTIES"]["GALLERY_COLS"]["VALUE_XML_ID"] == ""):?>
                         <?$arResult["PROPERTIES"]["GALLERY_COLS"]["VALUE_XML_ID"] = "four";?>
                     <?endif;?>
 
                     <?if($arResult["PROPERTIES"]["GALLERY_COLS"]["VALUE_XML_ID"] == "one"):?>
-                    
+
                         <div class="single-photos">
-                        
+
                             <?foreach($arResult["PROPERTIES"]["GALLERY"]["VALUE"] as $k=>$photo):?>
-                                
+
                                 <div class="photo-item row">
-            
+
                                     <div class="<?if(strlen($arResult["PROPERTIES"]["GALLERY"]["DESCRIPTION"][$k]) > 0):?>col-lg-8 col-12<?else:?>col-12<?endif;?>">
-                                    
+
                                         <div class="photo-wrap <?if(strlen($arResult["PROPERTIES"]["GALLERY"]["DESCRIPTION"][$k]) > 0):?>right-col<?endif;?>">
-                                        
+
                                             <?$file = CFile::ResizeImageGet($photo, array('width'=>1020, 'height'=>3020), BX_RESIZE_IMAGE_PROPORTIONAL, false);?>
                                             <?$file_big = CFile::ResizeImageGet($photo, array('width'=>2000, 'height'=>1500), BX_RESIZE_IMAGE_PROPORTIONAL, false);?>
-            
+
                                             <a href="<?=$file_big["src"]?>" data-gallery="gal-item-add" class="cursor-loop" title="<?=CPhoenix::prepareText($arResult["PROPERTIES"]["GALLERY"]["DESCRIPTION"][$k])?>">
                                                 <img class="img-fluid lazyload" data-src="<?=$file["src"]?>" />
-                                            </a> 
-                                            
-                                            
+                                            </a>
+
+
                                         </div>
-                                        
+
                                     </div>
-                                    
-                                    
+
+
                                     <?if(strlen($arResult["PROPERTIES"]["GALLERY"]["DESCRIPTION"][$k]) > 0):?>
-                                    
+
                                         <div class="col-lg-4 col-12">
-                    
+
                                             <div class="photo-text text-content">
 
                                                 <?if(strlen($arResult["PROPERTIES"]["GALLERY"]["DESCRIPTION"][$k]) > 0):?>
                                                     <p><?=$arResult["PROPERTIES"]["GALLERY"]["~DESCRIPTION"][$k]?></p>
                                                 <?endif;?>
-                                                
+
                                             </div>
-                                            
+
                                         </div>
-                                    
+
                                     <?endif;?>
-                
+
                                 </div>
-                                
-                            
+
+
                             <?endforeach;?>
-                        
+
                         </div>
-                    
-                    
+
+
                     <?else:?>
 
-                    
+
                         <div class="gallery-block gallery row <?if($arResult["PROPERTIES"]["GALLERY_ANIMATE"]["VALUE"] == "Y"):?>parent-animate<?endif;?>">
-                        
+
                             <?$size_big = array('width'=>2000, 'height'=>1500);?>
-                            
+
                             <?if($arResult["PROPERTIES"]["GALLERY_COLS"]["VALUE_XML_ID"] == "two"):?>
-                                
+
                                 <?$class = "col-6";?>
                                 <?$size = array('width'=>506, 'height'=>482);?>
-                                
+
                                 <?$clear = 2;?>
-                                
+
                             <?endif;?>
-                            
+
                             <?if($arResult["PROPERTIES"]["GALLERY_COLS"]["VALUE_XML_ID"] == "three"):?>
-                                
+
                                 <?$class = "col-md-4 col-6";?>
                                 <?$size = array('width'=>500, 'height'=>500);?>
-                                
+
                                 <?$clear = 3;?>
-                                
+
                             <?endif;?>
-                            
+
                             <?if($arResult["PROPERTIES"]["GALLERY_COLS"]["VALUE_XML_ID"] == "four"):?>
-                                
+
                                 <?$class = "col-md-3 col-6";?>
                                 <?$size = array('width'=>400, 'height'=>400);?>
-                                
+
                                 <?$clear = 4;?>
-                                
+
                             <?endif;?>
-                            
+
                             <?if($arResult["PROPERTIES"]["GALLERY_COLS"]["VALUE_XML_ID"] == "five"):?>
-                                
+
                                 <?$class = "col-md-five col-6";?>
                                 <?$size = array('width'=>300, 'height'=>300);?>
-                                
+
                                 <?$clear = 5;?>
-                                
+
                             <?endif;?>
-                            
+
                             <?if($arResult["PROPERTIES"]["GALLERY_COLS"]["VALUE_XML_ID"] == "six"):?>
-                                
+
                                 <?$class = "col-md-2 col-6";?>
                                 <?$size = array('width'=>200, 'height'=>200);?>
-                                
+
                                 <?$clear = 6;?>
-                                
+
                             <?endif;?>
-                            
+
                             <?foreach($arResult["PROPERTIES"]["GALLERY"]["VALUE"] as $k=>$photo):?>
-                        
+
                                 <div class="<?=$class?> <?if($arResult["PROPERTIES"]["GALLERY_ANIMATE"]["VALUE"] == "Y"):?> child-animate opacity-zero<?endif;?>">
-                                
+
                                     <div class="gallery-img">
-                                    
+
                                         <?$file = CFile::ResizeImageGet($photo, $size, BX_RESIZE_IMAGE_EXACT, false, Array(), false, $PHOENIX_TEMPLATE_ARRAY["ITEMS"]["DESIGN"]["ITEMS"]["PICTURES_QUALITY"]["VALUE"]);?>
                                             <?$file_big = CFile::ResizeImageGet($photo, $size_big, BX_RESIZE_IMAGE_PROPORTIONAL, false, Array(), false, $PHOENIX_TEMPLATE_ARRAY["ITEMS"]["DESIGN"]["ITEMS"]["PICTURES_QUALITY"]["VALUE"]);?>
-            
+
                                         <a href="<?=$file_big["src"]?>" data-gallery="gal-item-add" class="cursor-loop" title="<?=CPhoenix::prepareText($arResult["PROPERTIES"]["GALLERY"]["DESCRIPTION"][$k])?>">
-                                        
+
                                             <div class="corner-line"></div>
                                             <img class="d-block mx-auto img-fluid lazyload" data-src="<?=$file["src"]?>" />
-                                                                 
+
                                         </a>
-                                    </div>                   
+                                    </div>
                                 </div>
                             <?endforeach;?>
                         </div>
@@ -2590,50 +2587,50 @@ if( strlen($previewTextPos)<=0 )
 <?if($PHOENIX_TEMPLATE_ARRAY["IS_ADMIN"] && !empty($arResult['OFFERS']) && $arResult["SKU_EMPTY"]):?>
 
     <div class="alert-block hidden-sm hidden-xs">
-            
+
         <div class="phoenix-alert-btn mgo-widget-alert_pulse"></div>
-        
+
         <div class="alert-block-content">
-            
+
             <div class="alert-head">
                 <?=$PHOENIX_TEMPLATE_ARRAY["MESS"]["PRODUCT_ALERT_HEAD"]?>
-                
+
                 <a class="alert-close"></a>
             </div>
-            
+
             <div class="alert-body">
-                
+
                 <div class="cont">
-                        
+
                     <div class="big-name"><?=$PHOENIX_TEMPLATE_ARRAY["MESS"]["PRODUCT_ALERT_SKU"]?></div>
-                    
+
                     <div class="instr">
-                        
+
                         <div class="instr-element">
-                            
+
                             <div class="text">1. <a class="phoenix-sets-open" data-open-set="edit-sets"><?=$PHOENIX_TEMPLATE_ARRAY["MESS"]["PRODUCT_ALERT_SKU_TEXT_1"]?></a></div>
 
                             <div class="comment"><?=$PHOENIX_TEMPLATE_ARRAY["MESS"]["PRODUCT_ALERT_SKU_TEXT_1_COMMENT"]?></div>
-                            
+
                         </div>
-                        
+
                         <div class="instr-element">
-                            
+
                             <div class="text">2. <a class="phoenix-sets-open" data-open-set="edit-sets"><?=$PHOENIX_TEMPLATE_ARRAY["MESS"]["PRODUCT_ALERT_SKU_TEXT_2"]?></a></div>
 
                             <div class="comment"><?=$PHOENIX_TEMPLATE_ARRAY["MESS"]["PRODUCT_ALERT_SKU_TEXT_2_COMMENT"]?></div>
-                            
+
                         </div>
-                        
+
                     </div>
-                    
+
                 </div>
-                
-                
+
+
             </div>
-            
+
         </div>
-        
+
     </div>
 
 <?endif;?>
@@ -2653,7 +2650,7 @@ if( strlen($previewTextPos)<=0 )
         ARTICLE: '<?=$PHOENIX_TEMPLATE_ARRAY["MESS"]["ARTICLE_SHORT"]?>',
     });
     // var <?=$obName?> = new JCCatalogElement(<?=CUtil::PhpToJSObject($jsParams, false, true)?>);
-  
+
 </script>
 <?
 unset($itemIds, $jsParams);
