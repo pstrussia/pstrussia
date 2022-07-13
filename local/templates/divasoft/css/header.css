@@ -12,8 +12,9 @@ header {
 
 header div.wrapper-head-top {
     width: 100%;
-    margin-top: 10px;
-    margin-bottom: 10px;
+    /* margin-top: 10px;
+    margin-bottom: 10px; */
+    padding: 10px 0;
 }
 
 header div.wrapper-head-top div.inner-head-top {
@@ -160,7 +161,8 @@ header.color_header-dark:not(.on) div.wrap-main-menu.light div.mini-search-style
 }
 
 header.color_header-dark:not(.on) div.wrap-main-menu.dark div.mini-search-style {
-    background-image: url(../images/search/search_bl.svg);
+    /* background-image: url(../images/search/search_bl.svg); */
+    background-image: url(../images/search/search_wt.svg);
 }
 
 header div.wrap-main-menu.dark nav.main-menu {
@@ -312,10 +314,20 @@ header td.wrapper-search div.mini-search-style {
 
 header.tone-light {
     color: #000;
+    background-color: #fff;
 }
 
 header.tone-light nav.main-menu>li.parent>a>span>span {
-    background-image: url(../images/ic_open_list_contacts-light.png);
+    /* background-image: url(../images/ic_open_list_contacts-light.png); */
+    background-image: url(../images/ic_open_list_contacts.png);
+    
+}
+nav.main-menu>li>a>span.wrap-name{
+    color: #fff;
+}
+
+header.tone-light div.wrap-main-menu nav.main-menu > li.parent:hover > a{
+    background-color: #ec6e00 !important;
 }
 
 header.tone-light div.wrapper-board-contact div.ic-open-list-contact {
@@ -446,7 +458,7 @@ header.menu-type-hidden {
 }
 
 header.menu-type-on_board.menu-view-full div.wrap-main-menu {
-    background-color: rgba(255, 255, 255, .3);
+    background-color: #19357f !important;
 }
 
 header.menu-type-on_board.menu-view-content div.wrap-main-menu div.main-menu-inner {
@@ -679,7 +691,8 @@ header.tone-light .open-cart-menu,
 }
 
 header.tone-light div.mini-search-style {
-    background-image: url('../images/search/search_bl.svg');
+    /* background-image: url('../images/search/search_bl.svg'); */
+    background-image: url(../images/search/search_wt.svg);
 }
 
 header.color_header-light div.mini-search-style {
