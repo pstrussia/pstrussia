@@ -80,8 +80,8 @@ use Bitrix\Main\Localization\Loc;
 								if (empty($arPaySystem["ERROR"]))
 								{?>
 
-									<div class="col-12">
-										<h3 class="pay_name"><?=Loc::getMessage("SOA_PAY")?></h3>
+<!--									<div class="col-12">
+										<h3 class="pay_name"><?//=Loc::getMessage("SOA_PAY")?></h3>
 									</div>
 
 
@@ -91,15 +91,15 @@ use Bitrix\Main\Localization\Loc;
 
 												<div class="wr-img row align-items-center">
 													<div class="col-12">
-														<img class="d-block mx-auto img-fluid" src="<?=$arPaySystem["LOGOTIP"]["SRC"]?>" alt="<?=$arPaySystem["NAME"]?>">
+														<img class="d-block mx-auto img-fluid" src="<?//=$arPaySystem["LOGOTIP"]["SRC"]?>" alt="<?=$arPaySystem["NAME"]?>">
 													</div>
 												</div>
 
-												<div class="name"><?=$arPaySystem["NAME"]?></div>
+												<div class="name"><?//=$arPaySystem["NAME"]?></div>
 												
 											</div>
 											
-									</div>
+									</div>-->
 
 									<div class="col-12 pay-content">
 

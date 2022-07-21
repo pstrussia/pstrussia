@@ -27711,3 +27711,40 @@ textarea.redemption-form__input {
         grid-template-columns: auto;
     }
 }
+
+
+.terms {
+    padding: 206px 0 50px 0;
+}
+.terms__banner {
+    height: 340px;
+    overflow: hidden;
+    margin-bottom: 40px;
+}
+@media (max-width: 767px) {
+    .terms {
+        padding: 80px 0 50px 0;
+    }
+    .terms__banner {
+        height: 280px;
+    }
+}
+.terms__banner img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.terms__title {
+}
+.terms__block:not(:last-child) {
+    margin-bottom: 50px;
+}
+.terms__subtitle {
+}
+.terms__list {
+}
+.terms__item {
+}
+.terms__block-title {
+    font-weight: bold;
+}
