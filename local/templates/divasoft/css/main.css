@@ -27755,6 +27755,10 @@ textarea.redemption-form__input {
     color: #181818;
     padding: 4px 10px;
     border-radius: 100px;
+    transition: all 0.2s ease 0s;
+}
+.buy-sale:hover{
+    background-color: #e6b800;
 }
 
 .wrapper-image__sale {
