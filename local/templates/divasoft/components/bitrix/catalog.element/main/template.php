@@ -892,11 +892,11 @@ if( strlen($previewTextPos)<=0 )
                             </div>
 
                         </div>
-
+                        <? if($arResult['IBLOCK_SECTION_ID'] == 206){?>
                         <div class="wrapper-btn__sale">
                             <a class="buy-sale" href="/redemption/">Купить со скидкой до 20%</a>
                         </div>
-
+                        <?}?>
                         <div class="hidden-js <?=($arResult["FIRST_ITEM"]["SHOWPREORDERBTN"])?"":"d-none"?>">
 
                             <a id="<?=$itemIds['PREORDER']?>"

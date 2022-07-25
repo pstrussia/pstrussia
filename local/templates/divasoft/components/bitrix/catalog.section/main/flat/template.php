@@ -21,11 +21,12 @@
                 </div>
             <?endif;?>
             
-            
+            <? if($arItem['IBLOCK_SECTION_ID'] == 206){?>
             <div class="wrapper-image__sale">
                 <span id="<?=$itemIds['DISCOUNT_PERCENT']?>" class="sale <?=( ($arItem['CONFIG']["SHOW_DISCOUNT_PERCENT"] === 'Y' && $arItem["FIRST_ITEM"]['PRICE']['PERCENT']>0) ? '' : 'd-none')?>"><?=-$arItem["FIRST_ITEM"]['PRICE']["PERCENT"]?>%</span>
                 <a class="buy-sale" href="/redemption/">Купить со скидкой до 20%</a>
             </div>
+            <?}?>
             
             
             <?if( $arItem['CONFIG']['SHOW_DELAY'] == "Y" 
