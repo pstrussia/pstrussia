@@ -19,7 +19,7 @@ class DivasoftFeedbackAjax extends Bitrix\Main\Engine\Controller {
                     array(Bitrix\Main\Engine\ActionFilter\HttpMethod::METHOD_POST)
             ),
             new Bitrix\Main\Engine\ActionFilter\Csrf(),
-                //new DivasoftRecaptcha(), // /local/php_interface/classes/divasoft/DivasoftRecaptcha.class.php
+                new DivasoftRecaptcha(), // /local/php_interface/classes/divasoft/DivasoftRecaptcha.class.php
         ];
     }
 
