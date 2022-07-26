@@ -236,7 +236,7 @@ require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/header.php");
                             6 => "DESCRIPTION"
                         ),
                         "EVENT_MESSAGE_ID" => "FEEDBACK_FORM",
-                        "EMAIL_TO" => "gvozdev-danil@mail.ru",
+                        "EMAIL_TO" => "info@pstrussia.ru",
                         "COMPONENT_TEMPLATE" => "redemption_feedback"
                     ),
                     false
