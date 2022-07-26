@@ -3,7 +3,8 @@ require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
 $APPLICATION->SetTitle("ФЕНИКС — безлимитный конструктор лендинговых интернет-магазинов для платформы 1С-Битрикс ");
 ?>
 
-<?$APPLICATION->IncludeComponent(
+<?
+$APPLICATION->IncludeComponent(
 	"concept:phoenix.pages", 
 	".default", 
 	array(

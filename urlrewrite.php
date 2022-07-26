@@ -80,12 +80,12 @@ $arUrlRewrite=array (
     'PATH' => '/index.php',
     'SORT' => 100,
   ),
-  10 => 
-  array (
-    'CONDITION' => '#^/basket/order/#',
-    'RULE' => '',
-    'ID' => 'concept:phoenix.basket',
-    'PATH' => '/basket/index.php',
-    'SORT' => 100,
-  ),
+//  10 => 
+//  array (
+//    'CONDITION' => '#^/basket/order/#',
+//    'RULE' => '',
+//    'ID' => 'concept:phoenix.basket',
+//    'PATH' => '/basket/index.php',
+//    'SORT' => 100,
+//  ),
 );
