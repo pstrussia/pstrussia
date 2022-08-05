@@ -1185,9 +1185,9 @@ div.block div.content {
     margin-top: 60px;
 }
 
-div.block.first-bigblock div.content {
+/* div.block.first-bigblock div.content {
     z-index: 8;
-}
+} */
 
 div.block div.content.no-margin,
 div.block.small-block div.content.no-margin {
@@ -1298,7 +1298,7 @@ div.block.small-block div.head.min.right {
 
 div.block div.head {
     position: relative;
-    z-index: 5;
+    /* z-index: 5; */
     margin-bottom: 20px;
 }
 
@@ -1607,7 +1607,7 @@ div.block.first-bigblock.phoenix-firsttype-hidden {
 
 div.block.first-bigblock.phoenix-firsttype-on_board,
 div.block.first-bigblock.phoenix-firsttype-on_line {
-    padding-top: 220px;
+    padding-top:60px;
 }
 
 div.block.first-bigblock div.block-slider-table div.lvl1.part-text {
@@ -4683,7 +4683,7 @@ div.map-block div.map-height {
     right: 0;
     left: 0;
     bottom: 0;
-    z-index: 5;
+    /* z-index: 5; */
     width: 100%;
     height: 100%;
     overflow: hidden;
@@ -9133,7 +9133,7 @@ div.empl-full img.under {
 
 div.content-inner {
     position: relative;
-    z-index: 99;
+    /* z-index: 99; */
     /*padding-left: 40px;*/
     /*padding-top: 20px;*/
 }
@@ -9276,7 +9276,7 @@ div.menu-navigation ul.nav > li i {
     filter: alpha(opacity=35);
     color: #000;
     margin-right: 5px;
-    z-index: 5;
+    /* z-index: 5; */
     -webkit-transition: opacity 0.4s;
     -o-transition: opacity 0.4s;
     transition: opacity 0.4s;
@@ -21472,10 +21472,10 @@ div.fire-title:before {
     position: absolute;
     right: 0;
     bottom: 0;
-}*/
+}
 .z-i-9 {
     z-index: 9;
-}
+}*/
 
 .fly-personal-widget {
     position: relative;
@@ -25029,7 +25029,7 @@ div.bl-txt div.gallery.border-img-on img {
 
 div.bl-txt .text-content {
     position: relative;
-    z-index: 5;
+    /* z-index: 5; */
 }
 
 div.bl-txt .wr-img {
@@ -27300,7 +27300,6 @@ span.icon-answer:hover {
     color: #19357f;
 }
 .redemption {
-    padding-top: 166px;
     line-height: 1.3;
 }
 .redemption ul {
@@ -27404,9 +27403,6 @@ span.icon-answer:hover {
     }
 }
 @media (max-width: 767px) {
-    .redemption {
-        padding-top: 80px;
-    }
     .rails {
         flex-direction: column;
         align-items: center;
@@ -27786,4 +27782,13 @@ textarea.redemption-form__input {
 .wrapper-btn__sale .buy-sale{
     font-size: 16px;
     padding: 8px 12px;
+}
+
+
+.page-header .shadow-tone.light {
+    background: unset;
+}
+
+.part-left .title.main1 h1{
+    color: #fff !important;
 }

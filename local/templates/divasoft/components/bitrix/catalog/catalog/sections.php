@@ -94,10 +94,10 @@ $colsRight = "col-md-5 col-12";
                     );*/?>
                 
                     
-                    <div class="title main1"><h1><?$APPLICATION->ShowTitle(false);?></h1></div>
+                    <div class="title main1"><h1 style="color:#fff" ><?$APPLICATION->ShowTitle(false);?></h1></div>
 
                     <?if(strlen($PHOENIX_TEMPLATE_ARRAY["ITEMS"]["CATALOG"]["ITEMS"]["SUBTITLE"]["VALUE"]) > 0):?>
-                        <div class="subtitle"><?=$PHOENIX_TEMPLATE_ARRAY["ITEMS"]["CATALOG"]["ITEMS"]["SUBTITLE"]["~VALUE"]?></div>
+                        <div class="subtitle" style="color:#fff"><?=$PHOENIX_TEMPLATE_ARRAY["ITEMS"]["CATALOG"]["ITEMS"]["SUBTITLE"]["~VALUE"]?></div>
                     <?endif;?>
                                                                     
                 </div>
