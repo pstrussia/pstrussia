@@ -1195,7 +1195,7 @@ div.block.small-block div.content.no-margin {
 }
 
 div.block div.shadow-tone {
-    display: none;
+    display: none !important;
     position: absolute;
     width: 100%;
     height: 100%;
@@ -1607,7 +1607,7 @@ div.block.first-bigblock.phoenix-firsttype-hidden {
 
 div.block.first-bigblock.phoenix-firsttype-on_board,
 div.block.first-bigblock.phoenix-firsttype-on_line {
-    padding-top: 220px;
+    padding-top: 220px !important;
 }
 
 div.block.first-bigblock div.block-slider-table div.lvl1.part-text {
