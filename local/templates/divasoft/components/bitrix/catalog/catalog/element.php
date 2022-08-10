@@ -226,7 +226,11 @@ if(strlen($header_back) <= 0 && $PHOENIX_TEMPLATE_ARRAY["ITEMS"]["CATALOG"]["ITE
             }
         </style>
     <?endif;?>
-
+        <style>
+div.page-header {
+    background-image: url('/upload/phoenix/d82/5pxdiwalltj7422z4e8dm8ekobhuwj8u.jpg');
+}
+    </style>
 <div itemscope itemtype="http://schema.org/Product">
 
     <div class=
@@ -267,6 +271,19 @@ if(strlen($header_back) <= 0 && $PHOENIX_TEMPLATE_ARRAY["ITEMS"]["CATALOG"]["ITE
                     <div class="head">
                         <div class="title main1">
                             <h1 itemprop="name"><?$APPLICATION->ShowTitle(false);?><?$APPLICATION->ShowViewContent('catalog-detail-set-product');?></h1>
+                                             <div class="search-block col-12 clearfix">
+              <?$APPLICATION->IncludeComponent("concept:phoenix.search.line", "", 
+
+			Array(
+				"START_PAGE"=>ToLower($currentMainPageForSearch),
+				"CONTAINER_ID" => "search-page-input-container-catalog",
+        		"INPUT_ID" => "search-page-input-catalog",
+        		"COMPOSITE_FRAME_MODE" => "N",
+        		"SHOW_RESULTS" => $PHOENIX_TEMPLATE_ARRAY["ITEMS"]['SEARCH']["ITEMS"]['FASTSEARCH_ACTIVE']['VALUE']['ACTIVE']
+			)
+
+		);?>
+                        </div>
                         </div>
                                                                         
                     </div>
