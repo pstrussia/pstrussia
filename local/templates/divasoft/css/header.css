@@ -1127,10 +1127,15 @@ div.page-header div.head div.title h1 {
     font-size: 28px;
     line-height: 1.3;
     display: inline-block;
-    background-color: rgba(229, 154, 5, 0.3);
+    background-color: #ec6e00;
+    color: #fff;
     padding: 6px 12px;
     border-radius: 4px;
     margin-top: 5px;
+}
+.message-desc:hover{
+    background-color: #d06000;
+    color: #fff !important;
 }
 @media (max-width: 768px) {
     .message-desc{
