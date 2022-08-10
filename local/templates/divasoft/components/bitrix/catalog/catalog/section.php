@@ -27,8 +27,7 @@ $ar_result = $db_list->GetNext();
 
 $domenUrlForCookie = CPhoenixHost::getHostTranslit();
 
-if(empty($ar_result) || $ar_result["ACTIVE"] == "N" || $ar_result["GLOBAL_ACTIVE"] == "N") 
-{
+if (empty($ar_result) || $ar_result["ACTIVE"] == "N" || $ar_result["GLOBAL_ACTIVE"] == "N") {
 
     if (!defined("ERROR_404"))
         define("ERROR_404", "Y");
@@ -51,12 +50,11 @@ if (strlen($ar_result["UF_PHX_CTLG_TMPL_ENUM"]["XML_ID"]) <= 0)
     $ar_result["UF_PHX_CTLG_TMPL_ENUM"]["XML_ID"] = "default";
 
 
-    CPhoenixFunc::setInitialFilterParams("arrCatalogFilter");
+CPhoenixFunc::setInitialFilterParams("arrCatalogFilter");
 
 
 
-if ($PHOENIX_TEMPLATE_ARRAY["ITEMS"]["CATALOG"]["ITEMS"]['USE_FILTER']['VALUE']['ACTIVE'] == "Y" && $ar_result["UF_PHX_CTLG_TMPL_ENUM"]["XML_ID"] == "default" && !$ar_result["UF_USE_FILTER"]) 
-{
+if ($PHOENIX_TEMPLATE_ARRAY["ITEMS"]["CATALOG"]["ITEMS"]['USE_FILTER']['VALUE']['ACTIVE'] == "Y" && $ar_result["UF_PHX_CTLG_TMPL_ENUM"]["XML_ID"] == "default" && !$ar_result["UF_USE_FILTER"]) {
 
 
     if (\Bitrix\Main\Loader::includeModule("sotbit.seometa")) {
@@ -130,16 +128,16 @@ if ($PHOENIX_TEMPLATE_ARRAY["ITEMS"]["CATALOG"]["ITEMS"]['USE_FILTER']['VALUE'][
 
 
 
-        if (strlen($sotbitSeoMetaTopDesc)>0)
+        if (strlen($sotbitSeoMetaTopDesc) > 0)
             $sotbitSeoMetaFile = str_replace("<img", "<img class='img-fluid pictureInHead'", $sotbitSeoMetaFile);
 
-        if (strlen($sotbitSeoMetaTopDesc)>0)
+        if (strlen($sotbitSeoMetaTopDesc) > 0)
             $GLOBALS["~UF_PHX_CTLG_TOP_T"] = $sotbitSeoMetaTopDesc;
 
-        if (strlen($sotbitSeoMetaBottomDesc)>0)
+        if (strlen($sotbitSeoMetaBottomDesc) > 0)
             $GLOBALS["~DESCRIPTION"] = $sotbitSeoMetaBottomDesc;
 
-        if (strlen($sotbitSeoMetaAddDesc)>0)
+        if (strlen($sotbitSeoMetaAddDesc) > 0)
             $ar_result["~UF_PHX_CTLG_PRTXT"] = $sotbitSeoMetaAddDesc;
 
         unset($GLOBALS["arrCatalogFilter"]);
@@ -223,7 +221,7 @@ if ($PHOENIX_TEMPLATE_ARRAY["ITEMS"]["CATALOG"]["ITEMS"]['USE_FILTER']['VALUE'][
 }
 
 
-if (strlen($ar_result["UF_PHX_BNRS_VIEW"]) > 0) 
+if (strlen($ar_result["UF_PHX_BNRS_VIEW"]) > 0)
     $ar_result["UF_PHX_BNRS_VIEW_ENUM"] = CUserFieldEnum::GetList(array(), array("ID" => $ar_result["UF_PHX_BNRS_VIEW"]))->GetNext();
 
 
@@ -391,8 +389,7 @@ if (strlen($pictureInHeadIsset)) {
                 phoenix-firsttype-<?= $PHOENIX_TEMPLATE_ARRAY["ITEMS"]["MENU"]["ITEMS"]["MENU_TYPE"]["VALUE"] ?>
                 <?= ($PHOENIX_TEMPLATE_ARRAY["ITEMS"]["DESIGN"]["ITEMS"]["HEAD_BG_XS_FOR_PAGES_MODE"]["VALUE"] == "custom" && !$PHOENIX_TEMPLATE_ARRAY["ITEMS"]["DESIGN"]["ITEMS"]["HEAD_BG_XS_FOR_PAGES"]["VALUE"]) ? "def-bg-xs" : ""; ?>
                 ctlg
-            " 
-            <? if (strlen($header_back) > 0) : ?> data-src="<?= $header_back ?>" style="background-image: url(<?= $header_back ?>);" <? endif; ?>>
+            " <? if (strlen($header_back) > 0) : ?> data-src="<?= $header_back ?>" style="background-image: url(<?= $header_back ?>);" <? endif; ?>>
 
         <div class="shadow-tone <?= $PHOENIX_TEMPLATE_ARRAY["ITEMS"]["DESIGN"]["ITEMS"]["HEAD_TONE"]["VALUE"] ?>"></div>
         <div class="top-shadow"></div>
@@ -423,21 +420,23 @@ if (strlen($pictureInHeadIsset)) {
                                 <? $APPLICATION->ShowTitle(false); ?>
                             </h1>
                             <div class="search-block col-12 clearfix">
-              <?$APPLICATION->IncludeComponent("concept:phoenix.search.line", "", 
+                                <? $APPLICATION->IncludeComponent(
+                                    "concept:phoenix.search.line",
+                                    "",
 
-			Array(
-				"START_PAGE"=>ToLower($currentMainPageForSearch),
-				"CONTAINER_ID" => "search-page-input-container-catalog",
-        		"INPUT_ID" => "search-page-input-catalog",
-        		"COMPOSITE_FRAME_MODE" => "N",
-        		"SHOW_RESULTS" => $PHOENIX_TEMPLATE_ARRAY["ITEMS"]['SEARCH']["ITEMS"]['FASTSEARCH_ACTIVE']['VALUE']['ACTIVE']
-			)
+                                    array(
+                                        "START_PAGE" => ToLower($currentMainPageForSearch),
+                                        "CONTAINER_ID" => "search-page-input-container-catalog",
+                                        "INPUT_ID" => "search-page-input-catalog",
+                                        "COMPOSITE_FRAME_MODE" => "N",
+                                        "SHOW_RESULTS" => $PHOENIX_TEMPLATE_ARRAY["ITEMS"]['SEARCH']["ITEMS"]['FASTSEARCH_ACTIVE']['VALUE']['ACTIVE']
+                                    )
 
-		);?>
+                                ); ?>
                             </div>
-                            <?if ($ar_result['ID'] == 206) {?>
-                               <a class="message-desc" href="/redemption/">Вернем до 20% стомости за Вашу старую рейку</a>
-                            <?}?>
+                            <? if ($ar_result['ID'] == 206) { ?>
+                                <a class="message-desc" href="/redemption/">Вернем до 20% стомости за Вашу старую рейку</a>
+                            <? } ?>
                         </div>
 
                         <? if (strlen($ar_result["~UF_PHX_CTLG_PRTXT"]) > 0 && $ar_result["UF_VIEW_SUBSECTIONS_ENUM"]["XML_ID"] == "in_head") : ?>
@@ -454,7 +453,7 @@ if (strlen($pictureInHeadIsset)) {
                                 "bitrix:catalog.section.list",
                                 "subsections",
                                 array(
-                                    "REGION_ID"=>$PHOENIX_TEMPLATE_ARRAY["ITEMS"]["CURRENT_REGION"]["ID"],
+                                    "REGION_ID" => $PHOENIX_TEMPLATE_ARRAY["ITEMS"]["CURRENT_REGION"]["ID"],
                                     "SECTION_USER_FIELDS" => array("UF_PHX_MENU_PICT"),
                                     "IBLOCK_ID" => $PHOENIX_TEMPLATE_ARRAY["ITEMS"]["CATALOG"]["IBLOCK_ID"],
                                     "IBLOCK_TYPE" => $PHOENIX_TEMPLATE_ARRAY["ITEMS"]["CATALOG"]["IBLOCK_TYPE"],
@@ -492,7 +491,7 @@ if (strlen($pictureInHeadIsset)) {
                             "bitrix:catalog.section.list",
                             "subsections-slider",
                             array(
-                                "REGION_ID"=>$PHOENIX_TEMPLATE_ARRAY["ITEMS"]["CURRENT_REGION"]["ID"],
+                                "REGION_ID" => $PHOENIX_TEMPLATE_ARRAY["ITEMS"]["CURRENT_REGION"]["ID"],
                                 "SECTION_USER_FIELDS" => array("UF_PHX_MENU_PICT"),
                                 "IBLOCK_ID" => $PHOENIX_TEMPLATE_ARRAY["ITEMS"]["CATALOG"]["IBLOCK_ID"],
                                 "IBLOCK_TYPE" => $PHOENIX_TEMPLATE_ARRAY["ITEMS"]["CATALOG"]["IBLOCK_TYPE"],
@@ -531,7 +530,7 @@ if (strlen($pictureInHeadIsset)) {
                         <? if (strlen($sotbitSeoMetaFile) > 0) : ?>
                             <?= $sotbitSeoMetaFile ?>
                         <? else : ?>
-                            <img class="img-fluid pictureInHead " src="<?= $pictureInHead ?>" alt="<?=CPhoenix::prepareText($ar_result["NAME"])?>">
+                            <img class="img-fluid pictureInHead " src="<?= $pictureInHead ?>" alt="<?= CPhoenix::prepareText($ar_result["NAME"]) ?>">
                         <? endif; ?>
                     </div>
 
@@ -561,7 +560,7 @@ if (strlen($pictureInHeadIsset)) {
                             "bitrix:catalog.section.list",
                             "subsections",
                             array(
-                                "REGION_ID"=>$PHOENIX_TEMPLATE_ARRAY["ITEMS"]["CURRENT_REGION"]["ID"],
+                                "REGION_ID" => $PHOENIX_TEMPLATE_ARRAY["ITEMS"]["CURRENT_REGION"]["ID"],
                                 "SECTION_ID" => $ar_result["ID"],
                                 "SECTION_USER_FIELDS" => array("UF_PHX_MENU_PICT"),
 
@@ -620,28 +619,25 @@ if (strlen($pictureInHeadIsset)) {
                                         <div class="available-wrapper <? $APPLICATION->ShowViewContent('available-show'); ?>">
 
                                             <?
+                                            $available = "Y";
+
+                                            if (strlen($_REQUEST["available"]) > 0) {
+                                                $available = $_REQUEST["available"];
+                                                $_SESSION["available"] = $_REQUEST["available"];
+                                            } else if ($_SESSION["available"]) {
+                                                $available = $_SESSION["available"];
+                                            }
+
+                                            if ($available == "Y")
+                                                $available = "N";
+
+                                            else
                                                 $available = "Y";
 
-                                                if (strlen($_REQUEST["available"]) > 0) {
-                                                    $available = $_REQUEST["available"];
-                                                    $_SESSION["available"] = $_REQUEST["available"];
-                                                }
-                                                else if($_SESSION["available"])
-                                                {
-                                                    $available = $_SESSION["available"];
-                                                }
-
-                                                if ($available == "Y")
-                                                    $available = "N";
-
-                                                else
-                                                    $available = "Y";
-
-                                                if ($available == "N")
-                                                {
-                                                    $GLOBALS["arrCatalogFilter"]["!PROPERTY_MODE_ARCHIVE_VALUE"] = 'Y';
-                                                    $GLOBALS["arrCatalogFilter"][">CATALOG_QUANTITY"] = 0;
-                                                }
+                                            if ($available == "N") {
+                                                $GLOBALS["arrCatalogFilter"]["!PROPERTY_MODE_ARCHIVE_VALUE"] = 'Y';
+                                                $GLOBALS["arrCatalogFilter"][">CATALOG_QUANTITY"] = 0;
+                                            }
 
                                             ?>
 
@@ -671,7 +667,7 @@ if (strlen($pictureInHeadIsset)) {
 
                             <div class="side-inner">
 
-                                <?if($PHOENIX_TEMPLATE_ARRAY["ITEMS"]["CATALOG"]["ITEMS"]['SORT_LEFT_SIDE']['VALUE'] === 'filter'):?>
+                                <? if ($PHOENIX_TEMPLATE_ARRAY["ITEMS"]["CATALOG"]["ITEMS"]['SORT_LEFT_SIDE']['VALUE'] === 'filter') : ?>
 
                                     <? $APPLICATION->ShowViewContent('filter_content'); ?>
 
@@ -695,7 +691,7 @@ if (strlen($pictureInHeadIsset)) {
                                                 "IBLOCK_TYPE" => $PHOENIX_TEMPLATE_ARRAY["ITEMS"]["CATALOG"]["IBLOCK_TYPE"],
 
                                                 "SECTION_URL" => $arResult["FOLDER"] . $arResult["URL_TEMPLATES"]["section"],
-                                                "REGION_ID"=>$PHOENIX_TEMPLATE_ARRAY["ITEMS"]["CURRENT_REGION"]["ID"],
+                                                "REGION_ID" => $PHOENIX_TEMPLATE_ARRAY["ITEMS"]["CURRENT_REGION"]["ID"],
 
                                                 "CACHE_TYPE" => $arParams["CACHE_TYPE"],
                                                 "CACHE_TIME" => $arParams["CACHE_TIME"],
@@ -717,45 +713,45 @@ if (strlen($pictureInHeadIsset)) {
 
                                     </div>
 
-                                <?else:?>
+                                <? else : ?>
 
                                     <div class="hidden-md hidden-sm hidden-xs">
 
                                         <?
 
-                                            if ($PHOENIX_TEMPLATE_ARRAY["ITEMS"]["CATALOG"]["ITEMS"]['TAB_SECTIONS_SHOW']["VALUE"]['ACTIVE'] == 'Y')
-                                                $tab = "active";
-                                            else
-                                                $tab = "noactive";
+                                        if ($PHOENIX_TEMPLATE_ARRAY["ITEMS"]["CATALOG"]["ITEMS"]['TAB_SECTIONS_SHOW']["VALUE"]['ACTIVE'] == 'Y')
+                                            $tab = "active";
+                                        else
+                                            $tab = "noactive";
 
-                                            $APPLICATION->IncludeComponent(
-                                                "bitrix:catalog.section.list",
-                                                "mainsections",
-                                                array(
-                                                    "TAB" => $tab,
-                                                    "SECTION_ID" => $ar_result["IBLOCK_SECTION_ID"],
+                                        $APPLICATION->IncludeComponent(
+                                            "bitrix:catalog.section.list",
+                                            "mainsections",
+                                            array(
+                                                "TAB" => $tab,
+                                                "SECTION_ID" => $ar_result["IBLOCK_SECTION_ID"],
 
-                                                    "IBLOCK_ID" => $PHOENIX_TEMPLATE_ARRAY["ITEMS"]["CATALOG"]["IBLOCK_ID"],
-                                                    "IBLOCK_TYPE" => $PHOENIX_TEMPLATE_ARRAY["ITEMS"]["CATALOG"]["IBLOCK_TYPE"],
+                                                "IBLOCK_ID" => $PHOENIX_TEMPLATE_ARRAY["ITEMS"]["CATALOG"]["IBLOCK_ID"],
+                                                "IBLOCK_TYPE" => $PHOENIX_TEMPLATE_ARRAY["ITEMS"]["CATALOG"]["IBLOCK_TYPE"],
 
-                                                    "SECTION_URL" => $arResult["FOLDER"] . $arResult["URL_TEMPLATES"]["section"],
-                                                    "REGION_ID"=>$PHOENIX_TEMPLATE_ARRAY["ITEMS"]["CURRENT_REGION"]["ID"],
+                                                "SECTION_URL" => $arResult["FOLDER"] . $arResult["URL_TEMPLATES"]["section"],
+                                                "REGION_ID" => $PHOENIX_TEMPLATE_ARRAY["ITEMS"]["CURRENT_REGION"]["ID"],
 
-                                                    "CACHE_TYPE" => $arParams["CACHE_TYPE"],
-                                                    "CACHE_TIME" => $arParams["CACHE_TIME"],
-                                                    "CACHE_FILTER" => $arParams["CACHE_FILTER"],
-                                                    "CACHE_GROUPS" => $arParams["CACHE_GROUPS"],
-                                                    "COUNT_ELEMENTS" => "N",
-                                                    "TOP_DEPTH" => 1,
-                                                    "VIEW_MODE" => "",
-                                                    "SHOW_PARENT_NAME" => "Y",
-                                                    "HIDE_SECTION_NAME" => "N",
-                                                    "ADD_SECTIONS_CHAIN" => "N",
-                                                    "COMPOSITE_FRAME_MODE" => "N",
-                                                ),
-                                                $component,
-                                                array("HIDE_ICONS" => "Y")
-                                            );
+                                                "CACHE_TYPE" => $arParams["CACHE_TYPE"],
+                                                "CACHE_TIME" => $arParams["CACHE_TIME"],
+                                                "CACHE_FILTER" => $arParams["CACHE_FILTER"],
+                                                "CACHE_GROUPS" => $arParams["CACHE_GROUPS"],
+                                                "COUNT_ELEMENTS" => "N",
+                                                "TOP_DEPTH" => 1,
+                                                "VIEW_MODE" => "",
+                                                "SHOW_PARENT_NAME" => "Y",
+                                                "HIDE_SECTION_NAME" => "N",
+                                                "ADD_SECTIONS_CHAIN" => "N",
+                                                "COMPOSITE_FRAME_MODE" => "N",
+                                            ),
+                                            $component,
+                                            array("HIDE_ICONS" => "Y")
+                                        );
 
                                         ?>
                                     </div>
@@ -763,11 +759,11 @@ if (strlen($pictureInHeadIsset)) {
                                     <? $APPLICATION->ShowViewContent('filter_content'); ?>
 
 
-                                <?endif;?>
+                                <? endif; ?>
 
-                                <?if($ar_result["UF_SIDEMENU_HTML"]):?>
-                                    <div class="sidemenuHTML"><?=$ar_result["~UF_SIDEMENU_HTML"]?></div>
-                                <?endif;?>
+                                <? if ($ar_result["UF_SIDEMENU_HTML"]) : ?>
+                                    <div class="sidemenuHTML"><?= $ar_result["~UF_SIDEMENU_HTML"] ?></div>
+                                <? endif; ?>
 
                                 <div class="hidden-md hidden-sm hidden-xs">
                                     <? if (!empty($arResult["EMPL_BANNER"]) > 0) : ?>
@@ -790,7 +786,7 @@ if (strlen($pictureInHeadIsset)) {
 
 
 
-                                    <?if(!empty($arResult["BANNERS_LEFT"]) > 0):?>
+                                    <? if (!empty($arResult["BANNERS_LEFT"]) > 0) : ?>
 
                                         <? $GLOBALS["arrBannersFilter"]["ID"] = $arResult["BANNERS_LEFT"]; ?>
 
@@ -891,28 +887,25 @@ if (strlen($pictureInHeadIsset)) {
                                         <div class="available-wrapper <? $APPLICATION->ShowViewContent('available-show'); ?>">
 
                                             <?
+                                            $available = "Y";
+
+                                            if (strlen($_REQUEST["available"]) > 0) {
+                                                $available = $_REQUEST["available"];
+                                                $_SESSION["available"] = $_REQUEST["available"];
+                                            } else if ($_SESSION["available"]) {
+                                                $available = $_SESSION["available"];
+                                            }
+
+                                            if ($available == "Y")
+                                                $available = "N";
+
+                                            else
                                                 $available = "Y";
 
-                                                if (strlen($_REQUEST["available"]) > 0) {
-                                                    $available = $_REQUEST["available"];
-                                                    $_SESSION["available"] = $_REQUEST["available"];
-                                                }
-                                                else if($_SESSION["available"])
-                                                {
-                                                    $available = $_SESSION["available"];
-                                                }
-
-                                                if ($available == "Y")
-                                                    $available = "N";
-
-                                                else
-                                                    $available = "Y";
-
-                                                if ($available == "N")
-                                                {
-                                                    $GLOBALS["arrCatalogFilter"]["!PROPERTY_MODE_ARCHIVE_VALUE"] = 'Y';
-                                                    $GLOBALS["arrCatalogFilter"][">CATALOG_QUANTITY"] = 0;
-                                                }
+                                            if ($available == "N") {
+                                                $GLOBALS["arrCatalogFilter"]["!PROPERTY_MODE_ARCHIVE_VALUE"] = 'Y';
+                                                $GLOBALS["arrCatalogFilter"][">CATALOG_QUANTITY"] = 0;
+                                            }
 
                                             ?>
 
@@ -921,7 +914,7 @@ if (strlen($pictureInHeadIsset)) {
 
                                             </a>
                                         </div>
-                                    <?endif;?>
+                                    <? endif; ?>
                                 </div>
                             </div>
 
@@ -1096,7 +1089,7 @@ if (strlen($pictureInHeadIsset)) {
                                         die();
                                     }
                                     ?>
-                        
+
                                     <? $GLOBALS['CATALOG_CURRENT_SECTION_ID'] = $intSectionID; ?>
 
                                 </div>
@@ -1129,9 +1122,9 @@ if (strlen($pictureInHeadIsset)) {
         <? $APPLICATION->ShowViewContent('catalog-bottom-desc'); ?>
     <? endif; ?>
 
-    <?if($PHOENIX_TEMPLATE_ARRAY["ITEMS"]["CATALOG"]["ITEMS"]["STORIES"]["VALUE"]["CATALOG"] === 'Y'):?>
+    <? if ($PHOENIX_TEMPLATE_ARRAY["ITEMS"]["CATALOG"]["ITEMS"]["STORIES"]["VALUE"]["CATALOG"] === 'Y') : ?>
         <div class="catalog-stories-ajax catalog-list-page" data-count="4"></div>
-    <?endif;?>
+    <? endif; ?>
 
 
 
