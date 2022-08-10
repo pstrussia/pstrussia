@@ -1091,12 +1091,12 @@ div.page-header.dark ol.inner-breadcrumb li a {
 
 div.page-header.light ol.inner-breadcrumb li a {
     opacity: .7;
-    background-color: rgba(0, 0, 0, .07);
+    background-color: #fff;
 }
 
 div.page-header.dark ol.inner-breadcrumb li a:hover,
 div.page-header.light ol.inner-breadcrumb li a:hover {
-    opacity: .8;
+    opacity: 1;
     filter: alpha(opacity=80);
 }
 
@@ -2532,9 +2532,9 @@ ol.inner-breadcrumb li.active {
 }
 
 ol.inner-breadcrumb li.active {
-    opacity: 1;
+    opacity: .7;
     filter: alpha(opacity=100);
-    background-color: rgba(255, 255, 255, .15);
+    background-color: rgba(255, 255, 255, 1);
 }
 
 ol.inner-breadcrumb li:first-child {
