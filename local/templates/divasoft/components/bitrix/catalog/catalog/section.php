@@ -422,9 +422,21 @@ if (strlen($pictureInHeadIsset)) {
                             <h1>
                                 <? $APPLICATION->ShowTitle(false); ?>
                             </h1>
+                            <div class="search-block col-12 clearfix">
+              <?$APPLICATION->IncludeComponent("concept:phoenix.search.line", "", 
 
+			Array(
+				"START_PAGE"=>ToLower($currentMainPageForSearch),
+				"CONTAINER_ID" => "search-page-input-container-catalog",
+        		"INPUT_ID" => "search-page-input-catalog",
+        		"COMPOSITE_FRAME_MODE" => "N",
+        		"SHOW_RESULTS" => $PHOENIX_TEMPLATE_ARRAY["ITEMS"]['SEARCH']["ITEMS"]['FASTSEARCH_ACTIVE']['VALUE']['ACTIVE']
+			)
+
+		);?>
+                            </div>
                             <?if ($ar_result['ID'] == 206) {?>
-                               <div class="message-desc">Вернем до 20% стомости за Вашу старую рейку</div>
+                               <a class="message-desc" href="/redemption/">Вернем до 20% стомости за Вашу старую рейку</a>
                             <?}?>
                         </div>
 
