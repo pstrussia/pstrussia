@@ -26,7 +26,7 @@
                 <span id="<?=$itemIds['DISCOUNT_PERCENT']?>" class="sale <?=( ($arItem['CONFIG']["SHOW_DISCOUNT_PERCENT"] === 'Y' && $arItem["FIRST_ITEM"]['PRICE']['PERCENT']>0) ? '' : 'd-none')?>"><?=-$arItem["FIRST_ITEM"]['PRICE']["PERCENT"]?>%</span>
                 <a class="buy-sale" href="/redemption/">Купить со скидкой до 20%</a>
             </div>
-            <?}?>
+            <? }?>
             
             
             <?if( $arItem['CONFIG']['SHOW_DELAY'] == "Y" 
@@ -436,7 +436,7 @@
 
             </div>
 
-            <div class="btn-container align-items-center col-xl-6 col-12" id="<?=$itemIds['BASKET_ACTIONS']?>">
+        <div class="btn-container align-items-center col-xl-6 col-12" id="<?=$itemIds['BASKET_ACTIONS']?>">
 
                 <div class="<?=($arItem['HAVEOFFERS'])?"d-none d-lg-block":""?>">
                     <a
@@ -454,12 +454,12 @@
                     class="move2basket"><?=$PHOENIX_TEMPLATE_ARRAY["ITEMS"]["SHOP"]["ITEMS"]["CART_BTN_ADDED_NAME"]["~VALUE"]?></a>
                 </div>
 
+
                 <?if($arItem['HAVEOFFERS']):?>
                     <a href="<?=$arItem['FIRST_ITEM']['DETAIL_PAGE_URL']?>" class="main-color bold d-lg-none">
                         <?=$PHOENIX_TEMPLATE_ARRAY["ITEMS"]["CATALOG"]["ITEMS"]["LINK_2_DETAIL_PAGE_NAME_OFFER_MOB"]["VALUE"]?>
                     </a>
                 <?endif;?>
-
             </div>
 
 
