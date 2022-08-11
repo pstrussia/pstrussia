@@ -12327,6 +12327,15 @@ footer.tone-dark div.container-bottom {
 
 footer.tone-light div.container-bottom {
     border-top: 1px solid rgba(0, 0, 0, 0.1);
+    justify-content: space-between;
+}
+@media (max-width: 990px) {
+    footer.tone-light div.container-bottom{
+        flex-direction: column;
+    }
+    footer div.political div.agreement-item{
+        text-align: center;
+    }
 }
 
 footer div.container-bottom > *:last-child {
@@ -12455,7 +12464,7 @@ footer div.political {
 footer div.political div.agreement-item {
     font-size: 13px;
     line-height: 24px;
-    margin-bottom: 10px;
+    /* margin-bottom: 10px; */
 }
 
 footer div.image-item {
@@ -27791,4 +27800,14 @@ textarea.redemption-form__input {
 
 .part-left .title.main1 h1{
     color: #fff !important;
+}
+
+.footer__rec {
+}
+.footer__rec-item {
+    margin-top: 15px;
+    background-color: #fff;
+    border-radius: 5px;
+    padding: 15px;
+
 }
