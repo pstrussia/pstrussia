@@ -420,7 +420,7 @@
             
         <?endif;?>
 
-        <div class="wrapper-inner-bot row no-gutters hidden-js" id="<?=$itemIds['WR_ADD2BASKET']?>">
+        <div class="wrapper-inner-bot row no-gutters hidden-js active" id="<?=$itemIds['WR_ADD2BASKET']?>">
         
 
             <div class="quantity-container row no-gutters align-items-center col-xl-6 quantity-block d-none d-xl-flex" data-item="<?=$arItem['ID']?>">
