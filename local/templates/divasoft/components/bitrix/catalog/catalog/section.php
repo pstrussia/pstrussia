@@ -930,6 +930,37 @@ if (strlen($pictureInHeadIsset)) {
 
                                 <div class="element-list-wrap active">
 
+                                    <div class="filterHor">
+                                        <div class="filterHor__item">
+                                            <select class="simple-select">
+                                                <option value="1">1</option>
+                                                <option value="2">2</option>
+                                                <option value="3">3</option>
+                                            </select>
+                                        </div>
+                                        <div class="filterHor__item">
+                                            <select class="simple-select">
+                                                <option value="1">1</option>
+                                                <option value="2">2</option>
+                                                <option value="3">3</option>
+                                            </select>
+                                        </div>
+                                        <div class="filterHor__item">
+                                            <select class="simple-select">
+                                                <option value="1">1</option>
+                                                <option value="2">2</option>
+                                                <option value="3">3</option>
+                                            </select>
+                                        </div>
+                                        <div class="filterHor__item">
+                                            <select class="simple-select">
+                                                <option value="1">1</option>
+                                                <option value="2">2</option>
+                                                <option value="3">3</option>
+                                            </select>
+                                        </div>
+                                    </div>            
+
                                     <?
 
                                     $isAjax = ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST["ajax_action"]) && $_POST["ajax_action"] == "Y");
