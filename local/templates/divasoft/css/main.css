@@ -27781,6 +27781,9 @@ textarea.redemption-form__input {
     flex-direction: column;
     align-items: flex-start;
 }
+.catalog-list.TABLE .wrapper-image__sale{
+    left: 50px;
+}
 .wrapper-image__sale .buy-sale{
     margin-top: 10px;
 }
