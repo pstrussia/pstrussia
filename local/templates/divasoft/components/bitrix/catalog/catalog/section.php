@@ -931,33 +931,36 @@ if (strlen($pictureInHeadIsset)) {
                                 <div class="element-list-wrap active">
 
                                     <div class="filterHor">
-                                        <div class="filterHor__item">
-                                            <select class="simple-select">
-                                                <option value="1">1</option>
-                                                <option value="2">2</option>
-                                                <option value="3">3</option>
-                                            </select>
-                                        </div>
-                                        <div class="filterHor__item">
-                                            <select class="simple-select">
-                                                <option value="1">1</option>
-                                                <option value="2">2</option>
-                                                <option value="3">3</option>
-                                            </select>
-                                        </div>
-                                        <div class="filterHor__item">
-                                            <select class="simple-select">
-                                                <option value="1">1</option>
-                                                <option value="2">2</option>
-                                                <option value="3">3</option>
-                                            </select>
-                                        </div>
-                                        <div class="filterHor__item">
-                                            <select class="simple-select">
-                                                <option value="1">1</option>
-                                                <option value="2">2</option>
-                                                <option value="3">3</option>
-                                            </select>
+                                        <div class="filterHor__title">Выберите марку и модель для подбора рулевой рейки</div>
+                                        <div class="filterHor__list">
+                                            <div class="filterHor__item">
+                                                <select class="simple-select">
+                                                    <option value="1">1</option>
+                                                    <option value="2">2</option>
+                                                    <option value="3">3</option>
+                                                </select>
+                                            </div>
+                                            <div class="filterHor__item">
+                                                <select class="simple-select">
+                                                    <option value="1">1</option>
+                                                    <option value="2">2</option>
+                                                    <option value="3">3</option>
+                                                </select>
+                                            </div>
+                                            <div class="filterHor__item">
+                                                <select class="simple-select">
+                                                    <option value="1">1</option>
+                                                    <option value="2">2</option>
+                                                    <option value="3">3</option>
+                                                </select>
+                                            </div>
+                                            <div class="filterHor__item">
+                                                <select class="simple-select">
+                                                    <option value="1">1</option>
+                                                    <option value="2">2</option>
+                                                    <option value="3">3</option>
+                                                </select>
+                                            </div>
                                         </div>
                                     </div>            
 

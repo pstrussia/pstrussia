@@ -27816,22 +27816,28 @@ textarea.redemption-form__input {
 }
 
 .filterHor {
+    margin-bottom: 40px;
+}
+.filterHor__list {
     display: grid;
     grid-gap: 20px;
     grid-auto-flow: column;
-    margin-bottom: 40px;
+}
+.filterHor__title {
+    font-size: 18px;
+    margin-bottom: 18px;
 }
 .filterHor__item {
 
 }
 @media (max-width: 768px) {
-    .filterHor {
+    .filterHor__list {
         grid-auto-flow: unset;
         grid-template-columns: 1fr 1fr;
     }
 }
 @media (max-width: 480px) {
-    .filterHor {
+    .filterHor__list {
         grid-template-columns: 1fr;
     }
 }
