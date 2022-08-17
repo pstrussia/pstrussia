@@ -8136,6 +8136,15 @@ form.form div.input.txt-center {
     text-align: center;
 }
 
+.input__mess{
+    position: absolute;
+    left: 0;
+    top: calc(100% + 1px);
+    font-size: 10px;
+    color: red;
+    line-height: 1.2;
+}
+
 form.form div.inputs-block {
     margin-bottom: 20px;
 }
