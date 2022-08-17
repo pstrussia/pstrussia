@@ -88,7 +88,7 @@ require("include/_head.php");
 						            <div class="input">                  
 						                <div class="bg"></div>
 						                <span class="desc">Промокод</span>
-						                <input class="focus-anim" type="password" name="bx-password" value="" autocomplete="off" />
+						                <input class="focus-anim" type="text" name="promocode" value="" autocomplete="off" />
 										<div class="input__mess">Недействительный промокод</div>
 						            </div>
 					            
