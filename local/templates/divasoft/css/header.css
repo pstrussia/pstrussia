@@ -1256,7 +1256,7 @@ div.page-header.light div.head div.subtitle {
 }
 
 div.page-header.light .section-items div.desk {
-    color: #000;
+    color: #fff;
 }
 
 div.page-header.light .section-items div.picture-board.more span.more {
@@ -1574,10 +1574,11 @@ div.page-header .section-items div.picture-board {
     width: 148px;
     height: 148px;
     margin: 0 auto 15px;
+    overflow: hidden;
 }
 
 div.page-header .section-items div.picture-board img {
-    position: absolute;
+    /* position: absolute;
     top: 50%;
     left: 50%;
     -webkit-transform: translate(-50%, -50%);
@@ -1585,7 +1586,10 @@ div.page-header .section-items div.picture-board img {
     -o-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
     max-width: 80px;
-    max-height: 80px;
+    max-height: 80px; */
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 div.page-header .section-items a.btn-open-hidden-board {
