@@ -23,7 +23,12 @@ $this->setFrameMode(true);
 
                     <ul class="nav">
 
-                        <?foreach($arResult["ITEMS"] as $arItem):
+                        <?foreach($arResult["ITEMS"] as &$arItem):
+                            
+                            if($arItem['PATH'] == '/?logout=yes'){
+                                $arItem['PATH'] = "/?logout=yes&".bitrix_sessid_get();
+                                
+                            }
                             if(($arItem['PATH'] != '/personal/') && ($arItem['ACTIVE'] != 'Y')){    //фича
                             ?>
                             <li class="col-12">

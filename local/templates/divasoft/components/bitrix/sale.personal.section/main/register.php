@@ -64,10 +64,11 @@ require("include/_head.php");
                                         <div class="bg"></div>
                                         <span class="desc">Промокод</span>
                                         <input class="focus-anim" type="text" name="promo" value="" autocomplete="off" />
-                                        
+
                                     </div>
 
-
+                                    <div class="errors">
+                            </div>
                                     <? if (!empty($PHOENIX_TEMPLATE_ARRAY["ITEMS"]["POLITIC"]["ITEMS"]['AGREEMENT_FORM'])): ?>
 
                                         <div class="wrap-agree">
@@ -95,38 +96,36 @@ require("include/_head.php");
                                     <? endif; ?>
 
                                 </div>
+                                
+                            <div class="input-btn">
 
-                                <div class="input-btn">
-
-                                    <div class="load">
-                                        <div class="xLoader form-preload"><div class="audio-wave"><span></span><span></span><span></span><span></span><span></span></div></div>
-                                    </div>
-                                    <button type="button" class="button-def main-color active <?= $PHOENIX_TEMPLATE_ARRAY["ITEMS"]["DESIGN"]["ITEMS"]['BTN_VIEW']['VALUE'] ?> register-submit" id="reg-submit" name="form-submit" value=""><?= $PHOENIX_TEMPLATE_ARRAY["MESS"]["PERSONAL_REGISTER_BTN_NAME"] ?></button>
- 
+                                <div class="load">
+                                    <div class="xLoader form-preload"><div class="audio-wave"><span></span><span></span><span></span><span></span><span></span></div></div>
                                 </div>
-
-                                <? if (isset($PHOENIX_TEMPLATE_ARRAY["GROUP_POLICY_2"]["PASSWORD_REQUIREMENTS"])): ?>
-                                    <? if (strlen($PHOENIX_TEMPLATE_ARRAY["GROUP_POLICY_2"]["PASSWORD_REQUIREMENTS"])): ?>
-
-                                        <div class="alert-group-policy">
-                                            <?= $PHOENIX_TEMPLATE_ARRAY["GROUP_POLICY_2"]["PASSWORD_REQUIREMENTS"] ?>
-                                        </div>
-
-                                    <? endif; ?>
-                                <? endif; ?>
+                                <button type="button" class="button-def main-color active <?= $PHOENIX_TEMPLATE_ARRAY["ITEMS"]["DESIGN"]["ITEMS"]['BTN_VIEW']['VALUE'] ?> register-submit" id="reg-submit" name="form-submit" value=""><?= $PHOENIX_TEMPLATE_ARRAY["MESS"]["PERSONAL_REGISTER_BTN_NAME"] ?></button>
 
                             </div>
-                        </form>
 
-                    </div>
+                            <? if (isset($PHOENIX_TEMPLATE_ARRAY["GROUP_POLICY_2"]["PASSWORD_REQUIREMENTS"])): ?>
+                                <? if (strlen($PHOENIX_TEMPLATE_ARRAY["GROUP_POLICY_2"]["PASSWORD_REQUIREMENTS"])): ?>
 
-                    <div class="col-lg-8 col-sm-6 col-12">
-                        <div class="errors"></div>
+                                    <div class="alert-group-policy">
+                                        <?= $PHOENIX_TEMPLATE_ARRAY["GROUP_POLICY_2"]["PASSWORD_REQUIREMENTS"] ?>
+                                    </div>
+
+                                <? endif; ?>
+                            <? endif; ?>
+                            
                     </div>
+                    </form>
 
                 </div>
+
+
+
             </div>
         </div>
-
     </div>
+
+</div>
 </div>
