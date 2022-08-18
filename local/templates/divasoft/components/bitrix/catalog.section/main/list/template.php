@@ -25,7 +25,7 @@
                 <a class="buy-sale" href="/redemption/">Купить со скидкой до 20%</a>
             </div>
             <? }?>
-        <?if( $arItem['CONFIG']['SHOW_DELAY'] == "Y" 
+        <?/*if( $arItem['CONFIG']['SHOW_DELAY'] == "Y" 
           || $arItem['CONFIG']['SHOW_COMPARE'] == "Y" ):?>
 
             <div class="wrapper-delay-compare-icons <?=($arItem['HAVEOFFERS'])?"hidden-md hidden-sm hidden-xs":"";?>">
@@ -38,7 +38,7 @@
                     <div title="<?=$PHOENIX_TEMPLATE_ARRAY["MESS"]["CATALOG_COMPARE_TITLE"]?>" class="icon compare add2compare" id = "<?=$itemIds["COMPARE"]?>" data-item="<?=$arItem["ID"]?>"></div>
                 <?endif;?>
             </div>
-        <?endif;?>
+        <?endif;*/?>
 
         <div class="d-none"><span id="<?=$itemIds['DISCOUNT_PERCENT']?>" class="sale"><?=-$arItem["FIRST_ITEM"]['PRICE']["PERCENT"]?>%</span></div>
 

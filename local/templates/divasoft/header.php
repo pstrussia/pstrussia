@@ -92,7 +92,7 @@
 
 
 <body class=" <?=(isset($_SERVER['HTTP_ACCEPT_LANGUAGE']) && strpos($_SERVER['HTTP_USER_AGENT'], 'Lighthouse') !== false)?'bindex':'';?> font-maincolor-<?=$PHOENIX_TEMPLATE_ARRAY["ITEMS"]["DESIGN"]["ITEMS"]["FONT_COLOR"]['VALUE']?> <?=($PHOENIX_TEMPLATE_ARRAY["ITEMS"]["OTHER"]["ITEMS"]["CAPTCHA"]["VALUE"]["ACTIVE"]=="Y" && strlen($PHOENIX_TEMPLATE_ARRAY["ITEMS"]["OTHER"]["ITEMS"]["CAPTCHA_SITE_KEY"]["VALUE"])>0)? "captcha":"";?>" id="body" data-spy="scroll" data-target="#navigation" data-offset="<?=$offset?>">
-
+    
 
 	<?//require_once($_SERVER["DOCUMENT_ROOT"].SITE_TEMPLATE_PATH."/styles_and_scripts.php");
 	//CPhoenixTemplate::setStylesAndScripts();
