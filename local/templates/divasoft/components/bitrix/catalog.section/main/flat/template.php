@@ -29,7 +29,7 @@
             <? } ?>
 
 
-            <? if ($arItem['CONFIG']['SHOW_DELAY'] == "Y" || $arItem['CONFIG']['SHOW_COMPARE'] == "Y"):
+            <?/* if ($arItem['CONFIG']['SHOW_DELAY'] == "Y" || $arItem['CONFIG']['SHOW_COMPARE'] == "Y"):
                 ?>
 
                 <div class="wrapper-delay-compare-icons <?= ($arItem['HAVEOFFERS']) ? "hidden-md hidden-sm hidden-xs" : ""; ?>">
@@ -44,7 +44,7 @@
                 </div>
 
 
-            <? endif; ?>
+            <? endif; */?>
 
             <? if ($arItem['HAVEOFFERS']): ?>
 
@@ -66,7 +66,7 @@
             <!--<div class="product-available-js hidden-js"><? //=$arItem["FIRST_ITEM"]["QUANTITY"]["HTML"] ?></div>-->
             <div class="wrapper-article-available row-line d-none d-lg-block" id="<?= $itemIds['ARTICLE_AVAILABLE'] ?>">
                 <div class="detail-article italic <? if (strlen($arItem["FIRST_ITEM"]["ARTICLE"]) <= 0): ?>d-none<? endif; ?>" title="<?= (strlen($arItem["FIRST_ITEM"]["ARTICLE"]) > 0) ? $PHOENIX_TEMPLATE_ARRAY["MESS"]["ARTICLE_SHORT"] . $arItem["FIRST_ITEM"]["ARTICLE"] : "" ?>"><?= (strlen($arItem["FIRST_ITEM"]["ARTICLE"]) > 0) ? $PHOENIX_TEMPLATE_ARRAY["MESS"]["ARTICLE_SHORT"] . $arItem["FIRST_ITEM"]["ARTICLE"] : "" ?></div>
-                <div class="product-available-js hidden-js"><?= $arItem["FIRST_ITEM"]["QUANTITY"]["HTML"] ?></div>
+                <div class="product-available-js"><?= $arItem["FIRST_ITEM"]["QUANTITY"]["HTML"] ?></div>
             </div>
             <div class="detail-article italic col" title="<?= (strlen($arItem["FIRST_ITEM"]["ARTICLE"]) > 0) ? $PHOENIX_TEMPLATE_ARRAY["MESS"]["ARTICLE_SHORT"] . $arItem["FIRST_ITEM"]["ARTICLE"] : "" ?>"><?= (strlen($arItem["FIRST_ITEM"]["ARTICLE"]) > 0) ? $PHOENIX_TEMPLATE_ARRAY["MESS"]["ARTICLE_SHORT"] . $arItem["FIRST_ITEM"]["ARTICLE"] : "" ?></div>
         </div>

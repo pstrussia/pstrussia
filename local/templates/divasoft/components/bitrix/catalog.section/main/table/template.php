@@ -41,7 +41,7 @@
                 </div>
             <? } ?>
 
-            <? if ($arItem['CONFIG']['SHOW_DELAY'] == "Y" || $arItem['CONFIG']['SHOW_COMPARE'] == "Y"):
+            <?/* if ($arItem['CONFIG']['SHOW_DELAY'] == "Y" || $arItem['CONFIG']['SHOW_COMPARE'] == "Y"):
                 ?>
 
                 <div class="wrapper-delay-compare-icons <?= ($arItem['HAVEOFFERS']) ? "d-none" : ""; ?>">
@@ -54,7 +54,7 @@
                         <div title="<?= $PHOENIX_TEMPLATE_ARRAY["MESS"]["CATALOG_COMPARE_TITLE"] ?>" class="icon compare add2compare" id = "<?= $itemIds["COMPARE"] ?>" data-item="<?= $arItem["ID"] ?>"></div>
                     <? endif; ?>
                 </div>
-            <? endif; ?>
+            <? endif; */?>
 
 
         </div>
