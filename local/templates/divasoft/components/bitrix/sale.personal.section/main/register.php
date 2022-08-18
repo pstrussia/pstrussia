@@ -40,32 +40,7 @@ require("include/_head.php");
                                         <?= $PHOENIX_TEMPLATE_ARRAY["MESS"]["PERSONAL_REGISTER_FORM_TITLE"] ?>
                                     </div>
 
-                                    <div class="main-inuts">
-                                        <div class="col-12">
-                                            <div class="input">
-                                                <div class="bg"></div>
-                                                <span class="desc">Name</span>
-                                                <input class='focus-anim input-name' name="name" type="text">
 
-                                            </div>
-                                        </div>
-                                        <div class="col-12">
-                                            <div class="input">
-                                                <div class="bg"></div>
-                                                <span class="desc">Email</span>
-                                                <input class='focus-anim input-name' name="email" type="email">
-
-                                            </div>
-                                        </div>
-                                        <div class="col-12">
-                                            <div class="input">
-                                                <div class="bg"></div>
-                                                <span class="desc">Phone</span>
-                                                <input class='focus-anim input-name' name="phone" type="tel">
-
-                                            </div>
-                                        </div>
-                                    </div>
 
                                     <div class="input">                  
                                         <div class="bg"></div>
@@ -88,8 +63,8 @@ require("include/_head.php");
                                     <div class="input">                  
                                         <div class="bg"></div>
                                         <span class="desc">Промокод</span>
-                                        <input class="focus-anim" type="text" name="promocode" value="" autocomplete="off" />
-                                        <div class="input__mess">Недействительный промокод</div>
+                                        <input class="focus-anim" type="text" name="promo" value="" autocomplete="off" />
+                                        
                                     </div>
 
 
@@ -127,7 +102,7 @@ require("include/_head.php");
                                         <div class="xLoader form-preload"><div class="audio-wave"><span></span><span></span><span></span><span></span><span></span></div></div>
                                     </div>
                                     <button type="button" class="button-def main-color active <?= $PHOENIX_TEMPLATE_ARRAY["ITEMS"]["DESIGN"]["ITEMS"]['BTN_VIEW']['VALUE'] ?> register-submit" id="reg-submit" name="form-submit" value=""><?= $PHOENIX_TEMPLATE_ARRAY["MESS"]["PERSONAL_REGISTER_BTN_NAME"] ?></button>
-
+ 
                                 </div>
 
                                 <? if (isset($PHOENIX_TEMPLATE_ARRAY["GROUP_POLICY_2"]["PASSWORD_REQUIREMENTS"])): ?>
