@@ -211,6 +211,7 @@ if ($PHOENIX_TEMPLATE_ARRAY["ITEMS"]["CATALOG"]["ITEMS"]['USE_FILTER']['VALUE'][
             "INSTANT_RELOAD" => "Y",
             "SEF_RULE" => $arResult["FOLDER"] . $arResult["URL_TEMPLATES"]["smart_filter"] . "#actionbox",
             "SMART_FILTER_PATH" => $arResult["VARIABLES"]["SMART_FILTER_PATH"],
+            "HIDDEN_PROP" => ["KUZOV", "MARKA_AVTO", "MODEL_AVTO", "GOD_VYPUSKA"],
         ),
         $component
     );
@@ -930,12 +931,12 @@ if (strlen($pictureInHeadIsset)) {
 
                                 <div class="element-list-wrap active">
 
-                                    <div class="filterHor">
+                                    <?/*<div class="filterHor">
                                         <div class="filterHor__title">Выберите марку и модель для подбора рулевой рейки</div>
                                         <div class="filterHor__list">
                                             <div class="filterHor__item">
                                                 <select class="simple-select">
-                                                    <option value="1">1</option>
+                                                    <option value="Выберите марку и модель для подбора рулевой рейки">Выберите марку и модель для подбора рулевой рейки</option>
                                                     <option value="2">2</option>
                                                     <option value="3">3</option>
                                                 </select>
@@ -960,9 +961,12 @@ if (strlen($pictureInHeadIsset)) {
                                                     <option value="2">2</option>
                                                     <option value="3">3</option>
                                                 </select>
+                                            </div>
+                                            <div class="filterHor__item">
+                                                <div class="filterHor__btn">Применить</div>
                                             </div>
                                         </div>
-                                    </div>            
+                                    </div>       */?>     
 
                                     <?
 
@@ -973,7 +977,16 @@ if (strlen($pictureInHeadIsset)) {
                                         $APPLICATION->RestartBuffer();
                                     }
 
-
+									if($ar_result["ID"] == 197 || $ar_result["ID"] == 206){
+									$APPLICATION->IncludeComponent(
+										"diva:filter_model", 
+										".default", 
+										array(
+											"SECTION_CODE" => $arResult["VARIABLES"]["SECTION_CODE"],
+											"SMART_FILTER_PATH" => $arResult["VARIABLES"]["SMART_FILTER_PATH"],
+										),
+										false
+									);}
 
                                     $intSectionID = $APPLICATION->IncludeComponent(
                                         "bitrix:catalog.section",
