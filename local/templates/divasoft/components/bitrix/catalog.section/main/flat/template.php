@@ -68,9 +68,7 @@
             <!--<div class="product-available-js"><?//=$arItem["FIRST_ITEM"]["QUANTITY"]["HTML"] ?></div>-->
          <!--</div>-->
              <div class="wrapper-article-available row no-gutters d-none d-lg-flex" id="<?=$itemIds['ARTICLE_AVAILABLE']?>">
-
             <div class="product-available-js"><?=$arItem["FIRST_ITEM"]["QUANTITY"]["HTML"]?></div>
-
             <div class="detail-article italic col" title="<?=(strlen($arItem["FIRST_ITEM"]["ARTICLE"])>0)?$PHOENIX_TEMPLATE_ARRAY["MESS"]["ARTICLE_SHORT"].$arItem["FIRST_ITEM"]["ARTICLE"]:""?>"><?=(strlen($arItem["FIRST_ITEM"]["ARTICLE"])>0)?$PHOENIX_TEMPLATE_ARRAY["MESS"]["ARTICLE_SHORT"].$arItem["FIRST_ITEM"]["ARTICLE"]:""?></div>
         </div>
 
@@ -408,8 +406,8 @@
             </div>
 
         <? endif; ?>
-
-        <div class="wrapper-inner-bot row no-gutters hidden-js active" id="<?= $itemIds['WR_ADD2BASKET'] ?>">
+        <? cl_print_r($arItem["FIRST_ITEM"]["QUANTITY"]['QUANTITY_VALUE'])?>
+        <div class="wrapper-inner-bot row no-gutters hidden-js" id="<?= $itemIds['WR_ADD2BASKET'] ?>">
 
 
             <div class="quantity-container row no-gutters align-items-center col-xl-6 quantity-block d-none d-xl-flex" data-item="<?= $arItem['ID'] ?>">

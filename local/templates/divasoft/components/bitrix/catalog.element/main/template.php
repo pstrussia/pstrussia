@@ -504,11 +504,7 @@ if( strlen($previewTextPos)<=0 )
                                 <meta itemprop="value" content="<?=addslashes($arResult["FIRST_ITEM"]["ARTICLE"])?>">
                             </div>
                         <div class="product-available-js hidden-js"><?=$arResult["FIRST_ITEM"]["QUANTITY"]["HTML"]?></div>
-                        <? // cl_print_r($arResult['FIRST_ITEM'])?>
-                            <?if($arResult['FIRST_ITEM']['QUANTITY']['QUANTITY_VALUE'] <= 0){?>
-                               <div class="detail-available empty-quantity"><span class="text">  Наличие уточняйте                    
-                            <?}?>
-                                </span></div>
+                          
                         </div>
 
 
