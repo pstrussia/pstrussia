@@ -25173,7 +25173,7 @@ select.simple-select {
     line-height: 44px;
     height: 45px;
     width: 100%;
-    padding: 0 20px 0 15px;
+    padding: 0 30px 0 15px;
     position: relative;
     border: 1px solid #d5d5d5;
     border-radius: 4px;
@@ -27826,11 +27826,15 @@ textarea.redemption-form__input {
 
 .filterHor {
     margin-bottom: 40px;
+    background-color: #f8f8f8;
+    border-radius: 3px;
+    padding: 20px;
 }
 .filterHor__list {
     display: grid;
     grid-gap: 20px;
     grid-auto-flow: column;
+    grid-template-columns: repeat(4, 1fr) 120px;
 }
 .filterHor__title {
     font-size: 18px;
@@ -27838,6 +27842,18 @@ textarea.redemption-form__input {
 }
 .filterHor__item {
 
+}
+.filterHor__btn {
+    cursor: pointer;
+    background-color: #ec6e00;
+    color: #fff;
+    padding: 11px;
+    border-radius: 4px;
+    text-align: center;
+    transition: all 0.2s ease 0s;
+}
+.filterHor__btn:hover {
+    background-color: #d06000;
 }
 @media (max-width: 768px) {
     .filterHor__list {
