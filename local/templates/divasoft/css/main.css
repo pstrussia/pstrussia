@@ -16067,7 +16067,8 @@ div.catalog-list.FLAT div.item div.wrapper-article-available div.detail-availabl
     top: -1px;
 }
 
-div.catalog-list.FLAT div.item div.wrapper-article-available div.detail-available.simple {
+div.catalog-list.FLAT div.item div.wrapper-article-available div.detail-available.simple,
+div.catalog-list.TABLE div.item div.wrapper-article-available div.detail-available.simple {
     background: none;
     padding: 0;
 }
