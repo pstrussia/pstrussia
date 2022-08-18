@@ -72,46 +72,51 @@ require("include/_head.php");
                                     <? if (!empty($PHOENIX_TEMPLATE_ARRAY["ITEMS"]["POLITIC"]["ITEMS"]['AGREEMENT_FORM'])): ?>
 
                                         <div class="wrap-agree">
-                                            <label class="input-checkbox-css"><input type="checkbox" class="agreecheck" name="checkboxAgree" value="agree"checked>
-                                                <span></span>
-                                            </label>
-                                            <div class="wrap-desc">
-                                                <span class="text">Даю своё согласие на законную обработку персональных данных.</span>
-                                                <a class="call-modal callagreement" data-call-modal="agreement3">Политика конфиденциальности</a>,
+
+                                            <label class="input-checkbox-css">
+                                                <input type="checkbox" class="agreecheck" name="checkboxAgree" value="agree" <? if ($PHOENIX_TEMPLATE_ARRAY["ITEMS"]["POLITIC"]["ITEMS"]["POLITIC_CHECKED"]['VALUE']["ACTIVE"] == 'Y'): ?> checked<? endif; ?>>
+                                                <span></span>   
+                                            </label>   
+
+                                            <div class="wrap-desc">                                                                    
+                                                <span class="text"><? if (strlen($PHOENIX_TEMPLATE_ARRAY["ITEMS"]["POLITIC"]["ITEMS"]["POLITIC_DESC"]['VALUE']) > 0): ?><?= $PHOENIX_TEMPLATE_ARRAY["ITEMS"]["POLITIC"]["ITEMS"]["POLITIC_DESC"]['~VALUE'] ?><? else: ?><?= $PHOENIX_TEMPLATE_ARRAY["MESS"]["FORM_TEMPL_AGREEMENT"] ?><? endif; ?></span>
+
+
+                                                <? $agrCount = count($PHOENIX_TEMPLATE_ARRAY["ITEMS"]["POLITIC"]["ITEMS"]['AGREEMENT_FORM']); ?>
+                                                <? foreach ($PHOENIX_TEMPLATE_ARRAY["ITEMS"]["POLITIC"]["ITEMS"]['AGREEMENT_FORM'] as $k => $arAgr): ?>
+
+                                                    <a class="call-modal callagreement" data-call-modal="agreement<?= $arAgr['ID'] ?>"><? if (strlen($arAgr['PROPERTIES']['CASE_TEXT']['VALUE']) > 0): ?><?= $arAgr['PROPERTIES']['CASE_TEXT']['VALUE'] ?><? else: ?><?= $arAgr['NAME'] ?><? endif; ?></a><? if ($k + 1 != $agrCount): ?><span>, </span><? endif; ?>
+
+
+                                                <? endforeach; ?>
+
                                             </div>
+
                                         </div>
-                                        <div class="wrap-agree">
-                                            <label class="input-checkbox-css"><input type="checkbox" class="agreecheck" name="checkboxAgree2" value="agree"checked>
-                                                <span></span>
-                                            </label>
-                                            <div class="wrap-desc">
-                                                <span class="text">Мною прочитано и ознакомлено.</span>
-                                                <a class="call-modal callagreement" data-call-modal="agreement4">Публичная оферта</a>
-                                            </div>
-                                        <? endif; ?>
-
-                                    </div>
-
-                                    <div class="input-btn">
-
-                                        <div class="load">
-                                            <div class="xLoader form-preload"><div class="audio-wave"><span></span><span></span><span></span><span></span><span></span></div></div>
-                                        </div>
-                                        <button type="button" class="button-def main-color active <?= $PHOENIX_TEMPLATE_ARRAY["ITEMS"]["DESIGN"]["ITEMS"]['BTN_VIEW']['VALUE'] ?> register-submit" id="reg-submit" name="form-submit" value=""><?= $PHOENIX_TEMPLATE_ARRAY["MESS"]["PERSONAL_REGISTER_BTN_NAME"] ?></button>
-
-                                    </div>
-
-                                    <? if (isset($PHOENIX_TEMPLATE_ARRAY["GROUP_POLICY_2"]["PASSWORD_REQUIREMENTS"])): ?>
-                                        <? if (strlen($PHOENIX_TEMPLATE_ARRAY["GROUP_POLICY_2"]["PASSWORD_REQUIREMENTS"])): ?>
-
-                                            <div class="alert-group-policy">
-                                                <?= $PHOENIX_TEMPLATE_ARRAY["GROUP_POLICY_2"]["PASSWORD_REQUIREMENTS"] ?>
-                                            </div>
-
-                                        <? endif; ?>
                                     <? endif; ?>
 
                                 </div>
+
+                                <div class="input-btn">
+
+                                    <div class="load">
+                                        <div class="xLoader form-preload"><div class="audio-wave"><span></span><span></span><span></span><span></span><span></span></div></div>
+                                    </div>
+                                    <button type="button" class="button-def main-color active <?= $PHOENIX_TEMPLATE_ARRAY["ITEMS"]["DESIGN"]["ITEMS"]['BTN_VIEW']['VALUE'] ?> register-submit" id="reg-submit" name="form-submit" value=""><?= $PHOENIX_TEMPLATE_ARRAY["MESS"]["PERSONAL_REGISTER_BTN_NAME"] ?></button>
+
+                                </div>
+
+                                <? if (isset($PHOENIX_TEMPLATE_ARRAY["GROUP_POLICY_2"]["PASSWORD_REQUIREMENTS"])): ?>
+                                    <? if (strlen($PHOENIX_TEMPLATE_ARRAY["GROUP_POLICY_2"]["PASSWORD_REQUIREMENTS"])): ?>
+
+                                        <div class="alert-group-policy">
+                                            <?= $PHOENIX_TEMPLATE_ARRAY["GROUP_POLICY_2"]["PASSWORD_REQUIREMENTS"] ?>
+                                        </div>
+
+                                    <? endif; ?>
+                                <? endif; ?>
+
+                            </div>
                         </form>
 
                     </div>

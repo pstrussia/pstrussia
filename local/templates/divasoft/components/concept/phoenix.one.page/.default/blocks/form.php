@@ -739,25 +739,7 @@ $ymWizard = "ym-record-keys";
                                                 
                                         </button>
                                     </div>
-                                    <?
-                                    $PHOENIX_TEMPLATE_ARRAY["ITEMS"]["POLITIC"]["AGREEMENT_FOR_FORMS_HTML"] = '<div class="wrap-agree">'
-                                            . '<label class="input-checkbox-css"><input type="checkbox" class="agreecheck" name="checkboxAgree" value="agree"checked>'
-                                            . '<span></span>'
-                                            . '</label>'
-                                            . '<div class="wrap-desc">'
-                                            . ' <span class="text">Даю своё согласие на законную обработку персональных данных.</span>'
-                                            . '<a class="call-modal callagreement" data-call-modal="agreement3">Политика конфиденциальности</a>,'
-                                            . '</div>'
-                                            . '</div>'
-                                            . '<div class="wrap-agree">'
-                                            . '<label class="input-checkbox-css"><input type="checkbox" class="agreecheck" name="checkboxAgree2" value="agree"checked>'
-                                            . '<span></span>'
-                                            . '</label>'
-                                            . '<div class="wrap-desc">'
-                                            . ' <span class="text">Мною прочитано и ознакомлено.</span>'
-                                            . ' <a class="call-modal callagreement" data-call-modal="agreement4">Публичная оферта</a>'
-                                            . '</div>'
-                                    ?>
+                               
                                     <?=$PHOENIX_TEMPLATE_ARRAY["ITEMS"]["POLITIC"]["AGREEMENT_FOR_FORMS_HTML"]?>
        
                                 </div>
