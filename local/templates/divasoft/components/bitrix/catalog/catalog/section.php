@@ -935,7 +935,7 @@ if (strlen($pictureInHeadIsset)) {
                                         <div class="filterHor__list">
                                             <div class="filterHor__item">
                                                 <select class="simple-select">
-                                                    <option value="1">1</option>
+                                                    <option value="Выберите марку и модель для подбора рулевой рейки">Выберите марку и модель для подбора рулевой рейки</option>
                                                     <option value="2">2</option>
                                                     <option value="3">3</option>
                                                 </select>
@@ -960,6 +960,9 @@ if (strlen($pictureInHeadIsset)) {
                                                     <option value="2">2</option>
                                                     <option value="3">3</option>
                                                 </select>
+                                            </div>
+                                            <div class="filterHor__item">
+                                                <div class="filterHor__btn">Применить</div>
                                             </div>
                                         </div>
                                     </div>            
