@@ -29,22 +29,22 @@
             <? } ?>
 
 
-            <?/* if ($arItem['CONFIG']['SHOW_DELAY'] == "Y" || $arItem['CONFIG']['SHOW_COMPARE'] == "Y"):
-                ?>
+            <? /* if ($arItem['CONFIG']['SHOW_DELAY'] == "Y" || $arItem['CONFIG']['SHOW_COMPARE'] == "Y"):
+              ?>
 
-                <div class="wrapper-delay-compare-icons <?= ($arItem['HAVEOFFERS']) ? "hidden-md hidden-sm hidden-xs" : ""; ?>">
+              <div class="wrapper-delay-compare-icons <?= ($arItem['HAVEOFFERS']) ? "hidden-md hidden-sm hidden-xs" : ""; ?>">
 
-                    <? if ($arItem['CONFIG']['SHOW_DELAY'] == "Y"): ?>
-                        <div title="<?= $PHOENIX_TEMPLATE_ARRAY["MESS"]["CATALOG_DELAY_TITLE"] ?>" class="icon delay add2delay" id = "<?= $itemIds["DELAY"] ?>" data-item="<?= $arItem["ID"] ?>"></div>
-                    <? endif; ?>
+              <? if ($arItem['CONFIG']['SHOW_DELAY'] == "Y"): ?>
+              <div title="<?= $PHOENIX_TEMPLATE_ARRAY["MESS"]["CATALOG_DELAY_TITLE"] ?>" class="icon delay add2delay" id = "<?= $itemIds["DELAY"] ?>" data-item="<?= $arItem["ID"] ?>"></div>
+              <? endif; ?>
 
-                    <? if ($arItem['CONFIG']['SHOW_COMPARE'] == "Y"): ?>
-                        <div title="<?= $PHOENIX_TEMPLATE_ARRAY["MESS"]["CATALOG_COMPARE_TITLE"] ?>" class="icon compare add2compare" id = "<?= $itemIds["COMPARE"] ?>" data-item="<?= $arItem["ID"] ?>"></div>
-                    <? endif; ?>
-                </div>
+              <? if ($arItem['CONFIG']['SHOW_COMPARE'] == "Y"): ?>
+              <div title="<?= $PHOENIX_TEMPLATE_ARRAY["MESS"]["CATALOG_COMPARE_TITLE"] ?>" class="icon compare add2compare" id = "<?= $itemIds["COMPARE"] ?>" data-item="<?= $arItem["ID"] ?>"></div>
+              <? endif; ?>
+              </div>
 
 
-            <? endif; */?>
+              <? endif; */ ?>
 
             <? if ($arItem['HAVEOFFERS']): ?>
 
@@ -61,14 +61,17 @@
 
 
 
-        <div class="wrapper-article-available row no-gutters d-none d-lg-flex" id="<?= $itemIds['ARTICLE_AVAILABLE'] ?>">
 
-            <!--<div class="product-available-js hidden-js"><? //=$arItem["FIRST_ITEM"]["QUANTITY"]["HTML"] ?></div>-->
-            <div class="wrapper-article-available row-line d-none d-lg-block" id="<?= $itemIds['ARTICLE_AVAILABLE'] ?>">
-                <div class="detail-article italic <? if (strlen($arItem["FIRST_ITEM"]["ARTICLE"]) <= 0): ?>d-none<? endif; ?>" title="<?= (strlen($arItem["FIRST_ITEM"]["ARTICLE"]) > 0) ? $PHOENIX_TEMPLATE_ARRAY["MESS"]["ARTICLE_SHORT"] . $arItem["FIRST_ITEM"]["ARTICLE"] : "" ?>"><?= (strlen($arItem["FIRST_ITEM"]["ARTICLE"]) > 0) ? $PHOENIX_TEMPLATE_ARRAY["MESS"]["ARTICLE_SHORT"] . $arItem["FIRST_ITEM"]["ARTICLE"] : "" ?></div>
-                <div class="product-available-js"><?= $arItem["FIRST_ITEM"]["QUANTITY"]["HTML"] ?></div>
-            </div>
-            <div class="detail-article italic col" title="<?= (strlen($arItem["FIRST_ITEM"]["ARTICLE"]) > 0) ? $PHOENIX_TEMPLATE_ARRAY["MESS"]["ARTICLE_SHORT"] . $arItem["FIRST_ITEM"]["ARTICLE"] : "" ?>"><?= (strlen($arItem["FIRST_ITEM"]["ARTICLE"]) > 0) ? $PHOENIX_TEMPLATE_ARRAY["MESS"]["ARTICLE_SHORT"] . $arItem["FIRST_ITEM"]["ARTICLE"] : "" ?></div>
+
+        <!--<div class="wrapper-article-available row no-gutters d-none d-lg-flex" id="<?//= $itemIds['ARTICLE_AVAILABLE'] ?>">-->
+
+            <!--<div class="product-available-js"><?//=$arItem["FIRST_ITEM"]["QUANTITY"]["HTML"] ?></div>-->
+         <!--</div>-->
+             <div class="wrapper-article-available row no-gutters d-none d-lg-flex" id="<?=$itemIds['ARTICLE_AVAILABLE']?>">
+
+            <div class="product-available-js"><?=$arItem["FIRST_ITEM"]["QUANTITY"]["HTML"]?></div>
+
+            <div class="detail-article italic col" title="<?=(strlen($arItem["FIRST_ITEM"]["ARTICLE"])>0)?$PHOENIX_TEMPLATE_ARRAY["MESS"]["ARTICLE_SHORT"].$arItem["FIRST_ITEM"]["ARTICLE"]:""?>"><?=(strlen($arItem["FIRST_ITEM"]["ARTICLE"])>0)?$PHOENIX_TEMPLATE_ARRAY["MESS"]["ARTICLE_SHORT"].$arItem["FIRST_ITEM"]["ARTICLE"]:""?></div>
         </div>
 
         <a href="<?= $arItem['FIRST_ITEM']['DETAIL_PAGE_URL'] ?>" class="name-element" id="<?= $itemIds['NAME'] ?>">
@@ -104,9 +107,9 @@
 
                     </div>
 
-                    <? //if($PHOENIX_TEMPLATE_ARRAY["ITEMS"]["CATALOG"]["ITEMS"]['USE_PRICE_COUNT']['VALUE']["ACTIVE"] == 'Y'):?>
+                    <? //if($PHOENIX_TEMPLATE_ARRAY["ITEMS"]["CATALOG"]["ITEMS"]['USE_PRICE_COUNT']['VALUE']["ACTIVE"] == 'Y'): ?>
                     <div class="wrapper-matrix-block d-none hidden-xs" id= "<?= $itemIds["PRICE_MATRIX"] ?>"><?= $arItem["FIRST_ITEM"]["PRICE_MATRIX_RESULT"]["HTML"] ?></div>
-                    <? //endif;?>
+                    <? //endif; ?>
                 </div>
 
                 <? if ($arItem['HAVEOFFERS']): ?>
@@ -135,11 +138,11 @@
                 <div class="d-none d-lg-block">
 
 
-    <? if ($arItem['CONFIG']["SHOW_OFFERS"]): ?>
+                    <? if ($arItem['CONFIG']["SHOW_OFFERS"]): ?>
 
                         <div id="<?= $itemIds['TREE'] ?>" class="wrapper-skudiv <?= ($arItem['SKU_HIDE_IN_LIST'] === 'Y') ? 'd-none' : '' ?>">
 
-        <? if (!empty($arItem["SKU_PROPS"])): ?>
+                            <? if (!empty($arItem["SKU_PROPS"])): ?>
 
                                 <? foreach ($arItem["SKU_PROPS"] as $skuProperty): ?>
 
@@ -160,11 +163,11 @@
 
                                             </div>
 
-                <? if ($PHOENIX_TEMPLATE_ARRAY["ITEMS"]["CATALOG"]["ITEMS"]['OFFER_FIELDS']["VALUES"][$skuProperty["ID"]]["VALUE_2"] == 'pic' || $PHOENIX_TEMPLATE_ARRAY["ITEMS"]["CATALOG"]["ITEMS"]['OFFER_FIELDS']["VALUES"][$skuProperty["ID"]]["VALUE_2"] == 'pic_with_info'): ?>
+                                            <? if ($PHOENIX_TEMPLATE_ARRAY["ITEMS"]["CATALOG"]["ITEMS"]['OFFER_FIELDS']["VALUES"][$skuProperty["ID"]]["VALUE_2"] == 'pic' || $PHOENIX_TEMPLATE_ARRAY["ITEMS"]["CATALOG"]["ITEMS"]['OFFER_FIELDS']["VALUES"][$skuProperty["ID"]]["VALUE_2"] == 'pic_with_info'): ?>
 
                                                 <ul class="sku-props clearfix">
 
-                    <? if (!empty($skuProperty['VALUES'])): ?>
+                                                    <? if (!empty($skuProperty['VALUES'])): ?>
 
                                                         <? foreach ($skuProperty['VALUES'] as $value): ?>
 
@@ -204,7 +207,7 @@
                                                                 <div class="color" style="<?= $styleTab ?>"></div>
 
 
-                            <? if ($PHOENIX_TEMPLATE_ARRAY["ITEMS"]["CATALOG"]["ITEMS"]['OFFER_FIELDS']["VALUES"][$skuProperty["ID"]]["VALUE_2"] == 'pic_with_info'): ?>
+                                                                <? if ($PHOENIX_TEMPLATE_ARRAY["ITEMS"]["CATALOG"]["ITEMS"]['OFFER_FIELDS']["VALUES"][$skuProperty["ID"]]["VALUE_2"] == 'pic_with_info'): ?>
 
                                                                     <div class="wrapper-hover-board">
                                                                         <div class="img" style="<?= $styleHoverBoard ?>"></div>
@@ -212,18 +215,18 @@
                                                                         <div class="arrow"></div>
                                                                     </div>
 
-                            <? endif; ?>
+                                                                <? endif; ?>
 
                                                                 <span class="active-flag"></span>
 
                                                             </li>
 
-                        <? endforeach; ?>
+                                                        <? endforeach; ?>
 
-                    <? endif; ?>
+                                                    <? endif; ?>
                                                 </ul>
 
-                                                    <? elseif ($PHOENIX_TEMPLATE_ARRAY["ITEMS"]["CATALOG"]["ITEMS"]['OFFER_FIELDS']["VALUES"][$skuProperty["ID"]]["VALUE_2"] == 'select'): ?>
+                                            <? elseif ($PHOENIX_TEMPLATE_ARRAY["ITEMS"]["CATALOG"]["ITEMS"]['OFFER_FIELDS']["VALUES"][$skuProperty["ID"]]["VALUE_2"] == 'select'): ?>
 
                                                 <div class="wrapper-select-input">
 
@@ -231,16 +234,16 @@
 
                                                         <li class="area-for-current-value"><?= $PHOENIX_TEMPLATE_ARRAY["MESS"]["SKU_SELECT_TITLE"] ?></li>
 
-                                                    <? if (!empty($skuProperty['VALUES'])): ?>
+                                                        <? if (!empty($skuProperty['VALUES'])): ?>
 
-                        <? foreach ($skuProperty['VALUES'] as $value): ?>
+                                                            <? foreach ($skuProperty['VALUES'] as $value): ?>
                                                                 <li title='<?= CPhoenix::prepareText($value['NAME']) ?>'
 
                                                                     data-treevalue="<?= $propertyId ?>_<?= $value['ID'] ?>"
                                                                     data-onevalue="<?= $value['ID'] ?>"
 
                                                                     ><?= $value['NAME'] ?></li>
-                        <? endforeach; ?>
+                                                                <? endforeach; ?>
 
                                                         <? endif; ?>
 
@@ -251,48 +254,48 @@
                                                 </div>
 
 
-                                                        <? else: ?>
+                                            <? else: ?>
 
                                                 <ul class="sku-props">
 
-                    <? if (!empty($skuProperty['VALUES'])): ?>
+                                                    <? if (!empty($skuProperty['VALUES'])): ?>
 
-                        <? foreach ($skuProperty['VALUES'] as &$value): ?>
+                                                        <? foreach ($skuProperty['VALUES'] as &$value): ?>
                                                             <li title='<?= CPhoenix::prepareText($value['NAME']) ?>' class="detail-text"
 
                                                                 data-treevalue="<?= $propertyId ?>_<?= $value['ID'] ?>"
                                                                 data-onevalue="<?= $value['ID'] ?>"
 
                                                                 ><?= $value['NAME'] ?></li>
-                        <? endforeach; ?>
+                                                            <? endforeach; ?>
 
                                                     <? endif; ?>
                                                 </ul>
 
 
-                <? endif; ?>
+                                            <? endif; ?>
 
 
                                         </div>
 
                                     </div>
 
-                                            <? endforeach; ?>
+                                <? endforeach; ?>
 
-        <? endif; ?>
+                            <? endif; ?>
 
                         </div>                            
 
-    <? endif; ?>
+                    <? endif; ?>
 
-    <? if ($PHOENIX_TEMPLATE_ARRAY["ITEMS"]["CATALOG_ITEM_FIELDS"]["ITEMS"]["PROPS_IN_LIST_FOR_" . $arResult["VIEW"]]["VALUE"]["DESCRIPTION"] == "Y"): ?>
+                    <? if ($PHOENIX_TEMPLATE_ARRAY["ITEMS"]["CATALOG_ITEM_FIELDS"]["ITEMS"]["PROPS_IN_LIST_FOR_" . $arResult["VIEW"]]["VALUE"]["DESCRIPTION"] == "Y"): ?>
 
                         <div class="short-description" id="<?= $itemIds["SHORT_DESCRIPTION"] ?>"><?= $arItem["FIRST_ITEM"]["SHORT_DESCRIPTION_HTML"] ?></div>
 
-                        <? endif; ?>
+                    <? endif; ?>
 
 
-    <? if ($PHOENIX_TEMPLATE_ARRAY["ITEMS"]["CATALOG_ITEM_FIELDS"]["ITEMS"]["PROPS_IN_LIST_FOR_" . $arResult["VIEW"]]["VALUE"]["PREVIEW_TEXT"] == "Y"): ?>
+                    <? if ($PHOENIX_TEMPLATE_ARRAY["ITEMS"]["CATALOG_ITEM_FIELDS"]["ITEMS"]["PROPS_IN_LIST_FOR_" . $arResult["VIEW"]]["VALUE"]["PREVIEW_TEXT"] == "Y"): ?>
 
                         <div class="preview-text" id="<?= $itemIds["PREVIEW_TEXT"] ?>"><?= $arItem["FIRST_ITEM"]["PREVIEW_TEXT_HTML"] ?></div>
 
@@ -302,16 +305,16 @@
 
                 <div class="">
 
-    <?
-    if ($PHOENIX_TEMPLATE_ARRAY["ITEMS"]["RATING"]["ITEMS"]["USE_VOTE"]["VALUE"]["ACTIVE"] == "Y") {
-        ?>
-        <? if ($arResult["RATING_VIEW"] == "simple"): ?>
+                    <?
+                    if ($PHOENIX_TEMPLATE_ARRAY["ITEMS"]["RATING"]["ITEMS"]["USE_VOTE"]["VALUE"]["ACTIVE"] == "Y") {
+                        ?>
+                        <? if ($arResult["RATING_VIEW"] == "simple"): ?>
 
                             <?= CPhoenix::GetRatingVoteHTML(array("ID" => $arItem['ID'], "CLASS" => "simple-rating hover")); ?>
 
-        <? elseif ($arResult["RATING_VIEW"] == "full"): ?>
+                        <? elseif ($arResult["RATING_VIEW"] == "full"): ?>
 
-            <?= CPhoenix::GetRatingVoteHTML(array("ID" => $arItem['ID'], "VIEW" => "rating-reviewsCount", "HREF" => $arItem['FIRST_ITEM']['DETAIL_PAGE_URL'] . "#rating-block")); ?>
+                            <?= CPhoenix::GetRatingVoteHTML(array("ID" => $arItem['ID'], "VIEW" => "rating-reviewsCount", "HREF" => $arItem['FIRST_ITEM']['DETAIL_PAGE_URL'] . "#rating-block")); ?>
 
                         <? endif; ?>
 
@@ -334,17 +337,17 @@
 
                             <div class="characteristics show-hidden-parent">
 
-        <? foreach ($arItem["CHARS_SORT"] as $keyChar => $valueChar): ?>
+                                <? foreach ($arItem["CHARS_SORT"] as $keyChar => $valueChar): ?>
 
-            <? if ($keyChar == "sku_chars"): ?>
+                                    <? if ($keyChar == "sku_chars"): ?>
 
                                         <div class="sku-chars" id = "<?= $itemIds["SKU_CHARS"] ?>"></div>
 
-                            <? elseif ($keyChar == "props_chars"): ?>
+                                    <? elseif ($keyChar == "props_chars"): ?>
 
-                <? if (!empty($arItem["PROPS_CHARS"])): ?>
+                                        <? if (!empty($arItem["PROPS_CHARS"])): ?>
 
-                    <? foreach ($arItem["PROPS_CHARS"] as $key => $value): ?>
+                                            <? foreach ($arItem["PROPS_CHARS"] as $key => $value): ?>
 
                                                 <div class="characteristics-item show-hidden-child <? if ($countChars >= 5): ?>hidden<? endif; ?>">
 
@@ -360,9 +363,9 @@
 
 
 
-            <? elseif ($keyChar == "prop_chars"): ?>
+                                    <? elseif ($keyChar == "prop_chars"): ?>
 
-                <? if (!empty($arItem["PROP_CHARS"])): ?>
+                                        <? if (!empty($arItem["PROP_CHARS"])): ?>
 
                                             <? foreach ($arItem["PROP_CHARS"] as $key => $value): ?>
 
@@ -378,9 +381,9 @@
 
                                         <? endif; ?>
 
-            <? endif; ?>
+                                    <? endif; ?>
 
-        <? endforeach; ?>
+                                <? endforeach; ?>
 
 
 
@@ -396,7 +399,7 @@
 
                         </div>
 
-                            <? endif; ?>
+                    <? endif; ?>
 
 
                 </div>
@@ -404,7 +407,7 @@
 
             </div>
 
-<? endif; ?>
+        <? endif; ?>
 
         <div class="wrapper-inner-bot row no-gutters hidden-js active" id="<?= $itemIds['WR_ADD2BASKET'] ?>">
 
@@ -441,11 +444,11 @@
                 </div>
 
 
-<? if ($arItem['HAVEOFFERS']): ?>
+                <? if ($arItem['HAVEOFFERS']): ?>
                     <a href="<?= $arItem['FIRST_ITEM']['DETAIL_PAGE_URL'] ?>" class="main-color bold d-lg-none">
-    <?= $PHOENIX_TEMPLATE_ARRAY["ITEMS"]["CATALOG"]["ITEMS"]["LINK_2_DETAIL_PAGE_NAME_OFFER_MOB"]["VALUE"] ?>
+                        <?= $PHOENIX_TEMPLATE_ARRAY["ITEMS"]["CATALOG"]["ITEMS"]["LINK_2_DETAIL_PAGE_NAME_OFFER_MOB"]["VALUE"] ?>
                     </a>
-<? endif; ?>
+                <? endif; ?>
             </div>
 
 
@@ -456,17 +459,17 @@
             <div class="btn-container align-items-center col-12">
                 <a href="<?= $arItem['FIRST_ITEM']['DETAIL_PAGE_URL'] ?>" class="main-color bold">
 
-                <? if ($arItem['HAVEOFFERS']): ?>
+                    <? if ($arItem['HAVEOFFERS']): ?>
 
                         <span class="d-none d-lg-block"><?= $PHOENIX_TEMPLATE_ARRAY["ITEMS"]["CATALOG"]["ITEMS"]["LINK_2_DETAIL_PAGE_NAME_OFFER"]["VALUE"] ?></span>
 
                         <span class="d-lg-none"><?= $PHOENIX_TEMPLATE_ARRAY["ITEMS"]["CATALOG"]["ITEMS"]["LINK_2_DETAIL_PAGE_NAME_OFFER_MOB"]["VALUE"] ?></span>
 
-<? else: ?>
+                    <? else: ?>
 
-    <?= $PHOENIX_TEMPLATE_ARRAY["ITEMS"]["CATALOG"]["ITEMS"]["LINK_2_DETAIL_PAGE_NAME"]["VALUE"] ?>
+                        <?= $PHOENIX_TEMPLATE_ARRAY["ITEMS"]["CATALOG"]["ITEMS"]["LINK_2_DETAIL_PAGE_NAME"]["VALUE"] ?>
 
-<? endif; ?>
+                    <? endif; ?>
 
                 </a>
             </div>
@@ -478,5 +481,5 @@
 
 </div>
 
-                    <?
-                    CPhoenix::admin_setting($arItem, false)?>
+<?
+CPhoenix::admin_setting($arItem, false)?>

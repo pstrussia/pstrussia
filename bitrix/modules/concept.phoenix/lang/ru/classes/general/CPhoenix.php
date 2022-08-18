@@ -1,5 +1,5 @@
 <?
-$MESS['VALIDATOR_PROMO'] = 'Введён недействительный промокод';
+
 $MESS["PHOENIX_SET_REGION_USE_404"] = "Устанавливать 404 ошибку для товаров по регионам";
 
 $MESS["PHOENIX_SET_STORE_SHOW_RESIDUAL"] = "Показывать остатки со складов";
@@ -84,9 +84,8 @@ $MESS["PHOENIX_MESS_CATALOG_SHOW_COLUMN"] = "Развернуть колонку
 $MESS["PHOENIX_MESS_CATALOG_PREFIX_FROM"] = "от&nbsp;";
 $MESS["PHOENIX_MESS_CATALOG_TO_DETAIL"] = "Подробнее";
 $MESS["PHOENIX_MESS_MOB_MENU_SHOW_CONTACTS"] = "Показать все контакты";
-$MESS["PHOENIX_MESS_CATALOG_PREORDER_ONLY"] = "Под заказ";
+$MESS["PHOENIX_MESS_CATALOG_PREORDER_ONLY"] = "Наличие уточняйте";
 $MESS["PHOENIX_MESS_CATALOG_MODE_ARCHIVE"] = "Архивный товар";
-
 $MESS["PHOENIX_MESS_SHOW_CHARACTERISTICS"] = "Характеристики";
 $MESS["PHOENIX_MESS_SKROLL_TO_CHARACTERISTICS"] = "Характеристики";
 $MESS["PHOENIX_MESS_VIDEO"] = "Видео";
@@ -886,6 +885,7 @@ $MESS["PHOENIX_PERSONAL_REGISTER_INPUT_NAME"] = "Ваше имя";
 $MESS["PHOENIX_PERSONAL_REGISTER_FORM_TITLE"] = "Заполните форму";
 $MESS["PHOENIX_PERSONAL_REGISTER_INPUT_EMAIL"] = "E-mail";
 $MESS["PHOENIX_PERSONAL_REGISTER_INPUT_PASSWORD"] = "Придумайте пароль";
+$MESS["PHOENIX_PERSONAL_REGISTER_INPUT_PROMO"] = "Недействительный промокод";
 $MESS["PHOENIX_PERSONAL_REGISTER_TEXT_SUCCESS"] = "<h2 style='margin-top: 0;'>Спасибо.</h2><p>Вы успешно зарегистрировались.</p><p>На указанный e-mail вам отправлены логин и пароль для последующего входа на сайт.</p>";
 $MESS["PHOENIX_PERSONAL_REGISTER_SUCCESS_PAGE_TITLE"] = "Вы успешно зарегистрировались на сайте";
 

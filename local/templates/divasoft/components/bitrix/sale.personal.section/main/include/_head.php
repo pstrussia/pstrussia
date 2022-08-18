@@ -116,7 +116,7 @@ if($PHOENIX_TEMPLATE_ARRAY["ITEMS"]["DESIGN"]["ITEMS"]["HEAD_BG_XS_FOR_PAGES_MOD
                             </div>
 
                             <div class="wr-bttn right">
-                                <a href="<?=SITE_DIR."?logout=yes".bitrix_sessid_get()?>"><span class="bord-bot"><?=$PHOENIX_TEMPLATE_ARRAY["MESS"]["PERSONAL_SPS_PERSONAL_LOGOUT_WIDGET"]?></span></a>
+                                <a href="<?=SITE_DIR."?logout=yes&".bitrix_sessid_get()?>"><span class="bord-bot"><?=$PHOENIX_TEMPLATE_ARRAY["MESS"]["PERSONAL_SPS_PERSONAL_LOGOUT_WIDGET"]?></span></a>
                             </div>
 
                         </div>              
