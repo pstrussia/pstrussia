@@ -27792,10 +27792,16 @@ textarea.redemption-form__input {
     align-items: flex-start;
 }
 .catalog-list.TABLE .wrapper-image__sale{
-    left: 50px;
+    /* left: 50px; */
+    position: relative;
+    left: auto;
+    bottom: auto;
 }
 .wrapper-image__sale .buy-sale{
     margin-top: 10px;
+}
+.catalog-list.TABLE .wrapper-image__sale .buy-sale{
+    margin-top: 8px;
 }
 
 .wrapper-btn__sale{
