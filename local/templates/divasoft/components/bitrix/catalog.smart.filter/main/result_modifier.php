@@ -40,3 +40,4 @@ global $sotbitFilterResult;
 $sotbitFilterResult = $arResult;
 
 }
+//cl_print_r($arResult);

@@ -19,8 +19,13 @@
             </div>
         <?endif;?>
 
-
-        <?if( $arItem['CONFIG']['SHOW_DELAY'] == "Y" 
+    <? if($arItem['IBLOCK_SECTION_ID'] == 206){?>
+            <div class="wrapper-image__sale">
+                <span id="<?=$itemIds['DISCOUNT_PERCENT']?>" class="sale <?=( ($arItem['CONFIG']["SHOW_DISCOUNT_PERCENT"] === 'Y' && $arItem["FIRST_ITEM"]['PRICE']['PERCENT']>0) ? '' : 'd-none')?>"><?=-$arItem["FIRST_ITEM"]['PRICE']["PERCENT"]?>%</span>
+                <a class="buy-sale" href="/redemption/">Купить со скидкой до 20%</a>
+            </div>
+            <? }?>
+        <?/*if( $arItem['CONFIG']['SHOW_DELAY'] == "Y" 
           || $arItem['CONFIG']['SHOW_COMPARE'] == "Y" ):?>
 
             <div class="wrapper-delay-compare-icons <?=($arItem['HAVEOFFERS'])?"hidden-md hidden-sm hidden-xs":"";?>">
@@ -33,7 +38,7 @@
                     <div title="<?=$PHOENIX_TEMPLATE_ARRAY["MESS"]["CATALOG_COMPARE_TITLE"]?>" class="icon compare add2compare" id = "<?=$itemIds["COMPARE"]?>" data-item="<?=$arItem["ID"]?>"></div>
                 <?endif;?>
             </div>
-        <?endif;?>
+        <?endif;*/?>
 
         <div class="d-none"><span id="<?=$itemIds['DISCOUNT_PERCENT']?>" class="sale"><?=-$arItem["FIRST_ITEM"]['PRICE']["PERCENT"]?>%</span></div>
 

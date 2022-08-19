@@ -1,5 +1,13 @@
 <?php
 $arUrlRewrite=array (
+  12 => 
+  array (
+    'CONDITION' => '#^={$arResult["FOLDER"].$arResult["URL_TEMPLATES"]["smart_filter"]."#actionbox"}\\??(.*)#',
+    'RULE' => '&$1',
+    'ID' => 'bitrix:catalog.smart.filter',
+    'PATH' => '/local/templates/divasoft/components/bitrix/catalog/catalog/section.php',
+    'SORT' => 100,
+  ),
   0 => 
   array (
     'CONDITION' => '#^/personal/order/#',
@@ -16,7 +24,7 @@ $arUrlRewrite=array (
     'PATH' => '/personal/index.php',
     'SORT' => 100,
   ),
-  2 => 
+  10 => 
   array (
     'CONDITION' => '#^/catalog/#',
     'RULE' => '',
@@ -72,7 +80,7 @@ $arUrlRewrite=array (
     'PATH' => '/blog/index.php',
     'SORT' => 100,
   ),
-  9 => 
+  11 => 
   array (
     'CONDITION' => '#^/#',
     'RULE' => '',

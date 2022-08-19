@@ -28,6 +28,15 @@ if(intval($arResult["ID"]))
     $arResult = array_merge($arResult, $ar_result);
 }
 
+//$rsResult = CIBlockSection::GetList(array("SORT" => "ASC"),
+//    array("IBLOCK_ID" => $arParams["IBLOCK_ID"], "ID" => $arResult["ID"]), false,
+//    $arSelect = array("UF_*"));
+//
+//if($arSection = $rsResult->GetNext())
+//{
+//    $arResult["SECTION_USER_FIELDS"]["UF_INFO_DETAIL_DISCOUNT"] = $arSection["UF_INFO_DETAIL_DISCOUNT"];
+//}
+
 $arResult["VIEW"] = $arParams["VIEW"];
 
 if(!strlen($arParams["VIEW"]))
@@ -65,7 +74,6 @@ if(!empty($arResult["ITEMS"]))
 }
 
 CPhoenix::SetResultModifierCatalogElements($arResult, $arParams, $arEditAreaId);
-
 
 
 

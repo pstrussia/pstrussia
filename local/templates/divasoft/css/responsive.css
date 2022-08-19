@@ -436,10 +436,10 @@
 		filter: alpha(opacity=40);
 	}
 	div.banners-menu div.frame.hover-on:hover img{
-		-webkit-transform: translate(-50%, -50%) scale(1.15);
-		-ms-transform: translate(-50%, -50%) scale(1.15);
-		-o-transform: translate(-50%, -50%) scale(1.15);
-		transform: translate(-50%, -50%) scale(1.15);
+		-webkit-transform: scale(1.15);
+		-ms-transform: scale(1.15);
+		-o-transform: scale(1.15);
+		transform: scale(1.15);
 	}
 	div.banners-menu div.frame.hover-on:hover div.text div.cont{
 		-webkit-transform: translate(0, 100%);

@@ -12,6 +12,10 @@ class Controller {
                 'iblock', 'OnBeforeIBlockElementUpdate',
                 [__CLASS__, 'onBeforeIBlockElementUpdateHandler']
         );
+        $eventManager->addEventHandler(
+                'iblock', 'OnBeforeIBlockElementAdd',
+                [__CLASS__, 'onBeforeIBlockElementUpdateHandler']
+        );
     }
 
     public static function onBeforeIBlockElementUpdateHandler(&$arFields) {

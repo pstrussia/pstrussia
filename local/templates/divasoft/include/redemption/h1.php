@@ -1,0 +1,1 @@
+<h1 class="redemption-head__title title">Есть старая рулевая рейка?<br>Продай ее!</h1>

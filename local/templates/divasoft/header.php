@@ -69,6 +69,9 @@
 		if(!$PHOENIX_TEMPLATE_ARRAY["BINDEX_BOT"])
 			$APPLICATION->ShowViewContent("service_head");
 	?>
+	
+	
+	
 </head>
 
 <?
@@ -89,11 +92,21 @@
 
 
 <body class=" <?=(isset($_SERVER['HTTP_ACCEPT_LANGUAGE']) && strpos($_SERVER['HTTP_USER_AGENT'], 'Lighthouse') !== false)?'bindex':'';?> font-maincolor-<?=$PHOENIX_TEMPLATE_ARRAY["ITEMS"]["DESIGN"]["ITEMS"]["FONT_COLOR"]['VALUE']?> <?=($PHOENIX_TEMPLATE_ARRAY["ITEMS"]["OTHER"]["ITEMS"]["CAPTCHA"]["VALUE"]["ACTIVE"]=="Y" && strlen($PHOENIX_TEMPLATE_ARRAY["ITEMS"]["OTHER"]["ITEMS"]["CAPTCHA_SITE_KEY"]["VALUE"])>0)? "captcha":"";?>" id="body" data-spy="scroll" data-target="#navigation" data-offset="<?=$offset?>">
-
+    
 
 	<?//require_once($_SERVER["DOCUMENT_ROOT"].SITE_TEMPLATE_PATH."/styles_and_scripts.php");
 	//CPhoenixTemplate::setStylesAndScripts();
 	?>
+	
+	<script>
+	(function(w, d, s, h, id) {
+		w.roistatProjectId = id; w.roistatHost = h;
+		var p = d.location.protocol == "https:" ? "https://" : "http://";
+		var u = /^.*roistat_visit=[^;]+(.*)?$/.test(d.cookie) ? "/dist/module.js" : "/api/site/1.0/"+id+"/init?referrer="+encodeURIComponent(d.location.href);
+		var js = d.createElement(s); js.charset="UTF-8"; js.async = 1; js.src = p+h+u; var js2 = d.getElementsByTagName(s)[0]; js2.parentNode.insertBefore(js, js2);
+	})(window, document, 'script', 'cloud.roistat.com', '5b490ff0d22d176e40615badd88caee7');
+	</script>
+	
 	
 	<input type="hidden" class="serverName" name="serverName" value="<?=$PHOENIX_TEMPLATE_ARRAY["ITEMS"]["REGION"]["ITEMS"]["DOMEN_DEFAULT"]["STR_URL"]?>">
 	<input type="hidden" class="curPageUrl" name="curPageUrl" value="<?=$APPLICATION->GetCurPage(false)?>">

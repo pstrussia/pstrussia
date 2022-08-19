@@ -669,7 +669,7 @@ $(document).on("click", ".auth-submit", function()
     
     return false;
 });
-
+ 
 $(document).on("click", ".register-submit", function()
 {
     var form = $(this).parents("form.reg-form"),
@@ -678,6 +678,7 @@ $(document).on("click", ".register-submit", function()
         name = $("input[name='bx-name']", form),
         password = $("input[name='bx-password']", form),
         email = $("input[name='bx-email']", form),
+        promo = $("input[name='promo']",form),
         error = 0,
         count = 0,
         button = $("button", form),
@@ -755,6 +756,7 @@ $(document).on("click", ".register-submit", function()
                         "bx-name": name.val(),
                         "bx-email": email.val(),
                         "bx-password": password.val(),
+                        "promo": promo.val(),
                         "site_id": $("input.site_id").val(),
                         "captchaToken": captchaToken
                     },
@@ -788,6 +790,7 @@ $(document).on("click", ".register-submit", function()
                     "bx-name": name.val(),
                     "bx-email": email.val(),
                     "bx-password": password.val(),
+                    "promo": promo.val(),
                     "site_id": $("input.site_id").val()
                 },
                 function(data)
