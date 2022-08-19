@@ -3076,6 +3076,12 @@ function resetCustomDynamicInputs(){
     }
 }
 
+$(document).click(function (e) {
+    if (!$(e.target).closest(".dialog-content").length && $(e.target).closest(".phoenix-modal.blur-container.active").length)
+    {
+    	$(".phoenix-modal.blur-container.active").find(".close-modal").click();
+    }
+});
 
 $(document).on('click', '.close-modal', function () {
     $('div.modalAreaForm form.form .date').datetimepicker('destroy');
