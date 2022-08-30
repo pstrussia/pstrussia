@@ -52,7 +52,10 @@ if (strlen($ar_result["UF_PHX_CTLG_TMPL_ENUM"]["XML_ID"]) <= 0)
 
 CPhoenixFunc::setInitialFilterParams("arrCatalogFilter");
 
-
+global $USER;
+if ($USER->IsAdmin()){
+//$GLOBALS["arrCatalogFilter"]["=PROPERTY_808"][] = "006429b5-29bc-11ec-80c5-18c04d35c07c";
+}
 
 if ($PHOENIX_TEMPLATE_ARRAY["ITEMS"]["CATALOG"]["ITEMS"]['USE_FILTER']['VALUE']['ACTIVE'] == "Y" && $ar_result["UF_PHX_CTLG_TMPL_ENUM"]["XML_ID"] == "default" && !$ar_result["UF_USE_FILTER"]) {
 
@@ -69,7 +72,7 @@ if ($PHOENIX_TEMPLATE_ARRAY["ITEMS"]["CATALOG"]["ITEMS"]['USE_FILTER']['VALUE'][
             array(
                 "FILTER_HIDE_PRICE" => $filterHidePrice,
                 "DATA_SHOW" => "catalog-filter",
-                //"PREFILTER_NAME"=>"arrCatalogPreFilter",
+                "PREFILTER_NAME"=>"arrCatalogPreFilter",
                 "FILTER_NAME" => "arrCatalogFilter",
                 "TAB_FILTER" => $tabFilter,
                 "CACHE_TYPE" => $arParams["CACHE_TYPE"],
@@ -211,7 +214,7 @@ if ($PHOENIX_TEMPLATE_ARRAY["ITEMS"]["CATALOG"]["ITEMS"]['USE_FILTER']['VALUE'][
             "INSTANT_RELOAD" => "Y",
             "SEF_RULE" => $arResult["FOLDER"] . $arResult["URL_TEMPLATES"]["smart_filter"] . "#actionbox",
             "SMART_FILTER_PATH" => $arResult["VARIABLES"]["SMART_FILTER_PATH"],
-            "HIDDEN_PROP" => ["KUZOV", "MARKA_AVTO", "MODEL_AVTO", "GOD_VYPUSKA"],
+            "HIDDEN_PROP" => ["MODEL_ID"],
         ),
         $component
     );
@@ -987,6 +990,11 @@ if (strlen($pictureInHeadIsset)) {
 										),
 										false
 									);}
+
+	global $USER;
+if ($USER->IsAdmin()){
+	//echo '<pre>'; print_r($GLOBALS["arrCatalogFilter"]); '</pre>';
+}
 
                                     $intSectionID = $APPLICATION->IncludeComponent(
                                         "bitrix:catalog.section",
