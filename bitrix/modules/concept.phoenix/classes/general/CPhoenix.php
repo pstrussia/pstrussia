@@ -1367,7 +1367,6 @@ class CPhoenix {
             $arItem['ITEMPROP_AVAILABLE'] = 'PreOrder';
 
 
-//    cl_print_r($quantityText."<br>");
         $arItem['SHOWPREORDERBTN'] = $preBtn;
     }
 
