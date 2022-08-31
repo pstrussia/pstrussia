@@ -593,7 +593,7 @@ if( strlen($previewTextPos)<=0 )
                             <?if($PHOENIX_TEMPLATE_ARRAY["ITEMS"]["FORMS"]["ITEMS"]['BETTER_PRICE']["VALUE"] != "N"):?>
                                <span class="cheaper">
                                     <a id="<?=$itemIds['CALL_FORM_BETTER_PRICE']?>">
-                                        <span class="bord-bot">Уточнить наличие<?//=$PHOENIX_TEMPLATE_ARRAY["MESS"]["FOUND_CHEAPER"]?></span>
+                                        <span class="bord-bot"><?=$PHOENIX_TEMPLATE_ARRAY["MESS"]["FOUND_CHEAPER"]?></span>
                                     </a>
                                 </span>
                             <?endif;?>
@@ -1564,10 +1564,50 @@ if( strlen($previewTextPos)<=0 )
 
                                 <?endif;?>
 
-
                             </div>
                         </div>
 
+                        <div class="model-table">
+                            <div class="model-table__title">Подходит для</div>
+                            <div class="model-table__overflow">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>Марка</th>
+                                            <th>Модель</th>
+                                            <th>Год</th>
+                                            <th>Кузов</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Honda</td>
+                                            <td>Accord</td>
+                                            <td>2008</td>
+                                            <td>CU</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Honda</td>
+                                            <td>Accord</td>
+                                            <td>2008</td>
+                                            <td>CU</td>
+                                        </tr>
+                                        <tr>
+                                            <td>ACURA</td>
+                                            <td>TL</td>
+                                            <td>2009-2014</td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td>ACURA</td>
+                                            <td>TL</td>
+                                            <td>2009-2014</td>
+                                            <td></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
 
 
                         <?if(!empty($arResult["PROPERTIES"]["FILES"]["VALUE"])):?>
@@ -1639,6 +1679,8 @@ if( strlen($previewTextPos)<=0 )
             </div>
 
         <?endif;?>
+
+        
 
         <?if($main_key == "video" && !empty($arResult["PROPERTIES"]["VIDEO"]["VALUE"])):?>
 

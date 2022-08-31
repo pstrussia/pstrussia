@@ -20,7 +20,6 @@ if(in_array("QUANTITY", $arSorts)){
 }
 
 
-
 $arSortVal = explode("_", $PHOENIX_TEMPLATE_ARRAY["ITEMS"]["CATALOG"]["ITEMS"]["SECTION_SORT_LIST"]["VALUE"]);
 
 $sort2 = $arSortVal[0];
