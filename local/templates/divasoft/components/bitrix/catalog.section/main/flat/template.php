@@ -406,7 +406,7 @@
             </div>
 
         <? endif; ?>
-        <? cl_print_r($arItem["FIRST_ITEM"]["QUANTITY"]['QUANTITY_VALUE'])?>
+        <? // cl_print_r($arItem["FIRST_ITEM"]["QUANTITY"]['QUANTITY_VALUE'])?>
         <div class="wrapper-inner-bot row no-gutters hidden-js" id="<?= $itemIds['WR_ADD2BASKET'] ?>">
 
 

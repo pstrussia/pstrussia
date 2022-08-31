@@ -106,7 +106,7 @@
 		var js = d.createElement(s); js.charset="UTF-8"; js.async = 1; js.src = p+h+u; var js2 = d.getElementsByTagName(s)[0]; js2.parentNode.insertBefore(js, js2);
 	})(window, document, 'script', 'cloud.roistat.com', '5b490ff0d22d176e40615badd88caee7');
 	</script>
-	
+
 	
 	<input type="hidden" class="serverName" name="serverName" value="<?=$PHOENIX_TEMPLATE_ARRAY["ITEMS"]["REGION"]["ITEMS"]["DOMEN_DEFAULT"]["STR_URL"]?>">
 	<input type="hidden" class="curPageUrl" name="curPageUrl" value="<?=$APPLICATION->GetCurPage(false)?>">
