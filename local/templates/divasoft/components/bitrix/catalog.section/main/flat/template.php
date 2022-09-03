@@ -1,6 +1,5 @@
 <? if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die(); ?>
 
-
 <div class="item-inner">
 
     <div class="wrapper-top">
@@ -75,6 +74,10 @@
         <a href="<?= $arItem['FIRST_ITEM']['DETAIL_PAGE_URL'] ?>" class="name-element" id="<?= $itemIds['NAME'] ?>">
             <?= $arItem["NAME_HTML"] ?>
         </a>
+		
+		<?if($sost = $arResult["SOSTOYANIE_TOVARA"][$arItem["ID"]]):?>
+        	<div class="element-state">Состояние: <?=$sost?></div>
+        <?endif;?>
 
         <div class="wr-block-price">
             <div 
@@ -406,11 +409,11 @@
             </div>
 
         <? endif; ?>
-        <? // cl_print_r($arItem["FIRST_ITEM"]["QUANTITY"]['QUANTITY_VALUE'])?>
-        <div class="wrapper-inner-bot row no-gutters hidden-js" id="<?= $itemIds['WR_ADD2BASKET'] ?>">
-
-
-            <div class="quantity-container row no-gutters align-items-center col-xl-6 quantity-block d-none d-xl-flex" data-item="<?= $arItem['ID'] ?>">
+        
+        <div class="wrapper-inner-bot row no-gutters <? if($arItem['QUANTITY']['QUANTITY_VALUE'] != '0'){?> hidden-js.active<?}else{?> hidden-js <?}?>" id="<?= $itemIds['WR_ADD2BASKET'] ?>">
+            
+            
+            <div class="quantity-container row no-gutters align-items-center col-xl-6 quantity-block  d-none d-xl-flex hidden-js.active" data-item="<?= $arItem['ID'] ?>">
 
                 <table>
                     <tr>
@@ -452,7 +455,7 @@
 
         </div>
 
-        <div class="wrapper-inner-bot row no-gutters d-none" id="<?= $itemIds['BTN2DETAIL_PAGE_PRODUCT'] ?>">
+        <div class="wrapper-inner-bot row no-gutters  <? if($arItem['QUANTITY']['QUANTITY_VALUE'] > 1){?> d-none <?}?>" id="<?= $itemIds['BTN2DETAIL_PAGE_PRODUCT'] ?>">
 
             <div class="btn-container align-items-center col-12">
                 <a href="<?= $arItem['FIRST_ITEM']['DETAIL_PAGE_URL'] ?>" class="main-color bold">
