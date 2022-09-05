@@ -8,7 +8,7 @@
             <select id="marka_avto" class="simple-select jq-filter-marka">
             	<option value="0">Марка</option>
             	<?foreach($arResult["MARKA_AVTO"] as $item):?>
-                	<option value="<?=strtolower($item)?>"><?=$item?></option>
+                	<option value="<?=$item?>"><?=$item?></option>
                 <?endforeach?>
             </select>
         </div>
@@ -17,8 +17,8 @@
             	<option value="0">Модель</option>
                 <?foreach($arResult["MODEL_AVTO"] as $item):?>
                 	<option 
-                		value="<?=strtolower($item["VALUE"])?>" 
-                		data-parrent="<?=strtolower($item["PARRENT"])?>"
+                		value="<?=$item["CODE"]?>" 
+                		data-parrent="<?=$item["PARRENT"]?>"
                 		style="display: none;">
                 			<?=$item["VALUE"]?>
                 	</option>
@@ -31,8 +31,8 @@
                 <?foreach($arResult["GOD_VYPUSKA"] as $item):?>
                 	<option 
                 		class="link_filter"
-                		value="<?=strtolower($item["VALUE"])?>" 
-                		data-parrent="<?=strtolower($item["PARRENT"])?>" 
+                		value="<?=$item["VALUE"]?>" 
+                		data-parrent="<?=$item["PARRENT"]?>" 
                 		data-link="<?=$item["LINK"]?>"
                 		style="display: none;">
                 			<?=$item["VALUE"]?>
@@ -45,8 +45,8 @@
                 <option value="0">Кузов</option>
                 <?foreach($arResult["KUZOV"] as $item):?>
                 	<option 
-	                	value="<?=strtolower($item["VALUE"])?>" 
-	                	data-parrent="<?=strtolower($item["PARRENT"])?>" 
+	                	value="<?=$item["VALUE"]?>" 
+	                	data-parrent="<?=$item["PARRENT"]?>" 
 	                	data-link="<?=$item["LINK"]?>"
 	                	style="display: none;">
                 			<?=$item["VALUE"]?>
@@ -96,6 +96,8 @@
 				$('.jq-filter-link').find('option').removeAttr('selected');
 				$('.jq-filter-link').find('option[value="0"]').attr('selected', 'selected');
 				$('.jq-filter-link').find('option').hide();
+				$('#god_vypuska').find('[data-parrent="'+model+'"]').insertBefore($('#god_vypuska').find('option:eq(1)'));
+				$('#kuzov').find('[data-parrent="'+model+'"]').insertBefore($('#kuzov').find('option:eq(1)'));
 				$('.jq-filter-link').find('[data-parrent="'+model+'"]').show();
 			}
 		})
