@@ -1,4 +1,8 @@
 <?php
+
+\Bitrix\Main\EventManager::getInstance()->addEventHandler('main', 'OnBeforeEventAdd', ['DivasoftEvent', 'OnBeforeEventAddHandler']);
+\Bitrix\Main\EventManager::getInstance()->addEventHandler('main', 'OnBeforeEventSend', ['DivasoftEvent', 'OnBeforeEventSendHandler']);
+
 require_once __DIR__ . '/DivasoftRecaptcha.class.php'; // Рекапча
 require_once __DIR__ . '/DivasoftEvent.class.php'; // Рекапча
 require_once __DIR__ . '/b24/integration.class.php'; // интеграция с b24
