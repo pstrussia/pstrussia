@@ -52,10 +52,6 @@ if (strlen($ar_result["UF_PHX_CTLG_TMPL_ENUM"]["XML_ID"]) <= 0)
 
 CPhoenixFunc::setInitialFilterParams("arrCatalogFilter");
 
-global $USER;
-if ($USER->IsAdmin()){
-//$GLOBALS["arrCatalogFilter"]["=PROPERTY_808"][] = "006429b5-29bc-11ec-80c5-18c04d35c07c";
-}
 
 if ($PHOENIX_TEMPLATE_ARRAY["ITEMS"]["CATALOG"]["ITEMS"]['USE_FILTER']['VALUE']['ACTIVE'] == "Y" && $ar_result["UF_PHX_CTLG_TMPL_ENUM"]["XML_ID"] == "default" && !$ar_result["UF_USE_FILTER"]) {
 
@@ -991,10 +987,6 @@ if (strlen($pictureInHeadIsset)) {
 										false
 									);}
 
-	global $USER;
-if ($USER->IsAdmin()){
-	//echo '<pre>'; print_r($GLOBALS["arrCatalogFilter"]); '</pre>';
-}
 
                                     $intSectionID = $APPLICATION->IncludeComponent(
                                         "bitrix:catalog.section",

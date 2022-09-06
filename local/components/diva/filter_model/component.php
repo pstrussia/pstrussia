@@ -22,11 +22,12 @@ if(!empty($arParams["SMART_FILTER_PATH"]))
 	foreach ($path as $key => $value)
 	{
 		$buf = explode("-is-", $value);
-		$select_filter[$buf[0]] = $buf[1];	 
+		if($buf[0] == "model_id")
+			$select_filter = $buf[1];	 
 	}
 }
 
-$arResult["SELECTED"] = $select_filter;
+//$arResult["SELECTED"] = $select_filter;
 
 $res = \CIBlockElement::GetList(
     ['ID' => 'ASC'],
@@ -54,7 +55,7 @@ $obEntity = Bitrix\Highloadblock\HighloadBlockTable::compileEntity($arHLBlock);
 $strEntityDataClass = $obEntity->getDataClass();
 $resData = $strEntityDataClass::getList(array(
 	'select' => array('ID', 'UF_NAME', 'UF_XML_ID'),
-	'order'  => array('ID' => 'ASC'),
+	'order'  => array('UF_NAME' => 'ASC'),
 ));
 
 $arMarka = [];
@@ -72,7 +73,7 @@ $obEntity = Bitrix\Highloadblock\HighloadBlockTable::compileEntity($arHLBlock);
 $strEntityDataClass = $obEntity->getDataClass();
 $resData = $strEntityDataClass::getList(array(
 	'select' => array('ID', 'UF_MODEL', 'UF_XML_ID', 'UF_KUZOV', 'UF_GODS', 'UF_GODDO', 'UF_VLADELETS'),
-	'order'  => array('ID' => 'ASC'),
+	'order'  => array('UF_MODEL' => 'ASC'),
 	'filter' => array('UF_XML_ID' => $modelId)
 ));
 
@@ -80,37 +81,54 @@ $arModel = [];
 
 while ($row = $resData->Fetch())
 {
-	if(empty($arResult["MODEL_AVTO"][$row["UF_MODEL"]]))
-	{
-		$arResult["MODEL_AVTO"][$row["UF_MODEL"]] = ["VALUE" => $row["UF_MODEL"], "PARRENT" => $arMarka[$row["UF_VLADELETS"]]];
-		
-		if(!in_array($arMarka[$row["UF_VLADELETS"]], $arResult["MARKA_AVTO"]))
-			$arResult["MARKA_AVTO"][] = $arMarka[$row["UF_VLADELETS"]];
-	}
+	$marka = ''; $model = ''; $god = ''; $kuzov = '';
 	
+	$model = ucfirst($row["UF_MODEL"]);
+	$marka = ucfirst($arMarka[$row["UF_VLADELETS"]]);
+	$code = $marka."-".$model;
+	
+	if(empty($arResult["MODEL_AVTO"][$code]) && !empty($row["UF_MODEL"]))
+	{
+		$arResult["MODEL_AVTO"][$code] = ["VALUE" => $model, "PARRENT" => $marka, "CODE" => $code];
+		
+		if(!in_array($marka, $arResult["MARKA_AVTO"]))
+			$arResult["MARKA_AVTO"][] = $marka;
+	}
+
 	$god = $row["UF_GODS"];
 	if(!empty($row["UF_GODDO"]))
 		$god .= '-'.$row["UF_GODDO"];
 	
 	if(!empty($god))
 	{
-		$marka = strtolower($arMarka[$row["UF_VLADELETS"]]);
-		$model = strtolower($row["UF_MODEL"]);
-		$link = "/catalog/{$section_code}/filter/marka_avto-is-{$marka}/model_avto-is-{$model}/god_vypuska-is-{$god}/apply/";
-		$arResult["GOD_VYPUSKA"][] = ["VALUE" => $god, "PARRENT" => $row["UF_MODEL"], "LINK" => $link];
+		//$marka = $arMarka[$row["UF_VLADELETS"]];
+		//$model = $row["UF_MODEL"];
+		//$link = "/catalog/{$section_code}/filter/marka_avto-is-{$marka}/model_avto-is-{$model}/god_vypuska-is-{$god}/apply/";
+		$link = "/catalog/{$section_code}/filter/model_id-is-{$row["UF_XML_ID"]}/apply/";
+		$arResult["GOD_VYPUSKA"][] = ["VALUE" => $god, "PARRENT" => $code, "LINK" => $link];
 	}
 	
 	if(!empty($row["UF_KUZOV"]))
 	{
-		$marka = strtolower($arMarka[$row["UF_VLADELETS"]]);
-		$model = strtolower($row["UF_MODEL"]);
-		$kuzov = str_replace('/', '-', strtolower($row["UF_KUZOV"]));
-		$link = "/catalog/{$section_code}/filter/marka_avto-is-{$marka}/model_avto-is-{$model}/kuzov-is-{$kuzov}/apply/";
-		$arResult["KUZOV"][] = ["VALUE" => $kuzov, "PARRENT" => $row["UF_MODEL"], "LINK" => $link];
+		//$marka = $arMarka[$row["UF_VLADELETS"]];
+		//$model = $row["UF_MODEL"];
+		$kuzov = $row["UF_KUZOV"];
+		/*if(!empty($god))
+			$kuzov = $row["UF_KUZOV"]." ({$god})";*/
+		//$link = "/catalog/{$section_code}/filter/marka_avto-is-{$marka}/model_avto-is-{$model}/kuzov-is-{$kuzov}/apply/";
+		$link = "/catalog/{$section_code}/filter/model_id-is-{$row["UF_XML_ID"]}/apply/";
+		$arResult["KUZOV"][] = ["VALUE" => $kuzov, "PARRENT" => $code, "LINK" => $link];
+	}
+	
+	if($select_filter == $row["UF_XML_ID"])
+	{
+		$arResult["SELECTED"] = ["marka_avto" => $marka, "model_avto" => $code, "god_vypuska" => $god, "kuzov" => $kuzov];
 	}
 }
 
-//echo '<pre>'; print_r($arResult); '</pre>';
+sort($arResult["MARKA_AVTO"]);
+
+//echo '<pre>'; print_r($arResult["SELECTED"]); '</pre>';
 
 $this->IncludeComponentTemplate();
 

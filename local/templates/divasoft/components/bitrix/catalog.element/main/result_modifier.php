@@ -5,7 +5,8 @@ global $PHOENIX_TEMPLATE_ARRAY;
 
 $arResult['ZOOM_ON'] = $PHOENIX_TEMPLATE_ARRAY["ITEMS"]["CATALOG"]["ITEMS"]['ZOOM_ON']['VALUE']['ACTIVE'] == "Y" ? 'zoom' : '';
 
-
+if(!empty($arResult["PROPERTIES"]["MODEL_ID"]["VALUE"]))
+	$arResult['MODELS'] = Models::getInfo($arResult["PROPERTIES"]["MODEL_ID"]["VALUE"]);
 
 $arSelect = Array("ID", "UF_CHARS_VIEW","UF_ZOOM_ON");
 $arFilter = Array("IBLOCK_ID"=>$arParams["IBLOCK_ID"], "ACTIVE"=>"Y", "GLOBAL_ACTIVE"=>"Y", "ID"=>$arResult["IBLOCK_SECTION_ID"]);

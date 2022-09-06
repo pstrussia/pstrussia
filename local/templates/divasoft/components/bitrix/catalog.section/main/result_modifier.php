@@ -42,6 +42,9 @@ $arResult["VIEW"] = $arParams["VIEW"];
 if(!strlen($arParams["VIEW"]))
     $arResult["VIEW"] = "FLAT";
 
+foreach ($arResult["ITEMS"] as $key => $arItem){
+	$arResult["SOSTOYANIE_TOVARA"][$arItem["ID"]] = $arItem["PROPERTIES"]["SOSTOYANIE_TOVARA"]["VALUE"];
+}
 
 $arResult["rating"] = array();
 
@@ -60,8 +63,8 @@ if(!empty($arResult["ITEMS"]) && $PHOENIX_TEMPLATE_ARRAY["ITEMS"]["RATING"]["ITE
         $arResult["RATING_VIEW"] = "simple";
 
         foreach ($arResult["ITEMS"] as $key => $arItem){
-           $arResult["rating"][$arItem["ID"]] = (strlen($arItem["PROPERTIES"]["rating"]["VALUE"]))?round($arItem["PROPERTIES"]["rating"]["VALUE"]):"0";
-        }
+            $arResult["rating"][$arItem["ID"]] = (strlen($arItem["PROPERTIES"]["rating"]["VALUE"]))?round($arItem["PROPERTIES"]["rating"]["VALUE"]):"0";
+		}
     }
 }
 $arEditAreaId = array();
