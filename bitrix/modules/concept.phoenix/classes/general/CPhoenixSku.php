@@ -442,7 +442,7 @@ class CPhoenixSku{
         return $quantity;
     }
 
-    public static function getDescQuantity($maxQuantity, $measure = "", $storeIsset = false, $arParams=array())
+    public static function getDescQuantity($maxQuantity, $measure = "", $storeIsset = false, $arParams=array(), $price = "")
     {
         global $PHOENIX_TEMPLATE_ARRAY;
 
@@ -462,7 +462,9 @@ class CPhoenixSku{
             $maxQuantity = 0;
 
         $desc_quantity["QUANTITY_VALUE"] = $maxQuantity;
-
+        
+       
+        
         if( $PHOENIX_TEMPLATE_ARRAY["ITEMS"]["CATALOG"]["ITEMS"]["STORE_QUANTITY_VIEW"]["VALUE"] == "visible" && $maxQuantity != 0)
         {
             $desc_quantity["TEXT"] = $PHOENIX_TEMPLATE_ARRAY["ITEMS"]["CATALOG"]["ITEMS"]["STORE_QUANTITY_MANY"]["DESCRIPTION_NOEMPTY"];
@@ -484,7 +486,7 @@ class CPhoenixSku{
         {
             $quantity = self::getQuantityForManyFew();
             
-            if($maxQuantity == 0)
+            if($maxQuantity == 0 || $price == '-1')
             {
                 $desc_quantity["TEXT"] = $PHOENIX_TEMPLATE_ARRAY["ITEMS"]["CATALOG"]["ITEMS"]["STORE_QUANTITY_MANY"]["DESCRIPTION_EMPTY"];
                 $desc_quantity["QUANTITY_STYLE"] = " empty-quantity";
@@ -544,9 +546,12 @@ class CPhoenixSku{
                 $quantityHtml = ': <span class="quantity bold">'.$desc_quantity["QUANTITY"].'</span>';
         }
         
-        if($maxQuantity == 0){
+        if($maxQuantity == 0 || $price == '-1'){
             $desc_quantity["QUANTITY_STYLE"] = ' empty-quantity';
         }
+        
+        
+        
         $desc_quantity["HTML"] = '<div class="detail-available '.$desc_quantity["QUANTITY_STYLE"].'"><span class="text">'.$desc_quantity["TEXT"].'</span>'.$quantityHtml.'</div>';
 
 
