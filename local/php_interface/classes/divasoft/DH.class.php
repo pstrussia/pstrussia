@@ -35,13 +35,5 @@ class DH {
         endif;
         return "DH::clearImagesCatalog();";
     }
-    
-    static function test($lid,$languageId){
-        $arFieldsBuy = Array(
-                        "EMAIL" => 'gvozdev-danil@mail.ru',
-                        
-                    );
-       return CEvent::Send("SALE_SUBSCRIBE_PRODUCT", $lid, $arFieldsBuy, "N", 0, false, $languageId);
-        
-    }
+
 }

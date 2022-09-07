@@ -15,7 +15,9 @@
         <a href="<?= $arItem["DETAIL_PAGE_URL"] ?>" class="name-element">
             <?= strip_tags($arItem["NAME_HTML"]) ?>
         </a>
-  
+  		<?if($sost = $arResult["SOSTOYANIE_TOVARA"][$arItem["ID"]]):?>
+        	<div class="element-state">Состояние: <?=$sost?></div>
+        <?endif;?>
                <div class="wrapper-article-available row-line d-none d-lg-block" id="<?=$itemIds['ARTICLE_AVAILABLE']?>">
 
             
