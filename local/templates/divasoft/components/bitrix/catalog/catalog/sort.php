@@ -1,52 +1,19 @@
 <?
 
 if (CCatalog::GetByID(CATALOG_IBLOCK)) {
-//naxiy удалить после получения данных из 1с нормальных
-    $arSelect2 = Array("ID", "IBLOCK_ID", "NAME", "PROPERTY_CML2_TRAITS");
-    $res2 = CIBlockElement::GetList(
-                    Array("ID" => "ASC"),
-                    Array("IBLOCK_ID" => CATALOG_IBLOCK, "ID" => [33199, 33200, 33201]),
-                    false,
-                    false,
-                    $arSelect2
-    );
 
-    while ($arItem = $res2->GetNext()) {
-//        cl_print_r($arItem);
-    }
-    $racxod = [];
-    $arSelect = Array("ID", "IBLOCK_ID");
-    $res = \CIBlockElement::GetList(
-                    ['ID' => 'ASC'],
-                    ['IBLOCK_ID' => CATALOG_IBLOCK, "ID" => [33199, 33200, 33201]],
-                    false,
-                    false,
-                    $arSelect
-    );
 
-    while ($row = $res->Fetch()) {
-        $db_props = CIBlockElement::GetProperty(CATALOG_IBLOCK, $row["ID"], array("sort" => "asc"), Array("CODE" => "CML2_TRAITS"));
-
-        while ($row1 = $db_props->Fetch()) {
-
-            if ($row1["DESCRIPTION"] == "Расход") {
-//                $racxod[$row1['PROPERTY_VALUE_ID']]['PROPERTY_VALUE_ID'] = $row1['PROPERTY_VALUE_ID'];
-//                $racxod[$row1['PROPERTY_VALUE_ID']]['VALUE'] = $row1["VALUE"];
-//            cl_print_r($row1);
-            }
-        }
-    }
-//    if (!empty($modelId))
-//        \CIBlockElement::SetPropertyValuesEx($row["ID"], false, ["MODEL_ID" => $modelId]);
 }
-//cl_print_r($racxod);
-
 
 
 
 $arAvailableSort = array();
 
-$arSorts = Array("SORT", "PRICE", "NAME", "PROPERTY_CML2_TRAITS"); // новое свойство сюда
+$arSorts = Array("PROPERTY_EXPENSE", "PRICE", "NAME"); // "SORT" сотрировка популярности которая была изначально
+
+if (in_array("PROPERTY_EXPENSE", $arSorts)) { // новое свойство сюда
+    $arAvailableSort["PROPERTY_EXPENSE"] = array("PROPERTY_EXPENSE", "desc"); //сюда наше поле в двух местах
+}
 
 if (in_array("SORT", $arSorts)) {
     $arAvailableSort["SORT"] = array("SORT", "desc");
@@ -63,9 +30,7 @@ if (in_array("NAME", $arSorts)) {
 if (in_array("QUANTITY", $arSorts)) {
     $arAvailableSort["CATALOG_AVAILABLE"] = array("QUANTITY", "desc");
 }
-if (in_array("PROPERTY_CML2_TRAITS", $arSorts)) { // новое свойство сюда
-    $arAvailableSort["PROPERTY_CML2_TRAITS"] = array("PROPERTY_CML2_TRAITS", "desc"); //сюда наше поле в двух местах
-}
+
 
 $arSortVal = explode("_", $PHOENIX_TEMPLATE_ARRAY["ITEMS"]["CATALOG"]["ITEMS"]["SECTION_SORT_LIST"]["VALUE"]);
 
