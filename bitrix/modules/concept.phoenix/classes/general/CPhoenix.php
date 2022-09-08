@@ -1293,6 +1293,7 @@ class CPhoenix {
             $quantityText = $PHOENIX_TEMPLATE_ARRAY['MESS']['CATALOG_MODE_ARCHIVE'];
             $preBtn = false;
         } else if ($preBtn) {
+            
             $quantityStyle = 'simple';
             $quantityText = $PHOENIX_TEMPLATE_ARRAY['MESS']['CATALOG_PREORDER_ONLY'];
         }
@@ -1302,7 +1303,7 @@ class CPhoenix {
             $arItem['QUANTITY'] = CPhoenixSku::getDescQuantity($arItem['MAX_QUANTITY'], $arItem['MEASURE'], !empty($PHOENIX_TEMPLATE_ARRAY["ITEMS"]["CATALOG"]["ITEMS"]["STORES_ID"]), array('TEXT' => $quantityText, 'QUANTITY_STYLE' => $quantityStyle));
         }
 
-
+        
         if ($PHOENIX_TEMPLATE_ARRAY['ITEMS']['CATALOG']['ITEMS']['STORE_QUANTITY_ON']['VALUE']['ACTIVE'] == 'Y') {
 
             $arItem['MAX_QUANTITY'] = $productAmount;
@@ -1356,13 +1357,20 @@ class CPhoenix {
             }
 
             if ($arItem['MAX_QUANTITY'] < 1 && $arItem['PRICE']['PRICE'] != '-1') {
-
+                
                 $quantityStyle = 'simple';
                 $quantityText = $PHOENIX_TEMPLATE_ARRAY['MESS']['CATALOG_NOT_QUANTITY'];
                 $arItem['QUANTITY'] = CPhoenixSku::getDescQuantity($arItem['MAX_QUANTITY'], $arItem['MEASURE'], !empty($PHOENIX_TEMPLATE_ARRAY["ITEMS"]["CATALOG"]["ITEMS"]["STORES_ID"]), array('TEXT' => $quantityText, 'QUANTITY_STYLE' => $quantityStyle));
+            
+                
             }
+            
+            
         }
-
+        if($arItem['PRICE']['PRICE'] == '-1'){
+            $arItem['QUANTITY'] = CPhoenixSku::getDescQuantity($arItem['MAX_QUANTITY'], $arItem['MEASURE'], !empty($PHOENIX_TEMPLATE_ARRAY["ITEMS"]["CATALOG"]["ITEMS"]["STORES_ID"]), array('TEXT' => $quantityText, 'QUANTITY_STYLE' => $quantityStyle),$arItem['PRICE']['PRICE']);
+        }
+       
         if ($preBtn)
             $arItem['ITEMPROP_AVAILABLE'] = 'PreOrder';
 
@@ -1560,6 +1568,7 @@ class CPhoenix {
             "SORT_CATALOG_SORT" => getMessage("PHOENIX_MESS_SORT_CATALOG_SORT"),
             "SORT_CATALOG_PRICE" => getMessage("PHOENIX_MESS_SORT_CATALOG_PRICE"),
             "SORT_CATALOG_NAME" => getMessage("PHOENIX_MESS_SORT_CATALOG_NAME"),
+            "SORT_CATALOG_PROPERTY_CML2_TRAITS" => getMessage("PHOENIX_MESS_SORT_CATALOG_EXPENSE"),
             "VIEW_CATALOG_LIST_FLAT" => getMessage("PHOENIX_MESS_VIEW_CATALOG_LIST_FLAT"),
             "VIEW_CATALOG_LIST_LIST" => getMessage("PHOENIX_MESS_VIEW_CATALOG_LIST_LIST"),
             "VIEW_CATALOG_LIST_TABLE" => getMessage("PHOENIX_MESS_VIEW_CATALOG_LIST_TABLE"),

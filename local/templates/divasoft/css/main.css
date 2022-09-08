@@ -16504,9 +16504,9 @@ div.catalog-list.LIST div.item div.detail-available.simple {
 }
 
 div.catalog-list.LIST div.item div.detail-available.empty-quantity {
-    padding-left: 13px;
-    background: url("../images/svg/cross_red.svg") left 6px no-repeat;
-    background-size: 8px;
+    padding-left: 10px;
+    background: url("../images/svg/clarification.svg") left center no-repeat;
+    background-size: 5px;
 }
 
 div.catalog-list.LIST div.item div.detail-available.without-quantity span.text {
@@ -16817,9 +16817,9 @@ div.catalog-list.TABLE div.item div.detail-available {
 }
 
 div.catalog-list.TABLE div.item div.detail-available.empty-quantity {
-    padding-left: 13px;
-    background: url("../images/svg/cross_red.svg") left center no-repeat;
-    background-size: 8px;
+    padding-left: 10px;
+    background: url("../images/svg/clarification.svg") left center no-repeat;
+    background-size: 5px;
 }
 
 div.catalog-list.TABLE div.item div.detail-available.without-quantity span.text {
