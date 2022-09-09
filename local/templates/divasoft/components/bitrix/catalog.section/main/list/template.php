@@ -49,11 +49,7 @@
         <a href="<?=$arItem['FIRST_ITEM']['DETAIL_PAGE_URL']?>" class="name-element" id="<?=$itemIds['NAME']?>">
             <?=$arItem["NAME_HTML"]?>
         </a>
-		
-		<?if($sost = $arResult["SOSTOYANIE_TOVARA"][$arItem["ID"]]):?>
-        	<div class="element-state">Состояние: <?=$sost?></div>
-        <?endif;?>
-		
+
         <div class="wrapper-article-available row-line d-none d-lg-block" id="<?=$itemIds['ARTICLE_AVAILABLE']?>">
 
             
@@ -389,8 +385,8 @@
         <?endif;?>
 
 
-
-        <div class="wrapper-inner-bot row no-gutters hidden-js" id="<?=$itemIds['WR_ADD2BASKET']?>">
+<? if($arItem['QUANTITY']['QUANTITY_VALUE'] > 0 && $arItem['PRICE']['PRICE'] != '-1'){?>
+        <div class="wrapper-inner-bot row no-gutters <? if($arItem['QUANTITY']['QUANTITY_VALUE'] > '0'){?> hidden-js.active<?}else{?> hidden-js <?}?>" id="<?=$itemIds['WR_ADD2BASKET']?>">
 
             <div class="quantity-container col-lg-6 col-12 quantity-block">
 
@@ -409,7 +405,7 @@
 
             <div class="btn-container align-items-center col-xl-6 col-12" id="<?=$itemIds['BASKET_ACTIONS']?>">
 
-                <div class="<?=($arItem['HAVEOFFERS'])?"d-none d-lg-block":""?>">
+                <div class="<?=($arItem['HAVEOFFERS'])?" d-lg-block":""?>">
                     <a
                         id = "<?=$itemIds['ADD2BASKET']?>"
                         href="javascript:void(0);"
@@ -434,14 +430,15 @@
             </div>
 
         </div>
-
-        <div class="wrapper-inner-bot row no-gutters d-none" id="<?=$itemIds['BTN2DETAIL_PAGE_PRODUCT']?>">
+        <?}?>
+        <? if($arItem['QUANTITY']['QUANTITY_VALUE'] < 1 || $arItem['PRICE']['PRICE'] == '-1'){?>
+        <div class="wrapper-inner-bot row no-gutters" id="<?=$itemIds['BTN2DETAIL_PAGE_PRODUCT']?>">
 
             <div class="btn-container align-items-center col-12">
                 <a href="<?=$arItem['FIRST_ITEM']['DETAIL_PAGE_URL']?>" class="main-color bold">
                     <?if($arItem['HAVEOFFERS']):?>
 
-                        <span class="d-none d-lg-block"><?=$PHOENIX_TEMPLATE_ARRAY["ITEMS"]["CATALOG"]["ITEMS"]["LINK_2_DETAIL_PAGE_NAME_OFFER"]["VALUE"]?></span>
+                        <span class=" d-lg-block"><?=$PHOENIX_TEMPLATE_ARRAY["ITEMS"]["CATALOG"]["ITEMS"]["LINK_2_DETAIL_PAGE_NAME_OFFER"]["VALUE"]?></span>
                         
                         <span class="d-lg-none"><?=$PHOENIX_TEMPLATE_ARRAY["ITEMS"]["CATALOG"]["ITEMS"]["LINK_2_DETAIL_PAGE_NAME_OFFER_MOB"]["VALUE"]?></span>
 
@@ -452,5 +449,6 @@
             </div>
 
         </div>
+        <?}?>
     </div>
 </div>

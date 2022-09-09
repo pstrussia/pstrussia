@@ -56,3 +56,31 @@ function BeforeIndexHandler($arFields) {
         return $arFields;
     }
 }
+
+// регистрируем обработчик
+AddEventHandler("iblock", "OnAfterIBlockElementUpdate", Array("UpdateElement", "OnAfterIBlockElementUpdateHandler"));
+
+class UpdateElement {
+
+    // создаем обработчик события "OnAfterIBlockElementUpdate"
+    function OnAfterIBlockElementUpdateHandler(&$arFields) {
+        if ($arFields["RESULT"]) {
+            foreach ($arFields['PROPERTY_VALUES'][733] as $item):
+                if ($item['DESCRIPTION'] == 'Расход'):
+                    $ELEMENT_ID = $arFields['ID'];  // код элемента
+                    $PROPERTY_CODE = "EXPENSE";  // код свойства
+                    $PROPERTY_VALUE = $item['VALUE'];  // значение свойства
+
+                    $dbr = CIBlockElement::GetList(array(), array("=ID" => $ELEMENT_ID), false, false, array("ID", "IBLOCK_ID"));
+                    if ($dbr_arr = $dbr->Fetch()) {
+                        $IBLOCK_ID = $dbr_arr["IBLOCK_ID"];
+                        CIBlockElement::SetPropertyValues($ELEMENT_ID, $IBLOCK_ID, $PROPERTY_VALUE, $PROPERTY_CODE);
+                    }
+                endif;
+            endforeach;
+        } else {
+//            AddMessage2Log("Ошибка изменения записи ".$arFields["ID"]." (".$arFields["RESULT_MESSAGE"].").");
+        }
+    }
+
+}

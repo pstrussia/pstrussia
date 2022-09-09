@@ -27910,6 +27910,12 @@ textarea.redemption-form__input {
  padding: 10px 20px;
 }
 
+.states{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+}
 .element-state{
     font-size: 12px;
     font-weight: bold;
@@ -27917,4 +27923,23 @@ textarea.redemption-form__input {
     border-radius: 4px;
     padding: 1px 6px;
     display: inline-block;
+}
+
+
+@media (max-width: 767px) {
+    .reg-ur-form{
+        margin-top: 40px;
+    }
+    
+}
+.form__flex{
+    display: flex;
+    gap: 15px;
+}
+.form__flex .input{
+   width: 100%;
+}
+
+.pad_top_container > .row{
+    justify-content: center;
 }
