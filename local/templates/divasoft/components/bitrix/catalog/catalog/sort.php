@@ -52,14 +52,11 @@ if ($_REQUEST["order"]) {
     $sort_order2 = $_SESSION["order"];
 }
 ?>
-
 <div class="element-sort">
 
 <? foreach ($arAvailableSort as $key => $val): ?>
-    <? // cl_print_r($PHOENIX_TEMPLATE_ARRAY["MESS"]['SORT_CATALOG_'.$key]);    ?>
     <?
     $newSort = $sort_order2 == 'desc' ? 'asc' : 'desc';
-//        cl_print_r($key);
     /* $current_url = explode("?", $_SERVER["REQUEST_URI"]);
       $current_url = $current_url[0];
 
