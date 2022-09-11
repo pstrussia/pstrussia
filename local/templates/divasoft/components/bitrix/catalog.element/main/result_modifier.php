@@ -5,7 +5,8 @@ global $PHOENIX_TEMPLATE_ARRAY;
 
 $arResult['ZOOM_ON'] = $PHOENIX_TEMPLATE_ARRAY["ITEMS"]["CATALOG"]["ITEMS"]['ZOOM_ON']['VALUE']['ACTIVE'] == "Y" ? 'zoom' : '';
 
-
+if(!empty($arResult["PROPERTIES"]["MODEL_ID"]["VALUE"]))
+	$arResult['MODELS'] = Models::getInfo($arResult["PROPERTIES"]["MODEL_ID"]["VALUE"]);
 
 $arSelect = Array("ID", "UF_CHARS_VIEW","UF_ZOOM_ON");
 $arFilter = Array("IBLOCK_ID"=>$arParams["IBLOCK_ID"], "ACTIVE"=>"Y", "GLOBAL_ACTIVE"=>"Y", "ID"=>$arResult["IBLOCK_SECTION_ID"]);
@@ -1232,6 +1233,15 @@ else
     $arResult["PROPERTIES"]["BTN_ACTION"]["VALUE_XML_ID"] = ($arResult["PROPERTIES"]["BTN_ACTION"]["VALUE_XML_ID"]=="")?"form":$arResult["PROPERTIES"]["BTN_ACTION"]["VALUE_XML_ID"];
 
 
+//     if($arResult["FIRST_ITEM"]["QUANTITY"]['QUANTITY_VALUE'] < 1 || empty($arResult["FIRST_ITEM"]["QUANTITY"]['QUANTITY_VALUE']) || $arResult["FIRST_ITEM"]['PRICE']['PRICE'] == '-1'):
+//         $arResult["FIRST_ITEM"]["SHOWPREORDERBTN"] = 1;
+//     endif;
+                      
+    
+    
+    
+    
+    
     $arResult["BTN"] = array(
         "BTN_NAME" => $arResult["PROPERTIES"]["BTN_NAME"]["VALUE"],
         "~BTN_NAME" => $arResult["PROPERTIES"]["BTN_NAME"]["~VALUE"],
