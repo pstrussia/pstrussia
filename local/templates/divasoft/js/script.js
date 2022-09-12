@@ -4492,7 +4492,13 @@ $(document).ready(function () {
 
         btnsControl: function () {
             var show = false;
-
+            console.log(this.currentElement);
+                        if(this.currentElement.MAX_QUANTITY < 1){
+                this.currentElement.CAN_BUY = false;
+                this.currentElement.CAN_BUY_ZERO = false;
+                this.currentElement.SHOWPREORDERBTN = true;
+                
+            }
             if (this.currentElement.SHOWPREORDERBTN || this.currentElement.MODE_ARCHIVE) {
                 if (this.currentElement.SHOWPREORDERBTN) {
                     this.nodes.obWrPreorderBtn.classList.remove('d-none');

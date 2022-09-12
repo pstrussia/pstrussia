@@ -410,7 +410,8 @@
 
         <? endif; ?>
         
-        <div class="wrapper-inner-bot row no-gutters <? if($arItem['QUANTITY']['QUANTITY_VALUE'] != '0'){?> hidden-js.active<?}else{?> hidden-js <?}?>" id="<?= $itemIds['WR_ADD2BASKET'] ?>">
+        <? if($arItem['QUANTITY']['QUANTITY_VALUE'] > 0 && $arItem['PRICE']['PRICE'] != '-1'){?>
+        <div class="wrapper-inner-bot row no-gutters <? if($arItem['QUANTITY']['QUANTITY_VALUE'] > '0'){?> hidden-js.active<?}else{?> hidden-js <?}?>" id="<?= $itemIds['WR_ADD2BASKET'] ?>">
             
             
             <div class="quantity-container row no-gutters align-items-center col-xl-6 quantity-block  d-none d-xl-flex hidden-js.active" data-item="<?= $arItem['ID'] ?>">
@@ -428,7 +429,7 @@
 
             <div class="btn-container align-items-center col-xl-6 col-12" id="<?= $itemIds['BASKET_ACTIONS'] ?>">
 
-                <div class="<?= ($arItem['HAVEOFFERS']) ? "d-none d-lg-block" : "" ?>">
+                <div class="<?= ($arItem['HAVEOFFERS']) ? " d-lg-block" : "" ?>">
                     <a
                         id = "<?= $itemIds['ADD2BASKET'] ?>"
                         href="javascript:void(0);"
@@ -454,15 +455,16 @@
 
 
         </div>
-
-        <div class="wrapper-inner-bot row no-gutters  <? if($arItem['QUANTITY']['QUANTITY_VALUE'] > 1){?> d-none <?}?>" id="<?= $itemIds['BTN2DETAIL_PAGE_PRODUCT'] ?>">
+<?} ?>
+        <? if($arItem['QUANTITY']['QUANTITY_VALUE'] < 1 || $arItem['PRICE']['PRICE'] == '-1'){?>
+        <div class="wrapper-inner-bot row no-gutters" id="<?= $itemIds['BTN2DETAIL_PAGE_PRODUCT'] ?>">
 
             <div class="btn-container align-items-center col-12">
                 <a href="<?= $arItem['FIRST_ITEM']['DETAIL_PAGE_URL'] ?>" class="main-color bold">
 
                     <? if ($arItem['HAVEOFFERS']): ?>
 
-                        <span class="d-none d-lg-block"><?= $PHOENIX_TEMPLATE_ARRAY["ITEMS"]["CATALOG"]["ITEMS"]["LINK_2_DETAIL_PAGE_NAME_OFFER"]["VALUE"] ?></span>
+                        <span class=" d-lg-block"><?= $PHOENIX_TEMPLATE_ARRAY["ITEMS"]["CATALOG"]["ITEMS"]["LINK_2_DETAIL_PAGE_NAME_OFFER"]["VALUE"] ?></span>
 
                         <span class="d-lg-none"><?= $PHOENIX_TEMPLATE_ARRAY["ITEMS"]["CATALOG"]["ITEMS"]["LINK_2_DETAIL_PAGE_NAME_OFFER_MOB"]["VALUE"] ?></span>
 
@@ -476,6 +478,7 @@
             </div>
 
         </div>
+        <?}?>
 
     </div>
 
