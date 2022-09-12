@@ -409,7 +409,7 @@
             </div>
 
         <? endif; ?>
-<?//сюда?>
+
 <? if($arItem['QUANTITY']['QUANTITY_VALUE'] > 0 && $arItem['PRICE']['PRICE'] != '-1'){?>
         <div class="wrapper-inner-bot row no-gutters <? if($arItem['QUANTITY']['QUANTITY_VALUE'] > '0'){?> hidden-js.active<?}else{?> hidden-js <?}?>" id="<?= $itemIds['WR_ADD2BASKET'] ?>">
             
