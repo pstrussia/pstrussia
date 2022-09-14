@@ -52,6 +52,10 @@ if (strlen($ar_result["UF_PHX_CTLG_TMPL_ENUM"]["XML_ID"]) <= 0)
 
 CPhoenixFunc::setInitialFilterParams("arrCatalogFilter");
 
+CBitrixComponent::includeComponentClass('diva:filter_model');
+$filter_model = FilterModel::getFilterParams($arResult["VARIABLES"]["SMART_FILTER_PATH"], true);
+
+$GLOBALS["arrCatalogFilter"] = array_merge($GLOBALS["arrCatalogFilter"], $filter_model["CATALOG"]);
 
 if ($PHOENIX_TEMPLATE_ARRAY["ITEMS"]["CATALOG"]["ITEMS"]['USE_FILTER']['VALUE']['ACTIVE'] == "Y" && $ar_result["UF_PHX_CTLG_TMPL_ENUM"]["XML_ID"] == "default" && !$ar_result["UF_USE_FILTER"]) {
 
@@ -210,7 +214,8 @@ if ($PHOENIX_TEMPLATE_ARRAY["ITEMS"]["CATALOG"]["ITEMS"]['USE_FILTER']['VALUE'][
             "INSTANT_RELOAD" => "Y",
             "SEF_RULE" => $arResult["FOLDER"] . $arResult["URL_TEMPLATES"]["smart_filter"] . "#actionbox",
             "SMART_FILTER_PATH" => $arResult["VARIABLES"]["SMART_FILTER_PATH"],
-            "HIDDEN_PROP" => ["MODEL_ID"],
+            "HIDDEN_PROP" => ["MODEL_AVTO", "GOD_VYPUSKA", "KUZOV"],
+            "DVS_FILTER" => $filter_model["SM"]
         ),
         $component
     );
@@ -976,17 +981,20 @@ if (strlen($pictureInHeadIsset)) {
                                         $APPLICATION->RestartBuffer();
                                     }
 
-									if($ar_result["ID"] == 197 || $ar_result["ID"] == 206){
+									if(($ar_result["ID"] == 197 || $ar_result["ID"] == 206)){
+																				
 									$APPLICATION->IncludeComponent(
 										"diva:filter_model", 
 										".default", 
 										array(
+											"IBLCOK_ID" => 14,
+											"SECTION_ID" => $ar_result["ID"],
 											"SECTION_CODE" => $arResult["VARIABLES"]["SECTION_CODE"],
 											"SMART_FILTER_PATH" => $arResult["VARIABLES"]["SMART_FILTER_PATH"],
+											"HL" => ["MARKA" => 7, "MODEL" => 5]
 										),
 										false
 									);}
-
 
                                     $intSectionID = $APPLICATION->IncludeComponent(
                                         "bitrix:catalog.section",

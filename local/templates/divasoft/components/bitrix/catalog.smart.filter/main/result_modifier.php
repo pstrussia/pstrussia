@@ -9,8 +9,8 @@ foreach($arResult["ITEMS"] as $key => $arItem)
 		if($arResult["ITEMS"][$key]["VALUES"])
 			$arResult["ITEMS"][$key]["VALUES"][0]["VALUE"]=$arItem["NAME"];
 	}
-	/*if($arParams["HIDDEN_PROP"] && in_array($arItem["CODE"], $arParams["HIDDEN_PROP"]))
-		unset($arResult["ITEMS"][$key]);*/
+	if($arParams["HIDDEN_PROP"] && in_array($arItem["CODE"], $arParams["HIDDEN_PROP"]))
+		unset($arResult["ITEMS"][$key]);
 	if(!isset($arItem["NAME"]))
 		unset($arResult["ITEMS"][$key]);
 }
@@ -38,6 +38,8 @@ foreach($arResult["ITEMS"] as $key=>$arItem)
 }
 global $sotbitFilterResult;
 $sotbitFilterResult = $arResult;
+
+$arResult["JS_FILTER_PARAMS"]["DVS_FILTER"] = $arParams["DVS_FILTER"];
 
 }
 //cl_print_r($arResult);

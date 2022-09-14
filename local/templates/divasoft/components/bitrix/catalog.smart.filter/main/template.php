@@ -202,7 +202,7 @@ CPhoenixSku::getHIBlockOptions();
                                     );
                                 }
                                 ?>
-                                <div class="bx-filter-parameters-box <? if ($arItem["DISPLAY_EXPANDED"] == "Y"): ?>bx-active<? endif ?>" <?if($arParams["HIDDEN_PROP"] && in_array($arItem["CODE"], $arParams["HIDDEN_PROP"])): ?>hidden<? endif;?>>
+                                <div class="bx-filter-parameters-box <? if ($arItem["DISPLAY_EXPANDED"] == "Y"): ?>bx-active<? endif ?>">
                                     <? //=($PHOENIX_TEMPLATE_ARRAY["ITEMS"]["CATALOG"]["ITEMS"]['FILTER_SCROLL']["VALUE"]["ACTIVE"] == "Y")?"":"<span class=\"bx-filter-container-modef\"></span>";?>
                                     <span class="bx-filter-container-modef"></span>
                                     <? // if($arItem['ID'] == '736'){?><? // cl_print_r($arParams)?>
