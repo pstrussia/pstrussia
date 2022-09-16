@@ -28,7 +28,7 @@ if (in_array("NAME", $arSorts)) {
     $arAvailableSort["NAME"] = array("NAME", "desc");
 }
 if (in_array("QUANTITY", $arSorts)) {
-    $arAvailableSort["CATALOG_AVAILABLE"] = array("QUANTITY", "desc");
+    $arAvailableSort["CATALOG_QUANTITY"] = array("QUANTITY", "desc");
 }
 
 
