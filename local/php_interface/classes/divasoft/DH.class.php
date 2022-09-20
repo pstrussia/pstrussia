@@ -22,10 +22,10 @@ class DH {
                             Array('ID', 'NAME', 'PREVIEW_PICTURE', 'DETAIL_PICTURE', 'PROPERTY_MORE_PHOTO')
             );
             $el = new CIBlockElement;
-            $result = [];
+           // $result = [];
             while ($arItem = $res->GetNext()) {
 //                print_r($arItem);
-                $result[$arItem['ID']][] = $arItem;
+//                $result[$arItem['ID']][] = $arItem;
                 $PRODUCT_ID = $arItem['ID'];
                 $el->SetPropertyValuesEx(
                         $arItem['ID'],
@@ -37,7 +37,7 @@ class DH {
             }
         endif;
 //        return $result;
-        return "DH::clearImagesCatalog();";
+        return "";//DH::clearImagesCatalog();
     }
 
 }
