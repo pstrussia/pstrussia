@@ -81,3 +81,9 @@ class UpdateElement {
     }
 
 }
+
+//альАртикулы - обновление //начало
+require_once $_SERVER['DOCUMENT_ROOT'] . '/local/classes/Dvs/Autoloader.php';
+Dvs\Autoloader::run();
+Dvs\Exchange1c\Catalog\Controller::run();
+//конец
