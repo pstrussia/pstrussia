@@ -15,11 +15,11 @@ class DivasoftEvent {
 //            "EMAIL_TO" => $arFields['EMAIL_TO']
 //        );
 //        CEvent::Send("HOW_TO_BUY", $lid, $arFieldsBuy, "N", 0, false, $languageId);
-        if($event == 'SALE_SUBSCRIBE_PRODUCT'){
-        $date = new DateTime();
-        $date->modify("+5 seconds");
-        CAgent::AddAgent("DH::clearImagesCatalog();", "iblock", "N", 86400, $date->format("d.m.Y H:i:s"), 'Y', $date->format("d.m.Y H:i:s"));
-        }
+//        if($event == 'SALE_SUBSCRIBE_PRODUCT'){
+//        $date = new DateTime();
+//        $date->modify("+5 seconds");
+//        CAgent::AddAgent("DH::clearImagesCatalog();", "iblock", "N", 86400, $date->format("d.m.Y H:i:s"), 'Y', $date->format("d.m.Y H:i:s"));
+//        }
         return true;
     }
 
