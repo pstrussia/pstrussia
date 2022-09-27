@@ -27943,3 +27943,17 @@ textarea.redemption-form__input {
 .pad_top_container > .row{
     justify-content: center;
 }
+
+.auth-choice{
+    background-color: #f6f6ef;
+    padding: 100px 20px;
+  }
+  .auth-choice .button-def{
+    width: 100%;
+  }
+  .auth-choice .button-def:hover{
+    background-color: #d06000;
+  }
+  .auth-form{
+    display: none;
+  }
