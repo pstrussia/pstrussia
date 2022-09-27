@@ -17786,7 +17786,7 @@ form.form {
     padding: 30px 10px;
 }
 
-form.form div.title-form {
+.title-form {
     font-size: 21px;
     line-height: 25px;
     text-transform: uppercase;
