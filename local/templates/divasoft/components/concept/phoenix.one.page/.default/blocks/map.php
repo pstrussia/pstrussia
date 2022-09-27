@@ -185,14 +185,14 @@ if($arItem["PROPERTIES"]["MAP_SUBSTRATE_POS"]["VALUE_XML_ID"] == "")
         || !empty($arItem["PROPERTIES"]["MAP_PHONE"]["VALUE"])
         || !empty($arItem["PROPERTIES"]["MAP_MAIL"]["VALUE"]))):?>
 
-        <div class="wr-desc-table">
+        <!-- <div class="wr-desc-table"> 
             
             <div class="<?if( $arItem["PROPERTIES"]["MAP_SIZE"]["VALUE_XML_ID"] != "in-container" && !$show_menu ):?>container<?endif;?>">
 
                 <div class="<?if( $arItem["PROPERTIES"]["MAP_SIZE"]["VALUE_XML_ID"] != "in-container" && !$show_menu ):?>row<?endif;?>">
                 
                     <div class="col-lg-4 col-md-6 col-12">
-                        <div class="desc-table">
+                        <div class="desc-table">-->
 
                             <?if(strlen($arItem["PROPERTIES"]["MAP_NAME"]["VALUE"]) > 0):?>
 
@@ -249,7 +249,7 @@ if($arItem["PROPERTIES"]["MAP_SUBSTRATE_POS"]["VALUE_XML_ID"] == "")
 
                             <?endif;?>
 
-                        </div>
+                        <!-- </div>
                     </div>
 
                 </div>
@@ -257,7 +257,7 @@ if($arItem["PROPERTIES"]["MAP_SUBSTRATE_POS"]["VALUE_XML_ID"] == "")
             </div>
       
 
-        </div>
+        </div> -->
 
     <?else:?>
 
@@ -273,7 +273,7 @@ if($arItem["PROPERTIES"]["MAP_SUBSTRATE_POS"]["VALUE_XML_ID"] == "")
                 
                 <div class="<?if( $arItem["PROPERTIES"]["MAP_SIZE"]["VALUE_XML_ID"] != "in-container" && !$show_menu ):?>container<?endif;?>">
 
-                    <div class="desc-table">
+                    <!-- <div class="desc-table">
                 
 
                         <?
@@ -291,31 +291,31 @@ if($arItem["PROPERTIES"]["MAP_SUBSTRATE_POS"]["VALUE_XML_ID"] == "")
                             }
                         ?>
 
-                        <div class="row no-margin">
+                        <div class="row no-margin"> -->
 
                             <?if(strlen($arItem["PROPERTIES"]["MAP_NAME"]["VALUE"]) > 0):?>
 
-                                <div class="<?=$class1?> item name">
+                                <!-- <div class="<?=$class1?> item name">
 
                                     <div class="row no-gutters align-items-center h-100">
-                                        <div class="col">
+                                        <div class="col"> -->
 
                                             <?=$arItem["PROPERTIES"]["MAP_NAME"]["~VALUE"]?>
 
-                                        </div>
+                                        <!-- </div>
                                         
                                     </div>
-                                </div>
+                                </div> -->
 
                             <?endif;?>
 
                             <?if(strlen($arItem["PROPERTIES"]["MAP_ADDRESS"]["VALUE"]) > 0 || (strlen($arItem["PROPERTIES"]["MAP_NAME"]["VALUE"]) > 0 && $show_menu)):?>
 
 
-                                <div class="<?=$class2?> item">
+                                <!-- <div class="<?=$class2?> item">
 
                                     <div class="row no-gutters align-items-center h-100">
-                                        <div class="col">
+                                        <div class="col"> -->
 
                                             <?if(strlen($arItem["PROPERTIES"]["MAP_NAME"]["VALUE"]) > 0 && $show_menu):?>
                                                 <div class="name">
@@ -324,20 +324,20 @@ if($arItem["PROPERTIES"]["MAP_SUBSTRATE_POS"]["VALUE_XML_ID"] == "")
 
                                             <?endif;?>
                                             <?=$arItem["PROPERTIES"]["MAP_ADDRESS"]["~VALUE"]?>
-                                        </div>
+                                        <!-- </div>
                                     </div>
                                     
-                                </div>
+                                </div> -->
 
                             <?endif;?>
 
 
                             <?if(!empty($arItem["PROPERTIES"]["MAP_PHONE"]["VALUE"]) || !empty($arItem["PROPERTIES"]["MAP_MAIL"]["VALUE"])):?>
 
-                                <div class="<?=$class3?> item">
+                                <!-- <div class="<?=$class3?> item">
 
                                     <div class="row no-gutters align-items-center h-100">
-                                        <div class="col">
+                                        <div class="col"> -->
 
                                             <?if(!empty($arItem["PROPERTIES"]["MAP_PHONE"]["VALUE"])):?>
                                                 <div class="phone bold">
@@ -360,29 +360,29 @@ if($arItem["PROPERTIES"]["MAP_SUBSTRATE_POS"]["VALUE_XML_ID"] == "")
                                                 </div>
 
                                             <?endif;?>
-                                        </div>
+                                        <!-- </div>
                                     </div>
 
-                                </div>
+                                </div> -->
 
 
                             <?endif;?>
 
 
                             <?if(!empty($arItem["PROPERTIES"]["MAP_DESC"]["~VALUE"])):?>
-                                <div class="<?=$class4?> item">
+                                <!-- <div class="<?=$class4?> item">
                                     <div class="row no-gutters align-items-center h-100">
-                                        <div class="col">
+                                        <div class="col"> -->
                                             <?=$arItem["PROPERTIES"]["MAP_DESC"]["~VALUE"]["TEXT"]?>
-                                        </div>
+                                        <!-- </div>
                                     </div>
-                                </div>
+                                </div> -->
                             <?endif;?>
 
-                        </div>
+                        <!-- </div>
 
               
-                    </div>
+                    </div> -->
                 </div>
            
                    

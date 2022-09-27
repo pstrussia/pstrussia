@@ -4673,6 +4673,13 @@ div.map-block.no-map {
     min-height: unset !important;
 }
 
+div.map-block.no-map iframe {
+    width: 100%;
+}
+.block-map{
+     margin-bottom: 40px;
+}
+
 div.map-block div.y-map-parent {
     position: relative;
 }
@@ -27921,8 +27928,9 @@ textarea.redemption-form__input {
     font-weight: bold;
     background-color: #f5f5f5;
     border-radius: 4px;
-    padding: 1px 6px;
+    padding: 3px 6px;
     display: inline-block;
+    line-height: 1.3;
 }
 
 
