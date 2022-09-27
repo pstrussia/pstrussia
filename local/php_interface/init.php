@@ -42,3 +42,49 @@ function a2l($sText, $title = '', $file = "all.log", $prepostfix = true) {
 		'OnSaleOrderBeforeSavedHandler',
 	]
 ); 
+
+AddEventHandler("search", "BeforeIndex", "BeforeIndexHandler");
+
+function BeforeIndexHandler($arFields) {
+    $arrIblock = array(14);
+    if (CModule::IncludeModule('iblock') && $arFields["MODULE_ID"] == 'iblock' && in_array($arFields["PARAM2"], $arrIblock) && intval($arFields["ITEM_ID"]) > 0) {
+
+        $arFields["BODY"] = $arFields["BODY"] . " " . preg_replace("/[^А-Яа-яA-Za-z0-9]/u", "", CSearch::KillTags($arFields["BODY"]));
+
+        return $arFields;
+    }
+}
+
+// регистрируем обработчик
+AddEventHandler("iblock", "OnAfterIBlockElementUpdate", Array("UpdateElement", "OnAfterIBlockElementUpdateHandler"));
+
+class UpdateElement {
+
+    // создаем обработчик события "OnAfterIBlockElementUpdate"
+    function OnAfterIBlockElementUpdateHandler(&$arFields) {
+        if ($arFields["RESULT"]) {
+            foreach ($arFields['PROPERTY_VALUES'][733] as $item):
+                if ($item['DESCRIPTION'] == 'Расход'):
+                    $ELEMENT_ID = $arFields['ID'];  // код элемента
+                    $PROPERTY_CODE = "EXPENSE";  // код свойства
+                    $PROPERTY_VALUE = $item['VALUE'];  // значение свойства
+
+                    $dbr = CIBlockElement::GetList(array(), array("=ID" => $ELEMENT_ID), false, false, array("ID", "IBLOCK_ID"));
+                    if ($dbr_arr = $dbr->Fetch()) {
+                        $IBLOCK_ID = $dbr_arr["IBLOCK_ID"];
+                        CIBlockElement::SetPropertyValues($ELEMENT_ID, $IBLOCK_ID, $PROPERTY_VALUE, $PROPERTY_CODE);
+                    }
+                endif;
+            endforeach;
+        } else {
+//            AddMessage2Log("Ошибка изменения записи ".$arFields["ID"]." (".$arFields["RESULT_MESSAGE"].").");
+        }
+    }
+
+}
+
+//альАртикулы - обновление //начало
+require_once $_SERVER['DOCUMENT_ROOT'] . '/local/classes/Dvs/Autoloader.php';
+Dvs\Autoloader::run();
+Dvs\Exchange1c\Catalog\Controller::run();
+//конец
