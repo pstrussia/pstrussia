@@ -427,20 +427,16 @@ label.pay-item input[type="checkbox"]:checked+.item .check{
     line-height: 19px;
     padding: 10px 20px;
 }
-.order-delivery-item .item .wr-img{
+/* .order-delivery-item .item .wr-img{
     width: 80px;
     position: static;
-}
+} */
 .order-delivery-item .item .img{
     width: 80px;
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
+    height: 80px;
     background-position: center;
     background-repeat: no-repeat;
-    background-size: cover;
-    border-radius: 4px 0 0 4px;
+    background-size: contain;
 }
 
 .order-delivery-item .check{
@@ -667,7 +663,7 @@ label.pay-item input[type="checkbox"]:checked+.item .check{
 .bx-pagination.cpt-pagination .bx-pagination-container ul li.bx-pag-next a:hover span{
     opacity: 1;
 }
-.SDEK_selectPVZ.btn.btn-default,
+/* .SDEK_selectPVZ.btn.btn-default,
 .bx-soa-pp-list-description a[onclick],
 .IPECOM_selectPVZ.btn.btn-default{
     background-color: #1dc31d;
@@ -679,6 +675,22 @@ label.pay-item input[type="checkbox"]:checked+.item .check{
     display: inline-block;
     margin-top: 8px;
     border-radius: 3px;
+} */
+.apiship_pvzLair .btn{
+    background-color: #ec6e00;
+    color: #fff;
+    border-radius: 100px;
+    margin: 10px 0;
+    padding: 10px 15px;
+    transition: all 0.2s ease 0s;
+}
+.apiship_pvzLair .btn:hover{
+    background-color: #d06000;
+}
+.apiship_pvzLair .apiship_pvzAddr{
+    color: #181818;
+    font-family: 'SegoeUIBold', Arial, 'PT Sans Caption';
+    font-style: italic;
 }
 .SDEK_selectPVZ.btn.btn-default:hover{
     opacity: .8;
