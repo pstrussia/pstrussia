@@ -24660,7 +24660,11 @@ div.textarea-simple textarea:focus {
 
 div.textarea-simple textarea.bord-1,
 div.textarea-simple textarea.bord-1:focus {
-    border: 1px solid #d5d5d5;
+    border: 2px solid #d5d5d5;
+}
+
+.bx-sls .dropdown-block{
+    font-size: 16px;
 }
 
 div.textarea-simple textarea.bord-2,
@@ -24687,14 +24691,14 @@ div.textarea-simple div.bg {
 }
 
 div.textarea-simple span.desc {
-    font-size: 14px;
+    font-size: 16px;
     line-height: 20px;
     position: absolute;
-    top: 8px;
+    top: 12px;
     left: 15px;
     right: 2px;
     background-color: #fff;
-    color: #a9a9a9;
+    color: #767676;
     -webkit-transition: top 0.3s;
     -moz-transition: top 0.3s;
     -o-transition: top 0.3s;
@@ -24702,7 +24706,7 @@ div.textarea-simple span.desc {
 }
 
 div.textarea-simple.in-focus span.desc {
-    top: 5px;
+    top: 7px;
     font-size: 12px;
     line-height: 13px;
     z-index: 99;
@@ -24722,11 +24726,11 @@ div.input-simple.no-mg {
 }
 
 div.input-simple.inp-small {
-    height: 45px;
+    height: 54px;
 }
 
 div.input-simple.inp-small span.desc {
-    top: 14px;
+    top: 18px;
 }
 
 div.input-simple.inp-small.ic-search input[type="text"] {
@@ -24801,7 +24805,7 @@ div.input-simple input {
     height: 100%;
     width: 100%;
     border: 0;
-    padding: 10px 15px 0;
+    padding: 11px 35px 0 12px;
     position: relative;
     z-index: 5;
     background-color: transparent;
@@ -24812,7 +24816,7 @@ div.input-simple input {
 }
 
 div.input-simple input.bord-1 {
-    border: 1px solid #d5d5d5;
+    border: 2px solid #d5d5d5;
 }
 
 div.input-simple input.bord-2 {
@@ -24830,7 +24834,7 @@ div.input-simple span.desc {
     z-index: 4;
     top: 18px;
     left: 15px;
-    color: #a9a9a9;
+    color: #767676;
     transition: 0.3s;
     -webkit-transition: 0.3s;
     -moz-transition: 0.3s;
@@ -24840,7 +24844,7 @@ div.input-simple span.desc {
 div.input-simple.in-focus span.desc {
     font-size: 12px;
     line-height: 13px;
-    top: 3px;
+    top: 7px;
 }
 
 label.load-file-simple {
