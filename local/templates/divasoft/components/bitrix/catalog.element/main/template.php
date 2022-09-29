@@ -248,13 +248,13 @@ $itemIds = $arResult["PRODUCT"]["VISUAL"];
         <a href="<?= $arResult["BRAND"]["DETAIL_PAGE_URL"] ?>" class="brand-link"></a>
 
         <div class="col-8 board-links order-1">
-            <div class="row">
-                <div class="col-auto wr-about-product">
+            <!--<div class="row">
+                 <div class="col-auto wr-about-product">
                     <a class="name show-side-menu"><?= $PHOENIX_TEMPLATE_ARRAY["MESS"]["CATALOG_DETAIL_ABOUT_PRODUCT"] ?></a>
                 </div>
-                <div class="col-auto wr-price d-md-none">
-                    <a href="#actual_price" class="name scroll"><?= $PHOENIX_TEMPLATE_ARRAY["MESS"]["CATALOG_DETAIL_SCROLL2PRICE"] ?></a>
-                </div>
+            </div> -->
+            <div class="col-auto wr-price d-md-none">
+                <a href="#actual_price" class="name scroll"><?= $PHOENIX_TEMPLATE_ARRAY["MESS"]["CATALOG_DETAIL_SCROLL2PRICE"] ?></a>
             </div>
         </div>
 
