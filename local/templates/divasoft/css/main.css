@@ -18384,6 +18384,7 @@ form.form.light div.has-error textarea {
 
 form.form input[type="password"],
 form.form input[type="text"],
+form.form input[type="tel"],
 form.form input[type="email"] {
     width: 100%;
     -webkit-border-radius: 4px;

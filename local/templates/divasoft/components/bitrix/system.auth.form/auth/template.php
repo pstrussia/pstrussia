@@ -40,7 +40,7 @@ $picture = (strlen($PHOENIX_TEMPLATE_ARRAY["ITEMS"]["PERSONAL"]["ITEMS"]["FORM_P
                                 <div class="input">
                                     <div class="bg"></div>
                                     <span class="desc">Телефон</span>
-                                    <input class='focus-anim require' name="auth-tel" type="text" value="" />
+                                    <input class='focus-anim phone require' name="auth-tel" type="tel" value="" />
                                 </div>
                                 <div class="errors"></div>
                                 <div class="input-btn">
