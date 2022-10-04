@@ -107,7 +107,21 @@ if($PHOENIX_TEMPLATE_ARRAY["ITEMS"]["SHOP"]["ITEMS"]["CART_ON"]["VALUE"]["ACTIVE
 
 <a href="#body" class="up scroll"></a>
 
+<a class="wr-link show-phx-modal-dialog" data-target="code-modal-dialog">code</a>
 
+<div class="phx-modal-dialog" data-target="code-modal-dialog">
+    <div class="dialog-content">
+        <a class="close-phx-modal-dialog" data-target="code-modal-dialog"></a>
+        <div class="code-dialog">
+            <div class="code-dialog__title main1">На ваш телефон отправлен код подтверждения</div>
+            <div class="code-dialog__label">Введите код:</div>
+            <form class="code-dialog__form">
+                <input class="code-dialog__input" type="text">
+                <button class="code-dialog__btn button-def main-color elips" type="submit">Далее</button>
+            </form>
+        </div>
+    </div>
+</div>
 
 <div class="popup-slider" id="sliderPopup" data-current-image=''>
     
