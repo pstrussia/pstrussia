@@ -16231,7 +16231,14 @@ div.catalog-list.FLAT div.item a.name-element {
     overflow: hidden;
 }
 
+div.catalog-list.FLAT.SLIDER .slick-track{
+    display: flex;
+}
+
 div.catalog-list.FLAT.SLIDER div.item {
+    display: flex;
+    flex-direction: column;
+    height: auto !important;
     margin-bottom: 0;
 }
 
@@ -16347,6 +16354,13 @@ div.catalog-list.FLAT.SLIDER div.item div.item-inner {
     padding-left: 15px;
     padding-right: 15px;
     padding-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 auto;
+}
+
+div.catalog-list.FLAT.SLIDER div.item .wrapper-bot{
+    margin-top: auto;
 }
 
 div.catalog-list.FLAT.SLIDER div.item div.wrapper-top,
