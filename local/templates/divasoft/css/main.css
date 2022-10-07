@@ -10849,7 +10849,7 @@ div.cart-info-block div.wrapper-article-available div.detail-article {
     padding-right: 20px;
 }
 
-div.cart-info-block div.wrapper-article-available div.detail-available {
+div.detail-available {
     font-size: 13px;
     line-height: 19px;
     color: #868686;
@@ -10857,35 +10857,39 @@ div.cart-info-block div.wrapper-article-available div.detail-available {
     top: -1px;
 }
 
-div.cart-info-block div.wrapper-article-available div.detail-available.without-quantity {
+div.detail-available.without-quantity {
     padding-left: 15px;
     background: url("../images/svg/check_gr.svg") left 8px no-repeat;
     background-size: 9px;
 }
 
-div.cart-info-block div.wrapper-article-available div.detail-available.with-quantity {
+div.detail-available.with-quantity {
 }
 
-div.cart-info-block div.wrapper-article-available div.detail-available.without-quantity span.text {
+div.detail-available.without-quantity span.text {
     color: #11da1f;
 }
 
-div.cart-info-block div.wrapper-article-available div.detail-available.empty-quantity {
+div.detail-available.empty-quantity {
     padding-left: 10px;
     background: url("../images/svg/clarification.svg") left center no-repeat;
     background-size: 5px;
 }
 
-div.cart-info-block div.wrapper-article-available div.detail-available.empty-quantity span.text {
+div.detail-available.empty-quantity span.text {
     color: #ec6e00;
 }
 
-div.cart-info-block div.wrapper-article-available div.detail-available.with-quantity span.text {
+div.detail-available.with-quantity span.text {
     color: #868686;
 }
 
-div.cart-info-block div.wrapper-article-available div.detail-available.with-quantity span.quantity {
+div.detail-available.with-quantity span.quantity {
     color: #11da1f;
+}
+
+.cart-block.universal-parent-slider .detail-available{
+    margin: 0 16px 5px 0;
 }
 
 div.cart-info-block div.desc-title {

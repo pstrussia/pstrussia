@@ -111,13 +111,13 @@ global $PHOENIX_TEMPLATE_ARRAY;
 
                                 </div>
 
+                                <?= $arItem['FIRST_ITEM']['QUANTITY']['HTML'] //статусы "в наличии" и тп ?>
+                                <? $sost = $arResult["SOSTOYANIE_TOVARA"][$arItem["ID"]] ?>
 
                                 <a href="<?= $arItem['FIRST_ITEM']['DETAIL_PAGE_URL'] ?>" class="name-element" id="<?= $itemIds['NAME'] ?>">
                                     <?= $arItem["NAME_HTML"] ?>
                                 </a>
                                 
-                                <?= $arItem['FIRST_ITEM']['QUANTITY']['HTML'] //статусы "в наличии" и тп ?>
-                                <? $sost = $arResult["SOSTOYANIE_TOVARA"][$arItem["ID"]] ?>
                                 
                                 <div class="states">
                                     <?
