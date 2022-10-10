@@ -27993,9 +27993,6 @@ textarea.redemption-form__input {
   .auth-choice .button-def:hover{
     background-color: #d06000;
   }
-  .auth-form{
-    display: none;
-  }
 
 
   .code-dialog {

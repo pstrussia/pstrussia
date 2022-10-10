@@ -25,63 +25,21 @@ $picture = (strlen($PHOENIX_TEMPLATE_ARRAY["ITEMS"]["PERSONAL"]["ITEMS"]["FORM_P
                 <? endif; ?>
 
                 <div class="<?= ($picture) ? "col-md-5" : ""; ?> col-12">
-                    <div class="auth-choice">
-                        <div class="title-form main1">Войти как:</div>
-                        <div class="button-def main-color big elips auth-btn-js" data-face="fiz">Физическое лицо</div>
-                        <div class="button-def main-color big elips auth-btn-js" data-face="ur">Юридическое лицо</div>
-                    </div>
-                    <div class="auth-form auth-fiz">
+                    <div class="auth-form">
                         <form class="form auth" action="#">
-                            <div class="title-form main1">Личный кабинет<br>физ. лица</div>
+                            <div class="title-form main1">Личный кабинет</div>
                             <? if (strlen($PHOENIX_TEMPLATE_ARRAY["ITEMS"]["PERSONAL"]["ITEMS"]["FORM_AUTH_SUBTITLE"]["VALUE"])) : ?>
                                 <div class="subtitle-form"><?= $PHOENIX_TEMPLATE_ARRAY["ITEMS"]["PERSONAL"]["ITEMS"]["FORM_AUTH_SUBTITLE"]["~VALUE"] ?></div>
                             <? endif; ?>
                             <div class="inputs-block">
                                 <div class="input">
                                     <div class="bg"></div>
-                                    <span class="desc">Телефон</span>
-                                    <input class='focus-anim phone require' name="auth-tel" type="tel" value="" />
-                                </div>
-                                <div class="errors"></div>
-                                <div class="input-btn">
-                                    <div class="load">
-                                        <div class="xLoader form-preload">
-                                            <div class="audio-wave"><span></span><span></span><span></span><span></span><span></span></div>
-                                        </div>
-                                    </div>
-                                    <button class="button-def main-color big active <?= $PHOENIX_TEMPLATE_ARRAY["ITEMS"]["DESIGN"]["ITEMS"]['BTN_VIEW']['VALUE'] ?> auth-submit" name="form-submit" type="button"><?= $PHOENIX_TEMPLATE_ARRAY["MESS"]["PERSONAL_BTN_ENTER"] ?></button>
-                                </div>
-                            </div>
-                            <div class="input txt-center">
-                                <a class="forgot auth-btn-js" data-face="ur"><span class="bord-bot">Войти как юр. лицо</span></a>
-                            </div>
-                            <?/*<div class="soc-enter">
-                                        <div class="soc-enter-title">
-                                            <div class="soc-enter-line"></div>
-                                            <div class="soc-enter-text"><?=$PHOENIX_TEMPLATE_ARRAY["MESS"]["PERSONAL_AUTH_FORM_SOC"]?></div>
-                                        </div>
-                                        <div class="soc-enter-items">
-                                            <a href="#" class="soc-enter-item"></a>
-                                            <a href="#" class="soc-enter-item"></a>
-                                        </div>
-                                    </div>*/ ?>
-                        </form>
-                    </div>
-                    <div class="auth-form auth-ur">
-                        <form class="form auth" action="#">
-                            <div class="title-form main1">Личный кабинет<br>юр. лица</div>
-                            <? if (strlen($PHOENIX_TEMPLATE_ARRAY["ITEMS"]["PERSONAL"]["ITEMS"]["FORM_AUTH_SUBTITLE"]["VALUE"])) : ?>
-                                <div class="subtitle-form"><?= $PHOENIX_TEMPLATE_ARRAY["ITEMS"]["PERSONAL"]["ITEMS"]["FORM_AUTH_SUBTITLE"]["~VALUE"] ?></div>
-                            <? endif; ?>
-                            <div class="inputs-block">
-                                <div class="input">
-                                    <div class="bg"></div>
-                                    <span class="desc">Email</span>
-                                    <input class='focus-anim require' name="auth-email" type="text" value="" />
+                                    <span class="desc">Телефон, Email или ID</span>
+                                    <input class='focus-anim auth-login require' name="auth-login" type="text" value="" />
                                 </div>
                                 <div class="input">
                                     <div class="bg"></div>
-                                    <span class="desc"><?= $PHOENIX_TEMPLATE_ARRAY["MESS"]["PERSONAL_PASSWORD_INPUT"] ?></span>
+                                    <span class="desc">Пароль</span>
                                     <input class='focus-anim require' name="auth-password" type="password" />
                                 </div>
                                 <div class="errors"></div>
@@ -96,9 +54,6 @@ $picture = (strlen($PHOENIX_TEMPLATE_ARRAY["ITEMS"]["PERSONAL"]["ITEMS"]["FORM_P
                             </div>
                             <div class="input txt-center">
                                 <a class="forgot" href="<?= $PHOENIX_TEMPLATE_ARRAY["ITEMS"]["PERSONAL"]["ITEMS"]["FORGOT_PASSWORD_URL"]["VALUE"] ?>"><span class="bord-bot">Восстановить доступ</span></a>
-                            </div>
-                            <div class="input txt-center">
-                                <a class="forgot auth-btn-js" data-face="fiz"><span class="bord-bot">Войти как физ. лицо</span></a>
                             </div>
                             <?/*<div class="soc-enter">
                                         <div class="soc-enter-title">
