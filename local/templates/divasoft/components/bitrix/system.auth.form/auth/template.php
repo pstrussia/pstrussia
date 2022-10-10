@@ -95,7 +95,7 @@ $picture = (strlen($PHOENIX_TEMPLATE_ARRAY["ITEMS"]["PERSONAL"]["ITEMS"]["FORM_P
                                 </div>
                             </div>
                             <div class="input txt-center">
-                                <a class="forgot" href="<?= $PHOENIX_TEMPLATE_ARRAY["ITEMS"]["PERSONAL"]["ITEMS"]["FORGOT_PASSWORD_URL"]["VALUE"] ?>"><span class="bord-bot"><?= $PHOENIX_TEMPLATE_ARRAY["ITEMS"]["PERSONAL"]["ITEMS"]["FORGOT_PASSWORD_URL"]["DESCRIPTION"] ?></span></a>
+                                <a class="forgot" href="<?= $PHOENIX_TEMPLATE_ARRAY["ITEMS"]["PERSONAL"]["ITEMS"]["FORGOT_PASSWORD_URL"]["VALUE"] ?>"><span class="bord-bot">Восстановить доступ</span></a>
                             </div>
                             <div class="input txt-center">
                                 <a class="forgot auth-btn-js" data-face="fiz"><span class="bord-bot">Войти как физ. лицо</span></a>
