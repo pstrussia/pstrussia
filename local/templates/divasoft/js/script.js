@@ -4498,6 +4498,7 @@ $(document).ready(function () {
                 this.currentElement.SHOWPREORDERBTN = true;
                 
             }
+
             if (this.currentElement.SHOWPREORDERBTN || this.currentElement.MODE_ARCHIVE) {
                 if (this.currentElement.SHOWPREORDERBTN) {
                     
@@ -6564,16 +6565,16 @@ $(document).ready(function () {
         },
 
         hideBtns: function () {
-            this.nodes.obWrAdd2BasketBtn.classList.remove('active');
-            this.nodes.obWrAdd2BasketBtn.classList.add('d-none');
-            this.nodes.obBtn2pageProduct.classList.remove('d-none');
+//            this.nodes.obWrAdd2BasketBtn.classList.remove('active');
+//            this.nodes.obWrAdd2BasketBtn.classList.add('d-none');
+//            this.nodes.obBtn2pageProduct.classList.remove('d-none');
 
         },
 
         showBtns: function () {
-            this.nodes.obWrAdd2BasketBtn.classList.add('active');
-            this.nodes.obWrAdd2BasketBtn.classList.remove('d-none');
-            this.nodes.obBtn2pageProduct.classList.add('d-none');
+//            this.nodes.obWrAdd2BasketBtn.classList.add('active');
+//            this.nodes.obWrAdd2BasketBtn.classList.remove('d-none');
+//            this.nodes.obBtn2pageProduct.classList.add('d-none');
         },
 
         btnsControl: function () {
