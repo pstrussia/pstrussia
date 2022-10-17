@@ -105,8 +105,7 @@
     <div class="col-xl-3 col-lg-4 col-md-6 col-12 offset-lg-0 offset-md-3 right-body">
 
 
-        <? if($arItem['QUANTITY']['QUANTITY_VALUE'] > 0 && $arItem['PRICE']['PRICE'] != '-1'){?>
-        <div class="wrapper-inner-bot row no-gutters <? if($arItem['QUANTITY']['QUANTITY_VALUE'] > '0'){?> hidden-js.active<?}else{?> hidden-js <?}?> <?= ($arItem['HAVEOFFERS']) ? "hidden" : "" ?>" id="<?= $itemIds['WR_ADD2BASKET'] ?>">
+        <div class="wrapper-inner-bot row no-gutters hidden-js <?= ($arItem['HAVEOFFERS']) ? "hidden" : "" ?>" id="<?= $itemIds['WR_ADD2BASKET'] ?>">
 
 
             <div class="quantity-container col-8 quantity-block"
@@ -143,16 +142,16 @@
             </div>
 
         </div>
- <?}?>
- <? if($arItem['QUANTITY']['QUANTITY_VALUE'] < 1 || $arItem['PRICE']['PRICE'] == '-1'){?>
-        <div class="wrapper-inner-bot row no-gutters " id="<?= $itemIds['BTN2DETAIL_PAGE_PRODUCT'] ?>">
+
+
+        <div class="wrapper-inner-bot row no-gutters <?= ($arItem['HAVEOFFERS']) ? "" : "d-none" ?>" id="<?= $itemIds['BTN2DETAIL_PAGE_PRODUCT'] ?>">
 
             <div class="btn-container align-items-center col-12">
                 <a href="<?= $arItem["DETAIL_PAGE_URL"] ?>" class="main-color bold">
 
                     <? if ($arItem['HAVEOFFERS']): ?>
 
-                        <span class=" d-lg-block"><?= $PHOENIX_TEMPLATE_ARRAY["ITEMS"]["CATALOG"]["ITEMS"]["LINK_2_DETAIL_PAGE_NAME_OFFER"]["VALUE"] ?></span>
+                        <span class="d-none d-lg-block"><?= $PHOENIX_TEMPLATE_ARRAY["ITEMS"]["CATALOG"]["ITEMS"]["LINK_2_DETAIL_PAGE_NAME_OFFER"]["VALUE"] ?></span>
 
                         <span class="d-lg-none"><?= $PHOENIX_TEMPLATE_ARRAY["ITEMS"]["CATALOG"]["ITEMS"]["LINK_2_DETAIL_PAGE_NAME_OFFER_MOB"]["VALUE"] ?></span>
 
@@ -166,7 +165,6 @@
             </div>
 
         </div>
-<?}?>
 
     </div>
 

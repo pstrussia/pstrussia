@@ -298,7 +298,7 @@
 
                     <? if ($PHOENIX_TEMPLATE_ARRAY["ITEMS"]["CATALOG_ITEM_FIELDS"]["ITEMS"]["PROPS_IN_LIST_FOR_" . $arResult["VIEW"]]["VALUE"]["PREVIEW_TEXT"] == "Y"): ?>
 
-                        <div class="preview-text" id="<?= $itemIds["PREVIEW_TEXT"] ?>"><?= $arItem["FIRST_ITEM"]["PREVIEW_TEXT_HTML"] ?></div>
+                        <div class="preview-text" id="<?= $itemIds["PREVIEW_TEXT"] ?>"><?= $arResult["DETAIL_TEXT"][$arItem["ID"]] ?></div>
 
                     <? endif; ?>
 
@@ -409,8 +409,8 @@
             </div>
 
         <? endif; ?>
-        
-        <? if($arItem['QUANTITY']['QUANTITY_VALUE'] > 0 && $arItem['PRICE']['PRICE'] != '-1'){?>
+
+<? if($arItem['QUANTITY']['QUANTITY_VALUE'] > 0 && $arItem['PRICE']['PRICE'] != '-1'){?>
         <div class="wrapper-inner-bot row no-gutters <? if($arItem['QUANTITY']['QUANTITY_VALUE'] > '0'){?> hidden-js.active<?}else{?> hidden-js <?}?>" id="<?= $itemIds['WR_ADD2BASKET'] ?>">
             
             
@@ -479,7 +479,6 @@
 
         </div>
         <?}?>
-
     </div>
 
 

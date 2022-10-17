@@ -353,7 +353,7 @@ else
 	$hideDelivery = empty($arResult['DELIVERY']);
 	?>
 
-	<form action="<?=POST_FORM_ACTION_URI?>" method="POST" name="ORDER_FORM" id="bx-soa-order-form" enctype="multipart/form-data">
+	<form action="<?=POST_FORM_ACTION_URI?>" method="POST" name="ORDER_FORM" id="bx-soa-order-form" enctype="multipart/form-data" class="reg-ur-form">
 
 
 		

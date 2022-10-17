@@ -44,6 +44,7 @@ if(!strlen($arParams["VIEW"]))
 
 foreach ($arResult["ITEMS"] as $key => $arItem){
 	$arResult["SOSTOYANIE_TOVARA"][$arItem["ID"]] = $arItem["PROPERTIES"]["SOSTOYANIE_TOVARA"]["VALUE"];
+	$arResult["DETAIL_TEXT"][$arItem["ID"]] = $arItem["DETAIL_TEXT"];
 }
 
 $arResult["rating"] = array();
@@ -78,7 +79,7 @@ if(!empty($arResult["ITEMS"]))
 
 CPhoenix::SetResultModifierCatalogElements($arResult, $arParams, $arEditAreaId);
 
-
+//echo "<pre>"; print_r($arResult["ITEMS"][0]); echo "</pre>";
 
 $cp = $this->__component;
  
@@ -96,11 +97,6 @@ if (is_object($cp))
     $arResult['UF_PHX_CTLG_DSCR'] = $cp->arResult['UF_PHX_CTLG_DSCR'];
     $arResult['UF_PHX_CTLG_H1'] = $cp->arResult['UF_PHX_CTLG_H1'];
 }
-
-
-
-
-
 
 $this->SetViewTarget('available-show');
     echo (CPhoenix::IssetOffers($arResult)) ? "d-none" : "";
@@ -135,3 +131,6 @@ if(isset($arParams["SEARCH_ELEMENTS_ID"]))
 
     }
 }
+
+
+

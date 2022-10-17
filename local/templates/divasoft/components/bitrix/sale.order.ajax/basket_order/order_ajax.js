@@ -5521,7 +5521,7 @@ BX.namespace('BX.Sale.OrderAjaxComponent');
 
 			
 
-			if (currentDelivery.PRICE >= 0)
+			if (currentDelivery.PRICE > 0)
 			{
 				price = BX.create('DIV', {
 					props: {className: 'highlight-gray'},
@@ -7425,12 +7425,69 @@ BX.namespace('BX.Sale.OrderAjaxComponent');
 
 				inputs = propContainer.querySelectorAll('input[type=text]');
 
-
 				if(inputs)
 				{
 					for (i = 0; i < inputs.length; i++)
 					{
-
+						var suggestion = '';
+						
+						if(inputs[i].name == "ORDER_PROP_10")
+						{
+							settings.NAME = "Начните вводить "+settings.NAME;
+							suggestion = BX.create('DIV', {
+										props: {
+											className: "suggestion-dropdown"
+										},
+										style:
+										{
+											display: "none"
+										},
+										children:[
+											BX.create('DIV', {
+												props: 
+												{
+													className: "suggestion-dropdown__title"
+												},
+												html: "Выберите вариант или продолжите ввод"
+											}),
+											BX.create('DIV', {
+												props: 
+												{
+													className: "suggestion-dropdown__list"
+												},
+												children:[
+													BX.create('DIV', {
+														props: 
+														{
+															className: "suggestion-dropdown__item suggestion-zero"
+														},
+														style:
+														{
+															display: "none"
+														},
+														children:[
+															BX.create('DIV', {
+																props: 
+																{
+																	className: "suggestion-dropdown__address"
+																},
+																html: "тестовый"
+															}),
+															BX.create('DIV', {
+																props: 
+																{
+																	className: "suggestion-dropdown__other"
+																},
+																html: "адрес"
+															}),
+														]
+													}),
+												]
+											})
+										]
+								});
+						}
+						
 						propContainer.appendChild(
 							BX.create('DIV', {
 
@@ -7454,7 +7511,8 @@ BX.namespace('BX.Sale.OrderAjaxComponent');
 												},
 												html: settings.NAME
 											}),
-											inputs[i]
+											inputs[i],
+											suggestion
 										]
 									})
 								]

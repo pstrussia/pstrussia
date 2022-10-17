@@ -684,7 +684,12 @@ $(document).on("click", ".register-submit", function()
         button = $("button", form),
         load = $("div.load", form);
 
-
+	var $data = {};
+	$(form).find ('input, textearea, select, button').each(function() {
+	  $data[this.name] = $(this).val();
+	});
+	$data["send"] = "Y";
+	$data["site_id"] = $("input.site_id").val();
 
     if($("input.agreecheck", form).length>0)
     {
@@ -751,15 +756,7 @@ $(document).on("click", ".register-submit", function()
 
                 $.post(
                     "/bitrix/tools/concept.phoenix/ajax/personal/reg.php",
-                    {
-                        "send": "Y",
-                        "bx-name": name.val(),
-                        "bx-email": email.val(),
-                        "bx-password": password.val(),
-                        "promo": promo.val(),
-                        "site_id": $("input.site_id").val(),
-                        "captchaToken": captchaToken
-                    },
+                    $data,
                     function(data)
                     {
                         if(data.OK == "N")
@@ -785,14 +782,7 @@ $(document).on("click", ".register-submit", function()
         {
             $.post(
                 "/bitrix/tools/concept.phoenix/ajax/personal/reg.php",
-                {
-                    "send": "Y",
-                    "bx-name": name.val(),
-                    "bx-email": email.val(),
-                    "bx-password": password.val(),
-                    "promo": promo.val(),
-                    "site_id": $("input.site_id").val()
-                },
+                $data,
                 function(data)
                 {
                     if(data.OK == "N")
