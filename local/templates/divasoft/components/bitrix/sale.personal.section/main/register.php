@@ -54,7 +54,7 @@ require("include/_head.php");
                                         <span class="desc">Телефон</span>
                                         <input class="focus-anim phone require" type="tel" name="bx-phone" value="" autocomplete="off"/>
                                     </div>
-            
+
                                     <div class="input">
                                         <div class="bg"></div>
                                         <span class="desc"><?= $PHOENIX_TEMPLATE_ARRAY["MESS"]["PERSONAL_REGISTER_INPUT_EMAIL"] ?></span>

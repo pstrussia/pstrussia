@@ -7,6 +7,7 @@ function JCSmartFilter(ajaxURL, viewMode, params)
 	this.cache = [];
 	this.popups = [];
 	this.viewMode = viewMode;
+	this.diva_filter = params.DVS_FILTER;
 	if (params && params.SEF_SET_FILTER_URL)
 	{
 		this.bindUrlToButton('set_filter', params.SEF_SET_FILTER_URL);
@@ -187,6 +188,21 @@ JCSmartFilter.prototype.postHandler = function (result, fromCache)
 
 	if (!!result && !!result.ITEMS)
 	{
+		if (result.SEF_SET_FILTER_URL)
+		{
+			result.SEF_SET_FILTER_URL = result.SEF_SET_FILTER_URL.replace('filter', 'filter'+this.diva_filter);
+		}
+		
+		if (result.FILTER_AJAX_URL)
+		{
+			result.FILTER_AJAX_URL = result.FILTER_AJAX_URL.replace('filter', 'filter'+this.diva_filter);
+		}
+		
+		if (result.FILTER_URL)
+		{
+			result.FILTER_URL = result.FILTER_URL.replace('filter', 'filter'+this.diva_filter);
+		}
+
 		for(var popupId in this.popups)
 		{
 			if (this.popups.hasOwnProperty(popupId))

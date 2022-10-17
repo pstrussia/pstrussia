@@ -51,6 +51,11 @@ if (strlen($ar_result["UF_PHX_CTLG_TMPL_ENUM"]["XML_ID"]) <= 0)
 
 CPhoenixFunc::setInitialFilterParams("arrCatalogFilter");
 
+CBitrixComponent::includeComponentClass('diva:filter_model');
+$filter_model = FilterModel::getFilterParams($arResult["VARIABLES"]["SMART_FILTER_PATH"], true);
+
+$GLOBALS["arrCatalogFilter"] = array_merge($GLOBALS["arrCatalogFilter"], $filter_model["CATALOG"]);
+
 if ($PHOENIX_TEMPLATE_ARRAY["ITEMS"]["CATALOG"]["ITEMS"]['USE_FILTER']['VALUE']['ACTIVE'] == "Y" && $ar_result["UF_PHX_CTLG_TMPL_ENUM"]["XML_ID"] == "default" && !$ar_result["UF_USE_FILTER"]) {
 
 
@@ -161,44 +166,46 @@ if ($PHOENIX_TEMPLATE_ARRAY["ITEMS"]["CATALOG"]["ITEMS"]['USE_FILTER']['VALUE'][
 
 
     $APPLICATION->IncludeComponent(
-            "bitrix:catalog.smart.filter",
-            "main",
-            array(
-                "FILTER_HIDE_PRICE" => $filterHidePrice,
-                "DATA_SHOW" => "catalog-filter",
-                "PREFILTER_NAME" => "arrCatalogPreFilter",
-                "FILTER_NAME" => "arrCatalogFilter",
-                "TAB_FILTER" => $tabFilter,
-                "CACHE_TYPE" => $arParams["CACHE_TYPE"],
-                "CACHE_TIME" => $arParams["CACHE_TIME"],
-                "CACHE_FILTER" => $arParams["CACHE_FILTER"],
-                "CACHE_GROUPS" => $arParams["CACHE_GROUPS"],
-                "CACHE_NOTES" => "",
-                "COMPOSITE_FRAME_MODE" => "N",
-                'CURRENCY_ID' => $PHOENIX_TEMPLATE_ARRAY["ITEMS"]["CATALOG"]["ITEMS"]['CURRENCY_ID']['VALUE'],
-                "CONVERT_CURRENCY" => $PHOENIX_TEMPLATE_ARRAY["ITEMS"]["CATALOG"]["ITEMS"]['CONVERT_CURRENCY']['VALUE']["ACTIVE"],
-                "DISPLAY_ELEMENT_COUNT" => "Y",
-                "FILTER_VIEW_MODE" => "vertical",
-                "HIDE_NOT_AVAILABLE" => $PHOENIX_TEMPLATE_ARRAY["ITEMS"]["CATALOG"]["ITEMS"]["HIDE_NOT_AVAILABLE"]["VALUE"],
-                'HIDE_NOT_AVAILABLE_OFFERS' => $PHOENIX_TEMPLATE_ARRAY["ITEMS"]["CATALOG"]["ITEMS"]["HIDE_NOT_AVAILABLE_OFFERS"]["VALUE"],
-                "IBLOCK_ID" => $PHOENIX_TEMPLATE_ARRAY["ITEMS"]["CATALOG"]["IBLOCK_ID"],
-                "IBLOCK_TYPE" => $PHOENIX_TEMPLATE_ARRAY["ITEMS"]["CATALOG"]["IBLOCK_TYPE"],
-                "PAGER_PARAMS_NAME" => "arrPager",
-                "PRICE_CODE" => $PHOENIX_TEMPLATE_ARRAY["ITEMS"]["CATALOG"]["ITEMS"]['TYPE_PRICE']["VALUE_"],
-                "SAVE_IN_SESSION" => "N",
-                "SECTION_CODE" => "",
-                "SECTION_DESCRIPTION" => "-",
-                "SECTION_ID" => $ar_result["ID"],
-                "SECTION_TITLE" => "-",
-                "SEF_MODE" => "Y",
-                "TEMPLATE_THEME" => "blue",
-                "XML_EXPORT" => "Y",
-                "INSTANT_RELOAD" => "Y",
-                "SEF_RULE" => $arResult["FOLDER"] . $arResult["URL_TEMPLATES"]["smart_filter"] . "#actionbox",
-                "SMART_FILTER_PATH" => $arResult["VARIABLES"]["SMART_FILTER_PATH"],
-                "HIDDEN_PROP" => ["MODEL_ID"],
-            ),
-            $component
+        "bitrix:catalog.smart.filter",
+        "main",
+        array(
+            "FILTER_HIDE_PRICE" => $filterHidePrice,
+            "DATA_SHOW" => "catalog-filter",
+            "PREFILTER_NAME" => "arrCatalogPreFilter",
+            "FILTER_NAME" => "arrCatalogFilter",
+            "TAB_FILTER" => $tabFilter,
+            "CACHE_TYPE" => $arParams["CACHE_TYPE"],
+            "CACHE_TIME" => $arParams["CACHE_TIME"],
+            "CACHE_FILTER" => $arParams["CACHE_FILTER"],
+            "CACHE_GROUPS" => $arParams["CACHE_GROUPS"],
+            "CACHE_NOTES" => "",
+            "COMPOSITE_FRAME_MODE" => "N",
+            'CURRENCY_ID' => $PHOENIX_TEMPLATE_ARRAY["ITEMS"]["CATALOG"]["ITEMS"]['CURRENCY_ID']['VALUE'],
+            "CONVERT_CURRENCY" => $PHOENIX_TEMPLATE_ARRAY["ITEMS"]["CATALOG"]["ITEMS"]['CONVERT_CURRENCY']['VALUE']["ACTIVE"],
+            "DISPLAY_ELEMENT_COUNT" => "Y",
+
+            "FILTER_VIEW_MODE" => "vertical",
+            "HIDE_NOT_AVAILABLE" => $PHOENIX_TEMPLATE_ARRAY["ITEMS"]["CATALOG"]["ITEMS"]["HIDE_NOT_AVAILABLE"]["VALUE"],
+            'HIDE_NOT_AVAILABLE_OFFERS' => $PHOENIX_TEMPLATE_ARRAY["ITEMS"]["CATALOG"]["ITEMS"]["HIDE_NOT_AVAILABLE_OFFERS"]["VALUE"],
+            "IBLOCK_ID" => $PHOENIX_TEMPLATE_ARRAY["ITEMS"]["CATALOG"]["IBLOCK_ID"],
+            "IBLOCK_TYPE" => $PHOENIX_TEMPLATE_ARRAY["ITEMS"]["CATALOG"]["IBLOCK_TYPE"],
+            "PAGER_PARAMS_NAME" => "arrPager",
+            "PRICE_CODE" => $PHOENIX_TEMPLATE_ARRAY["ITEMS"]["CATALOG"]["ITEMS"]['TYPE_PRICE']["VALUE_"],
+            "SAVE_IN_SESSION" => "N",
+            "SECTION_CODE" => "",
+            "SECTION_DESCRIPTION" => "-",
+            "SECTION_ID" => $ar_result["ID"],
+            "SECTION_TITLE" => "-",
+            "SEF_MODE" => "Y",
+            "TEMPLATE_THEME" => "blue",
+            "XML_EXPORT" => "Y",
+            "INSTANT_RELOAD" => "Y",
+            "SEF_RULE" => $arResult["FOLDER"] . $arResult["URL_TEMPLATES"]["smart_filter"] . "#actionbox",
+            "SMART_FILTER_PATH" => $arResult["VARIABLES"]["SMART_FILTER_PATH"],
+            "HIDDEN_PROP" => ["MODEL_AVTO", "GOD_VYPUSKA", "KUZOV"],
+            "DVS_FILTER" => $filter_model["SM"]
+        ),
+        $component
     );
 
     $html = ob_get_clean();
@@ -939,20 +946,25 @@ if (strlen($pictureInHeadIsset)) {
                                         $APPLICATION->RestartBuffer();
                                     }
 
-                                    if ($ar_result["ID"] == 197 || $ar_result["ID"] == 206) {
-                                        $APPLICATION->IncludeComponent(
-                                                "diva:filter_model",
-                                                ".default",
-                                                array(
-                                                    "SECTION_CODE" => $arResult["VARIABLES"]["SECTION_CODE"],
-                                                    "SMART_FILTER_PATH" => $arResult["VARIABLES"]["SMART_FILTER_PATH"],
-                                                ),
-                                                false
-                                        );
-                                    }
-                                    if ($sort2 == 'SORT'):
-                                        $sort2 = 'CATALOG_QUANTITY';
-                                        $sort_order2 = 'desc';
+									if(($ar_result["ID"] == 197 || $ar_result["ID"] == 206)){
+																				
+									$APPLICATION->IncludeComponent(
+										"diva:filter_model", 
+										".default", 
+										array(
+											"IBLCOK_ID" => 14,
+											"SECTION_ID" => $ar_result["ID"],
+											"SECTION_CODE" => $arResult["VARIABLES"]["SECTION_CODE"],
+											"SMART_FILTER_PATH" => $arResult["VARIABLES"]["SMART_FILTER_PATH"],
+											"HL" => ["MARKA" => 7, "MODEL" => 5]
+										),
+										false
+									);}
+
+                                    $intSectionID = $APPLICATION->IncludeComponent(
+                                        "bitrix:catalog.section",
+                                        "main",
+                                        array(
 
                                     endif;
 
