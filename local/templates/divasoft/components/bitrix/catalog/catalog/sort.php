@@ -1,12 +1,5 @@
 <?
 
-if (CCatalog::GetByID(CATALOG_IBLOCK)) {
-
-
-}
-
-
-
 $arAvailableSort = array();
 
 $arSorts = Array("PROPERTY_EXPENSE", "PRICE", "NAME"); // "SORT" сотрировка популярности которая была изначально
