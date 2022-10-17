@@ -63,10 +63,10 @@
 
 
         <!--<div class="wrapper-article-available row no-gutters d-none d-lg-flex" id="<? //= $itemIds['ARTICLE_AVAILABLE'] 
-                                                                                        ?>">-->
+            ?>">-->
 
         <!--<div class="product-available-js"><? //=$arItem["FIRST_ITEM"]["QUANTITY"]["HTML"] 
-                                                ?></div>-->
+            ?></div>-->
         <!--</div>-->
         <div class="wrapper-article-available row no-gutters" id="<?= $itemIds['ARTICLE_AVAILABLE'] ?>">
             <div class="product-available-js"><?= $arItem["FIRST_ITEM"]["QUANTITY"]["HTML"] ?></div>
@@ -76,10 +76,6 @@
         <a href="<?= $arItem['FIRST_ITEM']['DETAIL_PAGE_URL'] ?>" class="name-element" id="<?= $itemIds['NAME'] ?>">
             <?= $arItem["NAME_HTML"] ?>
         </a>
-		
-		<?if($sost = $arResult["SOSTOYANIE_TOVARA"][$arItem["ID"]]):?>
-        	<div class="element-state">Состояние: <?=$sost?></div>
-        <?endif;?>
 
         <div class="states">
             <div class="element-state">Артикул: 876124</div>
@@ -90,7 +86,7 @@
 
         <div class="wr-block-price">
             <div class="block-price
-                <?= ($arItem["FIRST_ITEM"]['MODE_ARCHIVE'] == "Y" || $arItem["FIRST_ITEM"]['PRICE']["PRICE"] == '-1') ? 'd-none' : ''; ?>">
+                 <?= ($arItem["FIRST_ITEM"]['MODE_ARCHIVE'] == "Y" || $arItem["FIRST_ITEM"]['PRICE']["PRICE"] == '-1') ? 'd-none' : ''; ?>">
 
                 <div class="<?= ($arItem['HAVEOFFERS']) ? "d-none d-lg-block" : "" ?>">
 
@@ -139,9 +135,9 @@
 
         <?
         if (
-            $arItem['HAVEOFFERS'] || strlen($arItem["FIRST_ITEM"]["SHORT_DESCRIPTION"]) || strlen($arItem["FIRST_ITEM"]["PREVIEW_TEXT"]) || !empty($arItem["CHARS_SORT"]) || $PHOENIX_TEMPLATE_ARRAY["ITEMS"]["RATING"]["ITEMS"]["USE_VOTE"]["VALUE"]["ACTIVE"] == "Y"
+                $arItem['HAVEOFFERS'] || strlen($arItem["FIRST_ITEM"]["SHORT_DESCRIPTION"]) || strlen($arItem["FIRST_ITEM"]["PREVIEW_TEXT"]) || !empty($arItem["CHARS_SORT"]) || $PHOENIX_TEMPLATE_ARRAY["ITEMS"]["RATING"]["ITEMS"]["USE_VOTE"]["VALUE"]["ACTIVE"] == "Y"
         ) :
-        ?>
+            ?>
 
             <div class="wrapper-list-info">
 
@@ -301,7 +297,7 @@
 
                     <?
                     if ($PHOENIX_TEMPLATE_ARRAY["ITEMS"]["RATING"]["ITEMS"]["USE_VOTE"]["VALUE"]["ACTIVE"] == "Y") {
-                    ?>
+                        ?>
                         <? if ($arResult["RATING_VIEW"] == "simple") : ?>
 
                             <?= CPhoenix::GetRatingVoteHTML(array("ID" => $arItem['ID'], "CLASS" => "simple-rating hover")); ?>
@@ -467,5 +463,4 @@
 
 </div>
 
-<?
-CPhoenix::admin_setting($arItem, false) ?>
+<? CPhoenix::admin_setting($arItem, false) ?>
