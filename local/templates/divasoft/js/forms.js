@@ -705,7 +705,12 @@ $(document).on("click", ".register-submit", function ()
     }
 
 
-
+	var $data = {};
+	$(form).find ('input, textearea, select, button').each(function() {
+	  $data[this.name] = $(this).val();
+	});
+	$data["send"] = "Y";
+	$data["site_id"] = $("input.site_id").val();
 
     if ($("input.agreecheck", form).length > 0)
     {
@@ -772,50 +777,9 @@ $(document).on("click", ".register-submit", function ()
                 captchaToken = token;
 
                 $.post(
-                        handler,
-                        {
-                            "send": "Y",
-                            "bx-name": name.val(),
-                            "bx-email": email.val(),
-                            "bx-password": password.val(),
-                            "promo": promo.val(),
-                            "phone": phone.val(),
-                            "site_id": $("input.site_id").val(),
-                            "captchaToken": captchaToken
-                        },
-                        function (data)
-                        {
-                            if (data.OK == "N")
-                            {
-                                er_block.html(data.ERROR);
-                                $('html, body').animate({scrollTop: er_block.offset().top - 100}, 500);
-                                button.addClass("active");
-                                load.removeClass('active');
-                            }
-
-                            if (data.OK == "Y")
-                            {
-                                location.href = data.HREF;
-                            }
-
-                        },
-                        "json"
-                        );
-            });
-        } else
-        {
-            $.post(
-                    handler,
-                    {
-                        "send": "Y",
-                        "bx-name": name.val(),
-                        "bx-email": email.val(),
-                        "bx-password": password.val(),
-                        "promo": promo.val(),
-                        "phone": phone.val(),
-                        "site_id": $("input.site_id").val()
-                    },
-                    function (data)
+                    "/bitrix/tools/concept.phoenix/ajax/personal/reg.php",
+                    $data,
+                    function(data)
                     {
                         if (data.OK == "N")
                         {
@@ -835,6 +799,30 @@ $(document).on("click", ".register-submit", function ()
                     );
         }
 
+        else
+        {
+            $.post(
+                "/bitrix/tools/concept.phoenix/ajax/personal/reg.php",
+                $data,
+                function(data)
+                {
+                    if(data.OK == "N")
+                    {
+                        er_block.html(data.ERROR);
+                        $('html, body').animate({ scrollTop: er_block.offset().top - 100 }, 500);
+                        button.addClass("active");
+                        load.removeClass('active');
+                    }
+                    
+                    if(data.OK == "Y")
+                    {
+                        location.href = data.HREF;
+                    }
+                       
+                },
+                "json"
+            );
+        }
 
 
     }

@@ -31,9 +31,11 @@ class DH {
                         array('MORE_PHOTO' => array('VALUE' => array("del" => "Y")))
                 );
                 $resU = $el->Update($PRODUCT_ID, $arLoadProductArray);
+//                break;
             }
         endif;
-        return "DH::clearImagesCatalog();";
+//        return $result;
+        return "";//DH::clearImagesCatalog();
     }
 
 }

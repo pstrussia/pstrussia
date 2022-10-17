@@ -84,3 +84,4 @@ restore.php
 # 3D Images
 *.3dm
 *.max
+/nbproject/private/

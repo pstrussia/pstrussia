@@ -1,10 +1,7 @@
 <?php
 
 require_once __DIR__ . '/classes/divasoft/divasoft.loader.php'; // 
-
-
 define("CATALOG_IBLOCK", 14);     // Инфоблок каталог товаров
-
 function cl_print_r($var, $label = '') {
     $str = json_encode(print_r($var, true));
     echo "<script>console.group('" . $label . "');console.log('" . $str . "');console.groupEnd();</script>";
@@ -84,3 +81,9 @@ class UpdateElement {
     }
 
 }
+
+//альАртикулы - обновление //начало
+require_once $_SERVER['DOCUMENT_ROOT'] . '/local/classes/Dvs/Autoloader.php';
+Dvs\Autoloader::run();
+Dvs\Exchange1c\Catalog\Controller::run();
+//конец

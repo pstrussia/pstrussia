@@ -76,6 +76,10 @@
         <a href="<?= $arItem['FIRST_ITEM']['DETAIL_PAGE_URL'] ?>" class="name-element" id="<?= $itemIds['NAME'] ?>">
             <?= $arItem["NAME_HTML"] ?>
         </a>
+		
+		<?if($sost = $arResult["SOSTOYANIE_TOVARA"][$arItem["ID"]]):?>
+        	<div class="element-state">Состояние: <?=$sost?></div>
+        <?endif;?>
 
         <div class="states">
             <div class="element-state">Артикул: 876124</div>
@@ -287,7 +291,7 @@
 
                     <? if ($PHOENIX_TEMPLATE_ARRAY["ITEMS"]["CATALOG_ITEM_FIELDS"]["ITEMS"]["PROPS_IN_LIST_FOR_" . $arResult["VIEW"]]["VALUE"]["PREVIEW_TEXT"] == "Y") : ?>
 
-                        <div class="preview-text" id="<?= $itemIds["PREVIEW_TEXT"] ?>"><?= $arItem["FIRST_ITEM"]["PREVIEW_TEXT_HTML"] ?></div>
+                        <div class="preview-text" id="<?= $itemIds["PREVIEW_TEXT"] ?>"><?= $arResult["DETAIL_TEXT"][$arItem["ID"]] ?></div>
 
                     <? endif; ?>
 
