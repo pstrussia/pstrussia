@@ -797,6 +797,7 @@ $(document).on("click", ".register-submit", function ()
                     },
                     "json"
                     );
+            });
         }
 
         else
