@@ -117,22 +117,25 @@ global $PHOENIX_TEMPLATE_ARRAY;
                                 <a href="<?= $arItem['FIRST_ITEM']['DETAIL_PAGE_URL'] ?>" class="name-element" id="<?= $itemIds['NAME'] ?>">
                                     <?= $arItem["NAME_HTML"] ?>
                                 </a>
-                                
-                                
+
+
                                 <div class="states">
                                     <?
-                                foreach($arItem['FIRST_ITEM']['PROP_CHARS'] as $item){
-                                    switch($item['NAME']):
-                                        case "Артикул": ?>
-                                    <div class="element-state">Артикул: <?=$item['VALUE']?></div>
-                                         <?   break;
-                                    endswitch;
-                                } ?>
+                                    foreach ($arItem['FIRST_ITEM']['PROP_CHARS'] as $item) {
+                                        switch ($item['NAME']):
+                                            case "Артикул":
+                                                ?>
+                                                <div class="element-state">Артикул: <?= $item['VALUE'] ?></div>
+                                                <?
+                                                break;
+                                        endswitch;
+                                    }
+                                    ?>
                                     <? if ($sost = $arResult["SOSTOYANIE_TOVARA"][$arItem["ID"]]) : ?>
                                         <div class="element-state">Состояние: <?= $sost ?></div>
                                     <? endif; ?>
                                 </div>
-                                
+
                                 <div class="wr-block-price">
 
                                     <div 
@@ -179,7 +182,7 @@ global $PHOENIX_TEMPLATE_ARRAY;
 
                                             </div>
 
-                                            <? //if($PHOENIX_TEMPLATE_ARRAY["ITEMS"]["CATALOG"]["ITEMS"]['USE_PRICE_COUNT']['VALUE']["ACTIVE"] == 'Y'):?>
+                                            <? //if($PHOENIX_TEMPLATE_ARRAY["ITEMS"]["CATALOG"]["ITEMS"]['USE_PRICE_COUNT']['VALUE']["ACTIVE"] == 'Y'): ?>
                                             <div class="wrapper-matrix-block hidden-xs d-none" id= "<?= $itemIds["PRICE_MATRIX"] ?>"><?= $arItem["FIRST_ITEM"]["PRICE_MATRIX_RESULT"]["HTML"] ?></div>
                                             <? //endif; ?>
                                         </div>
@@ -377,8 +380,8 @@ global $PHOENIX_TEMPLATE_ARRAY;
 
                                 <? endif; ?>
 
-
-                                <div class="wrapper-inner-bot row no-gutters hidden-js <?= ($arItem['HAVEOFFERS']) ? 'hidden' : ''; ?>" id="<?= $itemIds['WR_ADD2BASKET'] ?>">
+                                <? if($arItem['QUANTITY']['QUANTITY_VALUE'] > 0 && $arItem['PRICE']['PRICE'] != '-1'){?>
+                                <div class="wrapper-inner-bot row no-gutters <? if ($arItem['QUANTITY']['QUANTITY_VALUE'] > '0') { ?> hidden-js active<? } else { ?> hidden-js <? } ?> <?= ($arItem['HAVEOFFERS']) ? 'hidden' : ''; ?>" id="<?= $itemIds['WR_ADD2BASKET'] ?>">
 
                                     <div class="btn-container align-items-center col-md-6 col-12" id="<?= $itemIds['BASKET_ACTIONS'] ?>">
                                         <a
@@ -409,7 +412,7 @@ global $PHOENIX_TEMPLATE_ARRAY;
                                     </div>
 
                                 </div>
-
+                                
                                 <? if ($arItem['HAVEOFFERS']): ?>
                                     <div class="wrapper-inner-bot row no-gutters">
 
@@ -425,8 +428,9 @@ global $PHOENIX_TEMPLATE_ARRAY;
 
                                     </div>
                                 <? endif; ?>
-
-                                <div class="wrapper-inner-bot row no-gutters d-none <?= ($arItem['HAVEOFFERS']) ? 'hidden' : ''; ?>" id="<?= $itemIds['BTN2DETAIL_PAGE_PRODUCT'] ?>">
+                                <?}?>
+                                <? if($arItem['QUANTITY']['QUANTITY_VALUE'] < 1 || $arItem['PRICE']['PRICE'] == '-1'){?>
+                                <div class="wrapper-inner-bot row no-gutters  <?= ($arItem['HAVEOFFERS']) ? 'hidden' : ''; ?>" id="<?= $itemIds['BTN2DETAIL_PAGE_PRODUCT'] ?>">
 
                                     <div class="btn-container align-items-center col-12">
                                         <a href="<?= $arItem['FIRST_ITEM']['DETAIL_PAGE_URL'] ?>" class="main-color bold">
@@ -435,7 +439,7 @@ global $PHOENIX_TEMPLATE_ARRAY;
                                     </div>
 
                                 </div>
-
+                                <?}?>
                             </div>
 
                         </div>
