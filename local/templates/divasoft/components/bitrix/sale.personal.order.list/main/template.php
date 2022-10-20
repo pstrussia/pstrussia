@@ -306,7 +306,7 @@ if (!empty($arResult['ERRORS']['FATAL'])) {
                                 </div>
                                 <?
                             }
-                           /* if (!empty($order['SHIPMENT'])) {
+                            if (!empty($order['SHIPMENT'])) {
                                 ?>
                                 <div class="sale-order-list-inner-title-line">
                                     <span class="sale-order-list-inner-title-line-item"><?= Loc::getMessage('SPOL_TPL_DELIVERY') ?></span>
@@ -328,8 +328,8 @@ if (!empty($arResult['ERRORS']['FATAL'])) {
                                     }
                                     ?>
                                     <div class="col-md-10 col-12 sale-order-list-shipment">
-                                        <!--<div class="sale-order-list-shipment-title">-->
-                                            <?/*
+                                        <div class="sale-order-list-shipment-title">
+                                            
                                             <span class="sale-order-list-shipment-element">
                                                 <span class='bold'><?= Loc::getMessage('SPOL_TPL_LOAD') ?> </span>
                                                 <?
@@ -344,9 +344,9 @@ if (!empty($arResult['ERRORS']['FATAL'])) {
                                                 echo "<span class='bold'>" . $shipmentSubTitle . "</span>";
                                                 ?>
                                             </span>
-                                             * */?>
                                              
-                                            <?/*
+                                             
+                                            <?
                                             if ($shipment['DEDUCTED'] == 'Y') {
                                                 ?>
                                                 <span class="sale-order-list-status-success"><?= Loc::getMessage('SPOL_TPL_LOADED'); ?></span>
@@ -399,7 +399,7 @@ if (!empty($arResult['ERRORS']['FATAL'])) {
                                 </div>
                                 <?
                             }
-                           */ ?>
+                           ?>
 
                             <div class="sale-order-list-top-border outside"></div>
 

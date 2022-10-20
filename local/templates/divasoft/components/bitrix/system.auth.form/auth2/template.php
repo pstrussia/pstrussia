@@ -33,7 +33,7 @@
                 <div class="col-12 part part-left">
                         
                     <div class="head margin-bottom">
-                        <div class="title main1"><h1><?$APPLICATION->ShowTitle(false);?></h1></div>
+                        <div class="title main1"><h1 style="color: #181818 !important; text-align:center;"><?$APPLICATION->ShowTitle(false);?></h1></div>
                     </div>
 
                 </div>
@@ -67,47 +67,41 @@
                         
                             <div class="col-lg-4 col-md-6 col-12">
                                 <form class="form auth" action="#">
-                                    <div class="row inputs-block">
-                                        <div class="col-12 title-form main1">
-                                            <?=$PHOENIX_TEMPLATE_ARRAY["MESS"]["PERSONAL_LOGIN_TITLE"]?>
+                                    <div class="title-form main1">Личный кабинет</div>
+                                    <? if (strlen($PHOENIX_TEMPLATE_ARRAY["ITEMS"]["PERSONAL"]["ITEMS"]["FORM_AUTH_SUBTITLE"]["VALUE"])) : ?>
+                                        <div class="subtitle-form"><?= $PHOENIX_TEMPLATE_ARRAY["ITEMS"]["PERSONAL"]["ITEMS"]["FORM_AUTH_SUBTITLE"]["~VALUE"] ?></div>
+                                    <? endif; ?>
+                                    <div class="inputs-block">
+                                        <div class="input">
+                                            <div class="bg"></div>
+                                            <span class="desc">Телефон, Email или ID</span>
+                                            <input class='focus-anim auth-login require' name="auth-login" type="text" value="" />
                                         </div>
-                                        <div class="col-12">
-                                            <div class="input">
-                                                <div class="bg"></div>
-                                                <span class="desc"><?=$PHOENIX_TEMPLATE_ARRAY["MESS"]["PERSONAL_LOGIN_INPUT"]?></span>
-                                                <input class='focus-anim require' name="auth-login" type="text" value="" />
-                                            </div>
-                                            <div class="input">
-                                                <div class="bg"></div>
-                                                <span class="desc"><?=$PHOENIX_TEMPLATE_ARRAY["MESS"]["PERSONAL_PASSWORD_INPUT"]?></span>
-                                                <input class='focus-anim require' name="auth-password" type="password" />
-                                            </div>
-                                            <div class="errors"></div>
+                                        <div class="input">
+                                            <div class="bg"></div>
+                                            <span class="desc">Пароль</span>
+                                            <input class='focus-anim require' name="auth-password" type="password" />
                                         </div>
-
-                                        <div class="col-12">
-                                            <div class="input-btn">
-                                                <div class="load">
-                                                    <div class="xLoader form-preload"><div class="audio-wave"><span></span><span></span><span></span><span></span><span></span></div></div>
+                                        <div class="errors"></div>
+                                        <div class="input-btn">
+                                            <div class="load">
+                                                <div class="xLoader form-preload">
+                                                    <div class="audio-wave"><span></span><span></span><span></span><span></span><span></span></div>
                                                 </div>
-                                                <button class="button-def main-color big active <?=$PHOENIX_TEMPLATE_ARRAY["ITEMS"]["DESIGN"]["ITEMS"]['BTN_VIEW']['VALUE']?> auth-submit" name="form-submit" type="button"><?=$PHOENIX_TEMPLATE_ARRAY["MESS"]["PERSONAL_BTN_ENTER"]?></button>
                                             </div>
+                                            <button class="button-def main-color big active <?= $PHOENIX_TEMPLATE_ARRAY["ITEMS"]["DESIGN"]["ITEMS"]['BTN_VIEW']['VALUE'] ?> auth-submit" name="form-submit" type="button"><?= $PHOENIX_TEMPLATE_ARRAY["MESS"]["PERSONAL_BTN_ENTER"] ?></button>
                                         </div>
                                     </div>
-
-                                    <div class="row links-block">
-                                        <div class="col-sm-6 col-12">
-                                            <a href="<?=$PHOENIX_TEMPLATE_ARRAY["ITEMS"]["PERSONAL"]["ITEMS"]["FORGOT_PASSWORD_URL"]["VALUE"]?>"><?=$PHOENIX_TEMPLATE_ARRAY["ITEMS"]["PERSONAL"]["ITEMS"]["FORGOT_PASSWORD_URL"]["DESCRIPTION"]?></a>
-                                        </div>
-                                        
-                                        <div class="col-sm-6 col-12">
-                                            <a href="<?=$PHOENIX_TEMPLATE_ARRAY["ITEMS"]["PERSONAL"]["ITEMS"]["REGISTER_URL"]["VALUE"]?>"><?=$PHOENIX_TEMPLATE_ARRAY["ITEMS"]["PERSONAL"]["ITEMS"]["REGISTER_URL"]["DESCRIPTION"]?></a>
-                                        </div>
+                                    <div class="input txt-center">
+                                        <a class="forgot" href="<?= $PHOENIX_TEMPLATE_ARRAY["ITEMS"]["PERSONAL"]["ITEMS"]["FORGOT_PASSWORD_URL"]["VALUE"] ?>"><span class="bord-bot">Восстановить доступ</span></a>
+                                    </div>
+                                    <div class="input txt-center">
+                                        <a href="<?= $PHOENIX_TEMPLATE_ARRAY["ITEMS"]["PERSONAL"]["ITEMS"]["REGISTER_URL"]["VALUE"] ?>"><span class="bord-bot"><?= $PHOENIX_TEMPLATE_ARRAY["ITEMS"]["PERSONAL"]["ITEMS"]["REGISTER_URL"]["DESCRIPTION"] ?></span></a>
                                     </div>
                                 </form>
                             </div>
 
-                            <div class="col-lg-8 col-md-6 hidden-xs">
+                            <!-- <div class="col-lg-8 col-md-6 hidden-xs">
                                     
                                 <div class="reg">
                                     <div class="reg-comment">
@@ -115,7 +109,7 @@
                                     </div>
                                     
                                 </div>
-                            </div>
+                            </div> -->
 
                         <?endif;?>
 

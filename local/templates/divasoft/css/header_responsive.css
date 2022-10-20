@@ -356,3 +356,7 @@
 @media (max-width: 575.98px){
 	
 }
+
+div.page-header.basket-order .wr-order-btn{
+	display: none !important;
+}

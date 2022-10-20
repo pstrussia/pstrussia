@@ -40,6 +40,8 @@ if ($PHOENIX_TEMPLATE_ARRAY["ITEMS"]["OTHER"]["ITEMS"]["CAPTCHA"]["VALUE"]["ACTI
 
 
 if ($go) {
+//    a2l();
+//    die;
 	$type_val = ["UL" => 236, "FL" => 237];
 
     $email = trim($_POST["bx-email"]);
@@ -109,15 +111,15 @@ if ($go) {
             "LOGIN" => $NEW_LOGIN,
             "NAME" => $name,
             "LAST_NAME" => "",
-            "PASSWORD" => $password,
-            "CONFIRM_PASSWORD" => $password,
+//            "PASSWORD" => $password,
+//            "CONFIRM_PASSWORD" => $password,
             "EMAIL" => $email,
             "ACTIVE" => ($bConfirmReq) ? "N" : "Y",
             "CONFIRM_CODE" => $randCode,
             "LID" => SITE_ID,
             "UF_PROMO" => $promo,
             "UF_TYPE" => $type,
-            "PERSONAL_MOBILE" => $telephone
+            "PERSONAL_PHONE" => $telephone
         );
 		
 		if(!empty($ul_fileds))
@@ -129,6 +131,7 @@ if ($go) {
 		
 		if($type_code == "UL")
 			{
+				
 				$order_prop_id = [
 					"UF_KPP" => ["ID" => 27, "NAME" => "КПП"],
 					"UF_INN" => ["ID" => 10, "NAME" => "ИНН"],
@@ -167,6 +170,7 @@ if ($go) {
 				
 				
 			}
+		//die();
 		
         $arFields = $arValues;
         

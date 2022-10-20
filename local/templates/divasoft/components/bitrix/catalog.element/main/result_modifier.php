@@ -1233,6 +1233,15 @@ else
     $arResult["PROPERTIES"]["BTN_ACTION"]["VALUE_XML_ID"] = ($arResult["PROPERTIES"]["BTN_ACTION"]["VALUE_XML_ID"]=="")?"form":$arResult["PROPERTIES"]["BTN_ACTION"]["VALUE_XML_ID"];
 
 
+//     if($arResult["FIRST_ITEM"]["QUANTITY"]['QUANTITY_VALUE'] < 1 || empty($arResult["FIRST_ITEM"]["QUANTITY"]['QUANTITY_VALUE']) || $arResult["FIRST_ITEM"]['PRICE']['PRICE'] == '-1'):
+//         $arResult["FIRST_ITEM"]["SHOWPREORDERBTN"] = 1;
+//     endif;
+                      
+    
+    
+    
+    
+    
     $arResult["BTN"] = array(
         "BTN_NAME" => $arResult["PROPERTIES"]["BTN_NAME"]["VALUE"],
         "~BTN_NAME" => $arResult["PROPERTIES"]["BTN_NAME"]["~VALUE"],

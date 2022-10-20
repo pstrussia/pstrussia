@@ -16,16 +16,14 @@ class DH {
             );
             $res = CIBlockElement::GetList(
                             Array("ID" => "ASC"),
-                            Array("IBLOCK_ID" => CATALOG_IBLOCK, ['LOGIC' => 'OR', '!PREVIEW_PICTURE' => false, '!DETAIL_PICTURE' => false, '!PROPERTY_MORE_PHOTO' => false]),
+                            Array("IBLOCK_ID" => CATALOG_IBLOCK, ['LOGIC' => 'OR', '!PREVEIW_PICTURE' => false, '!DETAIL_PICTURE' => false, '!PROPERTY_MORE_PHOTO' => false]),
                             false,
                             false,
                             Array('ID', 'NAME', 'PREVIEW_PICTURE', 'DETAIL_PICTURE', 'PROPERTY_MORE_PHOTO')
             );
             $el = new CIBlockElement;
-           // $result = [];
             while ($arItem = $res->GetNext()) {
 //                print_r($arItem);
-//                $result[$arItem['ID']][] = $arItem;
                 $PRODUCT_ID = $arItem['ID'];
                 $el->SetPropertyValuesEx(
                         $arItem['ID'],

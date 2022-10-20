@@ -1,4 +1,6 @@
-<?if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)die();
+<?
+if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true)
+    die();
 
 use \Bitrix\Main;
 
@@ -19,458 +21,469 @@ $this->setFrameMode(true);
 global $PHOENIX_TEMPLATE_ARRAY;
 ?>
 
-<?if( !empty($arResult["ITEMS"]) ):?>
-
-<?
-$firstItem = array_shift($arResult["ITEMS"]);
-array_unshift($arResult["ITEMS"], $firstItem);
-?>
-<div class="img-for-lazyload-parent">
-	<img class="lazyload img-for-lazyload slider-start" data-src="<?=SITE_TEMPLATE_PATH?>/images/one_px.png" data-id="<?=$firstItem["ID"]?>">
+<? if (!empty($arResult["ITEMS"])): ?>
 
     <?
+    $firstItem = array_shift($arResult["ITEMS"]);
+    array_unshift($arResult["ITEMS"], $firstItem);
+    ?>
+    <div class="img-for-lazyload-parent">
+        <img class="lazyload img-for-lazyload slider-start" data-src="<?= SITE_TEMPLATE_PATH ?>/images/one_px.png" data-id="<?= $firstItem["ID"] ?>">
+
+        <?
         $showBtnBasketOption = ($PHOENIX_TEMPLATE_ARRAY["ITEMS"]["SHOP"]["ITEMS"]["CART_ON"]["VALUE"]["ACTIVE"] === "Y" ) ? 1 : 0;
         $countItems = count($arResult["ITEMS"]);
-    ?>
+        ?>
 
-    <div class="catalog-block">
+        <div class="catalog-block">
 
-    	<script>
-            BX.message({
-                PRICE_TOTAL_PREFIX: '<?=$PHOENIX_TEMPLATE_ARRAY["MESS"]["PRICE_TOTAL_PREFIX"]?>',
-                RELATIVE_QUANTITY_MANY: '<?=$PHOENIX_TEMPLATE_ARRAY["ITEMS"]["CATALOG"]["ITEMS"]["STORE_QUANTITY_MANY"]["DESCRIPTION_2"]?>',
-                RELATIVE_QUANTITY_FEW: '<?=$PHOENIX_TEMPLATE_ARRAY["ITEMS"]["CATALOG"]["ITEMS"]["STORE_QUANTITY_FEW"]["DESCRIPTION_2"]?>',
-                RELATIVE_QUANTITY: '<?=$PHOENIX_TEMPLATE_ARRAY["ITEMS"]["CATALOG"]["ITEMS"]["STORE_QUANTITY_MANY"]["DESCRIPTION_NOEMPTY"]?>',
-                RELATIVE_QUANTITY_EMPTY: '<?=$PHOENIX_TEMPLATE_ARRAY["ITEMS"]["CATALOG"]["ITEMS"]["STORE_QUANTITY_MANY"]["DESCRIPTION_EMPTY"]?>',
-                ARTICLE: '<?=$PHOENIX_TEMPLATE_ARRAY["MESS"]["ARTICLE_SHORT"]?>',
-            });
-        </script>
+            <script>
+                BX.message({
+                    PRICE_TOTAL_PREFIX: '<?= $PHOENIX_TEMPLATE_ARRAY["MESS"]["PRICE_TOTAL_PREFIX"] ?>',
+                    RELATIVE_QUANTITY_MANY: '<?= $PHOENIX_TEMPLATE_ARRAY["ITEMS"]["CATALOG"]["ITEMS"]["STORE_QUANTITY_MANY"]["DESCRIPTION_2"] ?>',
+                    RELATIVE_QUANTITY_FEW: '<?= $PHOENIX_TEMPLATE_ARRAY["ITEMS"]["CATALOG"]["ITEMS"]["STORE_QUANTITY_FEW"]["DESCRIPTION_2"] ?>',
+                    RELATIVE_QUANTITY: '<?= $PHOENIX_TEMPLATE_ARRAY["ITEMS"]["CATALOG"]["ITEMS"]["STORE_QUANTITY_MANY"]["DESCRIPTION_NOEMPTY"] ?>',
+                    RELATIVE_QUANTITY_EMPTY: '<?= $PHOENIX_TEMPLATE_ARRAY["ITEMS"]["CATALOG"]["ITEMS"]["STORE_QUANTITY_MANY"]["DESCRIPTION_EMPTY"] ?>',
+                    ARTICLE: '<?= $PHOENIX_TEMPLATE_ARRAY["MESS"]["ARTICLE_SHORT"] ?>',
+                });
+            </script>
 
-        <div class="catalog-list catalog-list-slider FLAT SLIDER universal-slider parent-slider-item-js <?=($PHOENIX_TEMPLATE_ARRAY["ITEMS"]["CATALOG"]["ITEMS"]['SHOW_AVAILABLE_PRICE_COUNT']['VALUE']['ACTIVE'] === 'Y')?'size-lg':''?>">
+            <div class="catalog-list catalog-list-slider FLAT SLIDER universal-slider parent-slider-item-js <?= ($PHOENIX_TEMPLATE_ARRAY["ITEMS"]["CATALOG"]["ITEMS"]['SHOW_AVAILABLE_PRICE_COUNT']['VALUE']['ACTIVE'] === 'Y') ? 'size-lg' : '' ?>">
 
-            <?foreach ($arResult['ITEMS'] as $keyItem => $arItem):?>
+                <? foreach ($arResult['ITEMS'] as $keyItem => $arItem): ?>
 
-                <?$itemIds = $arItem["VISUAL"];?>
+                    <? $itemIds = $arItem["VISUAL"]; ?>
 
-                <div class="item catalog-item <?if($keyItem!=0) echo 'noactive-slide-lazyload';?>" id="<?=$itemIds['ID']?>">
+                    <div class="item catalog-item <? if ($keyItem != 0) echo 'noactive-slide-lazyload'; ?>" id="<?= $itemIds['ID'] ?>">
 
 
-                    <div class="item-inner item-board-right">
+                        <div class="item-inner item-board-right">
 
 
-					    <div class="wrapper-top">
-													       	
-					       	<div class="wrapper-image row no-gutters align-items-center">
+                            <div class="wrapper-top">
 
-					            <a href="<?=$arItem['FIRST_ITEM']['DETAIL_PAGE_URL']?>" class="d-block col" id="<?=$itemIds["DETAIL_URL_IMG"]?>">
+                                <div class="wrapper-image row no-gutters align-items-center">
 
-					                <img class="img-fluid d-block mx-auto lazyload" id="<?=$itemIds["PICT"]?>" data-src="<?=$arItem["FIRST_ITEM"]["PHOTO"]?>" alt="<?=$arItem["ALT"]?>"/>
-					            </a>
+                                    <a href="<?= $arItem['FIRST_ITEM']['DETAIL_PAGE_URL'] ?>" class="d-block col" id="<?= $itemIds["DETAIL_URL_IMG"] ?>">
 
+                                        <img class="img-fluid d-block mx-auto lazyload" id="<?= $itemIds["PICT"] ?>" data-src="<?= $arItem["FIRST_ITEM"]["PHOTO"] ?>" alt="<?= $arItem["ALT"] ?>"/>
+                                    </a>
 
-					            <?if(!empty($arItem["LABELS"]["XML_ID"])):?>
-					                <div class="wrapper-board-label">
-					                    <?foreach($arItem["LABELS"]["XML_ID"] as $k=>$xml_id):?>
-					                        <div class="mini-board <?=$xml_id?>" title="<?=$arItem["LABELS"]["VALUE"][$k]?>"><?=$arItem["LABELS"]["VALUE"][$k]?></div>
-					                    <?endforeach;?>
-					                </div>
-					            <?endif;?>
-					            
-					            
-					            <span id="<?=$itemIds['DISCOUNT_PERCENT']?>" class="sale <?=( ($arItem['CONFIG']["SHOW_DISCOUNT_PERCENT"] === 'Y' && $arItem["FIRST_ITEM"]['PRICE']['PERCENT']>0) ? '' : 'd-none')?>"><?=-$arItem["FIRST_ITEM"]['PRICE']["PERCENT"]?>%</span>
 
-					            
-					            <?if( $arItem['CONFIG']['SHOW_DELAY'] == "Y" 
-					              || $arItem['CONFIG']['SHOW_COMPARE'] == "Y" ):?>
+                                    <? if (!empty($arItem["LABELS"]["XML_ID"])): ?>
+                                        <div class="wrapper-board-label">
+                                            <? foreach ($arItem["LABELS"]["XML_ID"] as $k => $xml_id): ?>
+                                                <div class="mini-board <?= $xml_id ?>" title="<?= $arItem["LABELS"]["VALUE"][$k] ?>"><?= $arItem["LABELS"]["VALUE"][$k] ?></div>
+                                            <? endforeach; ?>
+                                        </div>
+                                    <? endif; ?>
 
-					                <div class="wrapper-delay-compare-icons <?=($arItem['HAVEOFFERS'])?"hidden-md hidden-sm hidden-xs":"";?>">
 
-					                    <?if($arItem['CONFIG']['SHOW_DELAY'] == "Y"):?>
-					                        <div title="<?=$PHOENIX_TEMPLATE_ARRAY["MESS"]["CATALOG_DELAY_TITLE"]?>" class="icon delay add2delay" id = "<?=$itemIds["DELAY"]?>" data-item="<?=$arItem["ID"]?>"></div>
-					                    <?endif;?>
+                                    <span id="<?= $itemIds['DISCOUNT_PERCENT'] ?>" class="sale <?= ( ($arItem['CONFIG']["SHOW_DISCOUNT_PERCENT"] === 'Y' && $arItem["FIRST_ITEM"]['PRICE']['PERCENT'] > 0) ? '' : 'd-none') ?>"><?= -$arItem["FIRST_ITEM"]['PRICE']["PERCENT"] ?>%</span>
 
-					                    <?if($arItem['CONFIG']['SHOW_COMPARE'] == "Y"):?>
-					                        <div title="<?=$PHOENIX_TEMPLATE_ARRAY["MESS"]["CATALOG_COMPARE_TITLE"]?>" class="icon compare add2compare" id = "<?=$itemIds["COMPARE"]?>" data-item="<?=$arItem["ID"]?>"></div>
-					                    <?endif;?>
-					                </div>
-					           
 
-					            <?endif;?>
+                                    <? if ($arItem['CONFIG']['SHOW_DELAY'] == "Y" || $arItem['CONFIG']['SHOW_COMPARE'] == "Y"):
+                                        ?>
 
+                                        <div class="wrapper-delay-compare-icons <?= ($arItem['HAVEOFFERS']) ? "hidden-md hidden-sm hidden-xs" : ""; ?>">
 
-					             <?if($arItem['HAVEOFFERS']):?>
+                                            <? if ($arItem['CONFIG']['SHOW_DELAY'] == "Y"): ?>
+                                                <div title="<?= $PHOENIX_TEMPLATE_ARRAY["MESS"]["CATALOG_DELAY_TITLE"] ?>" class="icon delay add2delay" id = "<?= $itemIds["DELAY"] ?>" data-item="<?= $arItem["ID"] ?>"></div>
+                                            <? endif; ?>
 
-				                    <div class="count-offers-img">
-				                        <?=count($arItem["OFFERS"])." ".CPhoenix::getTermination(count($arItem["OFFERS"]), $PHOENIX_TEMPLATE_ARRAY["TERMINATIONS_OFFERS"])?>
-				                    </div>
+                                            <? if ($arItem['CONFIG']['SHOW_COMPARE'] == "Y"): ?>
+                                                <div title="<?= $PHOENIX_TEMPLATE_ARRAY["MESS"]["CATALOG_COMPARE_TITLE"] ?>" class="icon compare add2compare" id = "<?= $itemIds["COMPARE"] ?>" data-item="<?= $arItem["ID"] ?>"></div>
+                                            <? endif; ?>
+                                        </div>
 
-				                <?endif;?>
 
-					            
-					        </div>
+                                    <? endif; ?>
 
 
-					        <a href="<?=$arItem['FIRST_ITEM']['DETAIL_PAGE_URL']?>" class="name-element" id="<?=$itemIds['NAME']?>">
-					            <?=$arItem["NAME_HTML"]?>
-					        </a>
+                                    <? if ($arItem['HAVEOFFERS']): ?>
 
-					        <div class="wr-block-price">
+                                        <div class="count-offers-img">
+                                            <?= count($arItem["OFFERS"]) . " " . CPhoenix::getTermination(count($arItem["OFFERS"]), $PHOENIX_TEMPLATE_ARRAY["TERMINATIONS_OFFERS"]) ?>
+                                        </div>
 
-						        <div 
-						            class="block-price
-						            <?=($arItem["FIRST_ITEM"]['MODE_ARCHIVE']=="Y" || $arItem["FIRST_ITEM"]['PRICE']["PRICE"] == '-1') ? 'd-none' : '';?>
-						            <?if( $PHOENIX_TEMPLATE_ARRAY["ITEMS"]["CATALOG"]["ITEMS"]['USE_PRICE_COUNT']['VALUE']["ACTIVE"] == 'Y' ):?>
-						                wrapper-board-price
-						            <?endif;?>"
+                                    <? endif; ?>
 
-						            >
 
-						            <div class="<?=($arItem['HAVEOFFERS'])?"d-none d-lg-block":""?>">
+                                </div>
 
-						            	 <div class="name-type-price d-none">
-						                    <?=$arItem['FIRST_ITEM']['PRICE']['NAME']?>
-						                </div>
+                                <?= $arItem['FIRST_ITEM']['QUANTITY']['HTML'] //статусы "в наличии" и тп ?>
+                                <? $sost = $arResult["SOSTOYANIE_TOVARA"][$arItem["ID"]] ?>
 
-						                <div class="board-price row no-gutters product-price-js">
+                                <a href="<?= $arItem['FIRST_ITEM']['DETAIL_PAGE_URL'] ?>" class="name-element" id="<?= $itemIds['NAME'] ?>">
+                                    <?= $arItem["NAME_HTML"] ?>
+                                </a>
 
-						                	
-						                	<div class="<?=($arItem['HAVEOFFERS'])?"d-none":""?>">
 
-							                    <div class="actual-price">
+                                <div class="states">
+                                    <?
+                                    foreach ($arItem['FIRST_ITEM']['PROP_CHARS'] as $item) {
+                                        switch ($item['NAME']):
+                                            case "Артикул":
+                                                ?>
+                                                <div class="element-state">Артикул: <?= $item['VALUE'] ?></div>
+                                                <?
+                                                break;
+                                        endswitch;
+                                    }
+                                    ?>
+                                    <? if ($sost = $arResult["SOSTOYANIE_TOVARA"][$arItem["ID"]]) : ?>
+                                        <div class="element-state">Состояние: <?= $sost ?></div>
+                                    <? endif; ?>
+                                </div>
 
-							                        <span class="price-value" id="<?=$itemIds['PRICE']?>"><?=$arItem["FIRST_ITEM"]['PRICE']['PRINT_PRICE']?></span><span class="unit <?=(strlen($arItem["FIRST_ITEM"]['MEASURE'])>0 ? '' : 'd-none')?>" id="<?=$itemIds['QUANTITY_MEASURE']?>"><?=$arItem["FIRST_ITEM"]['MEASURE_HTML']?></span>
+                                <div class="wr-block-price">
 
-							                    </div>
+                                    <div 
+                                        class="block-price
+                                        <?= ($arItem["FIRST_ITEM"]['MODE_ARCHIVE'] == "Y" || $arItem["FIRST_ITEM"]['PRICE']["PRICE"] == '-1') ? 'd-none' : ''; ?>
+                                        <? if ($PHOENIX_TEMPLATE_ARRAY["ITEMS"]["CATALOG"]["ITEMS"]['USE_PRICE_COUNT']['VALUE']["ACTIVE"] == 'Y'): ?>
+                                            wrapper-board-price
+                                        <? endif; ?>"
 
-							                    
-							                    <div class="old-price align-self-end <?=($arItem["FIRST_ITEM"]["SHOW_DISCOUNT"] ? '' : 'd-none')?>" id="<?=$itemIds['OLD_PRICE']?>">
-							                        <?=$arItem["FIRST_ITEM"]['PRICE']['PRINT_BASE_PRICE']?>
-							                    </div>
+                                        >
 
-						                    </div>
+                                        <div class="<?= ($arItem['HAVEOFFERS']) ? "d-none d-lg-block" : "" ?>">
 
-						                    <?if($arItem['HAVEOFFERS']):?>
-						                    	<div class="actual-price">
+                                            <div class="name-type-price d-none">
+                                                <?= $arItem['FIRST_ITEM']['PRICE']['NAME'] ?>
+                                            </div>
 
-							                        <span class="price-value"><?=$arItem['OFFER_DIFF']['VALUE']['HTML']?></span>
+                                            <div class="board-price row no-gutters product-price-js">
 
-							                    </div>
-						                    <?endif;?>
-						                    
 
-						                </div>
+                                                <div class="<?= ($arItem['HAVEOFFERS']) ? "d-none" : "" ?>">
 
-						                <?//if($PHOENIX_TEMPLATE_ARRAY["ITEMS"]["CATALOG"]["ITEMS"]['USE_PRICE_COUNT']['VALUE']["ACTIVE"] == 'Y'):?>
-						                    <div class="wrapper-matrix-block hidden-xs d-none" id= "<?=$itemIds["PRICE_MATRIX"]?>"><?=$arItem["FIRST_ITEM"]["PRICE_MATRIX_RESULT"]["HTML"]?></div>
-						                <?//endif;?>
-						            </div>
+                                                    <div class="actual-price">
 
-						            <?if($arItem['HAVEOFFERS']):?>
-						                <div class="actual-price d-lg-none">
-						                    <?=$arItem['OFFER_DIFF']['VALUE']['HTML']?>
-						                </div>
-						            <?endif;?>
+                                                        <span class="price-value" id="<?= $itemIds['PRICE'] ?>"><?= $arItem["FIRST_ITEM"]['PRICE']['PRINT_PRICE'] ?></span><span class="unit <?= (strlen($arItem["FIRST_ITEM"]['MEASURE']) > 0 ? '' : 'd-none') ?>" id="<?= $itemIds['QUANTITY_MEASURE'] ?>"><?= $arItem["FIRST_ITEM"]['MEASURE_HTML'] ?></span>
 
-						        </div>
+                                                    </div>
 
-					        </div>
 
-					    </div>
+                                                    <div class="old-price align-self-end <?= ($arItem["FIRST_ITEM"]["SHOW_DISCOUNT"] ? '' : 'd-none') ?>" id="<?= $itemIds['OLD_PRICE'] ?>">
+                                                        <?= $arItem["FIRST_ITEM"]['PRICE']['PRINT_BASE_PRICE'] ?>
+                                                    </div>
 
+                                                </div>
 
-					    <div class="wrapper-bot part-hidden">
+                                                <? if ($arItem['HAVEOFFERS']): ?>
+                                                    <div class="actual-price">
 
+                                                        <span class="price-value"><?= $arItem['OFFER_DIFF']['VALUE']['HTML'] ?></span>
 
-					        <?if($arItem['HAVEOFFERS'] || $PHOENIX_TEMPLATE_ARRAY["ITEMS"]["RATING"]["ITEMS"]["USE_VOTE"]["VALUE"]["ACTIVE"] == "Y"):?>
+                                                    </div>
+                                                <? endif; ?>
 
-				                <div class="wrapper-list-info">
 
-				                    <?
-				                        if($PHOENIX_TEMPLATE_ARRAY["ITEMS"]["RATING"]["ITEMS"]["USE_VOTE"]["VALUE"]["ACTIVE"] == "Y")
-				                        {?>
-				                            <?if($arResult["RATING_VIEW"] == "simple"):?>
-				                                                
-				                                <?=CPhoenix::GetRatingVoteHTML(array("ID"=>$arItem['ID'], "CLASS"=>"simple-rating hover"));?>
+                                            </div>
 
-				                            <?elseif($arResult["RATING_VIEW"] == "full"):?>
+                                            <? //if($PHOENIX_TEMPLATE_ARRAY["ITEMS"]["CATALOG"]["ITEMS"]['USE_PRICE_COUNT']['VALUE']["ACTIVE"] == 'Y'): ?>
+                                            <div class="wrapper-matrix-block hidden-xs d-none" id= "<?= $itemIds["PRICE_MATRIX"] ?>"><?= $arItem["FIRST_ITEM"]["PRICE_MATRIX_RESULT"]["HTML"] ?></div>
+                                            <? //endif; ?>
+                                        </div>
 
-				                                <?=CPhoenix::GetRatingVoteHTML(array("ID"=>$arItem['ID'], "VIEW"=>"rating-reviewsCount", "HREF"=>$arItem['FIRST_ITEM']['DETAIL_PAGE_URL']."#rating-block"));?>
+                                        <? if ($arItem['HAVEOFFERS']): ?>
+                                            <div class="actual-price d-lg-none">
+                                                <?= $arItem['OFFER_DIFF']['VALUE']['HTML'] ?>
+                                            </div>
+                                        <? endif; ?>
 
-				                            <?endif;?>
+                                    </div>
 
-				                        <?}
-				                    ?>
+                                </div>
 
-				                   
+                            </div>
 
-					                <?if($arItem['CONFIG']["SHOW_OFFERS"] && $arItem['HAVEOFFERS']):?>
 
-				                        <div id="<?=$itemIds['TREE']?>" class="wrapper-skudiv d-none">
+                            <div class="wrapper-bot part-hidden">
 
-				                            <?if(!empty($arItem["SKU_PROPS"])):?>
 
-				                                <?foreach ($arItem["SKU_PROPS"] as $skuProperty):?>
+                                <? if ($arItem['HAVEOFFERS'] || $PHOENIX_TEMPLATE_ARRAY["ITEMS"]["RATING"]["ITEMS"]["USE_VOTE"]["VALUE"]["ACTIVE"] == "Y"): ?>
 
-				                                    <?
-				                                        $propertyId = $skuProperty['ID'];
+                                    <div class="wrapper-list-info">
 
-				                                        if(!isset($PHOENIX_TEMPLATE_ARRAY["ITEMS"]["CATALOG"]["ITEMS"]['OFFER_FIELDS']['VALUE_'][$propertyId]))
-				                                            continue;
+                                        <?
+                                        if ($PHOENIX_TEMPLATE_ARRAY["ITEMS"]["RATING"]["ITEMS"]["USE_VOTE"]["VALUE"]["ACTIVE"] == "Y") {
+                                            ?>
+                                            <? if ($arResult["RATING_VIEW"] == "simple"): ?>
 
-				                                        $skuProperty['NAME'] = htmlspecialcharsbx($skuProperty['NAME']);
-				                                    ?>
+                                                <?= CPhoenix::GetRatingVoteHTML(array("ID" => $arItem['ID'], "CLASS" => "simple-rating hover")); ?>
 
-				                                    <div class="wrapper-sku-props clearfix">
-				                                        <div class="product-item-scu-container clearfix">
+                                            <? elseif ($arResult["RATING_VIEW"] == "full"): ?>
 
-				                                            <div class="wrapper-title row no-gutters">
-				                                                <div class="desc-title"><?=htmlspecialcharsEx($skuProperty['NAME'])?><span class="prop-name"></span> </div>
-				                                                
-				                                            </div>
+                                                <?= CPhoenix::GetRatingVoteHTML(array("ID" => $arItem['ID'], "VIEW" => "rating-reviewsCount", "HREF" => $arItem['FIRST_ITEM']['DETAIL_PAGE_URL'] . "#rating-block")); ?>
 
-				                                            <?if ($PHOENIX_TEMPLATE_ARRAY["ITEMS"]["CATALOG"]["ITEMS"]['OFFER_FIELDS']["VALUES"][$skuProperty["ID"]]["VALUE_2"] == 'pic' || $PHOENIX_TEMPLATE_ARRAY["ITEMS"]["CATALOG"]["ITEMS"]['OFFER_FIELDS']["VALUES"][$skuProperty["ID"]]["VALUE_2"] == 'pic_with_info'):?>
+                                            <? endif; ?>
 
-				                                                <ul class="sku-props clearfix">
+                                        <? }
+                                        ?>
 
-				                                                    <?if(!empty($skuProperty['VALUES'])):?>
 
-				                                                    <?foreach ($skuProperty['VALUES'] as $value):?>
 
-				                                                        <?
+                                        <? if ($arItem['CONFIG']["SHOW_OFFERS"] && $arItem['HAVEOFFERS']): ?>
 
-				                                                            $styleTab = "";
-				                                                            $styleHoverBoard = "";
+                                            <div id="<?= $itemIds['TREE'] ?>" class="wrapper-skudiv d-none">
 
+                                                <? if (!empty($arItem["SKU_PROPS"])): ?>
 
-				                                                            if(isset($value["PICT"]) || isset($value["PICT_SEC"]) )
-				                                                            {
-				                                                                if(isset($value["PICT_SEC"]))
-				                                                                {
-				                                                                    $styleHoverBoard .= "background-image: url('".$value['PICT_SEC']['BIG']."'); ";
+                                                    <? foreach ($arItem["SKU_PROPS"] as $skuProperty): ?>
 
-				                                                                    if(isset($value["PICT"]))
-				                                                                        $styleTab .= "background-image: url('".$value['PICT']['SMALL']."'); ";
-				                                                                    else
-				                                                                        $styleTab .= "background-image: url('".$value['PICT_SEC']['SMALL']."'); ";
+                                                        <?
+                                                        $propertyId = $skuProperty['ID'];
 
-				                                                                }
+                                                        if (!isset($PHOENIX_TEMPLATE_ARRAY["ITEMS"]["CATALOG"]["ITEMS"]['OFFER_FIELDS']['VALUE_'][$propertyId]))
+                                                            continue;
 
-				                                                                else if(isset($value["PICT"]))
-				                                                                {
-				                                                                    $styleTab .= "background-image: url('".$value['PICT']['SMALL']."'); ";
-				                                                                    $styleHoverBoard .= "background-image: url('".$value['PICT']['BIG']."'); ";
-				                                                                }
-				                                                            }
+                                                        $skuProperty['NAME'] = htmlspecialcharsbx($skuProperty['NAME']);
+                                                        ?>
 
-				                                                            if($value["COLOR"])
-				                                                            {
-				                                                                $styleTab .= "background-color:".$value["COLOR"]."; ";
-				                                                                $styleHoverBoard .= "background-color:".$value["COLOR"]."; ";
-				                                                            }
-				                                                        ?>
+                                                        <div class="wrapper-sku-props clearfix">
+                                                            <div class="product-item-scu-container clearfix">
 
+                                                                <div class="wrapper-title row no-gutters">
+                                                                    <div class="desc-title"><?= htmlspecialcharsEx($skuProperty['NAME']) ?><span class="prop-name"></span> </div>
 
-				                                                        <li title='<?=CPhoenix::prepareText($value['NAME'])?>' class="detail-color"
+                                                                </div>
 
-				                                                                data-treevalue="<?=$propertyId?>_<?=$value['ID']?>"
-				                                                                data-onevalue="<?=$value['ID']?>"
-				                                                                
+                                                                <? if ($PHOENIX_TEMPLATE_ARRAY["ITEMS"]["CATALOG"]["ITEMS"]['OFFER_FIELDS']["VALUES"][$skuProperty["ID"]]["VALUE_2"] == 'pic' || $PHOENIX_TEMPLATE_ARRAY["ITEMS"]["CATALOG"]["ITEMS"]['OFFER_FIELDS']["VALUES"][$skuProperty["ID"]]["VALUE_2"] == 'pic_with_info'): ?>
 
-				                                                            >
+                                                                    <ul class="sku-props clearfix">
 
-				                                                            <div class="color" style="<?=$styleTab?>"></div>
+                                                                        <? if (!empty($skuProperty['VALUES'])): ?>
 
+                                                                            <? foreach ($skuProperty['VALUES'] as $value): ?>
 
-				                                                            <?if($PHOENIX_TEMPLATE_ARRAY["ITEMS"]["CATALOG"]["ITEMS"]['OFFER_FIELDS']["VALUES"][$skuProperty["ID"]]["VALUE_2"] == 'pic_with_info'):?>
+                                                                                <?
+                                                                                $styleTab = "";
+                                                                                $styleHoverBoard = "";
 
-				                                                                <div class="wrapper-hover-board">
-				                                                                    <div class="img" style="<?=$styleHoverBoard?>"></div>
-				                                                                    <div class="desc"><?=$value['NAME']?></div>
-				                                                                    <div class="arrow"></div>
-				                                                                </div>
+                                                                                if (isset($value["PICT"]) || isset($value["PICT_SEC"])) {
+                                                                                    if (isset($value["PICT_SEC"])) {
+                                                                                        $styleHoverBoard .= "background-image: url('" . $value['PICT_SEC']['BIG'] . "'); ";
 
-				                                                            <?endif;?>
+                                                                                        if (isset($value["PICT"]))
+                                                                                            $styleTab .= "background-image: url('" . $value['PICT']['SMALL'] . "'); ";
+                                                                                        else
+                                                                                            $styleTab .= "background-image: url('" . $value['PICT_SEC']['SMALL'] . "'); ";
+                                                                                    } else if (isset($value["PICT"])) {
+                                                                                        $styleTab .= "background-image: url('" . $value['PICT']['SMALL'] . "'); ";
+                                                                                        $styleHoverBoard .= "background-image: url('" . $value['PICT']['BIG'] . "'); ";
+                                                                                    }
+                                                                                }
 
-				                                                            <span class="active-flag"></span>
+                                                                                if ($value["COLOR"]) {
+                                                                                    $styleTab .= "background-color:" . $value["COLOR"] . "; ";
+                                                                                    $styleHoverBoard .= "background-color:" . $value["COLOR"] . "; ";
+                                                                                }
+                                                                                ?>
 
-				                                                        </li>
 
-				                                                    <?endforeach;?>
+                                                                                <li title='<?= CPhoenix::prepareText($value['NAME']) ?>' class="detail-color"
 
-				                                                    <?endif;?>
-				                                                </ul>
+                                                                                    data-treevalue="<?= $propertyId ?>_<?= $value['ID'] ?>"
+                                                                                    data-onevalue="<?= $value['ID'] ?>"
 
-				                                            <?elseif($PHOENIX_TEMPLATE_ARRAY["ITEMS"]["CATALOG"]["ITEMS"]['OFFER_FIELDS']["VALUES"][$skuProperty["ID"]]["VALUE_2"] == 'select'):?>
 
-				                                                <div class="wrapper-select-input">
+                                                                                    >
 
-				                                                    <ul class="sku-props select-input">
+                                                                                    <div class="color" style="<?= $styleTab ?>"></div>
 
-				                                                        <li class="area-for-current-value"><?=$PHOENIX_TEMPLATE_ARRAY["MESS"]["SKU_SELECT_TITLE"]?></li>
 
-				                                                        <?if(!empty($skuProperty['VALUES'])):?>
+                                                                                    <? if ($PHOENIX_TEMPLATE_ARRAY["ITEMS"]["CATALOG"]["ITEMS"]['OFFER_FIELDS']["VALUES"][$skuProperty["ID"]]["VALUE_2"] == 'pic_with_info'): ?>
 
-				                                                            <?foreach ($skuProperty['VALUES'] as $value):?>
-				                                                                <li title='<?=CPhoenix::prepareText($value['NAME'])?>'
+                                                                                        <div class="wrapper-hover-board">
+                                                                                            <div class="img" style="<?= $styleHoverBoard ?>"></div>
+                                                                                            <div class="desc"><?= $value['NAME'] ?></div>
+                                                                                            <div class="arrow"></div>
+                                                                                        </div>
 
-				                                                                        data-treevalue="<?=$propertyId?>_<?=$value['ID']?>"
-				                                                                        data-onevalue="<?=$value['ID']?>"
+                                                                                    <? endif; ?>
 
-				                                                                    ><?=$value['NAME']?></li>
-				                                                            <?endforeach;?>
+                                                                                    <span class="active-flag"></span>
 
-				                                                        <?endif;?>
-				                                                       
-				                                                    </ul>
+                                                                                </li>
 
-				                                                    <div class="ar-down"></div>
+                                                                            <? endforeach; ?>
 
-				                                                </div>
+                                                                        <? endif; ?>
+                                                                    </ul>
 
+                                                                <? elseif ($PHOENIX_TEMPLATE_ARRAY["ITEMS"]["CATALOG"]["ITEMS"]['OFFER_FIELDS']["VALUES"][$skuProperty["ID"]]["VALUE_2"] == 'select'): ?>
 
-				                                            <?else:?>
+                                                                    <div class="wrapper-select-input">
 
-				                                                <ul class="sku-props">
+                                                                        <ul class="sku-props select-input">
 
-				                                                    <?if(!empty($skuProperty['VALUES'])):?>
+                                                                            <li class="area-for-current-value"><?= $PHOENIX_TEMPLATE_ARRAY["MESS"]["SKU_SELECT_TITLE"] ?></li>
 
-				                                                        <?foreach ($skuProperty['VALUES'] as &$value):?>
-				                                                            <li title='<?=CPhoenix::prepareText($value['NAME'])?>' class="detail-text"
+                                                                            <? if (!empty($skuProperty['VALUES'])): ?>
 
-				                                                                data-treevalue="<?=$propertyId?>_<?=$value['ID']?>"
-				                                                                data-onevalue="<?=$value['ID']?>"
+                                                                                <? foreach ($skuProperty['VALUES'] as $value): ?>
+                                                                                    <li title='<?= CPhoenix::prepareText($value['NAME']) ?>'
 
-				                                                            ><?=$value['NAME']?></li>
-				                                                        <?endforeach;?>
+                                                                                        data-treevalue="<?= $propertyId ?>_<?= $value['ID'] ?>"
+                                                                                        data-onevalue="<?= $value['ID'] ?>"
 
-				                                                    <?endif;?>
-				                                                </ul>
+                                                                                        ><?= $value['NAME'] ?></li>
+                                                                                    <? endforeach; ?>
 
+                                                                            <? endif; ?>
 
-				                                            <?endif;?>
+                                                                        </ul>
 
+                                                                        <div class="ar-down"></div>
 
-				                                        </div>
+                                                                    </div>
 
-				                                    </div>
 
-				                                <?endforeach;?>
+                                                                <? else: ?>
 
-				                            <?endif;?>
+                                                                    <ul class="sku-props">
 
-				                        </div>                            
+                                                                        <? if (!empty($skuProperty['VALUES'])): ?>
 
-				                    <?endif;?>
+                                                                            <? foreach ($skuProperty['VALUES'] as &$value): ?>
+                                                                                <li title='<?= CPhoenix::prepareText($value['NAME']) ?>' class="detail-text"
 
-				                </div>
-					            
+                                                                                    data-treevalue="<?= $propertyId ?>_<?= $value['ID'] ?>"
+                                                                                    data-onevalue="<?= $value['ID'] ?>"
 
-					        <?endif;?>
+                                                                                    ><?= $value['NAME'] ?></li>
+                                                                                <? endforeach; ?>
 
+                                                                        <? endif; ?>
+                                                                    </ul>
 
-					        <div class="wrapper-inner-bot row no-gutters hidden-js <?=($arItem['HAVEOFFERS'])?'hidden':'';?>" id="<?=$itemIds['WR_ADD2BASKET']?>">
 
-					        	<div class="btn-container align-items-center col-md-6 col-12" id="<?=$itemIds['BASKET_ACTIONS']?>">
-							        <a
-							            id = "<?=$itemIds['ADD2BASKET']?>"
-							            href="javascript:void(0);"
-							            data-item = "<?=$arItem["ID"]?>"
+                                                                <? endif; ?>
 
-							        class="main-color add2basket bold"><?=$PHOENIX_TEMPLATE_ARRAY["ITEMS"]["SHOP"]["ITEMS"]["CART_BTN_ADD_NAME"]["~VALUE"]?></a>
 
-							        <a
-							            id = "<?=$itemIds['MOVE2BASKET']?>"
-							            href="<?=$PHOENIX_TEMPLATE_ARRAY["ITEMS"]["SHOP"]["ITEMS"]["BASKET_URL"]["VALUE"]?>"
-							            data-item = "<?=$arItem["ID"]?>"
+                                                            </div>
 
-							        class="move2basket"><?=$PHOENIX_TEMPLATE_ARRAY["ITEMS"]["SHOP"]["ITEMS"]["CART_BTN_ADDED_NAME"]["~VALUE"]?></a>
-							    </div>
+                                                        </div>
 
-							    <div class="col-md-6 col-12">
+                                                    <? endforeach; ?>
 
-							        <div class="quantity-container quantity-block row no-gutters align-items-center justify-content-between hidden-sm hidden-xs"
-							             data-item="<?=$arItem['ID']?>">
+                                                <? endif; ?>
 
-											<span class="product-item-amount-field-btn-minus no-select" id="<?=$itemIds['QUANTITY_DOWN']?>">&minus;</span>
+                                            </div>                            
 
-											<input class="product-item-amount-field" id="<?=$itemIds['QUANTITY']?>" type="number" value="<?=$arItem["FIRST_ITEM"]["PRICE"]["MIN_QUANTITY"]?>">
-											<span class="product-item-amount-field-btn-plus no-select" id="<?=$itemIds['QUANTITY_UP']?>">&plus;</span>
-									</div>
-								</div>
+                                        <? endif; ?>
 
-					        </div>
+                                    </div>
 
-					        <?if($arItem['HAVEOFFERS']):?>
-						        <div class="wrapper-inner-bot row no-gutters">
 
-						            <div class="btn-container align-items-center col-12">
-						                <a href="<?=$arItem['FIRST_ITEM']['DETAIL_PAGE_URL']?>" class="main-color bold">
+                                <? endif; ?>
 
-					                        <span class="d-none d-lg-block"><?=$PHOENIX_TEMPLATE_ARRAY["ITEMS"]["CATALOG"]["ITEMS"]["LINK_2_DETAIL_PAGE_NAME_OFFER"]["VALUE"]?></span>
+                                <? if($arItem['QUANTITY']['QUANTITY_VALUE'] > 0 && $arItem['PRICE']['PRICE'] != '-1'){?>
+                                <div class="wrapper-inner-bot row no-gutters <? if ($arItem['QUANTITY']['QUANTITY_VALUE'] > '0') { ?> hidden-js active<? } else { ?> hidden-js <? } ?> <?= ($arItem['HAVEOFFERS']) ? 'hidden' : ''; ?>" id="<?= $itemIds['WR_ADD2BASKET'] ?>">
 
-					                        <span class="d-lg-none"><?=$PHOENIX_TEMPLATE_ARRAY["ITEMS"]["CATALOG"]["ITEMS"]["LINK_2_DETAIL_PAGE_NAME_OFFER_MOB"]["VALUE"]?></span>
-						                        
-						                </a>
-						            </div>
+                                    <div class="btn-container align-items-center col-md-6 col-12" id="<?= $itemIds['BASKET_ACTIONS'] ?>">
+                                        <a
+                                            id = "<?= $itemIds['ADD2BASKET'] ?>"
+                                            href="javascript:void(0);"
+                                            data-item = "<?= $arItem["ID"] ?>"
 
-						        </div>
-					        <?endif;?>
+                                            class="main-color add2basket bold"><?= $PHOENIX_TEMPLATE_ARRAY["ITEMS"]["SHOP"]["ITEMS"]["CART_BTN_ADD_NAME"]["~VALUE"] ?></a>
 
-					        <div class="wrapper-inner-bot row no-gutters d-none <?=($arItem['HAVEOFFERS'])?'hidden':'';?>" id="<?=$itemIds['BTN2DETAIL_PAGE_PRODUCT']?>">
+                                        <a
+                                            id = "<?= $itemIds['MOVE2BASKET'] ?>"
+                                            href="<?= $PHOENIX_TEMPLATE_ARRAY["ITEMS"]["SHOP"]["ITEMS"]["BASKET_URL"]["VALUE"] ?>"
+                                            data-item = "<?= $arItem["ID"] ?>"
 
-					            <div class="btn-container align-items-center col-12">
-					                <a href="<?=$arItem['FIRST_ITEM']['DETAIL_PAGE_URL']?>" class="main-color bold">
-				                        <?=$PHOENIX_TEMPLATE_ARRAY["ITEMS"]["CATALOG"]["ITEMS"]["LINK_2_DETAIL_PAGE_NAME"]["VALUE"]?>
-					                </a>
-					            </div>
+                                            class="move2basket"><?= $PHOENIX_TEMPLATE_ARRAY["ITEMS"]["SHOP"]["ITEMS"]["CART_BTN_ADDED_NAME"]["~VALUE"] ?></a>
+                                    </div>
 
-					        </div>
+                                    <div class="col-md-6 col-12">
 
-					    </div>
+                                        <div class="quantity-container quantity-block row no-gutters align-items-center justify-content-between hidden-sm hidden-xs"
+                                             data-item="<?= $arItem['ID'] ?>">
 
-					</div>
+                                            <span class="product-item-amount-field-btn-minus no-select" id="<?= $itemIds['QUANTITY_DOWN'] ?>">&minus;</span>
 
-                    <?CPhoenix::admin_setting($arItem, false)?>
+                                            <input class="product-item-amount-field" id="<?= $itemIds['QUANTITY'] ?>" type="number" value="<?= $arItem["FIRST_ITEM"]["PRICE"]["MIN_QUANTITY"] ?>">
+                                            <span class="product-item-amount-field-btn-plus no-select" id="<?= $itemIds['QUANTITY_UP'] ?>">&plus;</span>
+                                        </div>
+                                    </div>
 
-                </div>
+                                </div>
+                                
+                                <? if ($arItem['HAVEOFFERS']): ?>
+                                    <div class="wrapper-inner-bot row no-gutters">
 
-            <?endforeach;?>
-          
+                                        <div class="btn-container align-items-center col-12">
+                                            <a href="<?= $arItem['FIRST_ITEM']['DETAIL_PAGE_URL'] ?>" class="main-color bold">
+
+                                                <span class="d-none d-lg-block"><?= $PHOENIX_TEMPLATE_ARRAY["ITEMS"]["CATALOG"]["ITEMS"]["LINK_2_DETAIL_PAGE_NAME_OFFER"]["VALUE"] ?></span>
+
+                                                <span class="d-lg-none"><?= $PHOENIX_TEMPLATE_ARRAY["ITEMS"]["CATALOG"]["ITEMS"]["LINK_2_DETAIL_PAGE_NAME_OFFER_MOB"]["VALUE"] ?></span>
+
+                                            </a>
+                                        </div>
+
+                                    </div>
+                                <? endif; ?>
+                                <?}?>
+                                <? if($arItem['QUANTITY']['QUANTITY_VALUE'] < 1 || $arItem['PRICE']['PRICE'] == '-1'){?>
+                                <div class="wrapper-inner-bot row no-gutters  <?= ($arItem['HAVEOFFERS']) ? 'hidden' : ''; ?>" id="<?= $itemIds['BTN2DETAIL_PAGE_PRODUCT'] ?>">
+
+                                    <div class="btn-container align-items-center col-12">
+                                        <a href="<?= $arItem['FIRST_ITEM']['DETAIL_PAGE_URL'] ?>" class="main-color bold">
+                                            <?= $PHOENIX_TEMPLATE_ARRAY["ITEMS"]["CATALOG"]["ITEMS"]["LINK_2_DETAIL_PAGE_NAME"]["VALUE"] ?>
+                                        </a>
+                                    </div>
+
+                                </div>
+                                <?}?>
+                            </div>
+
+                        </div>
+
+                        <? CPhoenix::admin_setting($arItem, false) ?>
+
+                    </div>
+
+                <? endforeach; ?>
+
+            </div>
+
         </div>
 
+        <img class="lazyload img-for-lazyload slider-finish" data-src="<?= SITE_TEMPLATE_PATH ?>/images/one_px.png" data-id="<?= $firstItem["ID"] ?>">
     </div>
 
-	<img class="lazyload img-for-lazyload slider-finish" data-src="<?=SITE_TEMPLATE_PATH?>/images/one_px.png" data-id="<?=$firstItem["ID"]?>">
-</div>
 
+    <? (!isset($arParams["BTNS_ACTIVE"]) || $arParams["BTNS_ACTIVE"] == "") ? "Y" : $arParams["BTNS_ACTIVE"]; ?>
 
-	<?(!isset($arParams["BTNS_ACTIVE"]) || $arParams["BTNS_ACTIVE"] == "") ?"Y":$arParams["BTNS_ACTIVE"];?>
+    <? if ($arParams["BTNS_ACTIVE"] == "Y"): ?>
 
-    <?if($arParams["BTNS_ACTIVE"]=="Y"):?>
+        <?
+        $countItems = count($arResult["ITEMS"]);
 
-		<?
-			$countItems = count( $arResult["ITEMS"] );
+        $class_arrows = "";
 
-			$class_arrows = "";
+        if ($countItems > 3)
+            $class_arrows .= " visible-xxl visible-xl visible-lg hidden-xs";
 
+        if ($countItems > 2)
+            $class_arrows .= " visible-md visible-sm hidden-xs";
+        ?>
 
-			if($countItems>3)
-			    $class_arrows .= " visible-xxl visible-xl visible-lg hidden-xs";
+        <? if (strlen($class_arrows) > 0): ?>
+            <script>
 
-			if($countItems>2)
-			    $class_arrows .= " visible-md visible-sm hidden-xs";
-		?>
+                $(document).ready(function () {
+                    $("#<?= $arParams["BLOCK_ID"] ?>").find(".wr-arrows-slick").addClass('<?= $class_arrows ?>').removeClass('d-none');
+                });
 
-		<?if(strlen($class_arrows)>0):?>
-		    <script>
+            </script>
+        <? endif; ?>
 
-		        $(document).ready(function(){
-		            $("#<?=$arParams["BLOCK_ID"]?>").find(".wr-arrows-slick").addClass('<?=$class_arrows?>').removeClass('d-none');
-		        });
-		        
-		    </script>
-		<?endif;?>
+    <? endif; ?>
 
-	<?endif;?>
-
-<?endif;?>
+<? endif; ?>
