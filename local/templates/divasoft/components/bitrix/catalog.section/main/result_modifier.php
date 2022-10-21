@@ -1,8 +1,4 @@
-<?
-
-if (!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true)
-    die();
-
+<?if (!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED!==true) die();
 use Bitrix\Main\Type\Collection;
 use Bitrix\Currency\CurrencyTable;
 use Bitrix\Iblock;
@@ -14,13 +10,15 @@ global $PHOENIX_TEMPLATE_ARRAY;
 
 CPhoenixSku::getHIBlockOptions();
 
-if (intval($arResult["ID"])) {
+if(intval($arResult["ID"]))
+{
     $arSelect = Array("ID", "UF_*");
     $arFilter = Array('IBLOCK_ID' => $arParams["IBLOCK_ID"], "ID" => $arResult["ID"]);
     $db_list = CIBlockSection::GetList(Array(), $arFilter, false, $arSelect);
     $ar_result = $db_list->GetNext();
 
-    if (strlen($ar_result["UF_PHX_CTLG_TXT_P"]) > 0) {
+    if(strlen($ar_result["UF_PHX_CTLG_TXT_P"]) > 0)
+    {
         $ar_result["UF_PHX_CTLG_TXT_P_ENUM"] = CUserFieldEnum::GetList(array(), array(
                     "ID" => $ar_result["UF_PHX_CTLG_TXT_P"],
                 ))->GetNext();
@@ -53,14 +51,18 @@ foreach ($arResult["ITEMS"] as $key => $arItem) {
 
 $arResult["rating"] = array();
 
-if (!empty($arResult["ITEMS"]) && $PHOENIX_TEMPLATE_ARRAY["ITEMS"]["RATING"]["ITEMS"]["USE_VOTE"]["VALUE"]["ACTIVE"] == "Y" && $PHOENIX_TEMPLATE_ARRAY["ITEMS"]["CATALOG_ITEM_FIELDS"]["ITEMS"]["PROPS_IN_LIST_FOR_" . $arResult["VIEW"]]["VALUE"]["RATE_VOTE"] == "Y") {
-    if ($PHOENIX_TEMPLATE_ARRAY["ITEMS"]["RATING"]["ITEMS"]["USE_REVIEW"]["VALUE"]["ACTIVE"] == "Y") {
+if(!empty($arResult["ITEMS"]) && $PHOENIX_TEMPLATE_ARRAY["ITEMS"]["RATING"]["ITEMS"]["USE_VOTE"]["VALUE"]["ACTIVE"] == "Y" && $PHOENIX_TEMPLATE_ARRAY["ITEMS"]["CATALOG_ITEM_FIELDS"]["ITEMS"]["PROPS_IN_LIST_FOR_".$arResult["VIEW"]]["VALUE"]["RATE_VOTE"] == "Y")
+{
+    if($PHOENIX_TEMPLATE_ARRAY["ITEMS"]["RATING"]["ITEMS"]["USE_REVIEW"]["VALUE"]["ACTIVE"] == "Y")
+    {
         $arResult["RATING_VIEW"] = "full";
         $arResult["ITEMS_ID"] = array();
         foreach ($arResult["ITEMS"] as $key => $arItem) {
             $arResult["ITEMS_ID"][] = $arItem["ID"];
         }
-    } else {
+    }
+    else
+    {
         $arResult["RATING_VIEW"] = "simple";
 
         foreach ($arResult["ITEMS"] as $key => $arItem) {
@@ -70,7 +72,8 @@ if (!empty($arResult["ITEMS"]) && $PHOENIX_TEMPLATE_ARRAY["ITEMS"]["RATING"]["IT
 }
 $arEditAreaId = array();
 
-if (!empty($arResult["ITEMS"])) {
+if(!empty($arResult["ITEMS"]))
+{
     foreach ($arResult["ITEMS"] as $key => $arItem) {
         $arEditAreaId[$arItem["ID"]] = $this->GetEditAreaId($arItem['ID']) . '_list';
     }
@@ -78,11 +81,12 @@ if (!empty($arResult["ITEMS"])) {
 
 CPhoenix::SetResultModifierCatalogElements($arResult, $arParams, $arEditAreaId);
 
-//echo "<pre>"; print_r($arResult["ITEMS"][0]); echo "</pre>";
+
 
 $cp = $this->__component;
 
-if (is_object($cp)) {
+if (is_object($cp))
+{
     $cp->arResult['UF_PHX_CTLG_TITLE'] = $ar_result["UF_PHX_CTLG_TITLE"];
     $cp->arResult['UF_PHX_CTLG_KWORD'] = $ar_result["UF_PHX_CTLG_KWORD"];
     $cp->arResult['UF_PHX_CTLG_DSCR'] = $ar_result["UF_PHX_CTLG_DSCR"];
@@ -126,13 +130,14 @@ if (isset($arParams["SEARCH_ELEMENTS_ID"])) {
     }
 }
 
-$array_price = [];
-$array_quantity = [];
-foreach ($arResult["ITEMS"] as $key => $row) {
-    $array_price[$key] = $row['PRICE']['PRICE'];
-    $array_quantity[$key] = $row['QUANTITY']['QUANTITY_VALUE'];
-}
+//$array_price = [];
+//$array_quantity = [];
+//foreach ($arResult["ITEMS"] as $key => $row) {
+//    $array_price[$key] = $row['PRICE']['PRICE'];
+//    $array_quantity[$key] = $row['QUANTITY']['QUANTITY_VALUE'];
+//}
+//print_r($array_price);
 
-array_multisort($array_quantity, SORT_DESC, $array_price, SORT_DESC, $arResult["ITEMS"]);
-
+//array_multisort($array_quantity, SORT_DESC, $array_price, SORT_DESC, $arResult["ITEMS"]);
+//
 
