@@ -7356,12 +7356,13 @@ function setQuantity(basketId, ratio, sign, bUseFloatQuantity,detail = false) {
     if(!detail){
     var curVal = parseFloat(BX("QUANTITY_INPUT_" + basketId).value),
         newVal;
+    var maxQuantity = BX("QUANTITY_INPUT_" + basketId).getAttribute('max');
     }else{
-       
+       var maxQuantity = BX(basketId).getAttribute('max');
         var curVal = parseFloat(BX(basketId).value),
         newVal;
     }
-
+    
     newVal = (sign == 'up') ? curVal + ratio : curVal - ratio;
     if (newVal < 0)
         newVal = 0;
@@ -7378,7 +7379,9 @@ function setQuantity(basketId, ratio, sign, bUseFloatQuantity,detail = false) {
     if (!bUseFloatQuantity && newVal != newVal.toFixed(4)) {
         newVal = parseFloat(newVal).toFixed(4);
     }
-    
+     if(newVal > maxQuantity){
+        newVal = maxQuantity;
+    }
     newVal = getCorrectRatioQuantity(newVal, ratio, bUseFloatQuantity);
     newVal = correctQuantity(newVal);
     
