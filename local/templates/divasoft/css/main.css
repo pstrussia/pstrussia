@@ -22989,7 +22989,7 @@ div.sale-order-detail-payment-options-methods-image-container {
 .sale-order-detail-payment-options-methods-image-element,
 .sale-order-detail-payment-options-shipment-image-element {
     display: block;
-    height: 51px;
+    height: 120px;
     margin: 0;
     background-size: contain;
     background-position: center;
