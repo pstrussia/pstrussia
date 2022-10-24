@@ -7094,7 +7094,6 @@ BasketPoolQuantity = function () {
 
 
 BasketPoolQuantity.prototype.updateQuantity = function () {
-
     if (BX('basket_items')) {
         var items = BX('basket_items').querySelectorAll('div.product');
 
@@ -7112,14 +7111,18 @@ BasketPoolQuantity.prototype.updateQuantity = function () {
 
 };
 
-BasketPoolQuantity.prototype.changeQuantity = function (itemId) {
+BasketPoolQuantity.prototype.changeQuantity = function (itemId,catalogSection) {
+    if(!catalogSection){
     var quantity = BX('QUANTITY_' + itemId).value;
+    }else{
+        var quantity = BX(itemId).value;
+//        var maxQuantity = BX(itemId).getAttribute('max');
+    }
+    
     var isPoolEmpty = this.isPoolEmpty();
-
     if (this.currentQuantity[itemId] && this.currentQuantity[itemId] != quantity) {
         this.poolQuantity[itemId] = this.currentQuantity[itemId] = quantity;
     }
-
     if (!isPoolEmpty) {
         this.enableTimer(true);
     } else {
@@ -7129,10 +7132,9 @@ BasketPoolQuantity.prototype.changeQuantity = function (itemId) {
 
 
 BasketPoolQuantity.prototype.trySendPool = function () {
-
     if (!this.isPoolEmpty() && !this.isProcessing()) {
         this.enableTimer(false);
-
+        
         recalcBasketAjax({});
 
     }
@@ -7164,9 +7166,17 @@ BasketPoolQuantity.prototype.enableTimer = function (value) {
     }, 1500);
 };
 
-function updateQuantity(controlId, basketId, ratio, bUseFloatQuantity) {
-    clearTimeout($.data(this, 'timer-quantity'));
+function updateQuantitySection(inputId, maxQuantity){
+    if(inputId && maxQuantity){
+        if(inputId.value > maxQuantity){
+                inputId.value = maxQuantity;
+        }
+    }
+}
 
+function updateQuantity(controlId, basketId, ratio, bUseFloatQuantity, detail = false) {
+    clearTimeout($.data(this, 'timer-quantity'));
+    
     $.data(this, 'timer-quantity', setTimeout($.proxy(function () {
 
         var oldVal = BX(controlId).defaultValue,
@@ -7204,22 +7214,28 @@ function updateQuantity(controlId, basketId, ratio, bUseFloatQuantity) {
 
         if (bIsCorrectQuantityForRatio) {
             BX(controlId).defaultValue = newVal;
-
+            if(!detail){
             BX("QUANTITY_INPUT_" + basketId).value = newVal;
-
             BX("QUANTITY_" + basketId).value = newVal;
+        }else{
+            BX(basketId).value = newVal;
+        }
 
             if (autoCalculate) {
-                basketPoolQuantity.changeQuantity(basketId);
+//                console.log(newVal);
+                basketPoolQuantity.changeQuantity(basketId,detail);
             }
         } else {
             newVal = getCorrectRatioQuantity(newVal, ratio, bUseFloatQuantity);
             newVal = correctQuantity(newVal);
 
             if (newVal != oldVal) {
+                if(!detail){
                 BX("QUANTITY_INPUT_" + basketId).value = newVal;
                 BX("QUANTITY_" + basketId).value = newVal;
-
+            }else{
+                 BX(basketId).value = newVal;
+            }
                 if (autoCalculate) {
                     basketPoolQuantity.changeQuantity(basketId);
                 }
@@ -7241,8 +7257,6 @@ function correctQuantity(quantity) {
 
 
 function recalcBasketAjax(params) {
-
-
     if (basketPoolQuantity.isProcessing()) {
         return false;
     }
@@ -7260,14 +7274,14 @@ function recalcBasketAjax(params) {
     if (BX('delayed_items'))
         delayedItems = BX('delayed_items').querySelectorAll('div.product');
 
-
+        
     postData = {
         'sessid': BX.bitrix_sessid(),
         'site_id': $("input.site_id").val(),
         'action_var': action_var,
         'quantity_float': BX('quantity_float').value
     };
-
+    
     postData[action_var] = 'recalculate';
 
     if (!!params && typeof params === 'object') {
@@ -7338,12 +7352,17 @@ function recalcBasketAjax(params) {
     });
 }
 
-function setQuantity(basketId, ratio, sign, bUseFloatQuantity) {
+function setQuantity(basketId, ratio, sign, bUseFloatQuantity,detail = false) {
+    if(!detail){
     var curVal = parseFloat(BX("QUANTITY_INPUT_" + basketId).value),
         newVal;
+    }else{
+       
+        var curVal = parseFloat(BX(basketId).value),
+        newVal;
+    }
 
     newVal = (sign == 'up') ? curVal + ratio : curVal - ratio;
-
     if (newVal < 0)
         newVal = 0;
 
@@ -7359,14 +7378,20 @@ function setQuantity(basketId, ratio, sign, bUseFloatQuantity) {
     if (!bUseFloatQuantity && newVal != newVal.toFixed(4)) {
         newVal = parseFloat(newVal).toFixed(4);
     }
-
+    
     newVal = getCorrectRatioQuantity(newVal, ratio, bUseFloatQuantity);
     newVal = correctQuantity(newVal);
-
+    
+    if(!detail){
     BX("QUANTITY_INPUT_" + basketId).value = newVal;
     BX("QUANTITY_INPUT_" + basketId).defaultValue = newVal;
-
     updateQuantity('QUANTITY_INPUT_' + basketId, basketId, ratio, bUseFloatQuantity);
+    }else{
+        BX(basketId).value = newVal;
+        BX(basketId).defaultValue = newVal;
+        updateQuantity(basketId, basketId, ratio, bUseFloatQuantity, true);
+    }
+    
 }
 
 function getCorrectRatioQuantity(quantity, ratio, bUseFloatQuantity) {
