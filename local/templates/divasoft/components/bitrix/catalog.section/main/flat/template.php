@@ -130,8 +130,8 @@
 
     </div>
 
-<!--wrapper-bot part-hidden-->
-    <div class="wrapper-bot ">
+
+    <div class="wrapper-bot wrapper-bot part-hidden">
 
         <?
         if (
