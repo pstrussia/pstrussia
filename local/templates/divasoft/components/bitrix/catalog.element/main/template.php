@@ -812,19 +812,25 @@ $itemIds = $arResult["PRODUCT"]["VISUAL"];
 
                             </div>
 
-
+                          
                             <div class="wrapper-quantity-total row no-gutters align-items-center">
-
                                 <div class="col-md-6 col-sm-12">
-
                                     <div class="quantity-container row no-gutters align-items-center justify-content-between">
-                                        <span class="product-item-amount-field-btn-minus" id="<?= $itemIds['QUANTITY_DOWN'] ?>">&minus;</span>
+                                        <span class="product-item-amount-field-btn-minus"  onclick="setQuantity(<?=$itemIds['QUANTITY']?>, 1, 'down', false,true,<?=$arResult["FIRST_ITEM"]['MAX_QUANTITY']?>);">&minus;</span>
                                         <input class="product-item-amount-field" id="<?= $itemIds['QUANTITY'] ?>" type="number"
-                                               value="<?= $arResult["FIRST_ITEM"]["PRICE"]["MIN_QUANTITY"] ?>">
-                                        <span class="product-item-amount-field-btn-plus" id="<?= $itemIds['QUANTITY_UP'] ?>">&plus;</span>
+                                               value="<?= $arResult["FIRST_ITEM"]["PRICE"]["MIN_QUANTITY"] ?>" onchange="updateQuantityDetail()">
+                                        <span class="product-item-amount-field-btn-plus" onclick="setQuantity(<?=$itemIds['QUANTITY']?>, 1, 'up', false,true,<?=$arResult["FIRST_ITEM"]['MAX_QUANTITY']?>);">&plus;</span>
                                     </div>
                                 </div>
-
+                                <script>
+                                    function updateQuantityDetail(){
+                                        var maxQuantity = <?=$arResult["FIRST_ITEM"]['MAX_QUANTITY']?>;
+                                        var input = <?=$itemIds['QUANTITY']?>;
+                                        if(input.value > maxQuantity){
+                                            input.value = maxQuantity;
+                                        }
+                                    }
+                                </script>
                                 <div class="col-md-6 col-sm-12">
 
                                     <div class="total-container d-none" id="<?= $itemIds['PRICE_TOTAL'] ?>">
