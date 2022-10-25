@@ -7174,7 +7174,7 @@ function updateQuantitySection(inputId, maxQuantity){
     }
 }
 
-function updateQuantity(controlId, basketId, ratio, bUseFloatQuantity, detail = false) {
+function updateQuantity(controlId, basketId, ratio, bUseFloatQuantity, detail = false, maxVal = 0) {
     clearTimeout($.data(this, 'timer-quantity'));
     
     $.data(this, 'timer-quantity', setTimeout($.proxy(function () {
@@ -7183,9 +7183,11 @@ function updateQuantity(controlId, basketId, ratio, bUseFloatQuantity, detail = 
             newVal = parseFloat(BX(controlId).value) || 0,
             bIsCorrectQuantityForRatio = false,
             autoCalculate = ((BX("auto_calculation") && BX("auto_calculation").value == "Y") || !BX("auto_calculation"));
-
-
-
+            console.log(newVal);
+         if(newVal > maxVal){
+             newVal = maxVal;
+         }
+         console.log(newVal);
 
         if (ratio === 0 || ratio == 1) {
             bIsCorrectQuantityForRatio = true;
@@ -7366,7 +7368,11 @@ function setQuantity(basketId, ratio, sign, bUseFloatQuantity,detail = false) {
     newVal = (sign == 'up') ? curVal + ratio : curVal - ratio;
     if (newVal < 0)
         newVal = 0;
-
+    
+    if(newVal > maxQuantity){
+        newVal = maxQuantity;
+    }
+    
     if (bUseFloatQuantity) {
         newVal = parseFloat(newVal).toFixed(4);
     }
@@ -7379,9 +7385,7 @@ function setQuantity(basketId, ratio, sign, bUseFloatQuantity,detail = false) {
     if (!bUseFloatQuantity && newVal != newVal.toFixed(4)) {
         newVal = parseFloat(newVal).toFixed(4);
     }
-     if(newVal > maxQuantity){
-        newVal = maxQuantity;
-    }
+     
     newVal = getCorrectRatioQuantity(newVal, ratio, bUseFloatQuantity);
     newVal = correctQuantity(newVal);
     
