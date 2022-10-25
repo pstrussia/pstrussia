@@ -404,10 +404,9 @@ global $PHOENIX_TEMPLATE_ARRAY;
                                         <div class="quantity-container quantity-block row no-gutters align-items-center justify-content-between hidden-sm hidden-xs"
                                              data-item="<?= $arItem['ID'] ?>">
 
-                                            <span class="product-item-amount-field-btn-minus no-select" id="<?= $itemIds['QUANTITY_DOWN'] ?>">&minus;</span>
-
-                                            <input class="product-item-amount-field" id="<?= $itemIds['QUANTITY'] ?>" type="number" value="<?= $arItem["FIRST_ITEM"]["PRICE"]["MIN_QUANTITY"] ?>">
-                                            <span class="product-item-amount-field-btn-plus no-select" id="<?= $itemIds['QUANTITY_UP'] ?>">&plus;</span>
+                                             <span class="product-item-amount-field-btn-minus no-select" onclick="setQuantity(<?=$itemIds['QUANTITY']?>, 1, 'down', false,true,<?=$arItem['MAX_QUANTITY']?>);">&minus;</span>
+                                            <input class="product-item-amount-field" id="<?= $itemIds['QUANTITY'] ?>" type="number" value="<?= $arItem["FIRST_ITEM"]["PRICE"]["MIN_QUANTITY"] ?>" onchange="updateQuantitySection(<?=$itemIds['QUANTITY']?>,<?=$arItem['FIRST_ITEM']['MAX_QUANTITY']?>)">
+                                             <span class="product-item-amount-field-btn-plus no-select" onclick="setQuantity(<?=$itemIds['QUANTITY']?>, 1, 'up', false,true,<?=$arItem['FIRST_ITEM']['MAX_QUANTITY']?>);">&plus;</span>
                                         </div>
                                     </div>
 
