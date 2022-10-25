@@ -73,18 +73,18 @@ $this->setFrameMode(true);
 
 <form class="redemption-form" id="<?= $arParams['UID_FORM'] ?>" enctype="multipart/form-data" method="post">
     <div class="redemption-form__item">
-        <input class="redemption-form__input" name="f[CODE]" type="text" placeholder="Марка, модель, год">
+        <input class="redemption-form__input" required="" name="f[CODE]" type="text" placeholder="Марка, модель, год">
     </div>
     <div class="redemption-form__item">
-        <textarea class="redemption-form__input" name="f[DESCRIPTION]" placeholder="Описание неисправности (какие проблемы с рейкой)"></textarea>
+        <textarea class="redemption-form__input" required="" name="f[DESCRIPTION]" placeholder="Описание неисправности (какие проблемы с рейкой)"></textarea>
     </div>
     <div class="redemption-form__item">
-        <input class="redemption-form__input" name="f[NAME]" type="text" placeholder="Имя">
-            <input class="redemption-form__input" name="f[CITY]" type="text" placeholder="Город">
+        <input class="redemption-form__input" required="" name="f[NAME]" type="text" placeholder="Имя">
+            <input class="redemption-form__input" required="" name="f[CITY]" type="text" placeholder="Город">
                 </div>
                 <div class="redemption-form__item">
-                    <input class="redemption-form__input" name="f[TELEPHONE]" type="text" placeholder="Телефон">
-                        <input class="redemption-form__input" name="f[MAIL]" type="text" placeholder="Электронная почта">
+                    <input class="redemption-form__input" required="" name="f[TELEPHONE]" type="tel" placeholder="Телефон">
+                        <input class="redemption-form__input" required="" name="f[MAIL]" type="email" placeholder="Электронная почта">
                             </div>
                             <div class="redemption-form__footer">
                                 <div class="file">
