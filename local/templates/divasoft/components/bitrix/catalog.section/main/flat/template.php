@@ -408,14 +408,14 @@
                     <table>
                         <tr>
                             <td class="btn-quantity">
-                                <span class="product-item-amount-field-btn-minus no-select" onclick="setQuantity(<?=$itemIds['QUANTITY']?>, 1, 'down', false,true);">&minus;</span>
+                                <span class="product-item-amount-field-btn-minus no-select" onclick="setQuantity(<?=$itemIds['QUANTITY']?>, 1, 'down', false,true,<?=$arItem['MAX_QUANTITY']?>);">&minus;</span>
                             </td>
                             <td>
                                 <input class="product-item-amount-field" id="<?= $itemIds['QUANTITY'] ?>" type="number" name="<?= $arParams['PRODUCT_QUANTITY_VARIABLE'] ?>" max="<?=$arItem['MAX_QUANTITY']?>"
                                        value="<?= $arItem["FIRST_ITEM"]["PRICE"]["MIN_QUANTITY"] ?>" onchange="updateQuantitySection(<?=$itemIds['QUANTITY']?>,<?=$arItem['MAX_QUANTITY']?>)">
                             </td>
                             <td class="btn-quantity">
-                                <span class="product-item-amount-field-btn-plus no-select" onclick="setQuantity(<?=$itemIds['QUANTITY']?>, 1, 'up', false,true);">&plus;</span>
+                                <span class="product-item-amount-field-btn-plus no-select" onclick="setQuantity(<?=$itemIds['QUANTITY']?>, 1, 'up', false,true,<?=$arItem['MAX_QUANTITY']?>);">&plus;</span>
                             </td>
                         </tr>
                     </table>
