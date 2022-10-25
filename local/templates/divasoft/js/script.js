@@ -7174,7 +7174,7 @@ function updateQuantitySection(inputId, maxQuantity){
     }
 }
 
-function updateQuantity(controlId, basketId, ratio, bUseFloatQuantity, detail = false, maxVal = 0) {
+function updateQuantity(controlId, basketId, ratio, bUseFloatQuantity, detail = false, maxVal = undefined) {
     clearTimeout($.data(this, 'timer-quantity'));
     
     $.data(this, 'timer-quantity', setTimeout($.proxy(function () {
@@ -7183,11 +7183,10 @@ function updateQuantity(controlId, basketId, ratio, bUseFloatQuantity, detail = 
             newVal = parseFloat(BX(controlId).value) || 0,
             bIsCorrectQuantityForRatio = false,
             autoCalculate = ((BX("auto_calculation") && BX("auto_calculation").value == "Y") || !BX("auto_calculation"));
-            console.log(newVal);
-         if(newVal > maxVal){
+            
+         if(newVal > maxVal && maxVal != undefined){
              newVal = maxVal;
          }
-         console.log(newVal);
 
         if (ratio === 0 || ratio == 1) {
             bIsCorrectQuantityForRatio = true;
@@ -7354,22 +7353,23 @@ function recalcBasketAjax(params) {
     });
 }
 
-function setQuantity(basketId, ratio, sign, bUseFloatQuantity,detail = false) {
+function setQuantity(basketId, ratio, sign, bUseFloatQuantity,detail = false,maxQuantity = null) {
     if(!detail){
     var curVal = parseFloat(BX("QUANTITY_INPUT_" + basketId).value),
         newVal;
     var maxQuantity = BX("QUANTITY_INPUT_" + basketId).getAttribute('max');
     }else{
-       var maxQuantity = BX(basketId).getAttribute('max');
         var curVal = parseFloat(BX(basketId).value),
         newVal;
+
     }
     
     newVal = (sign == 'up') ? curVal + ratio : curVal - ratio;
-    if (newVal < 0)
-        newVal = 0;
     
-    if(newVal > maxQuantity){
+    if (newVal < 0){
+        newVal = 0;
+    }
+    if(newVal > maxQuantity && maxQuantity != null){
         newVal = maxQuantity;
     }
     
