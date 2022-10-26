@@ -1,5 +1,5 @@
 <?php
-
+include_once($_SERVER["DOCUMENT_ROOT"]."/bitrix/modules/wsrubi.smtp/classes/general/wsrubismtp.php");
 require_once __DIR__ . '/classes/divasoft/divasoft.loader.php'; // 
 define("CATALOG_IBLOCK", 14);     // Инфоблок каталог товаров
 function cl_print_r($var, $label = '') {
