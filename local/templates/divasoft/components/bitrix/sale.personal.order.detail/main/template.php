@@ -899,57 +899,51 @@ ShowError($error);
                                             <div class="sale-order-detail-order-item-tr sale-order-detail-order-basket-info sale-order-detail-order-item-tr-first">
                                                 <div class="sale-order-detail-order-item-td">
                                                     <div class="sale-order-detail-order-item-block">
-                                                        <div class="row no-gutters align-items-center">
-                                                            <div class="col-xl-2 col-3">
-
-                                                                <div class="sale-order-detail-order-item-img-block">
-                                                                    <a href="<?= $basketItem['DETAIL_PAGE_URL'] ?>">
-                                                                        <div class="sale-order-detail-order-item-imgcontainer"
-                                                                             style="background-image: url(<?= $basketItem['PICTURE']['SRC'] ?>);
-                                                                             background-image: -webkit-image-set(url(<?= $basketItem['PICTURE']['SRC'] ?>) 1x,
-                                                                             url(<?= $basketItem['PICTURE']['SRC'] ?>) 2x)">
-                                                                        </div>
-                                                                    </a>
-                                                                </div>
-
+                                                        <div class="row no-gutters align-items-center flex-nowrap">
+                                                            <div class="sale-order-detail-order-item-img-block">
+                                                                <a href="<?= $basketItem['DETAIL_PAGE_URL'] ?>">
+                                                                    <div class="sale-order-detail-order-item-imgcontainer"
+                                                                         style="background-image: url(<?= $basketItem['PICTURE']['SRC'] ?>);
+                                                                         background-image: -webkit-image-set(url(<?= $basketItem['PICTURE']['SRC'] ?>) 1x,
+                                                                         url(<?= $basketItem['PICTURE']['SRC'] ?>) 2x)">
+                                                                    </div>
+                                                                </a>
                                                             </div>
-                                                            <div class="col-xl-10 col-9">
-                                                                <div class="sale-order-detail-order-item-content">
-                                                                    <div class="sale-order-detail-order-item-title">
-                                                                        <a href="<?= $basketItem['DETAIL_PAGE_URL'] ?>">
-                                                                            <?= $basketItem['NAME'] ?>
-                                                                        </a>
-                                                                        <? if(isset($basketItem['NAME_OFFERS'])): ?>
-                                                                        <? if(strlen($basketItem['NAME_OFFERS'])): ?>
-                                                                        <div class="name_offers"><?= $basketItem['NAME_OFFERS'] ?></div>
-                                                                        <? endif; ?>
-                                                                        <? endif; ?>
-                                                                    </div>
-                                                                    <?
-                                                                    if (isset($basketItem['PROPS']) && is_array($basketItem['PROPS']))
-                                                                    {
-                                                                    foreach ($basketItem['PROPS'] as $itemProps)
-                                                                    {
-                                                                    ?>
-                                                                    <div class="sale-order-detail-order-item-color">
-                                                                        <span class="sale-order-detail-order-item-color-name">
-                                                                            <?= $itemProps['NAME'] ?>:</span>
-                                                                        <span class="sale-order-detail-order-item-color-type">
-                                                                            <?= $itemProps['VALUE'] ?></span>
-                                                                    </div>
-                                                                    <?
-                                                                    }
-                                                                    }
-                                                                    ?>
-
-                                                                    <? if(is_array($basketItem['AFTER_PAY_TEXT']) && $payed): ?>
-
-                                                                    <div class="after-pay-text">
-                                                                        <?= $basketItem['AFTER_PAY_TEXT']['TEXT'] ?>
-                                                                    </div>
-
+                                                            <div class="sale-order-detail-order-item-content">
+                                                                <div class="sale-order-detail-order-item-title">
+                                                                    <a href="<?= $basketItem['DETAIL_PAGE_URL'] ?>">
+                                                                        <?= $basketItem['NAME'] ?>
+                                                                    </a>
+                                                                    <? if(isset($basketItem['NAME_OFFERS'])): ?>
+                                                                    <? if(strlen($basketItem['NAME_OFFERS'])): ?>
+                                                                    <div class="name_offers"><?= $basketItem['NAME_OFFERS'] ?></div>
+                                                                    <? endif; ?>
                                                                     <? endif; ?>
                                                                 </div>
+                                                                <?
+                                                                if (isset($basketItem['PROPS']) && is_array($basketItem['PROPS']))
+                                                                {
+                                                                foreach ($basketItem['PROPS'] as $itemProps)
+                                                                {
+                                                                ?>
+                                                                <div class="sale-order-detail-order-item-color">
+                                                                    <span class="sale-order-detail-order-item-color-name">
+                                                                        <?= $itemProps['NAME'] ?>:</span>
+                                                                    <span class="sale-order-detail-order-item-color-type">
+                                                                        <?= $itemProps['VALUE'] ?></span>
+                                                                </div>
+                                                                <?
+                                                                }
+                                                                }
+                                                                ?>
+
+                                                                <? if(is_array($basketItem['AFTER_PAY_TEXT']) && $payed): ?>
+
+                                                                <div class="after-pay-text">
+                                                                    <?= $basketItem['AFTER_PAY_TEXT']['TEXT'] ?>
+                                                                </div>
+
+                                                                <? endif; ?>
                                                             </div>
                                                         </div>
 
