@@ -571,21 +571,22 @@ ShowError($error);
                         ?>
                         <div class="row">
                             <div class="col-12 sale-order-detail-payment-options-shipment-container">
-                                <div class="row">
+                                <div class="row no-margin">
                                     <div class="col-12 sale-order-detail-payment-options-shipment">
                                         <div class="row">
-                                            <div class="col-3 sale-order-detail-payment-options-shipment-image-container">
+                                            <div class="col-lg-2 col-md-3 col-12 sale-order-detail-payment-options-shipment-image-container">
                                                 <?
                                                 if (strlen($shipment['DELIVERY']["SRC_LOGOTIP"]))
                                                 {
                                                 ?>
                                                 <span class="sale-order-detail-payment-options-shipment-image-element"
                                                       style="background-image: url('<?= htmlspecialcharsbx($shipment['DELIVERY']["SRC_LOGOTIP"]) ?>')"></span>
+                                                      <br>
                                                       <?
                                                       }
                                                       ?>
                                             </div>
-                                            <div class="col-7 sale-order-detail-payment-options-methods-shipment-list">
+                                            <div class="col-lg-8 col-md-9 col-10 sale-order-detail-payment-options-methods-shipment-list">
                                                 <div class="sale-order-detail-payment-options-methods-shipment-list-item-title bold">
                                                     <?
                                                     //change date
