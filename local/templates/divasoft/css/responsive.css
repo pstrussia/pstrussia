@@ -1740,7 +1740,7 @@
 		padding-right: 5px;
 	}
 	.sale-order-detail-order-item-img-block {
-		width: 55px;
+		max-width: 90px;
 	}
 	div.catalog-list.FLAT div.item div.wrapper-image {
 		height: 150px;
@@ -3024,9 +3024,9 @@
 		padding-top: 0;
 	}
 
-	.sale-order-detail-order-item-img-block {
+	/* .sale-order-detail-order-item-img-block {
 		width: 45px;
-	}
+	} */
 	div.news-list-wrap.BLOG div.content-inner div.block.padding-on:first-child,
 	div.news-list-wrap.ACTIONS div.content-inner div.block.padding-on:first-child {
 		padding-top: 10px;
@@ -6547,7 +6547,8 @@
 		right: -35px;
 	}
 	.sale-order-detail-order-item-img-block {
-		width: 45px;
+		max-width: 90px;
+		margin: 0 10px 0 0;
 	}
 	.sale-order-detail-order-item-tr,
 	.sale-order-detail-order-item-td {

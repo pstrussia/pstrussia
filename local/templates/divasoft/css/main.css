@@ -23479,9 +23479,15 @@ div.sale-order-detail-payment-options-methods-image-container {
 }
 
 .sale-order-detail-order-item-img-block {
-    width: 65px;
-    margin: 0;
+    max-width: 130px;
+    width: 100%;
+    margin: 0 30px 0 -10px;
+    background-color: #eee;
 }
+
+/* .sale-order-detail-order-item-content{
+    padding-left: 15px;
+} */
 
 .bx-step-completed .sale-order-detail-order-item-img-block {
     width: 48px;
