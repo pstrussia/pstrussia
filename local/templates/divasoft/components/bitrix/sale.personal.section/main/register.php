@@ -60,7 +60,11 @@ require("include/_head.php");
                                         <span class="desc"><?= $PHOENIX_TEMPLATE_ARRAY["MESS"]["PERSONAL_REGISTER_INPUT_EMAIL"] ?></span>
                                         <input class="focus-anim email require" name="bx-email" type="email" value="" autocomplete="off" />
                                     </div>
-
+                                     <div class="input">                  
+                                        <div class="bg"></div>
+                                        <span class="desc"><?= $PHOENIX_TEMPLATE_ARRAY["MESS"]["PERSONAL_REGISTER_INPUT_PASSWORD"] ?></span>
+                                        <input class="focus-anim require" type="password" name="bx-password" value="" autocomplete="off" />
+                                    </div>
                                     <div class="input">
                                         <div class="bg"></div>
                                         <span class="desc">Промокод</span>
