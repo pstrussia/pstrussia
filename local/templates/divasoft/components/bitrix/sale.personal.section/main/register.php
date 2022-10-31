@@ -70,7 +70,7 @@ require("include/_head.php");
                                         <span class="desc">Промокод</span>
                                         <input class="focus-anim" type="text" name="promo" value="" autocomplete="off" />
 
-                                    </div>
+                                    </div> 
 
                                     <div class="errors">
                                     </div>
