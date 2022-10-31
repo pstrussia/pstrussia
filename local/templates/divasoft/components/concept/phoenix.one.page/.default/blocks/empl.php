@@ -5,7 +5,7 @@
         <div class="empl-parent">
             <?$APPLICATION->IncludeComponent(
                 "concept:phoenix.news-list",
-                "empl",
+                "empl-custom",
                 Array(
                     "COMPOSITE_FRAME_MODE" => "N",
                     "COUNT" => "",
@@ -24,7 +24,7 @@
         
         <?$APPLICATION->IncludeComponent(
             "concept:phoenix.news-list",
-            "empl",
+            "empl-custom",
             Array(
                 "COMPOSITE_FRAME_MODE" => "N",
                 "COUNT" => "",
