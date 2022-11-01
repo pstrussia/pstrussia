@@ -49,19 +49,15 @@
         <a href="<?=$arItem['FIRST_ITEM']['DETAIL_PAGE_URL']?>" class="name-element" id="<?=$itemIds['NAME']?>">
             <?=$arItem["NAME_HTML"]?>
         </a>
-
         <div class="wrapper-article-available row-line d-none d-lg-block" id="<?=$itemIds['ARTICLE_AVAILABLE']?>">
-
-            
-                <div class="detail-article italic <?if(strlen($arItem["FIRST_ITEM"]["ARTICLE"])<=0):?>d-none<?endif;?>" title="<?=(strlen($arItem["FIRST_ITEM"]["ARTICLE"])>0)?$PHOENIX_TEMPLATE_ARRAY["MESS"]["ARTICLE_SHORT"].$arItem["FIRST_ITEM"]["ARTICLE"]:""?>"><?=(strlen($arItem["FIRST_ITEM"]["ARTICLE"])>0)?$PHOENIX_TEMPLATE_ARRAY["MESS"]["ARTICLE_SHORT"].$arItem["FIRST_ITEM"]["ARTICLE"]:""?></div>
-            
-
+            <div class="detail-article italic <?if(strlen($arItem["FIRST_ITEM"]["ARTICLE"])<=0):?>d-none<?endif;?>" title="<?=(strlen($arItem["FIRST_ITEM"]["ARTICLE"])>0)?$PHOENIX_TEMPLATE_ARRAY["MESS"]["ARTICLE_SHORT"].$arItem["FIRST_ITEM"]["ARTICLE"]:""?>"><?=(strlen($arItem["FIRST_ITEM"]["ARTICLE"])>0)?$PHOENIX_TEMPLATE_ARRAY["MESS"]["ARTICLE_SHORT"].$arItem["FIRST_ITEM"]["ARTICLE"]:""?></div>
             <div class="product-available-js hidden-js"><?=$arItem["FIRST_ITEM"]["QUANTITY"]["HTML"]?></div>
-            
         </div>
 
-        
-
+        <div class="states">
+            <div class="element-state">Артикул: 546465446</div>
+            <div class="element-state">Состояние: Новый</div>
+        </div>
 
         <?if( $arItem['HAVEOFFERS']
                 || strlen($arItem["FIRST_ITEM"]["SHORT_DESCRIPTION"])
