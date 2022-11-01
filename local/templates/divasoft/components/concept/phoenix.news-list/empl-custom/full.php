@@ -106,37 +106,32 @@
 
                                 <?if(strlen($arItem["PROPERTIES"]["EMPL_PHONE"]["~VALUE"])>0 || (strlen($arItem["PROPERTIES"]["EMPL_EMAIL"]["~VALUE"])>0)):?>
                                     <div class="contacts-board">
-                                        <div class="row align-items-center">
+                                        <div class="row">
                                        
-                                            <?if(strlen($arItem["PROPERTIES"]["EMPL_PHONE"]["~VALUE"])>0):?>
-
-                                                <div class="col-sm-6 col-12">
-
-                                                    <div class="empl-phone bold"><span title='<?=$arItem["PROPERTIES"]["EMPL_PHONE"]["VALUE"]?>'>
-
+                                            
+                                            <div class="col-sm-6 col-12">
+                                                <?if(strlen($arItem["PROPERTIES"]["EMPL_PHONE"]["~VALUE"])>0):?>
+                                                    <div class="empl-phone bold">
                                                         <a href="tel:<?=$arItem["PHONE_TRIM"]?>"><?=$arItem['PROPERTIES']['EMPL_PHONE']['~VALUE']?></a>
-                                                    </span></div>
+                                                    </div>
+                                                    <div class="empl-btns">
+                                                        <a class="empl-btn empl-call bold" href="tel:<?=$arItem["PHONE_TRIM"]?>">Позвонить</a>
+                                                        <?foreach ($arItem["PROPERTIES"]['SOC']['VALUE'] as $item): ?>
+                                                        <?if(!empty($item)){?>
+                                                            <a class="empl-btn empl-whatsapp bold" target="_blank" title="Написать в WhatsApp" href="https://api.whatsapp.com/send?phone=<?=$arItem["PHONE_TRIM"]?>">WhatsApp</a>
+                                                        <?}
+                                                        endforeach;?>
+                                                    </div>
+                                                <?endif;?>
+                                            </div>
 
-                                                </div>
-
-                                            <?endif;?>
-                                             <?foreach ($arItem["PROPERTIES"]['SOC']['VALUE'] as $item): ?>
-                                            <?if(!empty($item)){?>
-                                                 <div class="col-sm-6 col-12">
-
-                                                    <div class="">
-                                                        
-                                                       <?=$item["TEXT"]?>
-                                                   </div>
-
-                                                </div>
-                                            <?}
-                                            endforeach;?>
-                                            <?if(strlen($arItem["PROPERTIES"]["EMPL_EMAIL"]["~VALUE"]) > 0):?>
-                                                <div class="col-sm-6 col-12">
-                                                    <div class="empl-email"><a href="mailto:<?=$arItem["PROPERTIES"]["EMPL_EMAIL"]["~VALUE"]?>"><span class="bord-bot" title='<?=$arItem["PROPERTIES"]["EMPL_EMAIL"]["VALUE"]?>'><?=$arItem["PROPERTIES"]["EMPL_EMAIL"]["~VALUE"]?></span></a></div>
-                                                </div>
-                                            <?endif;?>
+                                            <div class="col-sm-6 col-12">
+                                                <?if(strlen($arItem["PROPERTIES"]["EMPL_EMAIL"]["~VALUE"]) > 0):?>
+                                                    <div class="empl-email bold">
+                                                        <a href="mailto:<?=$arItem["PROPERTIES"]["EMPL_EMAIL"]["~VALUE"]?>"><?=$arItem["PROPERTIES"]["EMPL_EMAIL"]["~VALUE"]?></a>
+                                                    </div>
+                                                <?endif;?>
+                                            </div>
 
                                         </div>
                                     </div>
