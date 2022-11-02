@@ -20,7 +20,11 @@
                 <div class="product-available-js hidden-js"><?= $arItem["FIRST_ITEM"]["QUANTITY"]["HTML"] ?></div>
             </div>
             <div class="states">
-                <div class="element-state">Артикул: 546465446</div>
+               <?foreach($arItem['FIRST_ITEM']['PROP_CHARS'] as $item): 
+            if($item['NAME'] == 'Артикул'){?>
+            <div class="element-state">Артикул: <?=$item['VALUE']?></div>
+            <?}
+            endforeach;?>
                 <? if ($sost = $arResult["SOSTOYANIE_TOVARA"][$arItem["ID"]]) : ?>
                     <div class="element-state">Состояние: <?= $sost ?></div>
                 <? endif; ?>
