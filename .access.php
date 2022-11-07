@@ -1,3 +1,14 @@
 <?
+$PERM["video"]["*"]="R";
+$PERM["online"]["*"]="R";
+$PERM["desktop_app"]["*"]="R";
+$PERM["DVS_TEST"]["2"]="D";
+$PERM["DVS_TEST"]["3"]="D";
+$PERM["DVS_TEST"]["4"]="D";
+$PERM["DVS_TEST"]["9"]="D";
+$PERM["DVS_TEST"]["10"]="D";
+$PERM["DVS_TEST"]["5"]="D";
+$PERM["DVS_TEST"]["*"]="D";
+$PERM["dvs.php"]["2"]="D";
 $PERM["/"]["*"]="R";
 ?>

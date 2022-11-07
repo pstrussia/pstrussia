@@ -669,7 +669,7 @@ $(document).on("click", ".auth-submit", function()
     
     return false;
 });
-
+ 
 $(document).on("click", ".register-submit", function()
 {
     var form = $(this).parents("form.reg-form"),
@@ -678,12 +678,18 @@ $(document).on("click", ".register-submit", function()
         name = $("input[name='bx-name']", form),
         password = $("input[name='bx-password']", form),
         email = $("input[name='bx-email']", form),
+        promo = $("input[name='promo']",form),
         error = 0,
         count = 0,
         button = $("button", form),
         load = $("div.load", form);
 
-
+	var $data = {};
+	$(form).find ('input, textearea, select, button').each(function() {
+	  $data[this.name] = $(this).val();
+	});
+	$data["send"] = "Y";
+	$data["site_id"] = $("input.site_id").val();
 
     if($("input.agreecheck", form).length>0)
     {
@@ -750,14 +756,7 @@ $(document).on("click", ".register-submit", function()
 
                 $.post(
                     "/bitrix/tools/concept.phoenix/ajax/personal/reg.php",
-                    {
-                        "send": "Y",
-                        "bx-name": name.val(),
-                        "bx-email": email.val(),
-                        "bx-password": password.val(),
-                        "site_id": $("input.site_id").val(),
-                        "captchaToken": captchaToken
-                    },
+                    $data,
                     function(data)
                     {
                         if(data.OK == "N")
@@ -783,13 +782,7 @@ $(document).on("click", ".register-submit", function()
         {
             $.post(
                 "/bitrix/tools/concept.phoenix/ajax/personal/reg.php",
-                {
-                    "send": "Y",
-                    "bx-name": name.val(),
-                    "bx-email": email.val(),
-                    "bx-password": password.val(),
-                    "site_id": $("input.site_id").val()
-                },
+                $data,
                 function(data)
                 {
                     if(data.OK == "N")

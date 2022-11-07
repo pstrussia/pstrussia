@@ -353,7 +353,7 @@ else
 	$hideDelivery = empty($arResult['DELIVERY']);
 	?>
 
-	<form action="<?=POST_FORM_ACTION_URI?>" method="POST" name="ORDER_FORM" id="bx-soa-order-form" enctype="multipart/form-data">
+	<form action="<?=POST_FORM_ACTION_URI?>" method="POST" name="ORDER_FORM" id="bx-soa-order-form" enctype="multipart/form-data" class="reg-ur-form">
 
 
 		
@@ -446,26 +446,26 @@ else
 
 				<? if ($arParams['DELIVERY_TO_PAYSYSTEM'] === 'p2d'): ?>
 					<!--	PAY SYSTEMS BLOCK	-->
-					<div id="bx-soa-paysystem" data-visited="false" class="bx-soa-section bx-active">
+					<div id="bx-soa-paysystem" data-visited="false" class="bx-soa-section "> <!-- bx-active убрал из class -->
 
-						<div class="bx-soa-section-title-container row no-margin">
+<!--						<div class="bx-soa-section-title-container row no-margin">
 							<div class="col-auto wr-icon">
 								<div class="icon main-color paysystem"></div>
 							</div>
 							<div class="col bx-soa-section-title main1 wr-col-right">
-								<?=$arParams['MESS_PAYMENT_BLOCK_NAME']?>
+								<?//=$arParams['MESS_PAYMENT_BLOCK_NAME']?>
 							</div>
 
-						</div>
+						</div>-->
 
-						<div class="row no-margin row-xs-margin bx-soa-section-content">
+<!--						<div class="row no-margin row-xs-margin bx-soa-section-content">
 							<div class="col-auto wr-ghost-icon d-none d-md-block">
 								<div class="ghost-icon"></div>
 							</div>
 							<div class="col wr-col-right">
 								<div class="bx-soa-section-content-node"></div>
 							</div>
-						</div>
+						</div>-->
 
 
 					</div>

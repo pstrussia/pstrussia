@@ -1,5 +1,7 @@
 .vscode
 /bitrix/*
+!/bitrix/modules/concept.phoenix/lang/ru/classes/general/CPhoenix.php
+!/bitrix/toolsconcept.phoenix/ajax/personal/reg.php
 .idea/*
 /vendor/
 /upload/

@@ -39,4 +39,7 @@ foreach($arResult["ITEMS"] as $key=>$arItem)
 global $sotbitFilterResult;
 $sotbitFilterResult = $arResult;
 
+$arResult["JS_FILTER_PARAMS"]["DVS_FILTER"] = $arParams["DVS_FILTER"];
+
 }
+//cl_print_r($arResult);

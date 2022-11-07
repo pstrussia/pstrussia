@@ -292,7 +292,7 @@ else
 					</div>
 				</div>
 			</div>
-
+                    <??>
 			<div class="row sale-order-detail-payment-options">
 
 				<div class="col-12 sale-order-detail-payment-options-container">
@@ -543,8 +543,8 @@ else
 					</div>
 				</div>
 			</div>
-
-			<?
+                    <??>
+			<?/*
 			if (!empty($arResult['SHIPMENT']))
 			{
 				?>
@@ -831,7 +831,7 @@ else
 				</div>
 				<?
 			}
-			?>
+			*/?>
 
 
 			<div class="row sale-order-detail-payment-options-order-content">

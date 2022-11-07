@@ -192,8 +192,6 @@ $APPLICATION->IncludeComponent(
 		"PAGE_ELEMENT_COUNT" => "24",
 		"PARTIAL_PRODUCT_PROPERTIES" => "N",
 		"PRICE_CODE" => array(
-			0 => "RETAIL",
-			1 => "OPT",
 		),
 		"PRICE_VAT_INCLUDE" => "Y",
 		"PRICE_VAT_SHOW_VALUE" => "N",
@@ -285,6 +283,13 @@ $APPLICATION->IncludeComponent(
 		"USE_ALSO_BUY" => "N",
 		"DETAIL_SHOW_MAX_QUANTITY" => "N",
 		"DETAIL_SHOW_BASIS_PRICE" => "Y",
+		"SHOW_SKU_DESCRIPTION" => "N",
+		"GIFTS_DETAIL_BLOCK_TITLE" => "Выберите один из подарков",
+		"GIFTS_DETAIL_TEXT_LABEL_GIFT" => "Подарок",
+		"GIFTS_SECTION_LIST_BLOCK_TITLE" => "Подарки к товарам этого раздела",
+		"GIFTS_SECTION_LIST_TEXT_LABEL_GIFT" => "Подарок",
+		"GIFTS_MESS_BTN_BUY" => "Выбрать",
+		"GIFTS_MAIN_PRODUCT_DETAIL_BLOCK_TITLE" => "Выберите один из товаров, чтобы получить подарок",
 		"SEF_URL_TEMPLATES" => array(
 			"sections" => "",
 			"section" => "#SECTION_CODE#/",

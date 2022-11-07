@@ -114,7 +114,7 @@ global $PHOENIX_TEMPLATE_ARRAY;
                             <?foreach($arResult["SECTIONS"] as $key => $arSection):?>
 
                                 <div class="<?=$cols?>">
-
+				
                                     <a href="<?=$arSection["SECTION_PAGE_URL"]?>" class="d-block link-item">
                                         <div class="picture-board">
 

@@ -634,7 +634,7 @@ global $PHOENIX_TEMPLATE_ARRAY;
 					                         
 					                            <div class="wrapper-quantity-total row no-gutters align-items-center">
 
-					                                <div class="col-6">
+					                                <div class="col-md-6 col-sm-12">
 
 					                                    <div class="quantity-container row no-gutters align-items-center justify-content-between">
 					                                        <span class="product-item-amount-field-btn-minus" id="<?=$itemIds['QUANTITY_DOWN']?>">&minus;</span>
@@ -644,7 +644,7 @@ global $PHOENIX_TEMPLATE_ARRAY;
 					                                    </div>
 					                                </div>
 
-					                                <div class="col-6">
+					                                <div class="col-md-6 col-sm-12">
 
 					                                    <div class="total-container d-none" id="<?=$itemIds['PRICE_TOTAL']?>">
 					                                        <span class="desc-total"><?=$PHOENIX_TEMPLATE_ARRAY["MESS"]["PRICE_TOTAL_PREFIX"]?></span><span class="total-value bold" title=''></span>
@@ -659,7 +659,7 @@ global $PHOENIX_TEMPLATE_ARRAY;
 
 					                        <div class="wrapper-btns row no-gutters justify-content-between hidden-js" id="<?=$itemIds["BASKET_ACTIONS"]?>">
 
-					                            <div class="col-6 left-btn wr-btn-basket d-none">
+					                            <div class="col-md-6 col-sm-12 left-btn wr-btn-basket d-none">
 					                                <a 
 					                                id = "<?=$itemIds['ADD2BASKET']?>"
 					                                href="javascript:void(0);" 
@@ -678,7 +678,7 @@ global $PHOENIX_TEMPLATE_ARRAY;
 					                                class="bold added-to-cart-style move2basket"><?=$PHOENIX_TEMPLATE_ARRAY["ITEMS"]["SHOP"]["ITEMS"]["CART_BTN_ADDED_NAME"]["~VALUE"]?></a>
 					                            </div>
 
-					                            <div class="col-6 right-btn wr-btn-fast-order d-none">
+					                            <div class="col-md-6 col-sm-12 right-btn wr-btn-fast-order d-none">
 					                                <a 
 					                                    id="<?=$itemIds['FAST_ORDER']?>"
 					                                    title = "<?=$PHOENIX_TEMPLATE_ARRAY["ITEMS"]["SHOP"]["ITEMS"]["CART_BTN_FAST_ORDER_NAME_IN_CATALOG_DETAIL"]["VALUE"]?>" 
