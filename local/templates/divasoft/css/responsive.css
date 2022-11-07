@@ -1400,20 +1400,6 @@
 	div.empl-full div.container-photo {
 		padding: 15px;
 	}
-
-	div.block.small-block div.empl-full div.container-photo div.wrap-photo {
-		width: 180px;
-		height: 180px;
-	}
-	div.block.small-block div.empl-full div.container-photo div.wrap-photo img {
-		max-height: 180px;
-		max-width: 180px;
-	}
-	div.empl-full div.empl-phone {
-		font-size: 16px;
-		line-height: 19px;
-		margin-bottom: 6px;
-	}
 	/**/
 	div.slider-gallery .slick-prev {
 		left: 25px;
@@ -2477,25 +2463,6 @@
 	div.empl-full div.empl-table div.empl-cell.right {
 		margin-top: 10px;
 	}
-	div.empl-full div.container-photo div.wrap-photo,
-	div.block.small-block div.empl-full div.container-photo div.wrap-photo {
-		margin: 20px auto 70px;
-	}
-	div.block.small-block div.empl-full div.container-photo div.wrap-photo {
-		width: 180px;
-		height: 180px;
-	}
-	div.block.small-block div.empl-full div.container-photo div.wrap-photo img {
-		max-height: 180px;
-		max-width: 180px;
-	}
-	div.empl-full div.empl-phone {
-		font-size: 15px;
-		line-height: 19px;
-	}
-	div.empl-full div.empl-email a {
-		font-size: 14px;
-	}
 	div.content-inner {
 		padding-left: 15px;
 	}
@@ -2905,9 +2872,6 @@
 	div.opinion.slider-small div.slider-mini .slick-dots,
 	div.block.small-block div.opinion.slider-small div.slider-mini .slick-dots {
 		padding-left: 185px;
-	}
-	div.empl-full div.empl-email {
-		margin-top: -1px;
 	}
 
 	.wr-filter-side,
@@ -4994,10 +4958,6 @@
 		padding: 10px 15px 20px;
 		display: table-footer-group;
 	}
-	div.empl-full div.container-photo div.wrap-photo/*, 
-	div.block.small-block div.empl-full div.container-photo div.wrap-photo*/ {
-		margin: 0 auto 40px;
-	}
 	div.empl-full div.container-photo div.wrap-photo div.icon-center {
 		width: 40px;
 		height: 40px;
@@ -5032,14 +4992,6 @@
 	}
 	div.empl-full div.container-photo {
 		padding: 15px;
-	}
-	div.empl-full div.container-photo div.wrap-photo {
-		width: 220px;
-		height: 220px;
-	}
-	div.empl-full div.container-photo div.wrap-photo img {
-		max-width: 220px;
-		max-height: 220px;
 	}
 
 	/**/
@@ -6144,10 +6096,6 @@
 	div.empl div.element div.empl-face {
 		border-radius: 50%;
 		margin: auto;
-	}
-	div.empl-full div.empl-phone {
-		font-size: 20px;
-		line-height: 24px;
 	}
 	div.empl-full div.empl-phone span {
 		background-position: left 5px;
@@ -7359,22 +7307,6 @@
 	.container {
 		max-width: 100%;
 	}
-	div.block.small-block div.empl-full div.container-photo div.wrap-photo {
-		margin: 0px auto 40px;
-		width: 180px;
-		height: 180px;
-	}
-	div.block.small-block div.empl-full div.container-photo div.wrap-photo img {
-		max-width: 180px;
-		max-height: 180px;
-	}
-	div.empl-full div.empl-phone {
-		font-size: 15px;
-		line-height: 19px;
-	}
-	div.empl-full div.empl-email a {
-		font-size: 14px;
-	}
 	div.cart-info-block div.quantity-container input.product-item-amount-field {
 		width: 30px;
 	}
@@ -7423,15 +7355,6 @@
 	}
 	div.block.small-block div.empl-full div.wrap-info {
 		text-align: center;
-	}
-	div.block.small-block div.empl-full div.container-photo div.wrap-photo {
-		margin: 0px auto 30px;
-		width: 220px;
-		height: 220px;
-	}
-	div.block.small-block div.empl-full div.container-photo div.wrap-photo img {
-		max-width: 220px;
-		max-height: 220px;
 	}
 	div.empl-full .contacts-board,
 	div.block.small-block div.empl-full .contacts-board {
@@ -7569,5 +7492,9 @@
 	div.shadow-modal-wind-contact div.soc-group a.soc_ic {
 		width: 32px;
 		height: 32px;
+	}
+	div.empl-full div.empl-name,
+	div.block.small-block div.empl-full div.empl-name {
+		text-align: center;
 	}
 }

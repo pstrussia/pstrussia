@@ -2278,17 +2278,6 @@ div.block.small-block div.empl-full div.container-photo {
     padding: 20px 10px;
 }
 
-div.block.small-block div.empl-full div.container-photo div.wrap-photo {
-    margin: -50px auto 50px;
-    width: 200px;
-    height: 200px;
-}
-
-div.block.small-block div.empl-full div.container-photo div.wrap-photo img {
-    max-height: 200px;
-    max-width: 200px;
-}
-
 div.block.small-block div.empl-full div.line {
     margin-top: 19px;
     height: 5px;
@@ -9003,24 +8992,64 @@ div.empl-full div.empl-phone {
     overflow: hidden;
     /*margin-bottom: 5px;*/
 }
+div.empl-full div.empl-phone:hover {
+    text-decoration: underline;
+}
 
-div.empl-full div.empl-phone span {
+/* div.empl-full div.empl-phone span {
     white-space: nowrap;
     display: inline-block;
     padding-left: 20px;
     background: url("../images/svg/phone_bl.svg") left 4px no-repeat;
     background-size: 15px;
-}
+} */
 
-div.empl-full div.empl-phone span a {
-    color: #000;
+div.empl-full div.empl-phone a {
+    color: #181818;
+}
+.empl-btns{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 10px;
+}
+@media (max-width: 576px) {
+    .empl-btns{
+        justify-content: center;
+        margin-bottom: 40px;
+    }
+}
+.empl-btn {
+    font-size: 15px;
+    padding: 6px 14px;
+    border-radius: 100px;
+    transition: all 0.2s ease 0s;
+}
+.empl-btn:hover {
+    opacity: 0.8;
+    color: #fff;
+}
+.empl-call {
+    background-color: #181818;
+    color: #fff;
+}
+.empl-whatsapp{
+    background-color: #35D652;
+    color: #fff;
+}
+.empl-whatsapp{
+    background-color: #35D652;
+    color: #fff;
 }
 
 div.empl-full div.empl-email {
-    max-width: 100%;
-    text-overflow: ellipsis;
-    overflow: hidden;
-    margin-top: -7px;
+    font-size: 19px;
+    color: #181818;
+    text-decoration: none;
+}
+div.empl-full div.empl-email:hover {
+    text-decoration: underline;
+    color: #181818;
 }
 
 div.cart-block div.empl-full div.empl-email {
@@ -9028,12 +9057,15 @@ div.cart-block div.empl-full div.empl-email {
 }
 
 div.empl-full div.empl-email a {
+    color: #181818;
+}
+/* div.empl-full div.empl-email a {
     font-size: 16px;
     line-height: 22px;
     white-space: nowrap;
     padding-left: 20px;
     background: url("../images/svg/mail_bl.svg") left 7px no-repeat;
-}
+} */
 
 div.empl-full div.empl-desc {
     font-size: 15px;
@@ -9085,9 +9117,6 @@ div.empl-full div.container-photo {
 }
 
 div.empl-full div.container-photo div.wrap-photo {
-    margin: -100px auto 50px;
-    width: 250px;
-    height: 250px;
     position: relative;
 }
 
@@ -9100,6 +9129,7 @@ div.empl-full div.container-photo div.wrap-photo img {
     box-shadow: 0px 20px 60px 0px rgba(0, 0, 0, 0.22);
     max-height: 250px;
     max-width: 250px;
+    width: 100%;
 }
 
 div.empl-full div.container-photo div.wrap-photo div.icon-center {
