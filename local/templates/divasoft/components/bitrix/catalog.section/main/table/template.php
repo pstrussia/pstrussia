@@ -15,18 +15,20 @@
         <a href="<?= $arItem["DETAIL_PAGE_URL"] ?>" class="name-element">
             <?= strip_tags($arItem["NAME_HTML"]) ?>
         </a>
-        <? if ($sost = $arResult["SOSTOYANIE_TOVARA"][$arItem["ID"]]) : ?>
-            <div class="element-state">Состояние: <?= $sost ?></div>
-        <? endif; ?>
         <div class="wrapper-article-available row-line d-none d-lg-block" id="<?= $itemIds['ARTICLE_AVAILABLE'] ?>">
-
-
             <div class="detail-article italic <? if (strlen($arItem["FIRST_ITEM"]["ARTICLE"]) <= 0) : ?>d-none<? endif; ?>" title="<?= (strlen($arItem["FIRST_ITEM"]["ARTICLE"]) > 0) ? $PHOENIX_TEMPLATE_ARRAY["MESS"]["ARTICLE_SHORT"] . $arItem["FIRST_ITEM"]["ARTICLE"] : "" ?>"><?= (strlen($arItem["FIRST_ITEM"]["ARTICLE"]) > 0) ? $PHOENIX_TEMPLATE_ARRAY["MESS"]["ARTICLE_SHORT"] . $arItem["FIRST_ITEM"]["ARTICLE"] : "" ?></div>
-
-
-            <div class="product-available-js hidden-js"><?= $arItem["FIRST_ITEM"]["QUANTITY"]["HTML"] ?></div>
-
-        </div>
+                <div class="product-available-js hidden-js"><?= $arItem["FIRST_ITEM"]["QUANTITY"]["HTML"] ?></div>
+            </div>
+            <div class="states">
+               <?foreach($arItem['FIRST_ITEM']['PROP_CHARS'] as $item): 
+            if($item['NAME'] == 'Артикул'){?>
+            <div class="element-state">Артикул: <?=$item['VALUE']?></div>
+            <?}
+            endforeach;?>
+                <? if ($sost = $arResult["SOSTOYANIE_TOVARA"][$arItem["ID"]]) : ?>
+                    <div class="element-state">Состояние: <?= $sost ?></div>
+                <? endif; ?>
+            </div>
         <? if (strlen($arItem["FIRST_ITEM"]["SHORT_DESCRIPTION"])) : ?>
             <div class="short-description">
                 <?= $arItem["FIRST_ITEM"]["SHORT_DESCRIPTION_HTML"] ?>
