@@ -3308,11 +3308,11 @@
 		line-height: 22px;
 	}
 
-	div.empl-full div.empl-email,
+/* 	div.empl-full div.empl-email,
 	div.block.small-block div.empl-full div.empl-email {
 		margin-bottom: 10px;
 		margin-top: 0;
-	}
+	} */
 	div.block.small-block div.slider-gallery .slick-prev,
 	div.block.small-block div.slider-gallery .slick-next {
 		-webkit-background-size: auto;
