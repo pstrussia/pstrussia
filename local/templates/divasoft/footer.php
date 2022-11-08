@@ -107,7 +107,7 @@ if($PHOENIX_TEMPLATE_ARRAY["ITEMS"]["SHOP"]["ITEMS"]["CART_ON"]["VALUE"]["ACTIVE
 
 <a href="#body" class="up scroll"></a>
 
-<a class="wr-link show-phx-modal-dialog" data-target="code-modal-dialog">code</a>
+<!--<a class="wr-link show-phx-modal-dialog" data-target="code-modal-dialog">code</a>-->
 
 <div class="phx-modal-dialog" data-target="code-modal-dialog">
     <div class="dialog-content">
