@@ -10,6 +10,11 @@ require_once __DIR__ . '/b24/b24classes.php'; // интеграция c b24
 require_once __DIR__ . '/models.php'; // Работа с марками и моделями
 require_once __DIR__ . '/DH.class.php'; // Рекапча
 require_once __DIR__ . '/dadata.php'; 
+require_once __DIR__ . '/partner.php';
+
+\Bitrix\Main\EventManager::getInstance()->addEventHandler('', 'PartneryOnBeforeAdd', ['DivasoftEvent', 'PartneryHandler']);
+\Bitrix\Main\EventManager::getInstance()->addEventHandler('', 'PartneryOnBeforeUpdate', ['DivasoftEvent', 'PartneryHandler']);
+
 /* 
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates

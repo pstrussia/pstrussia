@@ -46,7 +46,7 @@ if ($go) {
     $name = trim($_POST["bx-name"]);
     $password = trim($_POST["bx-password"]);
     $promo = trim($_POST["promo"]);
-    $telephone = preg_replace('![^0-9]+!', '', $_POST["phone"]);
+    $telephone = preg_replace('![^0-9]+!', '', $_POST["bx-phone"]);
 	$type = $type_val[trim($_POST["form-submit"])];
 	$type_code = trim($_POST["form-submit"]);
 	
@@ -103,7 +103,7 @@ if ($go) {
 
         if ($bConfirmReq)
             $arResult["HREF"] .= "?REGISTER=Y";
-
+		
         $arValues = array(
             "GROUP_ID" => $groupID,
             "LOGIN" => $NEW_LOGIN,
@@ -123,50 +123,63 @@ if ($go) {
 		if(!empty($ul_fileds))
 			$arValues = array_merge($arValues, $ul_fileds);
 		
+		if(empty($arValues["PHONE"]))
+			$arValues["PHONE"] = $arValues["PERSONAL_MOBILE"];
+		
+		if(empty($arValues["PERSONAL_MOBILE"]))
+			$arValues["PERSONAL_MOBILE"] = $arValues["PHONE"];
+		
         $arAuthResult = $user->Add($arValues);
 
         $arValues["USER_ID"] = $arAuthResult;
 		
 		if($type_code == "UL")
+		{
+			$order_prop_id = [
+				"UF_KPP" => ["ID" => 27, "NAME" => "КПП"],
+				"UF_INN" => ["ID" => 10, "NAME" => "ИНН"],
+				"UF_ADDRESS" => ["ID" => 13, "NAME" => "Адрес доставки"],
+				"UF_U_ADDRESS" => ["ID" => 8, "NAME" => "Юридический адрес"],
+				"NAME" => ["ID" => 7, "NAME" => "Название компании"],
+				"PHONE" => ["ID" => 14, "NAME" => "Телефон"],
+				"EMAIL" => ["ID" => 6, "NAME" => "E-Mail"],
+				"UF_BIK" => ["ID" => 29, "NAME" => "БИК"],
+				"UF_RS" => ["ID" => 28, "NAME" => "Расчетный счет"],
+				"UF_BANK" => ["ID" => 30, "NAME" => "Банк"],
+			];
+			
+			$arFields = array(
+               "NAME" => "Профиль",
+               "USER_ID" => $arValues["USER_ID"],
+               "PERSON_TYPE_ID" => 2
+            );
+            $userPropsID = CSaleOrderUserProps::Add($arFields);
+			
+			foreach ($arValues as $key => $value)
 			{
-				$order_prop_id = [
-					"UF_KPP" => ["ID" => 27, "NAME" => "КПП"],
-					"UF_INN" => ["ID" => 10, "NAME" => "ИНН"],
-					"UF_ADDRESS" => ["ID" => 13, "NAME" => "Адрес доставки"],
-					"UF_U_ADDRESS" => ["ID" => 8, "NAME" => "Юридический адрес"],
-					"NAME" => ["ID" => 7, "NAME" => "Название компании"],
-					"PHONE" => ["ID" => 14, "NAME" => "Телефон"],
-					"EMAIL" => ["ID" => 6, "NAME" => "E-Mail"],
-					"UF_BIK" => ["ID" => 29, "NAME" => "БИК"],
-					"UF_RS" => ["ID" => 28, "NAME" => "Расчетный счет"],
-					"UF_BANK" => ["ID" => 30, "NAME" => "Банк"],
-				];
-				
-				$arFields = array(
-	               "NAME" => "Профиль",
-	               "USER_ID" => $arValues["USER_ID"],
-	               "PERSON_TYPE_ID" => 2
-	            );
-	            $userPropsID = CSaleOrderUserProps::Add($arFields);
-				
-				foreach ($arValues as $key => $value)
+				if(!empty($order_prop_id[$key]))
 				{
-					if(!empty($order_prop_id[$key]))
-					{
-						$arFieldsPr = array(
-		                   "USER_PROPS_ID" => $userPropsID,
-		                   "ORDER_PROPS_ID" => $order_prop_id[$key]["ID"],
-		                   "NAME" => $order_prop_id[$key]["NAME"],
-		                   "VALUE" => $value
-		                );
-						$resUPA = CSaleOrderUserPropsValue::Add($arFieldsPr);
-					//	echo "<pre>"; print_r($arFieldsPr); echo "</pre>";
-					//	echo "<pre>"; print_r($resUPA); echo "</pre>";
-					}
+					$arFieldsPr = array(
+	                   "USER_PROPS_ID" => $userPropsID,
+	                   "ORDER_PROPS_ID" => $order_prop_id[$key]["ID"],
+	                   "NAME" => $order_prop_id[$key]["NAME"],
+	                   "VALUE" => $value
+	                );
+					$resUPA = CSaleOrderUserPropsValue::Add($arFieldsPr);
+				//	echo "<pre>"; print_r($arFieldsPr); echo "</pre>";
+				//	echo "<pre>"; print_r($resUPA); echo "</pre>";
 				}
-				
-				
 			}
+			
+			Partner::makeZeroOrder($arValues, $arValues["USER_ID"], 2);
+			Partner::setVidTsenyBySoglashenie(["UF_PFPOCHTA" => $arValues["EMAIL"], "REG" => "Y"]);
+		}
+		else
+		{
+			Partner::makeZeroOrder($arValues, $arValues["USER_ID"], 1);
+			Partner::setVidTsenyBySoglashenie(["UF_PFPOCHTA" => $arValues["EMAIL"], "REG" => "Y"]);
+		}
+		
 		
         $arFields = $arValues;
         

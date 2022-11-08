@@ -26,5 +26,11 @@ class DivasoftEvent {
     function OnBeforeEventSendHandler(&$arFields, &$arTemplate, $context) {
 //        a2l($arFields);
     }
-
+	
+	
+	function PartneryHandler(\Bitrix\Main\Entity\Event $event) {
+	    $arFields = $event->getParameter("fields");
+		
+		Partner::setVidTsenyBySoglashenie($arFields);
+	}
 }
