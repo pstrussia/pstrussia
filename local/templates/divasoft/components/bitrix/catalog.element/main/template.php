@@ -1548,6 +1548,8 @@ $itemIds = $arResult["PRODUCT"]["VISUAL"];
                             </div>
                         </div>
 
+                        <?if(!empty($arResult['MODELS'])):?>
+						
                         <div class="model-table">
                             <div class="model-table__title">Подходит для</div>
                             <div class="model-table__overflow">
@@ -1561,34 +1563,19 @@ $itemIds = $arResult["PRODUCT"]["VISUAL"];
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td>Honda</td>
-                                            <td>Accord</td>
-                                            <td>2008</td>
-                                            <td>CU</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Honda</td>
-                                            <td>Accord</td>
-                                            <td>2008</td>
-                                            <td>CU</td>
-                                        </tr>
-                                        <tr>
-                                            <td>ACURA</td>
-                                            <td>TL</td>
-                                            <td>2009-2014</td>
-                                            <td></td>
-                                        </tr>
-                                        <tr>
-                                            <td>ACURA</td>
-                                            <td>TL</td>
-                                            <td>2009-2014</td>
-                                            <td></td>
-                                        </tr>
+                                    	<?foreach($arResult['MODELS'] as $model):?>
+	                                        <tr>
+	                                            <td><?=$model["MARKA"]?></td>
+	                                            <td><?=$model["MODEL"]?></td>
+	                                            <td><?=$model["GOD"]?></td>
+	                                            <td><?=$model["KUZOV"]?></td>
+	                                        </tr>
+                                        <?endforeach;?>
                                     </tbody>
                                 </table>
                             </div>
                         </div>
+						<?endif;?>
 
 
                         <? if (!empty($arResult["PROPERTIES"]["FILES"]["VALUE"])): ?>

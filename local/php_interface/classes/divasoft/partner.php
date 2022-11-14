@@ -2,39 +2,79 @@
 
 class Partner
 {
+	static function getTypeVal()
+	{
+		return ["UL" => 236, "FL" => 237];
+	}
+	
+	static function addSaleProfile($arValues, $PERSON_TYPE_ID = 2)
+	{
+		$order_prop_id = self::getOrderProps($PERSON_TYPE_ID);
+		
+		$arFields = array(
+           "NAME" => $arValues["NAME"],
+           "USER_ID" => $arValues["USER_ID"],
+           "PERSON_TYPE_ID" => $PERSON_TYPE_ID
+        );
+        $userPropsID = CSaleOrderUserProps::Add($arFields);
+		
+		foreach ($arValues as $key => $value)
+		{
+			if(!empty($order_prop_id[$key]))
+			{
+				$arFieldsPr = array(
+                   "USER_PROPS_ID" => $userPropsID,
+                   "ORDER_PROPS_ID" => $order_prop_id[$key]["ID"],
+                   "NAME" => $order_prop_id[$key]["NAME"],
+                   "VALUE" => $value
+                );
+				$resUPA = CSaleOrderUserPropsValue::Add($arFieldsPr);
+			}
+		}
+	}
+	
+	static function getOrderProps($person_type_id)
+	{
+		$propsCode = [
+			1 => [
+				"NAME", "PHONE", "EMAIL", "SERVICE_ORDER"
+			],
+			2 => [
+				"UF_KPP", "UF_INN", "UF_ADDRESS", "UF_U_ADDRESS", "NAME", "PHONE", "EMAIL", "UF_BIK", "UF_RS", "UF_BANK", "SERVICE_ORDER"
+			],
+		];
+		
+		$db_props = \CSaleOrderProps::GetList(
+	        array("SORT" => "ASC"),
+	        array(
+	                "PERSON_TYPE_ID" => $person_type_id,
+	                "CODE" => $propsCode[$person_type_id],
+	            ),
+	        false,
+	        false,
+	        array("CODE", "ID", "NAME")
+	    );
+		
+		$result = [];
+		
+		while ($props = $db_props->Fetch())
+		{
+			$result[$props["CODE"]] = ["ID" => $props["ID"], "NAME" => $props["NAME"]];
+			
+		}
+		
+		//echo "<pre>"; print_r($result); echo "</pre>";
+		
+		return $result;
+	}
+	
 	static function makeZeroOrder($props, $user_id, $person_type_id)
 	{
 		if(empty($props) || empty($user_id))
 			return false;
 		//переделать под получение из админки
 		
-		if($person_type_id == 2)
-		{
-			$order_prop_id = [
-				"UF_KPP" => ["ID" => 27, "NAME" => "КПП"],
-				"UF_INN" => ["ID" => 10, "NAME" => "ИНН"],
-				"UF_ADDRESS" => ["ID" => 13, "NAME" => "Адрес доставки"],
-				"UF_U_ADDRESS" => ["ID" => 8, "NAME" => "Юридический адрес"],
-				"NAME" => ["ID" => 7, "NAME" => "Название компании"],
-				"PHONE" => ["ID" => 14, "NAME" => "Телефон"],
-				"EMAIL" => ["ID" => 6, "NAME" => "E-Mail"],
-				"UF_BIK" => ["ID" => 29, "NAME" => "БИК"],
-				"UF_RS" => ["ID" => 28, "NAME" => "Расчетный счет"],
-				"UF_BANK" => ["ID" => 30, "NAME" => "Банк"],
-			];
-			
-			$SERVICE_ORDER = 31;
-		}
-		else
-		{
-			$order_prop_id = [
-				"NAME" => ["ID" => 1, "NAME" => "ФИО"],
-				"PHONE" => ["ID" => 3, "NAME" => "Телефон"],
-				"EMAIL" => ["ID" => 2, "NAME" => "E-Mail"],
-			];
-			
-			$SERVICE_ORDER = 32;
-		}
+		$order_prop_id = self::getOrderProps($person_type_id);
 		
 		$basket = \Bitrix\Sale\Basket::create('s1');
 		
@@ -48,11 +88,14 @@ class Partner
 		$propertyCollection = $order->getPropertyCollection();
 		
 		foreach ($order_prop_id as $key => $item) {
-			$property = $propertyCollection->getItemByOrderPropertyId($item["ID"]);
-			$property->setValue($props[$key]);
+			if(!empty($props[$key]))
+			{
+				$property = $propertyCollection->getItemByOrderPropertyId($item["ID"]);
+				$property->setValue($props[$key]);
+			}
 		}
 		
-		$property = $propertyCollection->getItemByOrderPropertyId($SERVICE_ORDER);
+		$property = $propertyCollection->getItemByOrderPropertyId($order_prop_id["SERVICE_ORDER"]["ID"]);
 		$property->setValue("Y");
 		
 		$r = $order->save();
@@ -70,17 +113,9 @@ class Partner
 	static function deleteZeroOrder()
 	{
 		if (CModule::IncludeModule("sale")) {
-	        $date = new DateTime('-20 minutes');
-	        $date_1 = $date->format('d.m.Y H:i');
-	
-	        $date = new DateTime('-60 minutes');
-	        $date_2 = $date->format('d.m.Y H:i');
-	
 	        $arFilter = Array(
-	            "<=DATE_INSERT" => $date_1,
-	            ">=DATE_INSERT" => $date_2,
 	            "STATUS_ID" => "N",
-	            "PROPERTY_SERVICE_ORDER" => "Y"
+	            "PROPERTY_SERVICE_ORDER" => "Y",
 	        );
 	
 	        $db_sales = \CSaleOrder::GetList(array("DATE_INSERT" => "DESC"), $arFilter, false, false, Array("ID"));
@@ -88,6 +123,8 @@ class Partner
 	            \CSaleOrder::Delete($ar_sales["ID"]);
 	        }
 	    }
+		
+		return "Partner::deleteZeroOrder();";
 	}
 	
 	static function setSoglashenieByEmail($email)
@@ -146,7 +183,7 @@ class Partner
 			$vid = $row["UF_SOGLASHENIE"];
 		}
 		
-		//echo "<pre>"; print_r($vid); echo "</pre>";
+		
 		
 		$dbPriceType = \CCatalogGroup::GetList(
 		        array("SORT" => "ASC"),
@@ -157,7 +194,7 @@ class Partner
 			$type_id = $arPriceType["ID"];
 		    
 		}
-		
+
 		$result_group = [];
 		
 		$db_res = \CCatalogGroup::GetGroupsList(array("CATALOG_GROUP_ID"=>$type_id, "BUY" => "Y", "!GROUP_ID" => 1));
@@ -187,7 +224,6 @@ class Partner
 			);
 			
 			$user->Update($arUser["ID"], $fields);
-			//echo "<pre>"; print_r($arGroups); echo "</pre>";
 		}
 		
 	}

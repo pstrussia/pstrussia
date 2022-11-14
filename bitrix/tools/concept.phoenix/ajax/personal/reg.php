@@ -40,7 +40,7 @@ if ($PHOENIX_TEMPLATE_ARRAY["ITEMS"]["OTHER"]["ITEMS"]["CAPTCHA"]["VALUE"]["ACTI
 
 
 if ($go) {
-	$type_val = ["UL" => 236, "FL" => 237];
+	$type_val = Partner::getTypeVal();
 
     $email = trim($_POST["bx-email"]);
     $name = trim($_POST["bx-name"]);
@@ -117,7 +117,8 @@ if ($go) {
             "LID" => SITE_ID,
             "UF_PROMO" => $promo,
             "UF_TYPE" => $type,
-            "PERSONAL_MOBILE" => $telephone
+            "PERSONAL_MOBILE" => $telephone,
+            "XML_ID" => $email
         );
 		
 		if(!empty($ul_fileds))
@@ -134,43 +135,8 @@ if ($go) {
         $arValues["USER_ID"] = $arAuthResult;
 		
 		if($type_code == "UL")
-		{
-			$order_prop_id = [
-				"UF_KPP" => ["ID" => 27, "NAME" => "КПП"],
-				"UF_INN" => ["ID" => 10, "NAME" => "ИНН"],
-				"UF_ADDRESS" => ["ID" => 13, "NAME" => "Адрес доставки"],
-				"UF_U_ADDRESS" => ["ID" => 8, "NAME" => "Юридический адрес"],
-				"NAME" => ["ID" => 7, "NAME" => "Название компании"],
-				"PHONE" => ["ID" => 14, "NAME" => "Телефон"],
-				"EMAIL" => ["ID" => 6, "NAME" => "E-Mail"],
-				"UF_BIK" => ["ID" => 29, "NAME" => "БИК"],
-				"UF_RS" => ["ID" => 28, "NAME" => "Расчетный счет"],
-				"UF_BANK" => ["ID" => 30, "NAME" => "Банк"],
-			];
-			
-			$arFields = array(
-               "NAME" => "Профиль",
-               "USER_ID" => $arValues["USER_ID"],
-               "PERSON_TYPE_ID" => 2
-            );
-            $userPropsID = CSaleOrderUserProps::Add($arFields);
-			
-			foreach ($arValues as $key => $value)
-			{
-				if(!empty($order_prop_id[$key]))
-				{
-					$arFieldsPr = array(
-	                   "USER_PROPS_ID" => $userPropsID,
-	                   "ORDER_PROPS_ID" => $order_prop_id[$key]["ID"],
-	                   "NAME" => $order_prop_id[$key]["NAME"],
-	                   "VALUE" => $value
-	                );
-					$resUPA = CSaleOrderUserPropsValue::Add($arFieldsPr);
-				//	echo "<pre>"; print_r($arFieldsPr); echo "</pre>";
-				//	echo "<pre>"; print_r($resUPA); echo "</pre>";
-				}
-			}
-			
+		{			
+			Partner::addSaleProfile($arValues);
 			Partner::makeZeroOrder($arValues, $arValues["USER_ID"], 2);
 			Partner::setVidTsenyBySoglashenie(["UF_PFPOCHTA" => $arValues["EMAIL"], "REG" => "Y"]);
 		}

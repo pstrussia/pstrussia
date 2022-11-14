@@ -34,7 +34,7 @@ $picture = (strlen($PHOENIX_TEMPLATE_ARRAY["ITEMS"]["PERSONAL"]["ITEMS"]["FORM_P
                             <div class="inputs-block">
                                 <div class="input">
                                     <div class="bg"></div>
-                                    <span class="desc">Телефон, Email или ID</span>
+                                    <span class="desc">Email</span>
                                     <input class='focus-anim auth-login require' name="auth-login" type="text" value="" />
                                 </div>
                                 <div class="input">
