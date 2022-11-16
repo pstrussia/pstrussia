@@ -122,7 +122,7 @@
                                                 <?endif;?>
                                                 <?foreach ($arItem["PROPERTIES"]['SOC']['VALUE'] as $item): ?>
                                                 <?if(!empty($item)){?>
-                                                    <a class="empl-btn empl-whatsapp" target="_blank" title="Написать в WhatsApp" href="https://api.whatsapp.com/send?phone=<?=$arItem["PHONE_TRIM"]?>">
+                                                    <a class="empl-btn empl-whatsapp" target="_blank" title="Написать в WhatsApp" href="https://api.whatsapp.com/send?phone=<?=$item?>">
                                                         <div class="empl-whatsapp__ico">
                                                             <svg width="44" height="45" viewBox="0 0 44 45" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                                 <path d="M1.70747 22.2959C1.70617 25.9321 2.65628 29.4821 4.46288 32.6118L1.53441 43.3042L12.4764 40.4351C15.4912 42.0779 18.8854 42.9452 22.3399 42.9463H22.3488C33.7247 42.9463 42.9842 33.6893 42.9891 22.3122C42.9912 16.7986 40.8462 11.6148 36.9489 7.71418C33.0523 3.8141 27.87 1.66508 22.3479 1.66249C10.9714 1.66249 1.7124 10.9182 1.70747 22.2959ZM22.3488 42.9463C22.3484 42.9463 22.3486 42.9463 22.3488 42.9463Z" fill="url(#paint0_linear_1961_2789)"/>
@@ -138,7 +138,7 @@
                                                         </div>
                                                         <div class="empl-whatsapp__text">
                                                             <span>Написать в WhatsApp</span>
-                                                            <span><?=$arItem["PHONE_TRIM"]?></span>
+                                                            <span><?=$item; cl_print_r($item);?></span>
                                                         </div>
                                                     </a>
                                                 <?}
