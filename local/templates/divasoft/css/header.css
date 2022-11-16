@@ -1771,7 +1771,8 @@ div.page-header.dark .slider-swipe-icon,
 }
 
 .page-header.light .basket-page-header-btn {
-    background-color: rgba(212, 212, 212, 0.7);
+    /* background-color: rgba(212, 212, 212, 0.7); */
+    background-color: #fff;
 }
 
 .page-header.dark .basket-page-header-btn {
@@ -1815,8 +1816,9 @@ div.page-header.dark .slider-swipe-icon,
 
 .page-header.light .basket-page-header-btn-unset {
     background: url(../images/svg/cart_basket_bl.svg) center no-repeat;
-    border: 2px solid rgb(162, 162, 162);
-    opacity: .3;
+    /* border: 2px solid rgb(162, 162, 162); */
+    background-color: #fff;
+    opacity: 1;
 }
 
 .basket-page-header-btn-unset:hover {
@@ -1842,7 +1844,8 @@ div.page-header.dark .return-back a {
 div.page-header.light .return-back a {
     color: #000;
     opacity: .7;
-    background-color: rgba(0, 0, 0, .07);
+    /* background-color: rgba(0, 0, 0, .07); */
+    background-color: #fff;
 }
 
 div.page-header.dark .return-back a:hover,
