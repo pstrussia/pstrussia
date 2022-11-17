@@ -138,7 +138,7 @@
                                                         </div>
                                                         <div class="empl-whatsapp__text">
                                                             <span>Написать в WhatsApp</span>
-                                                            <span><?=$item; cl_print_r($item);?></span>
+                                                            <span><?=$item; ?></span>
                                                         </div>
                                                     </a>
                                                 <?}
