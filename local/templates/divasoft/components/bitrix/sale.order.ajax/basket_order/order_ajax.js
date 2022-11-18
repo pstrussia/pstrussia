@@ -726,7 +726,7 @@ BX.namespace('BX.Sale.OrderAjaxComponent');
 						if (this.authBlockNode.style.display == 'none')
 						{
 							this.showError(this.mainErrorsNode, blockErrors, true);
-							this.animateScrollTo(this.mainErrorsNode, 800, 20);
+							this.animateScrollTo(this.mainErrorsNode, 800, 150);
 							scroll = false;
 						}
 						else
