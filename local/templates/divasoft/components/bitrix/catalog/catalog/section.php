@@ -961,7 +961,7 @@ if (strlen($pictureInHeadIsset)) {
 										false
 									);}
                                     if ($sort2 == 'SORT'):
-                                        $sort2 = 'CATALOG_QUANTITY';
+                                        $sort2 = 'PROPERTY_EXPENSE';
                                         $sort_order2 = 'desc';
 
                                     endif;
