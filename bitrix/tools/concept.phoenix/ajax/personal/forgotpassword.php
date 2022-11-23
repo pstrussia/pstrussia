@@ -57,7 +57,7 @@ if ($_POST["send"] == "Y") {
             $arResult["OK"] = "Y";
         }
     } else {
-        $arResult["ERRORS"] = $PHOENIX_TEMPLATE_ARRAY["MESS"]["ERROR_LOGIN_UNDEFINED_1"] . $login . $PHOENIX_TEMPLATE_ARRAY["MESS"]["ERROR_LOGIN_UNDEFINED_2"];
+        $arResult["ERRORS"] = $PHOENIX_TEMPLATE_ARRAY["MESS"]["ERROR_LOGIN_UNDEFINED_1"] . $PHOENIX_TEMPLATE_ARRAY["MESS"]["ERROR_LOGIN_UNDEFINED_2"];
     }
 }
 if (strlen($arResult["ERRORS"])) {
