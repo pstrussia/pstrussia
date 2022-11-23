@@ -1306,7 +1306,7 @@ $MESS["PHOENIX_MESS_ERROR_LOGIN_UNDEFINED_2"] = " не найден";
 
 $MESS["PHOENIX_MESS_CHANGEPASSWORD_ERROR_CHECKWORD"] = "Неправильное кодовое слово для пользователя с логином ";
 
-$MESS["PHOENIX_MESS_CHANGEPASSWORD_SUCCESS"] = "Пароль успешно изменен";
+$MESS["PHOENIX_MESS_CHANGEPASSWORD_SUCCESS"] = "Пароль успешно изменен<br/>Информация о новом доступе отправлена на электронную почту";
 
 $MESS["PHOENIX_MESS_CHANGEPASSWORD_ER_DIFFERENT"] = "Пароли не совпадают";
 $MESS["PHOENIX_MESS_CHANGEPASSWORD_ER_FAIL"] = "Не удалось поменять пароль";
