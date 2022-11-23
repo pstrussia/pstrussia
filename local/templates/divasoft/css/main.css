@@ -21235,8 +21235,6 @@ div.forgetpass form.form,
 div.changepassword form.form {
     padding-left: 20px;
     padding-right: 20px;
-}
-div.forgetpass form.form{
     max-width: 420px;
     width: 100%;
 }
