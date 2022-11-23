@@ -21212,6 +21212,10 @@ div.cabinet-wrap.reg-success-page div.pad_top_container{
     padding-top: 16px;
 }*/
 
+div.forgetpass{
+    padding-right: 15px;
+    padding-left: 15px;
+}
 div.forgetpass div.error,
 div.changepassword div.error {
     font-size: 14px;
@@ -21232,7 +21236,10 @@ div.changepassword form.form {
     padding-left: 20px;
     padding-right: 20px;
 }
-
+div.forgetpass form.form{
+    max-width: 420px;
+    width: 100%;
+}
 div.auth-dialog-form {
     width: 366px;
 }

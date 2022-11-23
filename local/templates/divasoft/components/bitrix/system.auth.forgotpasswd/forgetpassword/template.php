@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row">
     
-        <div class="forgetpass col-md-4 col-sm-8 col-12">
+        <div class="forgetpass">
 
             <div class="success" style="display:none;"></div>
 
