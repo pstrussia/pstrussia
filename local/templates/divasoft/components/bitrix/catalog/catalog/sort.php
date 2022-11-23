@@ -25,7 +25,7 @@ if (in_array("QUANTITY", $arSorts)) {
 }
 
 
-$arSortVal = explode("_", $PHOENIX_TEMPLATE_ARRAY["ITEMS"]["CATALOG"]["ITEMS"]["SECTION_SORT_LIST"]["VALUE"]);
+$arSortVal = explode("__", $PHOENIX_TEMPLATE_ARRAY["ITEMS"]["CATALOG"]["ITEMS"]["SECTION_SORT_LIST"]["VALUE"]);
 
 $sort2 = $arSortVal[0];
 $sort_order2 = $arSortVal[1];
@@ -50,18 +50,7 @@ if ($_REQUEST["order"]) {
 <? foreach ($arAvailableSort as $key => $val): ?>
     <?
     $newSort = $sort_order2 == 'desc' ? 'asc' : 'desc';
-    /* $current_url = explode("?", $_SERVER["REQUEST_URI"]);
-      $current_url = $current_url[0];
 
-      $add = DeleteParam(array("sort","order"));
-
-      if(strlen($add) > 0)
-      $add .= '&sort='.$key.'&order='.$newSort;
-      else
-      $add .= 'sort='.$key.'&order='.$newSort;
-
-      $current_url = $current_url."?".$add;
-      $url = str_replace('+', '%2B', $current_url); */
     ?>
 
         <div class="wrap-sort">
@@ -89,19 +78,6 @@ if ($sort2 == "PRICE") {
 if ($sort2 == "CATALOG_AVAILABLE") {
     $sort2 = "CATALOG_QUANTITY";
 }
-
-
-/*
-  if($tmpsort == "PRICE" && $sort_order2 == "asc")
-  {
-  $sort2 = "PROPERTY_MINIMUM_PRICE";
-  $sort_order2 = "asc";
-  }
-  elseif($tmpsort == "PRICE" && $sort_order2 == "desc")
-  {
-  $sort2 = "PROPERTY_MINIMUM_PRICE";
-  $sort_order2 = "desc";
-  } */
 
 $sort1 = "PROPERTY_MODE_ARCHIVE";
 $sort_order1 = "asc";

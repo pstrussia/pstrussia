@@ -1620,8 +1620,8 @@ $MESS["PHOENIX_MESS_SUBSCRIBE_PRODUCT_POPUP_SUBSCRIBED_TEXT"] = "Список т
 
 
 $MESS["PHOENIX_CATALOG_SECTION_SORT_LIST"] = "Сортировка по умолчанию в списке товаров раздела каталога";
-$MESS["PHOENIX_CATALOG_SECTION_SORT_LIST_SORT_asc"] = "По популярности, по возрастанию";
-$MESS["PHOENIX_CATALOG_SECTION_SORT_LIST_SORT_desc"] = "По популярности, по убыванию";
+$MESS["PHOENIX_CATALOG_SECTION_SORT_LIST_PROPERTY_EXPENSE_asc"] = "По популярности, по возрастанию";
+$MESS["PHOENIX_CATALOG_SECTION_SORT_LIST_PROPERTY_EXPENSE_desc"] = "По популярности, по убыванию";
 $MESS["PHOENIX_CATALOG_SECTION_SORT_LIST_PRICE_asc"] = "По цене, по возрастанию";
 $MESS["PHOENIX_CATALOG_SECTION_SORT_LIST_PRICE_desc"] = "По цене, по убыванию";
 $MESS["PHOENIX_CATALOG_SECTION_SORT_LIST_NAME_asc"] = "По алфавиту, по возрастанию";
