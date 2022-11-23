@@ -1301,8 +1301,8 @@ $MESS["PHOENIX_MESS_PRODUCT_OFFERS_COUNT_TITLE_4"] = "вариантов";
 
 $MESS["PHOENIX_MESS_REG_ERROR_LOGIN"] = "Пользователь с таким логином уже существует";
 
-$MESS["PHOENIX_MESS_ERROR_LOGIN_UNDEFINED_1"] = "Пользователь с логином ";
-$MESS["PHOENIX_MESS_ERROR_LOGIN_UNDEFINED_2"] = " не найден";
+$MESS["PHOENIX_MESS_ERROR_LOGIN_UNDEFINED_1"] = "Пользователь с данным логином не найден. Зарегистрируйтесь";
+//$MESS["PHOENIX_MESS_ERROR_LOGIN_UNDEFINED_2"] = " не существует. Зарегистрируйтесь";
 
 $MESS["PHOENIX_MESS_CHANGEPASSWORD_ERROR_CHECKWORD"] = "Неправильное кодовое слово для пользователя с логином ";
 
