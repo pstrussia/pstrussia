@@ -2,18 +2,15 @@
 
 $arAvailableSort = array();
 
-$arSorts = Array("PROPERTY_EXPENSE", "PRICE", "NAME"); // "SORT" сотрировка популярности которая была изначально
+$arSorts = Array("PROPERTY_EXPENSE", "PRICE", "NAME");
 
-if (in_array("PROPERTY_EXPENSE", $arSorts)) { // новое свойство сюда
-    $arAvailableSort["PROPERTY_EXPENSE"] = array("PROPERTY_EXPENSE", "desc"); //сюда наше поле в двух местах
+if (in_array("PROPERTY_EXPENSE", $arSorts)) { 
+    $arAvailableSort["PROPERTY_EXPENSE"] = array("PROPERTY_EXPENSE", "desc");
 }
 
 if (in_array("SORT", $arSorts)) {
     $arAvailableSort["SORT"] = array("SORT", "desc");
 }
-/* if(in_array("PRICE", $arSorts)){ 
-  $arAvailableSort["PRICE"] = array("PROPERTY_MAXIMUM_PRICE", "desc");
-  } */
 if (in_array("PRICE", $arSorts)) {
     $arAvailableSort["PRICE"] = array("CATALOG_PRICE_SCALE_" . $PHOENIX_TEMPLATE_ARRAY["ITEMS"]["CATALOG"]["ITEMS"]["TYPE_PRICE_SORT"]["VALUE"], "desc");
 }
