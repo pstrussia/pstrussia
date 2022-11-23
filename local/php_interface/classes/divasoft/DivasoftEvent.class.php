@@ -33,4 +33,25 @@ class DivasoftEvent {
 		
 		Partner::setVidTsenyBySoglashenie($arFields);
 	}
+	
+	function OnSaleOrderSavedHandler(\Bitrix\Main\Event $event) {
+	    if(!$event->getParameter("IS_NEW"))
+            return;
+		
+        $order = $event->getParameter("ENTITY");
+		
+		$order_props = Partner::getOrderProps($order->getPersonTypeId());
+		$sogl = Partner::setSoglashenieByUserId($order->getUserId());
+		$store = Partner::getStoreXmlId();
+		
+		$propertyCollection = $order->getPropertyCollection();
+		
+		$property = $propertyCollection->getItemByOrderPropertyId($order_props["SOGLASHENIE"]["ID"]);
+		$property->setValue($sogl);
+		
+		$property = $propertyCollection->getItemByOrderPropertyId($order_props["STORE"]["ID"]);
+		$property->setValue($store);
+		
+		$order->save();
+	}
 }
