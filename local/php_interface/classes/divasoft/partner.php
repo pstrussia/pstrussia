@@ -7,6 +7,22 @@ class Partner
 		return ["UL" => 236, "FL" => 237];
 	}
 	
+	static function getStoreXmlId($filter = ["CODE" => "PST"])
+	{
+		$arStore = \Bitrix\Catalog\StoreTable::getRow([
+		  'select' => ['XML_ID'],
+		  'filter' => $filter
+		]);
+		if ($arStore)
+		{
+			return $arStore['XML_ID'];
+		}
+		else
+		{
+			return false;	
+		}
+	}
+	
 	static function addSaleProfile($arValues, $PERSON_TYPE_ID = 2)
 	{
 		$order_prop_id = self::getOrderProps($PERSON_TYPE_ID);
@@ -37,10 +53,11 @@ class Partner
 	{
 		$propsCode = [
 			1 => [
-				"NAME", "PHONE", "EMAIL", "SERVICE_ORDER"
+				"NAME", "PHONE", "EMAIL", "SERVICE_ORDER", "STORE", "SOGLASHENIE"
 			],
 			2 => [
-				"UF_KPP", "UF_INN", "UF_ADDRESS", "UF_U_ADDRESS", "NAME", "PHONE", "EMAIL", "UF_BIK", "UF_RS", "UF_BANK", "SERVICE_ORDER"
+				"UF_KPP", "UF_INN", "UF_ADDRESS", "UF_U_ADDRESS", "NAME", 
+				"PHONE", "EMAIL", "UF_BIK", "UF_RS", "UF_BANK", "SERVICE_ORDER", "STORE", "SOGLASHENIE"
 			],
 		];
 		
@@ -115,16 +132,36 @@ class Partner
 		if (CModule::IncludeModule("sale")) {
 	        $arFilter = Array(
 	            "STATUS_ID" => "N",
-	            "PROPERTY_SERVICE_ORDER" => "Y",
+	            "PROPERTY_VAL_BY_CODE_SERVICE_ORDER" => "Y",
+	            "PRICE" => 0
 	        );
 	
 	        $db_sales = \CSaleOrder::GetList(array("DATE_INSERT" => "DESC"), $arFilter, false, false, Array("ID"));
 	        while ($ar_sales = $db_sales->Fetch()) {
-	            \CSaleOrder::Delete($ar_sales["ID"]);
+	            //\CSaleOrder::Delete($ar_sales["ID"]);
+	            echo "<pre>"; print_r($ar_sales); echo "</pre>";
 	        }
 	    }
 		
-		return "Partner::deleteZeroOrder();";
+		//return "Partner::deleteZeroOrder();";
+	}
+	
+	static function setSoglashenieByUserId($UserId)
+	{
+		$arUser = \Bitrix\Main\UserTable::getRow([
+		  'select' => ['EMAIL'],
+		  'filter' => [
+		    'ID' => $UserId,
+		  ]
+		]);
+		if ($arUser)
+		{
+			return self::setSoglashenieByEmail($arUser['EMAIL']);
+		}
+		else
+		{
+			return false;	
+		}
 	}
 	
 	static function setSoglashenieByEmail($email)
@@ -140,7 +177,7 @@ class Partner
 			'filter' => array('!UF_PFVIDTSENYSOGLASH' => false, 'UF_PFPOCHTA' => $email)
 		));
 		
-		$sogl = '';
+		$sogl = false;
 		
 		while ($row = $resData->Fetch())
 		{

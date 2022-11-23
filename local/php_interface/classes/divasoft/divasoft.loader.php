@@ -14,6 +14,8 @@ require_once __DIR__ . '/partner.php';
 
 \Bitrix\Main\EventManager::getInstance()->addEventHandler('', 'PartneryOnBeforeAdd', ['DivasoftEvent', 'PartneryHandler']);
 \Bitrix\Main\EventManager::getInstance()->addEventHandler('', 'PartneryOnBeforeUpdate', ['DivasoftEvent', 'PartneryHandler']);
+\Bitrix\Main\EventManager::getInstance()->addEventHandler('sale', 'OnSaleOrderSaved', ['DivasoftEvent', 'OnSaleOrderSavedHandler']);
+
 
 /* 
  * To change this license header, choose License Headers in Project Properties.
