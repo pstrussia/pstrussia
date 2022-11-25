@@ -960,11 +960,7 @@ if (strlen($pictureInHeadIsset)) {
 										),
 										false
 									);}
-                                    if ($sort2 == 'SORT'):
-                                        $sort2 = 'CATALOG_QUANTITY';
-                                        $sort_order2 = 'desc';
 
-                                    endif;
                                     $intSectionID = $APPLICATION->IncludeComponent(
                                         "bitrix:catalog.section",
                                         "main",

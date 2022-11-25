@@ -5904,37 +5904,38 @@ class CPhoenix {
                                     "VALUES" => array(
                                         "SORT_asc" => array(
                                             "NAME" => $name_val,
-                                            "DESCRIPTION" => Loc::GetMessage("PHOENIX_CATALOG_SECTION_SORT_LIST_SORT_asc"),
-                                            "VALUE" => "SORT_asc"
+                                            "DESCRIPTION" => Loc::GetMessage("PHOENIX_CATALOG_SECTION_SORT_LIST_PROPERTY_EXPENSE_asc"),
+                                            "VALUE" => "PROPERTY_EXPENSE__asc"
                                         ),
                                         "SORT_desc" => array(
                                             "NAME" => $name_val,
-                                            "DESCRIPTION" => Loc::GetMessage("PHOENIX_CATALOG_SECTION_SORT_LIST_SORT_desc"),
-                                            "VALUE" => "SORT_desc"
+                                            "DESCRIPTION" => Loc::GetMessage("PHOENIX_CATALOG_SECTION_SORT_LIST_PROPERTY_EXPENSE_desc"),
+                                            "VALUE" => "PROPERTY_EXPENSE__desc"
                                         ),
                                         "PRICE_asc" => array(
                                             "NAME" => $name_val,
                                             "DESCRIPTION" => Loc::GetMessage("PHOENIX_CATALOG_SECTION_SORT_LIST_PRICE_asc"),
-                                            "VALUE" => "PRICE_asc"
+                                            "VALUE" => "PRICE__asc"
                                         ),
                                         "PRICE_desc" => array(
                                             "NAME" => $name_val,
                                             "DESCRIPTION" => Loc::GetMessage("PHOENIX_CATALOG_SECTION_SORT_LIST_PRICE_desc"),
-                                            "VALUE" => "PRICE_desc"
+                                            "VALUE" => "PRICE__desc"
                                         ),
                                         "NAME_asc" => array(
                                             "NAME" => $name_val,
                                             "DESCRIPTION" => Loc::GetMessage("PHOENIX_CATALOG_SECTION_SORT_LIST_NAME_asc"),
-                                            "VALUE" => "NAME_asc"
+                                            "VALUE" => "NAME__asc"
                                         ),
                                         "NAME_desc" => array(
                                             "NAME" => $name_val,
                                             "DESCRIPTION" => Loc::GetMessage("PHOENIX_CATALOG_SECTION_SORT_LIST_NAME_desc"),
-                                            "VALUE" => "NAME_asc"
+                                            "VALUE" => "NAME__asc"
                                         ),
                                     ),
+                                   
                                     "VALUE" => Option::get($moduleID, $name_val, false, $siteId),
-                                    "DEFAULT" => "SORT_asc",
+                                    "DEFAULT" => "PROPERTY_EXPENSE__asc",
                                     "TYPE" => "radio",
                                 ),
                                 "SUBSCRIBE_BTN_NAME" => array(
