@@ -63,6 +63,7 @@ if(!empty($arResult["ITEMS"]))
     foreach ($arResult["ITEMS"] as $key => $arItem){
         $arEditAreaId[$arItem["ID"]] = $this->GetEditAreaId($arItem['ID']).'_list';
         $arResult["SOSTOYANIE_TOVARA"][$arItem["ID"]] = $arItem["PROPERTIES"]["SOSTOYANIE_TOVARA"]["VALUE"];
+        $arResult["DETAIL_TEXT"][$arItem["ID"]] = $arItem["DETAIL_TEXT"];
     }
 }
 

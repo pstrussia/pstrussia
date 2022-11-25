@@ -134,6 +134,9 @@ global $PHOENIX_TEMPLATE_ARRAY;
                                     <? if ($sost = $arResult["SOSTOYANIE_TOVARA"][$arItem["ID"]]) : ?>
                                         <div class="element-state">Состояние: <?= $sost ?></div>
                                     <? endif; ?>
+                                    
+                                    <div class=""><?=$arResult["DETAIL_TEXT"][$arItem["ID"]]?></div>
+                                                                        
                                 </div>
 
                                 <div class="wr-block-price">

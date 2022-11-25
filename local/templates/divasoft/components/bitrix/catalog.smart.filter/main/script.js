@@ -10,6 +10,8 @@ function JCSmartFilter(ajaxURL, viewMode, params)
 	this.diva_filter = params.DVS_FILTER;
 	if (params && params.SEF_SET_FILTER_URL)
 	{
+		params.SEF_SET_FILTER_URL = params.SEF_SET_FILTER_URL.replace('filter', 'filter'+this.diva_filter);
+		params.SEF_SET_FILTER_URL = params.SEF_SET_FILTER_URL.replace('/clear', '');
 		this.bindUrlToButton('set_filter', params.SEF_SET_FILTER_URL);
 		this.sef = true;
 	}
