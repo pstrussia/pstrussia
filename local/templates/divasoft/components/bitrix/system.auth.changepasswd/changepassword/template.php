@@ -5,7 +5,7 @@
 
 <div class="container">
 
-    <div class="changepassword col-md-4 col-sm-8 col-12">
+    <div class="changepassword">
 
         <div class="success" style="display: none;"></div>
 
