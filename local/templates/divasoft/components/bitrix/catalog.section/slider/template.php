@@ -135,9 +135,10 @@ global $PHOENIX_TEMPLATE_ARRAY;
                                         <div class="element-state">Состояние: <?= $sost ?></div>
                                     <? endif; ?>
                                     
-                                    <div class=""><?=$arResult["DETAIL_TEXT"][$arItem["ID"]]?></div>
-                                                                        
+                                    
                                 </div>
+                                
+                                <div class="preview-text" style="margin-top:10px;"><?=$arResult["DETAIL_TEXT"][$arItem["ID"]]?></div>
 
                                 <div class="wr-block-price">
 
