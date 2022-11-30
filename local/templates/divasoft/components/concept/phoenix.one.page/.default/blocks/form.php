@@ -293,7 +293,7 @@ $ymWizard = "ym-record-keys";
                                                         <div class="bg"></div>
                                                         <span class="desc"><?=$PHOENIX_TEMPLATE_ARRAY["MESS"]["FORM_TEMPL_PHONE"]?></span>
 
-                                                        <input class="phone focus-anim <?if(in_array("phone", $arItem["PROPERTIES"]["FORM_INPUTS_REQ"]["VALUE_XML_ID"])):?>require<?endif;?> <?=$ymWizard?> input-phone" name="inp-phone" type="text">
+                                                        <input class="phone focus-anim <?if(in_array("phone", $arItem["PROPERTIES"]["FORM_INPUTS_REQ"]["VALUE_XML_ID"])):?>require<?endif;?> <?=$ymWizard?> input-phone" name="inp-phone" type="tel">
                                                     </div>
                                                 </div>
                                             <?endif;?>
