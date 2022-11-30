@@ -54,4 +54,52 @@ class DivasoftEvent {
 		
 		$order->save();
 	}
-}
+	
+	function OnSaleComponentOrderCreatedHandler($order, &$arUserResult, $request, &$arParams, &$arResult, &$arDeliveryServiceAll, &$arPaySystemServiceAll){
+		$flag = false;
+		if($post_params = $request->getPost("order"))
+		{
+			if($post_params["DELIV_PAY_LATER"])
+				$flag = true;
+		}
+		elseif($request->getPost("DELIV_PAY_LATER"))
+		{
+			$flag = true;
+		}
+		
+		if($request->getPost("action") == "saveOrderAjax")
+		{
+			$order_props = Partner::getOrderProps($order->getPersonTypeId());
+			$propertyCollection = $order->getPropertyCollection();
+			
+			if($flag)
+			{
+				$property = $propertyCollection->getItemByOrderPropertyId($order_props["DELIV_PAY_LATER"]["ID"]);
+				$property->setValue("Y");
+				
+				$property = $propertyCollection->getItemByOrderPropertyId($order_props["DELIVERY_PRICE"]["ID"]);
+				$property->setValue("0.0000");
+			}
+			else
+			{
+				$property = $propertyCollection->getItemByOrderPropertyId($order_props["DELIV_PAY_LATER"]["ID"]);
+				$property->setValue("N");
+				
+				$property = $propertyCollection->getItemByOrderPropertyId($order_props["DELIVERY_PRICE"]["ID"]);
+				$property->setValue($order->getDeliveryPrice());
+			}
+			
+		}
+		
+		if($flag)
+		{
+			$shipmentCollection = $order->getShipmentCollection();
+			foreach ($shipmentCollection as $item){
+				if(!$item->isSystem())
+				{
+					$item->setBasePriceDelivery(0);
+				}
+			}
+		}
+	}
+} 

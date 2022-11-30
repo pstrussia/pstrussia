@@ -1378,7 +1378,9 @@ BX.namespace('BX.Sale.OrderAjaxComponent');
 				this.basketBlockScrollCheck();
 				this.mapsReady /*&& this.resizeMapContainers();*/
 			}, 50, this));
-			BX.addCustomEvent('onDeliveryExtraServiceValueChange', BX.proxy(this.sendRequest, this));
+			//BX.addCustomEvent('onDeliveryExtraServiceValueChange', BX.proxy(this.sendRequest, this)); 
+			
+			BX.bind(BX("DELIV_PAY_LATER"), 'click', BX.proxy(this.sendRequest, this));
 		},
 
 		initFirstSection: function()
@@ -8960,7 +8962,7 @@ BX.namespace('BX.Sale.OrderAjaxComponent');
 
 			curDelivery = this.getSelectedDelivery();
 
-			if(curDelivery)
+			if(curDelivery && total.DELIVERY_PRICE > 0)
 			{
 				deliveryError = curDelivery && curDelivery.CALCULATE_ERRORS && curDelivery.CALCULATE_ERRORS.length;
 
@@ -8984,7 +8986,7 @@ BX.namespace('BX.Sale.OrderAjaxComponent');
 						&& parseFloat(curDelivery.PRICE) > parseFloat(curDelivery.DELIVERY_DISCOUNT_PRICE)
 					)
 					{
-						deliveryValue = "<span class=\"txt-strike\">"+curDelivery.PRICE_FORMATED + "</span>&nbsp&nbsp" + deliveryValue;
+						//deliveryValue = "<span class=\"txt-strike\">"+curDelivery.PRICE_FORMATED + "</span>&nbsp&nbsp" + deliveryValue;
 					}
 				}
 

@@ -533,8 +533,10 @@ else
 							<div class="col wr-col-right">
 								<div class="bx-soa-section-content-node"></div>
 							</div>
-						</div>
-
+						</div>  
+						
+						<input id="DELIV_PAY_LATER" type="checkbox" name="DELIV_PAY_LATER" value="true"><span>Оплачу доставку отдельно</span>
+						
 					</div>
 					<!--	PICKUP BLOCK	-->
 					<div id="bx-soa-pickup" data-visited="false" class="bx-soa-section bx-active" style="display:none">
