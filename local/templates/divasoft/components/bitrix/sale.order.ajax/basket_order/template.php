@@ -534,7 +534,9 @@ else
 								<div class="bx-soa-section-content-node"></div>
 							</div>
 						</div>
-
+						
+						<input type="checkbox"><span>Оплата отдельно</span>
+						
 					</div>
 					<!--	PICKUP BLOCK	-->
 					<div id="bx-soa-pickup" data-visited="false" class="bx-soa-section bx-active" style="display:none">
@@ -568,7 +570,6 @@ else
 							<div class="col bx-soa-section-title main1 wr-col-right">
 								<?=$arParams['MESS_PAYMENT_BLOCK_NAME']?>
 							</div>
-
 						</div>
 
 						<div class="row no-margin row-xs-margin bx-soa-section-content">
@@ -577,6 +578,13 @@ else
 							</div>
 							<div class="col wr-col-right">
 								<div class="bx-soa-section-content-node"></div>
+								<div class="checkbox">
+									<label class="input-checkbox-css">
+										<input id="postPayment" type="checkbox" name="" value="">
+										<span></span>
+										<span class="text">Оплатить доставку при получении</span>
+									</label>
+								</div>
 							</div>
 						</div>
 					</div>
@@ -671,10 +679,12 @@ else
 								<?}
 								?>
 							</div>
-							
+							<div class="message-postPayment">Внимание! Вы выбрали вариант оплаты доставки при получении товара. Фактическая стоимость оплаты транспортных расходов может незначительно отличаться от расчётной</div>
 						</div>
 						
 					</div>
+
+					
 
 					<div class="wr-order-btn d-none d-sm-block">
 

@@ -28086,3 +28086,11 @@ textarea.redemption-form__input {
 .IPOL_APISHIP2_selectServices img[alt="dellin"] {
     height: 40px;
 }
+
+.message-postPayment{
+    margin-top: 15px;
+    background-color: #fff0f0;
+    border-radius: 5px;
+    padding: 10px;
+    color: #ff3c3c;
+}
