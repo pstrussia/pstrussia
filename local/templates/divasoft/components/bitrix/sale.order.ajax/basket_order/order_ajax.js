@@ -1381,6 +1381,23 @@ BX.namespace('BX.Sale.OrderAjaxComponent');
 			//BX.addCustomEvent('onDeliveryExtraServiceValueChange', BX.proxy(this.sendRequest, this)); 
 			
 			BX.bind(BX("DELIV_PAY_LATER"), 'click', BX.proxy(this.sendRequest, this));
+			
+			BX.bind(
+				BX("DELIV_PAY_LATER"), 
+				'click', 
+				function(e) {
+					BX.proxy(this.sendRequest, this);
+					
+					if(e["currentTarget"]["checked"])
+					{
+						document.getElementById("message-postPayment").hidden=false;
+					}
+					else
+					{
+						document.getElementById("message-postPayment").hidden=true;
+					}
+				}
+			);
 		},
 
 		initFirstSection: function()

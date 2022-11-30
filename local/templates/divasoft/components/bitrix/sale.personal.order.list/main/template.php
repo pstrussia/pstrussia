@@ -337,11 +337,19 @@ if (!empty($arResult['ERRORS']['FATAL'])) {
                                                 if ($shipment['DATE_DEDUCTED']) {
                                                     $shipmentSubTitle .= " " . Loc::getMessage('SPOL_TPL_FROM_DATE') . " " . $shipment['DATE_DEDUCTED']->format($arParams['ACTIVE_DATE_FORMAT']);
                                                 }
-
-                                                if ($shipment['FORMATED_DELIVERY_PRICE']) {
-                                                    $shipmentSubTitle .= ", " . Loc::getMessage('SPOL_TPL_DELIVERY_COST') . " " . $shipment['FORMATED_DELIVERY_PRICE'];
-                                                }
+												
+												if($shipment['PRICE_DELIVERY'] > 0)
+												{
+	                                                if ($shipment['FORMATED_DELIVERY_PRICE']) {
+	                                                    $shipmentSubTitle .= ", " . Loc::getMessage('SPOL_TPL_DELIVERY_COST') . " " . $shipment['FORMATED_DELIVERY_PRICE'];
+	                                                }
+												}
+												else
+												{
+													$shipmentSubTitle .= ", " . Loc::getMessage('DELIV_PAY_LATER');
+												}
                                                 echo "<span class='bold'>" . $shipmentSubTitle . "</span>";
+												//echo "<pre>"; print_r($shipment); echo "</pre>";
                                                 ?>
                                             </span>
                                              

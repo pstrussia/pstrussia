@@ -533,10 +533,7 @@ else
 							<div class="col wr-col-right">
 								<div class="bx-soa-section-content-node"></div>
 							</div>
-						</div>  
-						
-						<input id="DELIV_PAY_LATER" type="checkbox" name="DELIV_PAY_LATER" value="true"><span>Оплачу доставку отдельно</span>
-						
+						</div>
 					</div>
 					<!--	PICKUP BLOCK	-->
 					<div id="bx-soa-pickup" data-visited="false" class="bx-soa-section bx-active" style="display:none">
@@ -579,6 +576,13 @@ else
 							</div>
 							<div class="col wr-col-right">
 								<div class="bx-soa-section-content-node"></div>
+								<div class="checkbox">
+									<label class="input-checkbox-css">
+										<input id="DELIV_PAY_LATER" type="checkbox" name="DELIV_PAY_LATER" value="true">
+										<span></span>
+										<span class="text">Оплатить доставку при получении</span>
+									</label>
+								</div>
 							</div>
 						</div>
 					</div>
@@ -673,7 +677,7 @@ else
 								<?}
 								?>
 							</div>
-							
+							<div id="message-postPayment" class="message-postPayment" hidden>Внимание! Вы выбрали вариант оплаты доставки при получении товара. Фактическая стоимость оплаты транспортных расходов может незначительно отличаться от расчётной</div>
 						</div>
 						
 					</div>
