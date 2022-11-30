@@ -57,7 +57,8 @@ class Partner
 			],
 			2 => [
 				"UF_KPP", "UF_INN", "UF_ADDRESS", "UF_U_ADDRESS", "NAME", 
-				"PHONE", "EMAIL", "UF_BIK", "UF_RS", "UF_BANK", "SERVICE_ORDER", "STORE", "SOGLASHENIE"
+				"PHONE", "EMAIL", "UF_BIK", "UF_RS", "UF_BANK", "SERVICE_ORDER", "STORE", "SOGLASHENIE",
+				"DELIVERY_PRICE", "DELIV_PAY_LATER"
 			],
 		];
 		

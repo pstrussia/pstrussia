@@ -226,9 +226,9 @@ label.pay-item input[type="checkbox"]:checked+.item .check{
     .basketOrder-body{
         margin-top: 30px;
     }
-    #bx-soa-paysystem.bx-soa-section{
+    /* #bx-soa-paysystem.bx-soa-section{
         margin-bottom: 0;
-    }
+    } */
     .bx_soa_location .profiles{
         margin-top: 8px;
     }
