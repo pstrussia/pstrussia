@@ -53,7 +53,7 @@ class Partner
 	{
 		$propsCode = [
 			1 => [
-				"NAME", "PHONE", "EMAIL", "SERVICE_ORDER", "STORE", "SOGLASHENIE"
+				"NAME", "PHONE", "EMAIL", "SERVICE_ORDER", "STORE", "SOGLASHENIE", "DELIVERY_PRICE", "DELIV_PAY_LATER"
 			],
 			2 => [
 				"UF_KPP", "UF_INN", "UF_ADDRESS", "UF_U_ADDRESS", "NAME", 

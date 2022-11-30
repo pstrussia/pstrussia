@@ -45,4 +45,5 @@ $MESS["SPOL_CANCEL_PAYMENT"] = "назад";
 $MESS["SPOL_ORDER_SHIPMENT_STATUS"] = "Статус отгрузки";
 $MESS["SPOL_CHECK_TITLE"] = "Список чеков";
 $MESS["SPOL_CHECK_NUM"] = "Чек №#CHECK_NUMBER#";
+$MESS["DELIV_PAY_LATER"] = "стоимость доставки оплачивается отдельно";
 ?>

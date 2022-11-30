@@ -592,17 +592,29 @@ ShowError($error);
                                                     //change date
                                                     if (!strlen($shipment['PRICE_DELIVERY_FORMATED']))
                                                     {
-                                                    $shipment['PRICE_DELIVERY_FORMATED'] = 0;
+                                                    	$shipmentRow = ", ".Loc::getMessage('DELIV_PAY_LATER');
                                                     }
-                                                    $shipmentRow = Loc::getMessage('SPOD_SUB_ORDER_SHIPMENT')." ".Loc::getMessage('SPOD_NUM_SIGN').$shipment["ACCOUNT_NUMBER"];
-                                                    if ($shipment["DATE_DEDUCTED"])
-                                                    {
-                                                    $shipmentRow .= " ".Loc::getMessage('SPOD_FROM')." ".$shipment["DATE_DEDUCTED"]->format($arParams['ACTIVE_DATE_FORMAT']);
-                                                    }
-                                                    $shipmentRow = htmlspecialcharsbx($shipmentRow);
-                                                    $shipmentRow .= ", ".Loc::getMessage('SPOD_SUB_PRICE_DELIVERY', array(
-                                                    '#PRICE_DELIVERY#' => $shipment['PRICE_DELIVERY_FORMATED']
-                                                    ));
+													else
+													{
+														$shipmentRow = Loc::getMessage('SPOD_SUB_ORDER_SHIPMENT')." ".Loc::getMessage('SPOD_NUM_SIGN').$shipment["ACCOUNT_NUMBER"];
+	                                                    if ($shipment["DATE_DEDUCTED"])
+	                                                    {
+	                                                    $shipmentRow .= " ".Loc::getMessage('SPOD_FROM')." ".$shipment["DATE_DEDUCTED"]->format($arParams['ACTIVE_DATE_FORMAT']);
+	                                                    }
+	                                                    $shipmentRow = htmlspecialcharsbx($shipmentRow);
+														
+														if($shipment['PRICE_DELIVERY'] > 0)
+														{
+															$shipmentRow .= ", ".Loc::getMessage('SPOD_SUB_PRICE_DELIVERY', array(
+		                                                    '#PRICE_DELIVERY#' => $shipment['PRICE_DELIVERY_FORMATED']
+		                                                    ));
+														}
+														else
+														{
+															$shipmentRow .= ", ".Loc::getMessage('DELIV_PAY_LATER');	
+														}
+													}
+                                                    
                                                     echo $shipmentRow;
                                                     ?>
                                                 </div>
@@ -1084,12 +1096,18 @@ ShowError($error);
                         <?
                         }
 
-                        if (strlen($arResult["PRICE_DELIVERY_FORMATED"]))
+                        if($shipment['PRICE_DELIVERY'] > 0)
                         {
                         ?>
                         <li class="sale-order-detail-total-payment-list-right-item"><?= $arResult["PRICE_DELIVERY_FORMATED"] ?></li>
                         <?
                         }
+						else
+						{
+						?>
+                        <li class="sale-order-detail-total-payment-list-right-item"><?= Loc::getMessage('DELIV_PAY_LATER_SHORT') ?></li>
+                        <?	
+						}
 
                         if ((float) $arResult["TAX_VALUE"] > 0)
                         {
