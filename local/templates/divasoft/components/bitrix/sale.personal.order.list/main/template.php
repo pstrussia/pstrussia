@@ -132,23 +132,34 @@ if (!empty($arResult['ERRORS']['FATAL'])) {
                     <div class="row">
                         <div class="col-12 sale-order-list-title-container">
                             <div class="sale-order-list-title bold">
-                                <?= Loc::getMessage('SPOL_TPL_ORDER') ?>
-                                <?= Loc::getMessage('SPOL_TPL_NUMBER_SIGN') . $order['ORDER']['ACCOUNT_NUMBER'] ?>
-                                <?= Loc::getMessage('SPOL_TPL_FROM_DATE') ?>
-                                <?= $order['ORDER']['DATE_INSERT']->format($arParams['ACTIVE_DATE_FORMAT']) ?>,
-                                <?= count($order['BASKET_ITEMS']); ?>
-                                <?
-                                $count = count($order['BASKET_ITEMS']) % 10;
-                                if ($count == '1') {
-                                    echo Loc::getMessage('SPOL_TPL_GOOD');
-                                } elseif ($count >= '2' && $count <= '4') {
-                                    echo Loc::getMessage('SPOL_TPL_TWO_GOODS');
-                                } else {
-                                    echo Loc::getMessage('SPOL_TPL_GOODS');
-                                }
-                                ?>
-                                <?= Loc::getMessage('SPOL_TPL_SUMOF') ?>
-                                <?= $order['ORDER']['FORMATED_PRICE'] ?>
+                                <span class="sale-order-list-flex">
+                                    <span class="sale-order-list-warning" data-title="Детали заказа были изменены">
+                                        <svg width="24" height="21" viewBox="0 0 24 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M10.7656 8.50781C10.7396 8.3776 10.7786 8.26042 10.8828 8.15625C10.987 8.05208 11.1042 8 11.2344 8H13.3438C13.4479 8 13.526 8.02604 13.5781 8.07812C13.6562 8.10417 13.7083 8.15625 13.7344 8.23438C13.7865 8.3125 13.8125 8.40365 13.8125 8.50781L13.5781 12.8828C13.5521 13.1693 13.3958 13.3125 13.1094 13.3125H11.4688C11.1823 13.3125 11.026 13.1693 11 12.8828L10.7656 8.50781ZM13.4219 14.3672C13.7604 14.6797 13.9297 15.0573 13.9297 15.5C13.9297 15.9427 13.7604 16.3333 13.4219 16.6719C13.1094 16.9844 12.7318 17.1406 12.2891 17.1406C11.8464 17.1406 11.4557 16.9844 11.1172 16.6719C10.8047 16.3333 10.6484 15.9427 10.6484 15.5C10.6484 15.0573 10.8047 14.6797 11.1172 14.3672C11.4557 14.0286 11.8464 13.8594 12.2891 13.8594C12.7318 13.8594 13.1094 14.0286 13.4219 14.3672ZM13.9297 1.4375L23.3047 17.6875C23.6432 18.3125 23.6302 18.9375 23.2656 19.5625C22.9271 20.1875 22.3932 20.5 21.6641 20.5H2.91406C2.1849 20.5 1.63802 20.1875 1.27344 19.5625C0.934896 18.9375 0.934896 18.3125 1.27344 17.6875L10.6484 1.4375C11.013 0.8125 11.5599 0.5 12.2891 0.5C13.0182 0.5 13.5651 0.8125 13.9297 1.4375ZM3.10938 18.2734C2.97917 18.5078 3.04427 18.625 3.30469 18.625H21.2734C21.3516 18.625 21.4167 18.5859 21.4688 18.5078C21.5208 18.4297 21.5208 18.3516 21.4688 18.2734L12.4844 2.72656C12.4323 2.64844 12.3672 2.60938 12.2891 2.60938C12.2109 2.60938 12.1458 2.64844 12.0938 2.72656L3.10938 18.2734Z" fill="#FF3232"/>
+                                        </svg>
+                                    </span>
+                                    <span>
+                                        <?= Loc::getMessage('SPOL_TPL_ORDER') ?>
+                                        <?= Loc::getMessage('SPOL_TPL_NUMBER_SIGN') . $order['ORDER']['ACCOUNT_NUMBER'] ?>
+                                        <?= Loc::getMessage('SPOL_TPL_FROM_DATE') ?>
+                                        <?= $order['ORDER']['DATE_INSERT']->format($arParams['ACTIVE_DATE_FORMAT']) ?>
+                                    </span>
+                                </span>
+                                <span>
+                                    <?= count($order['BASKET_ITEMS']); ?>
+                                    <?
+                                    $count = count($order['BASKET_ITEMS']) % 10;
+                                    if ($count == '1') {
+                                        echo Loc::getMessage('SPOL_TPL_GOOD');
+                                    } elseif ($count >= '2' && $count <= '4') {
+                                        echo Loc::getMessage('SPOL_TPL_TWO_GOODS');
+                                    } else {
+                                        echo Loc::getMessage('SPOL_TPL_GOODS');
+                                    }
+                                    ?>
+                                    <?= Loc::getMessage('SPOL_TPL_SUMOF') ?>
+                                    <?= $order['ORDER']['FORMATED_PRICE'] ?>
+                                </span>
                             </div>
                         </div>
                     </div>
