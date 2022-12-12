@@ -576,13 +576,10 @@ else
 							</div>
 							<div class="col wr-col-right">
 								<div class="bx-soa-section-content-node"></div>
-								<div class="checkbox">
-									<label class="input-checkbox-css">
-										<input id="DELIV_PAY_LATER" type="checkbox" name="DELIV_PAY_LATER" value="true">
-										<span></span>
-										<span class="text">Оплатить доставку при получении</span>
-									</label>
-								</div>
+								<label class="switch">
+									<input class="switch__input" id="DELIV_PAY_LATER" type="checkbox" name="DELIV_PAY_LATER" value="true" checked>
+									<span class="switch__text">Оплатить доставку при получении</span>
+								</label>
 							</div>
 						</div>
 					</div>
