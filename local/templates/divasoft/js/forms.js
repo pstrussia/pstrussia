@@ -804,6 +804,7 @@ $(document).on("click", ".register-submit", function ()
 
                         if (data.OK == "Y")
                         {
+                        	ym(91462903,'reachGoal','registration');
                             location.href = data.HREF;
                         }
 
@@ -830,6 +831,7 @@ $(document).on("click", ".register-submit", function ()
                     
                     if(data.OK == "Y")
                     {
+                    	ym(91462903,'reachGoal','registration');
                         location.href = data.HREF;
                     }
                        

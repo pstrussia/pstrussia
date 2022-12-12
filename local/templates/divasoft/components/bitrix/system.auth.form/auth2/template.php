@@ -66,7 +66,7 @@
                         <?else:?>
                         
                             <div class="col-lg-4 col-md-6 col-12">
-                                <form class="form auth" action="#">
+                                <form id="auth_form_2" class="form auth" action="#">
                                     <div class="title-form main1">Личный кабинет</div>
                                     <? if (strlen($PHOENIX_TEMPLATE_ARRAY["ITEMS"]["PERSONAL"]["ITEMS"]["FORM_AUTH_SUBTITLE"]["VALUE"])) : ?>
                                         <div class="subtitle-form"><?= $PHOENIX_TEMPLATE_ARRAY["ITEMS"]["PERSONAL"]["ITEMS"]["FORM_AUTH_SUBTITLE"]["~VALUE"] ?></div>
@@ -74,9 +74,11 @@
                                     <div class="inputs-block">
                                         <div class="input">
                                             <div class="bg"></div>
-                                            <span class="desc">Email</span>
-                                            <input class='focus-anim auth-login require' name="auth-login" type="text" value="" />
+                                            <span class="desc">Email, Телефон, ID</span>
+                                            <input class='focus-anim auth-login require jq-login' name="auth-login" type="text" value="" />
+                                            
                                         </div>
+                                        <input class="jq-btn-clear" style="display: none;" type="button" value="X">
                                         <div class="input">
                                             <div class="bg"></div>
                                             <span class="desc">Пароль</span>
@@ -120,3 +122,8 @@
     </div>
 
 <?endif;?>
+
+    <script>
+    	var selector = "#auth_form_2 .jq-login";
+    	new Autorize(selector).setHandler();
+    </script> 

@@ -113,7 +113,7 @@ if($PHOENIX_TEMPLATE_ARRAY["ITEMS"]["PERSONAL"]["ITEMS"]["CABINET"]["VALUE"]["AC
             ),
             "ORDER_DEFAULT_SORT" => "STATUS",
             "ORDER_REFRESH_PRICES" => "N",
-            "ORDER_DISALLOW_CANCEL" => "N",
+            "ORDER_DISALLOW_CANCEL" => "Y",
             "ORDERS_PER_PAGE" => "20",
             "PROFILES_PER_PAGE" => "20",
             "MAIN_CHAIN_NAME" => "",

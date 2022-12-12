@@ -66,5 +66,82 @@ $(document).on("click", ".suggestion-dropdown__item", function()
 		$(".reg-ur-form").find('[name="'+index+'"]').val(val);
 		$(".reg-ur-form").find('[name="'+index+'"]').parent().addClass("in-focus");
 	});
-	//debugger
 });
+
+
+class Autorize
+{
+	constructor(selector) {
+	    this.selector = selector;
+	    self = this;
+	}
+	
+	setHandler()
+	{
+		$(self.selector).on('input', function() { 
+            var val = $(this).val();
+            if((val == 8 || val == 7 || val == "+" )&& val.length == 1)
+            {
+                self.addPhone();
+            }
+        });
+        $(self.selector).on('paste', function(e) { 
+            var val = event.clipboardData.getData('text/plain');
+
+            if($.isNumeric(val.replace(/[^A-zА-я0-9]+/g, "")))
+            {
+                addPhone();
+            }
+            else
+            {
+                if($(this).hasClass("phone"))
+                {
+                    self.removePhone();
+                    $(this).stopPropagation();
+                }
+            }
+            
+        });
+         $("html").keyup(function(e){
+             if(e.keyCode == 8)
+             { 
+                 if($(self.selector).is(":focus") && $(self.selector).val() == "+7 (___) ___-__-__" && $(self.selector).hasClass("phone"))
+                 {
+                    self.removePhone();
+                 }
+             }
+         });
+         
+        $(self.selector).blur(function() {
+            if($(self.selector).val() == "+7 (___) ___-__-__" && $(self.selector).hasClass("phone"))
+            {
+               self.removePhone();
+            }
+        });
+	}
+	
+	addPhone()
+	{
+		$(self.selector).addClass("phone");
+        $(self.selector).blur();
+        $(self.selector).focus();
+	}
+	removePhone()
+	{
+		$(self.selector).val("");
+        $(self.selector).removeClass("phone");
+        $(self.selector).unmask();
+	}
+} 
+
+
+
+
+
+
+
+
+
+
+
+

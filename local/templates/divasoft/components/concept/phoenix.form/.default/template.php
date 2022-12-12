@@ -76,7 +76,7 @@ $ymWizard = "ym-record-keys";
                         <?$arResult["PROPERTIES"]["FORM_TEXT_COLOR"]["VALUE_XML_ID"] = "dark";?>
                     <?endif;?>
 
-                    <form id = "form-<?=$arResult['ID']?>" action="/" class="form-<?=$arResult['ID']?> form send <?=$arResult["PROPERTIES"]["FORM_TEXT_COLOR"]["VALUE_XML_ID"]?> <?if($arParams["CART_FORM"] == "Y") echo "form-cart";?>" method="post" role="form">
+                    <form onsubmit="ym(91462903,'reachGoal','zayavka')" id = "form-<?=$arResult['ID']?>" action="/" class="form-<?=$arResult['ID']?> form send <?=$arResult["PROPERTIES"]["FORM_TEXT_COLOR"]["VALUE_XML_ID"]?> <?if($arParams["CART_FORM"] == "Y") echo "form-cart";?>" method="post" role="form">
 
                         <?/*<input name="element" type="hidden" value="<?=$arResult['ID']?>" />*/?>
                         <input name="header" type="hidden" value="<?if(strlen($arResult["PROPERTIES"]["HEADER"]["~VALUE"]) > 0):?><?=htmlspecialcharsEx($arResult["PROPERTIES"]["HEADER"]["VALUE"])?><?endif;?>" />

@@ -49,6 +49,9 @@ $this->setFrameMode(true);
 
                         if (obj.status == "success") {
                             $('#<?= $arParams['UID_FORM'] ?>').html(obj.data.message);
+                            
+                            ym(91462903,'reachGoal','zayavka');
+                            
                             return true;
                         } else {
                             alert(obj.errors[0].message);
