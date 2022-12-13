@@ -481,21 +481,39 @@ $(document).on("click", ".btn-submit", function ()
 
 });
 
-  
-$(document).on("change", "input[type='tel'],input[autocomplete='tel']", function () {
-  var val = $(this).val();
-  if (val.replace(/\D/g, '').startsWith('78')) {
-    $(this).val(' ').trigger('change');
-    $(this).mask('+7(999) 999-99-99');
-  }
+
+
+
+var isPasted = false;
+$(document).on("paste", "input[type='tel'],input[autocomplete='tel']", function(e) {
+  var clipboardData = e.originalEvent.clipboardData || window.clipboardData;
+  var pastedData = clipboardData.getData("text");
+// Проверяем первый символ на соответствие "+7" или "8"
+if (pastedData[0] === "+" || pastedData[0] === "8") {
+  // Если символ соответствует, убираем его
+  var formattedPhoneNumber = pastedData.substring(1);
+} else {
+  // Если первый символ не соответствует, оставляем номер без изменений
+  var formattedPhoneNumber = pastedData;
+}
+$(this).val(formattedPhoneNumber);
+isPasted = true;
 });
+
 $(document).on("keyup", "input[type='tel'],input[autocomplete='tel']", function (e) {
-  var val = $(this).val();
-  if (val.replace(/\D/g, '').startsWith('78')) {
+if (isPasted) {
+    setTimeout(function() {
+        isPasted = false;
+    }, 1000);
+    return;
+}
+       var val = $(this).val();
+  if (val.replace(/\D/g, '').startsWith('78') || val.replace(/\D/g, '').startsWith('77')) { 
     $(this).val(' ').trigger('change');
     $(this).mask('+7(999) 999-99-99');
   }
 });
+
 $(document).on("focus", "input[type='email'], input[type='text'], input[type='password'], textarea", function () {
     $(this).parent("div.input").removeClass("has-error");
     if ($(this).val().length <= 0 && !$(this).hasClass("phone")) {
