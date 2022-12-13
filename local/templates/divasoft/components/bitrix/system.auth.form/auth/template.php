@@ -35,7 +35,7 @@ $picture = (strlen($PHOENIX_TEMPLATE_ARRAY["ITEMS"]["PERSONAL"]["ITEMS"]["FORM_P
                                 <div class="input">
                                     <div class="bg"></div>
                                     <span class="desc">Email, Телефон, ID</span>
-                                    <input class='focus-anim auth-login require jq-login' name="auth-login" type="text" value="" />
+                                    <input id="auth_login_1" class='focus-anim auth-login require' name="auth-login" type="text" value="" />
                                 </div>
                                 <div class="input">
                                     <div class="bg"></div>
@@ -87,8 +87,7 @@ $picture = (strlen($PHOENIX_TEMPLATE_ARRAY["ITEMS"]["PERSONAL"]["ITEMS"]["FORM_P
 </div>
 
 <script>
-	var selector = "#auth_form_1 .jq-login";
-	new Autorize(selector).setHandler();
+	setHandler("#auth_login_1");
 </script> 
 
 <script>

@@ -69,70 +69,64 @@ $(document).on("click", ".suggestion-dropdown__item", function()
 });
 
 
-class Autorize
-{
-	constructor(selector) {
-	    this.selector = selector;
-	    self = this;
-	}
-	
-	setHandler()
-	{
-		$(self.selector).on('input', function() { 
-            var val = $(this).val();
-            if((val == 8 || val == 7 || val == "+" )&& val.length == 1)
-            {
-                self.addPhone();
-            }
-        });
-        $(self.selector).on('paste', function(e) { 
-            var val = event.clipboardData.getData('text/plain');
 
-            if($.isNumeric(val.replace(/[^A-zА-я0-9]+/g, "")))
+function setHandler(selector)
+{
+	$(selector).on('input', function() { 
+        var val = $(this).val();
+        if((val == 8 || val == 7 || val == "+" )&& val.length == 1)
+        {
+            addPhone(selector);
+        }
+    });
+    $(selector).on('paste', function(e) { 
+        var val = event.clipboardData.getData('text/plain');
+
+        if($.isNumeric(val.replace(/[^A-zА-я0-9]+/g, "")))
+        {
+            addPhone(selector);
+        }
+        else
+        {
+            if($(this).hasClass("phone"))
             {
-                addPhone();
+                removePhone(selector);
+                $(this).stopPropagation();
             }
-            else
-            {
-                if($(this).hasClass("phone"))
-                {
-                    self.removePhone();
-                    $(this).stopPropagation();
-                }
-            }
-            
-        });
-         $("html").keyup(function(e){
-             if(e.keyCode == 8)
-             { 
-                 if($(self.selector).is(":focus") && $(self.selector).val() == "+7 (___) ___-__-__" && $(self.selector).hasClass("phone"))
-                 {
-                    self.removePhone();
-                 }
+        }
+    });
+     $("html").keyup(function(e){
+         if(e.keyCode == 8)
+         { 
+             if($(selector).is(":focus") && $(selector).val() == "+7 (___) ___-__-__" && $(selector).hasClass("phone"))
+             {
+                removePhone(selector);
              }
-         });
-         
-        $(self.selector).blur(function() {
-            if($(self.selector).val() == "+7 (___) ___-__-__" && $(self.selector).hasClass("phone"))
-            {
-               self.removePhone();
-            }
-        });
+         }
+     });
+     
+    $(selector).blur(function() {
+        if($(selector).val() == "+7 (___) ___-__-__" && $(selector).hasClass("phone"))
+        {
+           removePhone(selector);
+        }
+    });
+    
+    function addPhone(selector)
+	{
+		$(selector).addClass("phone");
+        $(selector).blur();
+        $(selector).focus();
 	}
+	function removePhone(selector)
+	{
+		$(selector).val("");
+        $(selector).removeClass("phone");
+        $(selector).unmask();
+	}
+}
 	
-	addPhone()
-	{
-		$(self.selector).addClass("phone");
-        $(self.selector).blur();
-        $(self.selector).focus();
-	}
-	removePhone()
-	{
-		$(self.selector).val("");
-        $(self.selector).removeClass("phone");
-        $(self.selector).unmask();
-	}
-} 
+	
 
 
 
