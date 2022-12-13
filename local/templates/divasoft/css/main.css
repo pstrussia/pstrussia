@@ -28094,3 +28094,60 @@ textarea.redemption-form__input {
     padding: 10px;
     color: #ff3c3c;
 }
+
+
+.switch {
+    position: relative;
+    display: -webkit-inline-box;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .switch__input {
+    position: relative;
+    width: 48px;
+    height: 30px;
+    -webkit-appearance: none;
+    outline: 0;
+    background: #fff;
+    border: 2px solid #c4c4c4;
+    border-radius: 20px;
+    -webkit-transition: .2s;
+    -o-transition: .2s;
+    transition: .2s
+  }
+  .switch__input:checked{
+    border: 2px solid #ec6e00;
+    background: #ec6e00;
+  }
+  .switch__input::before {
+      content: "";
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    border-radius: 20px;
+    top: 50%;
+    -webkit-transform: translate(0,-50%);
+    -ms-transform: translate(0,-50%);
+    transform: translate(0,-50%);
+    left: 2px;
+    -webkit-transition: .2s;
+    -o-transition: .2s;
+    transition: .2s;
+    background-color: #c4c4c4;
+}
+.switch__input:checked::before {
+    left: calc(100% - 25px);
+    background-color: #fff;
+  }
+  .switch__text{
+    font-size: 18px;
+  }
+  .switch__input:disabled {
+    border: 2px solid #c4c4c4;
+    opacity: .5
+  }
+  .switch__input:disabled::before {
+    background: #c4c4c4
+  }
