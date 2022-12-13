@@ -74,9 +74,11 @@
                                     <div class="inputs-block">
                                         <div class="input">
                                             <div class="bg"></div>
-                                            <span class="desc">Email</span>
-                                            <input class='focus-anim auth-login require' name="auth-login" type="text" value="" />
+                                            <span class="desc">Email, Телефон, ID</span>
+                                            <input id="auth_login_2" class='focus-anim auth-login require' name="auth-login" type="text" value="" />
+                                            
                                         </div>
+                                        <input class="jq-btn-clear" style="display: none;" type="button" value="X">
                                         <div class="input">
                                             <div class="bg"></div>
                                             <span class="desc">Пароль</span>
@@ -120,3 +122,7 @@
     </div>
 
 <?endif;?>
+
+    <script>
+    	setHandler("#auth_login_2");
+    </script> 

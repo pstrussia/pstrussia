@@ -114,7 +114,7 @@ $ymWizard = "ym-record-keys";
 
         <div class="<?=$colForm?> col-12 form-cell text-part z-text <?=($arItem["PROPERTIES"]["FORM_IMAGE_BLOCK_POSITION"]["VALUE_XML_ID"]=="left")? "side-right":"";?> <?=($arItem["PROPERTIES"]["FORM_IMAGE_POSITION_MOBILE"]["VALUE_XML_ID"] == "order-last-mob" )? "first":"";?> <?=(!$text_ini)? "one-col":"";?>">
 
-            <form id = "form-<?=$arItem['ID']?>" action="/" class="form-<?=$arItem['ID']?> form send<?if($timer_on):?> timer_form<?endif;?> <?=$arItem["PROPERTIES"]["FORM_TEXT_COLOR"]["VALUE_XML_ID"]?> lazyload" enctype="multipart/form-data" method="post" role="form" data-src="<?=$bg_form["src"]?>" style="background-color: <?=$arItem["PROPERTIES"]["FORM_BGC"]["VALUE"]?>;">
+            <form onsubmit="ym(91462903,'reachGoal','zayavka')" id = "form-<?=$arItem['ID']?>" action="/" class="form-<?=$arItem['ID']?> form send<?if($timer_on):?> timer_form<?endif;?> <?=$arItem["PROPERTIES"]["FORM_TEXT_COLOR"]["VALUE_XML_ID"]?> lazyload" enctype="multipart/form-data" method="post" role="form" data-src="<?=$bg_form["src"]?>" style="background-color: <?=$arItem["PROPERTIES"]["FORM_BGC"]["VALUE"]?>;">
 
                 <?/*<input name="element" type="hidden" value="<?=$arItem["ID"]?>">*/?>
                 <input name="form_name" type="hidden" value="<?=htmlspecialcharsEx($arItem["NAME"])?>">

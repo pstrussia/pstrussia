@@ -6,6 +6,58 @@ $arProductsID = array();
 $arOffersID = array();
 $arMainProductsID = array();
 
+
+//---------------------------
+$api_ship = [];
+$res = CIBlockElement::GetList([], ["IBLOCK_CODE" => "delivery"], false, false, ["CODE", "NAME", "PREVIEW_PICTURE"]);
+while($ob = $res->Fetch())
+{
+	$api_ship[$ob["CODE"]] = [
+		"NAME" => $ob["NAME"],
+		"PICTURE" => \CFile::GetPath($ob["PREVIEW_PICTURE"]),
+	];
+    
+}
+
+$db_vals = CSaleOrderPropsValue::GetList(
+	array(),
+	array(
+        "ORDER_ID" => $arResult["ID"],
+        "CODE" => ["IPOLAPISHIP_PROVIDER_KEY", "IPOLAPISHIP_PROVIDER"]
+	)
+);
+while ($arVals = $db_vals->Fetch())
+{
+	$order_props_val[$arVals["CODE"]] = $arVals["VALUE"];
+}
+
+foreach ($arResult["SHIPMENT"] as $key => &$shipment)
+{
+	$PROVIDER_KEY = false;
+	
+	if($order_props_val["IPOLAPISHIP_PROVIDER_KEY"])
+		$PROVIDER_KEY = $order_props_val["IPOLAPISHIP_PROVIDER_KEY"];
+	else
+	{
+		$str = $order_props_val["IPOLAPISHIP_PROVIDER"];
+		preg_match('/\)(.+)\//', $str, $m);
+		$PROVIDER_KEY =  trim($m[1]);
+	}
+	
+	$deliv_code = explode(":", $shipment["DELIVERY"]["CODE"]);
+	if($deliv_code[0] == "apiship" && !$PROVIDER_KEY == false)
+	{
+		$shipment["DELIVERY_NAME"] = str_replace($PROVIDER_KEY, $api_ship[$PROVIDER_KEY]["NAME"], $order_props_val["IPOLAPISHIP_PROVIDER"]);
+		$shipment["DELIVERY"]["SRC_LOGOTIP"] = $api_ship[$PROVIDER_KEY]["PICTURE"];
+	}
+}
+
+
+
+//echo "<pre>"; print_r($arResult); echo "</pre>";
+
+//-----------------------------
+
 if(!empty($arResult['BASKET']))
 {
 	foreach ($arResult['BASKET'] as $key => $arItem){

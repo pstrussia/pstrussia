@@ -53,12 +53,11 @@ class Partner
 	{
 		$propsCode = [
 			1 => [
-				"NAME", "PHONE", "EMAIL", "SERVICE_ORDER", "STORE", "SOGLASHENIE", "DELIVERY_PRICE", "DELIV_PAY_LATER"
+				"NAME", "PHONE", "EMAIL", "SERVICE_ORDER", "STORE", "SOGLASHENIE", "DELIV_PAY_LATER", "DELIVERY_PRICE"
 			],
 			2 => [
 				"UF_KPP", "UF_INN", "UF_ADDRESS", "UF_U_ADDRESS", "NAME", 
-				"PHONE", "EMAIL", "UF_BIK", "UF_RS", "UF_BANK", "SERVICE_ORDER", "STORE", "SOGLASHENIE",
-				"DELIVERY_PRICE", "DELIV_PAY_LATER"
+				"PHONE", "EMAIL", "UF_BIK", "UF_RS", "UF_BANK", "SERVICE_ORDER", "STORE", "SOGLASHENIE", "DELIV_PAY_LATER", "DELIVERY_PRICE"
 			],
 		];
 		
@@ -147,6 +146,29 @@ class Partner
 		//return "Partner::deleteZeroOrder();";
 	}
 	
+    static function getEmailByCode($code)
+	{
+		\CModule::IncludeModule('highloadblock');
+		
+		$arHLBlock = \Bitrix\Highloadblock\HighloadBlockTable::getById(8)->fetch();
+		$obEntity = \Bitrix\Highloadblock\HighloadBlockTable::compileEntity($arHLBlock);
+		$strEntityDataClass = $obEntity->getDataClass();
+		$resData = $strEntityDataClass::getList(array(
+			'select' => array("UF_PFPOCHTA"),
+			'order'  => array(),
+			'filter' => array('!UF_KOD' => false, 'UF_KOD' => $code)
+		));
+		
+		$email = false;
+		
+		while ($row = $resData->Fetch())
+		{
+                    $email = $row["UF_PFPOCHTA"];
+		}
+		
+		return $email;
+	}
+        
 	static function setSoglashenieByUserId($UserId)
 	{
 		$arUser = \Bitrix\Main\UserTable::getRow([

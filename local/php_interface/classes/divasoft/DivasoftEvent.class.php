@@ -77,8 +77,8 @@ class DivasoftEvent {
 				$property = $propertyCollection->getItemByOrderPropertyId($order_props["DELIV_PAY_LATER"]["ID"]);
 				$property->setValue("Y");
 				
-				$property = $propertyCollection->getItemByOrderPropertyId($order_props["DELIVERY_PRICE"]["ID"]);
-				$property->setValue("0.0000");
+				//$property = $propertyCollection->getItemByOrderPropertyId($order_props["DELIVERY_PRICE"]["ID"]);
+				//$property->setValue("0.0000");
 			}
 			else
 			{

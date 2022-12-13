@@ -26,7 +26,7 @@ $picture = (strlen($PHOENIX_TEMPLATE_ARRAY["ITEMS"]["PERSONAL"]["ITEMS"]["FORM_P
 
                 <div class="<?= ($picture) ? "col-md-5" : ""; ?> col-12">
                     <div class="auth-form">
-                        <form class="form auth" action="#">
+                        <form id="auth_form_1" class="form auth" action="#">
                             <div class="title-form main1">Личный кабинет</div>
                             <? if (strlen($PHOENIX_TEMPLATE_ARRAY["ITEMS"]["PERSONAL"]["ITEMS"]["FORM_AUTH_SUBTITLE"]["VALUE"])) : ?>
                                 <div class="subtitle-form"><?= $PHOENIX_TEMPLATE_ARRAY["ITEMS"]["PERSONAL"]["ITEMS"]["FORM_AUTH_SUBTITLE"]["~VALUE"] ?></div>
@@ -34,8 +34,8 @@ $picture = (strlen($PHOENIX_TEMPLATE_ARRAY["ITEMS"]["PERSONAL"]["ITEMS"]["FORM_P
                             <div class="inputs-block">
                                 <div class="input">
                                     <div class="bg"></div>
-                                    <span class="desc">Email</span>
-                                    <input class='focus-anim auth-login require' name="auth-login" type="text" value="" />
+                                    <span class="desc">Email, Телефон, ID</span>
+                                    <input id="auth_login_1" class='focus-anim auth-login require' name="auth-login" type="text" value="" />
                                 </div>
                                 <div class="input">
                                     <div class="bg"></div>
@@ -85,6 +85,10 @@ $picture = (strlen($PHOENIX_TEMPLATE_ARRAY["ITEMS"]["PERSONAL"]["ITEMS"]["FORM_P
         </div>
     </div>
 </div>
+
+<script>
+	setHandler("#auth_login_1");
+</script> 
 
 <script>
     $(function() {
