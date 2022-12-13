@@ -483,18 +483,6 @@ $(document).on("click", ".btn-submit", function ()
 
 
 
-$(document).on("paste", "input[type='tel'],input[autocomplete='tel']", function(e) {
-  var clipboardData = e.originalEvent.clipboardData || window.clipboardData;
-  var pastedData = clipboardData.getData("text");
-  if (pastedData[0] === "+" || pastedData[0] === "8") {
-    var formattedPhoneNumber = pastedData.substring(1);
-  } else {
-    var formattedPhoneNumber = pastedData;
-  }
-  $(this).val(formattedPhoneNumber);
-  
-});
-
 
 var isPasted = false;
 $(document).on("paste", "input[type='tel'],input[autocomplete='tel']", function(e) {
