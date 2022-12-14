@@ -481,11 +481,32 @@ $(document).on("click", ".btn-submit", function ()
 
 });
 
+$(document).on("keyup", "input[type='tel'],input[autocomplete='tel']", function (e) {
+    var val = $(this).val();
+    var regex = /^\d+$/;
+    var regex2 = /^[78]$/;
+    if (regex.test(val) && val.length > 0) {
+        var valOne = $(this).val().charAt(0);
+            $(this).addClass("phone");
+            if (valOne == 8) {
+                valOne = valOne.replace("8", "7");
+                val = val.replace("8", "7");
+            }
+            $(this).val('').trigger('change');
+            $(this).mask('+7(999) 999-99-99').val(val);
+    }else {
+        if (!regex.test(val)) {
+         $(this).val($(this).val().replace(/[A-Za-zА-Яа-яЁё]/, ''));
+        }
+    }
+});
+
 
 
 
 var isPasted = false;
 $(document).on("paste", "input[type='tel'],input[autocomplete='tel']", function(e) {
+      if ($(this).hasClass('phone')) {
   var clipboardData = e.originalEvent.clipboardData || window.clipboardData;
   var pastedData = clipboardData.getData("text");
 // Проверяем первый символ на соответствие "+7" или "8"
@@ -498,21 +519,9 @@ if (pastedData[0] === "+" || pastedData[0] === "8") {
 }
 $(this).val(formattedPhoneNumber);
 isPasted = true;
+      }
 });
 
-$(document).on("keyup", "input[type='tel'],input[autocomplete='tel']", function (e) {
-if (isPasted) {
-    setTimeout(function() {
-        isPasted = false;
-    }, 1000);
-    return;
-}
-       var val = $(this).val();
-  if (val.replace(/\D/g, '').startsWith('78') || val.replace(/\D/g, '').startsWith('77')) { 
-    $(this).val(' ').trigger('change');
-    $(this).mask('+7(999) 999-99-99');
-  }
-});
 
 $(document).on("focus", "input[type='email'], input[type='text'], input[type='password'], textarea", function () {
     $(this).parent("div.input").removeClass("has-error");

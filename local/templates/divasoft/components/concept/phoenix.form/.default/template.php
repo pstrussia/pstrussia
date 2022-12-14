@@ -216,7 +216,7 @@ $ymWizard = "ym-record-keys";
                                                                     <div class="bg"></div>
                                                                     <span class="desc"><?=$PHOENIX_TEMPLATE_ARRAY["MESS"]["FORM_TEMPL_PHONE"]?></span>
 
-                                                                    <input name="inp-phone" class="phone focus-anim <?if(in_array("phone", $arResult["PROPERTIES"]["FORM_INPUTS_REQ"]["VALUE_XML_ID"])):?>require<?endif;?> <?=$ymWizard?> input-phone" type="tel" autocomplete="inp-phone">
+                                                                    <input name="inp-phone" class="focus-anim <?if(in_array("phone", $arResult["PROPERTIES"]["FORM_INPUTS_REQ"]["VALUE_XML_ID"])):?>require<?endif;?> <?=$ymWizard?> input-phone" type="tel" autocomplete="inp-phone">
                                                                 </div>
                                                             </div>
                                                         <?endif;?>
@@ -387,7 +387,7 @@ $ymWizard = "ym-record-keys";
                                                                     <div class="input">
                                                                         <div class="bg"></div>
                                                                         <span class="desc"><?=$arValue?></span>
-                                                                        <input class="phone focus-anim <?if($type[1] == "y"):?>require<?endif;?> <?=$ymWizard?> input_<?=$arResult["ID"]?>_<?=$key?>" name="input_<?=$arResult["ID"]?>_<?=$key?>" type="text" autocomplete="input_<?=$arResult["ID"]?>_<?=$key?>">
+                                                                        <input class=focus-anim <?if($type[1] == "y"):?>require<?endif;?> <?=$ymWizard?> input_<?=$arResult["ID"]?>_<?=$key?>" name="input_<?=$arResult["ID"]?>_<?=$key?>" type="text" autocomplete="input_<?=$arResult["ID"]?>_<?=$key?>">
                                                                     </div>
                                                                 </div>
                                                 

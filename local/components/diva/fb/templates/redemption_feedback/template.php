@@ -86,7 +86,7 @@ $this->setFrameMode(true);
             <input class="redemption-form__input" required="" name="f[CITY]" type="text" placeholder="Город">
                 </div>
                 <div class="redemption-form__item">
-                    <input class="redemption-form__input phone" required="" name="f[TELEPHONE]" type="tel" placeholder="Телефон">
+                    <input class="redemption-form__input" required="" name="f[TELEPHONE]" type="tel" placeholder="Телефон">
                         <input class="redemption-form__input" required="" name="f[MAIL]" type="email" placeholder="Электронная почта">
                             </div>
                             <div class="redemption-form__footer">
