@@ -32,10 +32,28 @@ $picture = (strlen($PHOENIX_TEMPLATE_ARRAY["ITEMS"]["PERSONAL"]["ITEMS"]["FORM_P
                                 <div class="subtitle-form"><?= $PHOENIX_TEMPLATE_ARRAY["ITEMS"]["PERSONAL"]["ITEMS"]["FORM_AUTH_SUBTITLE"]["~VALUE"] ?></div>
                             <? endif; ?>
                             <div class="inputs-block">
-                                <div class="input">
-                                    <div class="bg"></div>
-                                    <span class="desc">Email, Телефон, ID</span>
-                                    <input id="auth_login_1" class='focus-anim auth-login require' name="auth-login" type="text" value="" />
+                                <div class="tabsInput">
+                                    <div class="tabsInput__title">Выберите способ входа</div>
+                                    <div class="tabsInput__btns">
+                                        <div class="tabsInput__btn active">Email</div>
+                                        <div class="tabsInput__btn">Телефон</div>
+                                        <div class="tabsInput__btn">ID</div>
+                                    </div>
+                                    <div class="input active">
+                                        <div class="bg"></div>
+                                        <span class="desc">Email</span>
+                                        <input class='focus-anim auth-login require' name="auth-login" type="text" value="" />
+                                    </div>
+                                    <div class="input">
+                                        <div class="bg"></div>
+                                        <span class="desc">Телефон</span>
+                                        <input class='focus-anim auth-login require' name="auth-login" type="text" value="" />
+                                    </div>
+                                    <div class="input">
+                                        <div class="bg"></div>
+                                        <span class="desc">ID</span>
+                                        <input class='focus-anim auth-login require' name="auth-login" type="text" value="" />
+                                    </div>
                                 </div>
                                 <div class="input">
                                     <div class="bg"></div>
