@@ -522,23 +522,6 @@ isPasted = true;
       }
 });
 
-
-//$(document).on("keyup", "input[type='tel'],input[autocomplete='tel']", function (e) {
-//  if ($(this).hasClass('phone')) {
-//    if (isPasted) {
-//      setTimeout(function() {
-//        isPasted = false;
-//      }, 1000);
-//      return;
-//    }
-//       var val = $(this).val();
-//    if (val.replace(/\D/g, '').startsWith('78') || val.replace(/\D/g, '').startsWith('77')) { 
-//      $(this).val(' ').trigger('change');
-//      $(this).mask('+7(999) 999-99-99');
-//    }
-//  }
-//});
-
 $(document).on("focus", "input[type='email'], input[type='text'], input[type='password'], textarea", function () {
     $(this).parent("div.input").removeClass("has-error");
     if ($(this).val().length <= 0 && !$(this).hasClass("phone")) {
