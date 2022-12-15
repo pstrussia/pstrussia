@@ -480,26 +480,26 @@ $(document).on("click", ".btn-submit", function ()
 
 
 });
+$(document).ready(function () {
+    $(document).on("click", "input[type='tel'],input[autocomplete='tel']", function (e) {
+        $(this).addClass("phone");
+        $(this).val('').trigger('change');
+        $(this).mask('+7(999) 999-99-99');
+    });
+});
+ 
 
+var flag = false;
 $(document).on("keyup", "input[type='tel'],input[autocomplete='tel']", function (e) {
     var val = $(this).val();
-    var regex = /^\d+$/;
-    var regex2 = /^[78]$/;
-    if (regex.test(val) && val.length > 0) {
-        var valOne = $(this).val().charAt(0);
-            $(this).addClass("phone");
-            if (valOne == 8) {
-                valOne = valOne.replace("8", "7");
-                val = val.replace("8", "7");
-            }
-            $(this).val('').trigger('change');
-            $(this).mask('+7(999) 999-99-99').val(val);
-    }else {
-        if (!regex.test(val)) {
-         $(this).val($(this).val().replace(/[A-Za-zА-Яа-яЁё]/, ''));
-        }
-    }
+    if (val.replace(/\D/g, '').startsWith('78') && !flag) {
+        $(this).val(val).trigger('change');
+        $(this).mask('+7(999) 999-99-99');
+        flag = true; 
+    } 
 });
+
+
 
 
 
@@ -522,6 +522,22 @@ isPasted = true;
       }
 });
 
+
+//$(document).on("keyup", "input[type='tel'],input[autocomplete='tel']", function (e) {
+//  if ($(this).hasClass('phone')) {
+//    if (isPasted) {
+//      setTimeout(function() {
+//        isPasted = false;
+//      }, 1000);
+//      return;
+//    }
+//       var val = $(this).val();
+//    if (val.replace(/\D/g, '').startsWith('78') || val.replace(/\D/g, '').startsWith('77')) { 
+//      $(this).val(' ').trigger('change');
+//      $(this).mask('+7(999) 999-99-99');
+//    }
+//  }
+//});
 
 $(document).on("focus", "input[type='email'], input[type='text'], input[type='password'], textarea", function () {
     $(this).parent("div.input").removeClass("has-error");
