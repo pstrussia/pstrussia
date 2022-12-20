@@ -480,25 +480,23 @@ $(document).on("click", ".btn-submit", function ()
 
 
 });
-$(document).ready(function () {
-    $(document).on("click", "input[type='tel'],input[autocomplete='tel']", function (e) {
-        $(this).addClass("phone");
-        $(this).val('').trigger('change');
-        $(this).mask('+7(999) 999-99-99');
-    });
-});
- 
 
 var flag = false;
 $(document).on("keyup", "input[type='tel'],input[autocomplete='tel']", function (e) {
     var val = $(this).val();
-    if (val.replace(/\D/g, '').startsWith('78') && !flag) {
+
+
+    if ((val.replace(/\D/g, '').startsWith('78') || val.replace(/\D/g, '').startsWith('77')) && !flag) {
         $(this).val(val).trigger('change');
         $(this).mask('+7(999) 999-99-99');
-        flag = true; 
-    } 
+        flag = true;
+    }
 });
-
+$(document).on("blur", "input[type='tel'],input[autocomplete='tel']", function (e) {
+    if (flag) {
+        flag = false;
+    }
+});
 
 
 
