@@ -102,7 +102,7 @@ class DH {
 
 
             foreach ($element->Get('ARTICLES_1C')->getAll() as $value) {
-                if($value->getDescription() == "CROSS_All")
+                if(true)//$value->getDescription() == "CROSS_All"
                 {
                     $arResult[$id]["ARTICLE"][] = $value->getValue();
                 }

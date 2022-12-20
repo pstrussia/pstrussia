@@ -27,7 +27,6 @@ class DivasoftEvent {
 //        a2l($arFields);
     }
 	
-	
 	function PartneryHandler(\Bitrix\Main\Entity\Event $event) {
 	    $arFields = $event->getParameter("fields");
 		
@@ -102,4 +101,29 @@ class DivasoftEvent {
 			}
 		}
 	}
+
+	public static function OnBeforeUserAddHandler(&$arFields) {
+	  if($arFields['EXTERNAL_AUTH_ID'] == "sale")
+	  {
+	   	  if($arFields['LOGIN'] != $arFields['EMAIL'])
+		  	$arFields['LOGIN'] = $arFields['EMAIL'];
+		  
+		  $arFields['EXTERNAL_AUTH_ID'] = "";
+		   
+		  $arFields['GROUP_ID'] = Partner::getGroup(["UF_PFPOCHTA" => $arFields["EMAIL"], "REG" => "Y"]);
+		  
+		  $item['LOGIN'] = $arFields['EMAIL'];
+          $item['PASSWORD'] = $arFields['PASSWORD'];
+		  $item['EMAIL'] = $arFields['EMAIL'];
+		  $item['EMAIL_TO'] = $arFields['EMAIL'];
+		  $item['SITE_URL'] = "https://pstrussia.ru";
+		  $item['SITENAME'] = "PST Service Russia";
+
+		  $mess = \Bitrix\Main\Mail\Event::send([    
+		    "EVENT_NAME" => "PHOENIX_SEND_REG_SUCCESS_s1",
+		    "C_FIELDS" => $item,
+		    "LID" => "s1",
+		  ]);
+	  }
+   }
 } 
