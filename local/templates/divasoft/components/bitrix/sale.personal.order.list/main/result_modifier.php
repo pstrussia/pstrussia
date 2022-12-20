@@ -35,7 +35,7 @@ foreach ($arResult['ORDERS'] as $key => &$order)
 		{
 			foreach ($api_ship as $key => $item)
 			{
-				if(stripos($order_props_val["IPOLAPISHIP_PROVIDER"], $key) !== false)
+				if(strpos($order_props_val["IPOLAPISHIP_PROVIDER"], $key) !== false)
 				{
 					$PROVIDER_KEY = $key;
 					break;
