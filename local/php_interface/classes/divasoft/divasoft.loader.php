@@ -11,12 +11,26 @@ require_once __DIR__ . '/models.php'; // Работа с марками и мо�
 require_once __DIR__ . '/DH.class.php'; // Рекапча
 require_once __DIR__ . '/dadata.php'; 
 require_once __DIR__ . '/partner.php';
+require_once __DIR__ . '/OEM.php';
 
 \Bitrix\Main\EventManager::getInstance()->addEventHandler("sale", "OnSaleComponentOrderCreated", ['DivasoftEvent', 'OnSaleComponentOrderCreatedHandler']);
 \Bitrix\Main\EventManager::getInstance()->addEventHandler('', 'PartneryOnBeforeAdd', ['DivasoftEvent', 'PartneryHandler']);
 \Bitrix\Main\EventManager::getInstance()->addEventHandler('', 'PartneryOnBeforeUpdate', ['DivasoftEvent', 'PartneryHandler']);
 \Bitrix\Main\EventManager::getInstance()->addEventHandler('sale', 'OnSaleOrderSaved', ['DivasoftEvent', 'OnSaleOrderSavedHandler']);
- 
+\Bitrix\Main\EventManager::getInstance()->addEventHandler('main', 'OnBeforeUserAdd', ['DivasoftEvent', 'OnBeforeUserAddHandler']);
+
+\Bitrix\Main\EventManager::getInstance()->addEventHandler("iblock", "OnAfterIBlockElementUpdate", Array("MyClass", "OnBeforeIBlockElementAddHandler"));
+
+class MyClass
+{
+    // создаем обработчик события "OnBeforeIBlockElementAdd"
+    function OnBeforeIBlockElementAddHandler(&$arFields)
+    {
+    	//$new = $arFields;
+		//OEM::make($new);
+    }
+}
+
 /* 
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates

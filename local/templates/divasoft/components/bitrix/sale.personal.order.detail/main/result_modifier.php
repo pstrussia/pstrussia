@@ -40,8 +40,16 @@ foreach ($arResult["SHIPMENT"] as $key => &$shipment)
 	else
 	{
 		$str = $order_props_val["IPOLAPISHIP_PROVIDER"];
-		preg_match('/\)(.+)\//', $str, $m);
-		$PROVIDER_KEY =  trim($m[1]);
+		
+		foreach ($api_ship as $key => $value)
+		{
+			if(strpos($str, $key) !== false)
+			{
+				$PROVIDER_KEY =  $key;
+				break;
+			}	
+		}
+		
 	}
 	
 	$deliv_code = explode(":", $shipment["DELIVERY"]["CODE"]);
@@ -50,11 +58,13 @@ foreach ($arResult["SHIPMENT"] as $key => &$shipment)
 		$shipment["DELIVERY_NAME"] = str_replace($PROVIDER_KEY, $api_ship[$PROVIDER_KEY]["NAME"], $order_props_val["IPOLAPISHIP_PROVIDER"]);
 		$shipment["DELIVERY"]["SRC_LOGOTIP"] = $api_ship[$PROVIDER_KEY]["PICTURE"];
 	}
+	
+	
 }
 
 
 
-//echo "<pre>"; print_r($arResult); echo "</pre>";
+
 
 //-----------------------------
 

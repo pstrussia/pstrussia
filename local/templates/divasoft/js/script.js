@@ -3989,7 +3989,9 @@ $(document).ready(function () {
             };
 
             $(this.nodes.obAdd2BasketBtn).addClass("btn-processing");
-
+			
+			ym(91462903,"reachGoal","add_to_cart");
+			
             BX.ajax({
                 method: 'POST',
                 dataType: 'json',

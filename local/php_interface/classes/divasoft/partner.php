@@ -285,7 +285,67 @@ class Partner
 			
 			$user->Update($arUser["ID"], $fields);
 		}
+	}
+	
+	static function getGroup($arFields)
+	{
+		if(empty($arFields["UF_PFVIDTSENYSOGLASH"]) && !empty($arFields["UF_PFPOCHTA"]) && $arFields["REG"] == "Y")
+		{
+			$arFields["UF_PFVIDTSENYSOGLASH"] = self::setSoglashenieByEmail($arFields["UF_PFPOCHTA"]);
+		}
 		
+		if (empty($arFields["UF_PFVIDTSENYSOGLASH"]) || empty($arFields["UF_PFPOCHTA"]))
+		{
+			return "";
+		}
+
+		$def_group = 2;
+		$admin = 1;
+		
+		\CModule::IncludeModule('highloadblock');
+		
+		$arHLBlock = \Bitrix\Highloadblock\HighloadBlockTable::getById(11)->fetch();
+		$obEntity = \Bitrix\Highloadblock\HighloadBlockTable::compileEntity($arHLBlock);
+		$strEntityDataClass = $obEntity->getDataClass();
+		$resData = $strEntityDataClass::getList(array(
+			'select' => array("UF_SOGLASHENIE"),
+			'order'  => array(),
+			'filter' => array('UF_VIDTSENY' => $arFields["UF_PFVIDTSENYSOGLASH"])
+		));
+		
+		$vid = '';
+		
+		if ($row = $resData->Fetch())
+		{
+			$vid = $row["UF_SOGLASHENIE"];
+		}
+		
+		
+		
+		$dbPriceType = \CCatalogGroup::GetList(
+		        array("SORT" => "ASC"),
+		        array("XML_ID" => $vid)
+		    );
+		while ($arPriceType = $dbPriceType->Fetch())
+		{
+			$type_id = $arPriceType["ID"];
+		    
+		}
+
+		$result_group = [];
+		
+		$db_res = \CCatalogGroup::GetGroupsList(array("CATALOG_GROUP_ID"=>$type_id, "BUY" => "Y", "!GROUP_ID" => 1));
+		while ($ar_res = $db_res->Fetch())
+		{
+			$result_group[] = $ar_res["GROUP_ID"];
+		}
+		
+		if(empty($result_group))
+		{
+			$result_group[] = $def_group;
+		}
+
+		return $result_group;
 	}
 }
 
