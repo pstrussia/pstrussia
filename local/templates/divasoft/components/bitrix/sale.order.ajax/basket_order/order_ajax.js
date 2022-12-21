@@ -8103,7 +8103,7 @@ BX.namespace('BX.Sale.OrderAjaxComponent');
 			for (i = 0; i < inputs.length; i++)
 			{
 				/*inputs[i].placeholder = settings.DESCRIPTION;*/
-				BX.addClass(inputs[i], 'bx-form-control bx-soa-customer-input bx-ios-fix focus-anim bord-1 b-ra ' + (settings.REQUIRED == 'Y' ? 'text-require': '') + (settings.IS_PHONE == "Y" ? ' phone ': ''));
+				BX.addClass(inputs[i], 'bx-form-control bx-soa-customer-input bx-ios-fix focus-anim bord-1 b-ra ' + (settings.REQUIRED == 'Y' ? 'text-require': '') + (settings.IS_PHONE == "Y" ? '  ': ''));
 			}
 
 			inputs = propContainer.querySelectorAll('select');

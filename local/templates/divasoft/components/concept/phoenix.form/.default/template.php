@@ -387,7 +387,7 @@ $ymWizard = "ym-record-keys";
                                                                     <div class="input">
                                                                         <div class="bg"></div>
                                                                         <span class="desc"><?=$arValue?></span>
-                                                                        <input class="phone focus-anim <?if($type[1] == "y"):?>require<?endif;?> <?=$ymWizard?> input_<?=$arResult["ID"]?>_<?=$key?>" name="input_<?=$arResult["ID"]?>_<?=$key?>" type="text" autocomplete="input_<?=$arResult["ID"]?>_<?=$key?>">
+                                                                        <input class=focus-anim <?if($type[1] == "y"):?>require<?endif;?> <?=$ymWizard?> input_<?=$arResult["ID"]?>_<?=$key?>" name="input_<?=$arResult["ID"]?>_<?=$key?>" type="text" autocomplete="input_<?=$arResult["ID"]?>_<?=$key?>">
                                                                     </div>
                                                                 </div>
                                                 

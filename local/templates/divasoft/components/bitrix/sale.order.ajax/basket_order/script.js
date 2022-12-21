@@ -444,7 +444,7 @@ BX.saleOrderAjax = { // bad solution, actually, a singleton at the page
 };
 
 // Добавление класса к input, для добавления маски.
-$(function(){
-	const item = $('.bx-form-group').find('span.desc:contains("Телефон")').siblings('input')
-	$(item).addClass('phone')
-})
+//$(function(){
+//	const item = $('.bx-form-group').find('span.desc:contains("Телефон")').siblings('input')
+////	$(item).addClass('phone')
+//})
