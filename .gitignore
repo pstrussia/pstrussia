@@ -5,6 +5,7 @@
 .idea/*
 /vendor/
 /upload/
+/DVS_TEST/
 /node_modules/
 yandex_*.html
 google*.html
