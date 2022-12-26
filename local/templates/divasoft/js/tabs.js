@@ -64,4 +64,16 @@ $(function(){
       contentActive.show()
     }
   }
+
+  // Скрипт переключения способа входа
+	$(document).on('click', '.tabsInput__btn', function(){
+		if(!$(this).hasClass('active')){
+			$(this).siblings('.tabsInput__btn').removeClass('active')
+			$(this).addClass('active')
+			$(this).parents('.tabsInput').find('div.input').siblings('div.input').removeClass('active')
+			const btnActiveIndex = $(this).index()
+			$(this).parents('.tabsInput').find('.input').eq(btnActiveIndex).addClass('active')
+		}
+	})
 })
+
