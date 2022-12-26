@@ -34,24 +34,24 @@ class DivasoftEvent {
 	}
 	
 	function OnSaleOrderSavedHandler(\Bitrix\Main\Event $event) {
-	    if(!$event->getParameter("IS_NEW"))
-            return;
-		
-        $order = $event->getParameter("ENTITY");
-		
-		$order_props = Partner::getOrderProps($order->getPersonTypeId());
-		$sogl = Partner::setSoglashenieByUserId($order->getUserId());
-		$store = Partner::getStoreXmlId();
-		
-		$propertyCollection = $order->getPropertyCollection();
-		
-		$property = $propertyCollection->getItemByOrderPropertyId($order_props["SOGLASHENIE"]["ID"]);
-		$property->setValue($sogl);
-		
-		$property = $propertyCollection->getItemByOrderPropertyId($order_props["STORE"]["ID"]);
-		$property->setValue($store);
-		
-		$order->save();
+	    if($event->getParameter("IS_NEW"))
+		{
+	        $order = $event->getParameter("ENTITY");
+			
+			$order_props = Partner::getOrderProps($order->getPersonTypeId());
+			$sogl = Partner::setSoglashenieByUserId($order->getUserId());
+			$store = Partner::getStoreXmlId();
+			
+			$propertyCollection = $order->getPropertyCollection();
+			
+			$property = $propertyCollection->getItemByOrderPropertyId($order_props["SOGLASHENIE"]["ID"]);
+			$property->setValue($sogl);
+			
+			$property = $propertyCollection->getItemByOrderPropertyId($order_props["STORE"]["ID"]);
+			$property->setValue($store);
+			
+			$order->save();
+		}
 	}
 	
 	function OnSaleComponentOrderCreatedHandler($order, &$arUserResult, $request, &$arParams, &$arResult, &$arDeliveryServiceAll, &$arPaySystemServiceAll){
@@ -69,7 +69,16 @@ class DivasoftEvent {
 		if($request->getPost("action") == "saveOrderAjax")
 		{
 			$order_props = Partner::getOrderProps($order->getPersonTypeId());
+			$sogl = Partner::setSoglashenieByUserId($order->getUserId());
+			$store = Partner::getStoreXmlId();
+			
 			$propertyCollection = $order->getPropertyCollection();
+			
+			$property = $propertyCollection->getItemByOrderPropertyId($order_props["SOGLASHENIE"]["ID"]);
+			$property->setValue($sogl);
+			
+			$property = $propertyCollection->getItemByOrderPropertyId($order_props["STORE"]["ID"]);
+			$property->setValue($store);
 			
 			if($flag)
 			{
@@ -103,7 +112,14 @@ class DivasoftEvent {
 	}
 
 	public static function OnBeforeUserAddHandler(&$arFields) {
-	  if($arFields['EXTERNAL_AUTH_ID'] == "sale")
+            a2l($arFields);
+          if(strpos($arFields['LOGIN'], "buyer") !== false)
+          {
+              $arFields = [];
+              return false;
+          }
+            
+	  if($arFields['EXTERNAL_AUTH_ID'] == "sale" || !empty($arFields['PASSWORD_EXPIRED']))
 	  {
 	   	  if($arFields['LOGIN'] != $arFields['EMAIL'])
 		  	$arFields['LOGIN'] = $arFields['EMAIL'];
@@ -113,7 +129,7 @@ class DivasoftEvent {
 		  $arFields['GROUP_ID'] = Partner::getGroup(["UF_PFPOCHTA" => $arFields["EMAIL"], "REG" => "Y"]);
 		  
 		  $item['LOGIN'] = $arFields['EMAIL'];
-          $item['PASSWORD'] = $arFields['PASSWORD'];
+                  $item['PASSWORD'] = $arFields['PASSWORD'];
 		  $item['EMAIL'] = $arFields['EMAIL'];
 		  $item['EMAIL_TO'] = $arFields['EMAIL'];
 		  $item['SITE_URL'] = "https://pstrussia.ru";

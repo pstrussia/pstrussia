@@ -40,30 +40,44 @@ if($_POST["send"] == "Y")
         }
         else
         {
-            $phone = preg_replace('![^0-9+]!', '', $login);
-            $phone1 = preg_replace('![^0-9]+!', '', $login);
+            $phone = Bitrix\Main\UserPhoneAuthTable::normalizePhoneNumber($login);
 
-            $rsUser = CUser::GetList( 
-                ($by="id"),
-                ($order="desc"),
-                array("PERSONAL_MOBILE" => $phone." | ".$phone1)
-            );
-
-            if($arUser = $rsUser->Fetch())
+            $user_phone = \Bitrix\Main\UserPhoneAuthTable::getList($parameters = array(
+                'filter'=>array('PHONE_NUMBER' =>$phone)
+            ));
+            if($row = $user_phone->fetch())
             {
-                if($arUser["PERSONAL_MOBILE"] == $phone || $arUser["PERSONAL_MOBILE"] == $phone1)
-                    $login = $arUser["LOGIN"]; 
+                $rsUser = CUser::GetByID($row['USER_ID']);
+                $arUser = $rsUser->Fetch();
+                $login = $arUser['LOGIN'];
+            }
+            else
+            {
+                $phone = preg_replace('![^0-9+]!', '', $login);
+                $phone1 = preg_replace('![^0-9]+!', '', $login);
+
+                $rsUser = CUser::GetList( 
+                    ($by="id"),
+                    ($order="desc"),
+                    array("PERSONAL_MOBILE" => $phone." | ".$phone1)
+                );
+
+                if($arUser = $rsUser->Fetch())
+                {
+                    if($arUser["PERSONAL_MOBILE"] == $phone || $arUser["PERSONAL_MOBILE"] == $phone1)
+                        $login = $arUser["LOGIN"]; 
+                    else
+                        $no_user = true;
+                }
                 else
                     $no_user = true;
             }
-            else
-                $no_user = true;
         }
     }
 
     if($no_user)
     {
-        $er = $PHOENIX_TEMPLATE_ARRAY["MESS"]["PERSONAL_ERROR_EMPTY"];
+        $er = "Пользователя с такими учетными данными не существует";
         
         if(trim(SITE_CHARSET) == "windows-1251")
             $er = iconv('windows-1251', 'UTF-8', $er);

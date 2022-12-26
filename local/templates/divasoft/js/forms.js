@@ -636,14 +636,22 @@ $(document).on("click", ".auth-submit", function ()
 {
     var form = $(this).parents("form.auth"),
             er_block = $("div.errors", form),
-            login = $("input[name='auth-login']", form),
+            login = "",
             password = $("input[name='auth-password']", form),
             error = 0,
             count = 0,
             button = $("button", form),
             load = $("div.load", form);
+            
+            var $data = {};
+            $(form).find ("input[name='auth-login']").each(function() {
+            	if($(this).val() != "")
+            	{
+            		login = $(this);
+            	}
+			});
 
-    $("input[type='text'], input[type='password']", form).each(
+    $("input[id='"+$(login).attr("id")+"'], input[type='password']", form).each(
             function ()
             {
 
