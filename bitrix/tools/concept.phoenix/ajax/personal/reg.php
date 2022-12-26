@@ -124,6 +124,7 @@ if ($go) {
             "UF_PROMO" => $promo,
             "UF_TYPE" => $type,
             "PERSONAL_MOBILE" => $telephone,
+            "PHONE_NUMBER" => $telephone,
             "XML_ID" => $email
         );
 
