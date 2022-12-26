@@ -28210,3 +28210,40 @@ textarea.redemption-form__input {
   .switch__input:disabled::before {
     background: #c4c4c4
   }
+
+.tabsInput {
+}
+.tabsInput__title {
+    text-align: center;
+    margin-bottom: 15px;
+}
+.tabsInput__btns {
+    display: grid;
+    align-items: center;
+    grid-gap: 10px;
+    grid-template-columns: repeat(3,1fr);
+    margin-bottom: 15px;
+}
+.tabsInput__btn {
+    cursor: pointer;
+    text-align: center;
+    padding: 2px 8px;
+    border-radius: 100px;
+    border: 1px solid #D5D5D5;
+    color: #8C8C8C;
+}
+.tabsInput__btn.active {
+    background-color: #9D9D9D;
+    border: 1px solid #9D9D9D;
+    color: #fff;
+}
+.tabsInput .input{
+    display: none;
+}
+.tabsInput .input.active{
+    display: block;
+}
+.active {
+}
+.input {
+}
